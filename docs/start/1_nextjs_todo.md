@@ -60,7 +60,7 @@
 ## Phase 3: 데이터 및 콘텐츠 처리
 
 ### 3.1 포트폴리오 데이터 로더
-- [ ] `lib/portfolio.ts` 생성
+- [x] `lib/portfolio.ts` 생성
   - `getPortfolioItems()` 함수 구현
   - `contents/website/*.md` 파일 읽기
   - gray-matter로 frontmatter 파싱
@@ -68,12 +68,12 @@
   - 파일명 기준 정렬
 
 ### 3.2 데이터 검증
-- [ ] Zod 스키마 정의 (`portfolioItemSchema`)
-- [ ] frontmatter 필드 검증
+- [x] Zod 스키마 정의 (`portfolioItemSchema`)
+- [x] frontmatter 필드 검증
   - `site` (required, URL)
   - `title` (optional)
   - `description` (required)
-- [ ] 에러 핸들링 (파일 없음, 파싱 실패)
+- [x] 에러 핸들링 (파일 없음, 파싱 실패)
 
 ---
 
