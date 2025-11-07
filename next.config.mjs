@@ -7,4 +7,4 @@ const nextConfig = {
   // 경로 별칭은 tsconfig.json에서 관리
 }
 
-module.exports = nextConfig
+export default nextConfig

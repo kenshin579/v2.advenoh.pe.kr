@@ -10,7 +10,10 @@ export const portfolioItemSchema = z.object({
   description: z.string(),
 })
 
-export type PortfolioItem = z.infer<typeof portfolioItemSchema> & {
+export type PortfolioItem = {
+  site: string
+  title: string  // Always present after processing
+  description: string
   slug: string
 }
 
