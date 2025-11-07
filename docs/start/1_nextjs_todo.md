@@ -80,7 +80,7 @@
 ## Phase 4: 페이지 구현
 
 ### 4.1 Root Layout
-- [ ] `app/layout.tsx` 생성
+- [x] `app/layout.tsx` 생성
   - ThemeProvider 통합
   - Header, Footer 레이아웃
   - 폰트 최적화 (next/font)
@@ -89,24 +89,22 @@
   - 메타데이터 설정
 
 ### 4.2 홈 페이지
-- [ ] `app/page.tsx` 생성
+- [x] `app/page.tsx` 생성
   - `getPortfolioItems()` 데이터 로드
   - 포트폴리오 카드 그리드 렌더링
   - 반응형 레이아웃 (1열 → 2열 → 3열)
 
 ### 4.3 404 페이지
-- [ ] `app/not-found.tsx` 생성
+- [x] `app/not-found.tsx` 생성
   - 404 메시지 및 홈 버튼
 
 ### 4.4 메타데이터 최적화
-- [ ] SEO 메타태그 설정
+- [x] SEO 메타태그 설정
   - `title`: "Frank Oh Portfolio"
   - `description`
   - Open Graph (`og:*`)
+  - Twitter metadata
   - 작성자 정보
-- [ ] Structured Data (JSON-LD) - 선택적
-  - Person schema
-  - 소셜 프로필 링크
 
 ---
 
