@@ -167,42 +167,48 @@
 ## Phase 6: 클린업 및 배포 준비
 
 ### 6.1 클린업 작업
-- [ ] `server/` 디렉토리 제거
-- [ ] `client/` 디렉토리 정리 (내용 이전 완료 후)
-- [ ] 미사용 파일 제거
+- [x] `server/` 디렉토리 제거
+- [x] `client/` 디렉토리 정리 (내용 이전 완료 후)
+- [x] 미사용 파일 제거
   - `vite.config.ts`
   - `drizzle.config.ts`
-  - `.replit` (선택적)
+  - `.replit`
+  - `replit.md`
 
 ### 6.2 의존성 정리
-- [ ] 서버 관련 패키지 제거
-  ```bash
-  npm uninstall express vite @vitejs/plugin-react drizzle-orm @neondatabase/serverless
-  ```
-- [ ] `package.json` 스크립트 업데이트
+- [x] 서버 관련 패키지 제거 (276개 패키지 삭제)
+- [x] `package.json` 스크립트 업데이트
   - `dev`: `next dev`
   - `build`: `next build`
   - `start`: `next start`
   - `lint`: `next lint`
+  - `check`: `tsc --noEmit`
 
 ### 6.3 문서 업데이트
-- [ ] `README.md` 업데이트
-  - Next.js 프로젝트로 변경 사항 반영
-  - 빌드/개발 명령어 업데이트
-- [ ] `CLAUDE.md` 업데이트
-  - 프로젝트 구조 변경
+- [x] `README.md` 생성
+  - Next.js 프로젝트 설명
+  - 기술 스택 정보
+  - 빌드/개발 명령어
+  - 프로젝트 구조
+  - 콘텐츠 관리 방법
+  - 배포 가이드
+- [x] `CLAUDE.md` 업데이트
+  - 프로젝트 구조 변경 (Next.js App Router)
   - 개발 명령어 업데이트
   - Next.js 관련 가이드 추가
+  - Import path aliases 설명
+  - 정적 사이트 생성 정보
 
 ### 6.4 Netlify 배포 준비
-- [ ] `netlify.toml` 최종 확인
+- [x] `netlify.toml` 생성
   - `build.command`: `npm run build`
   - `build.publish`: `out`
   - 보안 헤더 설정
+  - 404 페이지 리다이렉트
 - [ ] Git 저장소 커밋
   ```bash
   git add .
-  git commit -m "Migrate to Next.js static site"
+  git commit -m "Phase 6: Cleanup and deployment preparation"
   git push
   ```
 - [ ] Netlify 사이트 연동
