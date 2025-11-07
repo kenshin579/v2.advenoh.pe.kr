@@ -5,29 +5,20 @@
 ## Phase 1: Next.js 프로젝트 초기화
 
 ### 1.1 프로젝트 설정
-- [ ] Next.js 14 설치 및 초기화
-  ```bash
-  npx create-next-app@latest . --typescript --tailwind --app --no-src-dir
-  ```
-- [ ] `next.config.js` 설정 (static export)
-- [ ] `tsconfig.json` 경로 별칭 설정 (`@/*`)
-- [ ] `tailwind.config.js` 설정 (기존 테마 이전)
-- [ ] `app/globals.css` 기본 스타일 설정
+- [x] Next.js 14 설치 및 초기화
+- [x] `next.config.js` 설정 (static export)
+- [x] `tsconfig.json` 경로 별칭 설정 (`@/*`)
+- [x] `tailwind.config.ts` 설정 (기존 테마 이전)
+- [x] `app/globals.css` 기본 스타일 설정
 
 ### 1.2 의존성 설치
-- [ ] `next-themes` 설치
-  ```bash
-  npm install next-themes
-  ```
-- [ ] `gray-matter` 설치 (마크다운 파싱)
-  ```bash
-  npm install gray-matter
-  ```
-- [ ] 기존 의존성 확인 및 유지
-  - `lucide-react`
-  - `@radix-ui/*`
-  - `zod`
-  - `tailwindcss`
+- [x] `next-themes` 이미 설치됨 (0.4.6)
+- [x] `gray-matter` 이미 설치됨 (4.0.3)
+- [x] 기존 의존성 확인 완료
+  - `lucide-react` ✅
+  - `@radix-ui/*` ✅
+  - `zod` ✅
+  - `tailwindcss` ✅
 
 ---
 
