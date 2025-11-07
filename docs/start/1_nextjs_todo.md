@@ -30,28 +30,27 @@
   ```bash
   npx shadcn-ui@latest init
   ```
-- [ ] 필요한 컴포넌트 설치
-  ```bash
-  npx shadcn-ui@latest add button card dropdown-menu
-  ```
+- [x] 필요한 컴포넌트 복사 (button, card)
 
 ### 2.2 기본 컴포넌트 이전
-- [ ] `components/theme-provider.tsx` 생성 (next-themes 통합)
-- [ ] `components/Header.tsx` 마이그레이션
+- [x] `components/theme-provider.tsx` 생성 (next-themes 통합)
+- [x] `components/Header.tsx` 마이그레이션
   - 테마 토글 버튼 추가
   - next-themes useTheme 훅 사용
-- [ ] `components/PortfolioCard.tsx` 마이그레이션
+  - SNS 링크 추가
+- [x] `components/PortfolioCard.tsx` 마이그레이션
   - Next.js Link 컴포넌트 사용
   - 호버 애니메이션 유지
 
 ### 2.3 신규 컴포넌트 생성
-- [ ] `components/Footer.tsx` 생성
+- [x] `components/Footer.tsx` 생성
   - SNS 링크 추가 (Instagram, LinkedIn, GitHub)
   - lucide-react 아이콘 사용
   - `target="_blank" rel="noopener noreferrer"` 설정
 
 ### 2.4 설정 파일 생성
-- [ ] `lib/site-config.ts` 생성
+- [x] `lib/utils.ts` 생성
+- [x] `lib/site-config.ts` 생성
   - 사이트 메타데이터
   - 작성자 정보 (Frank Oh)
   - SNS 링크
