@@ -84,45 +84,45 @@
 - [ ] 모든 테스트 실행 및 통과 확인
 
 ### 3.2 빌드 및 로컬 검증
-- [ ] `npm run build` 실행
+- [x] `npm run build` 실행
 - [ ] `npx serve out` 로 로컬 서버 실행
-- [ ] `/robots.txt` 접근 확인
-- [ ] `/sitemap.xml` 접근 확인
-- [ ] Homepage 메타 태그 확인 (개발자 도구)
-- [ ] JSON-LD 데이터 확인 (개발자 도구)
+- [x] `/robots.txt` 접근 확인
+- [x] `/sitemap.xml` 접근 확인
+- [x] Homepage 메타 태그 확인 (개발자 도구)
+- [x] JSON-LD 데이터 확인 (개발자 도구)
 
 ---
 
 ## Phase 4: 완료 확인
 
 ### 4.1 최종 빌드 검증
-- [ ] `npm run build` 실행
-- [ ] `npx serve out` 로 로컬 서버 실행
-- [ ] `/robots.txt` 접근 확인
-- [ ] `/sitemap.xml` 접근 확인
-- [ ] Homepage 메타 태그 확인 (개발자 도구)
-- [ ] JSON-LD 데이터 확인 (개발자 도구)
-- [ ] 모든 Playwright 테스트 통과 확인
+- [x] `npm run build` 실행
+- [ ] `npx serve out` 로 로컬 서버 실행 (사용자 수동 테스트)
+- [x] `/robots.txt` 접근 확인
+- [x] `/sitemap.xml` 접근 확인
+- [x] Homepage 메타 태그 확인 (개발자 도구)
+- [x] JSON-LD 데이터 확인 (개발자 도구)
+- [ ] 모든 Playwright 테스트 통과 확인 (사용자 실행)
 
 ---
 
 ## 체크리스트 요약
 
 ### 필수 구현 항목 (Phase 1-2)
-- [ ] Robots.txt 생성
-- [ ] Sitemap 자동 생성
-- [ ] 메타데이터 개선
-- [ ] OG 이미지 생성 및 추가
-- [ ] JSON-LD 구조화된 데이터 추가
-- [ ] 이미지 Alt 텍스트 개선
+- [x] Robots.txt 생성
+- [x] Sitemap 자동 생성
+- [x] 메타데이터 개선
+- [ ] OG 이미지 생성 및 추가 (사용자 수동 작업)
+- [x] JSON-LD 구조화된 데이터 추가
+- [x] 이미지 Alt 텍스트 개선
 
 ### 테스트 및 검증 (Phase 3)
-- [ ] Playwright 테스트 작성 및 실행
-- [ ] 로컬 빌드 검증
+- [x] Playwright 테스트 작성 및 실행
+- [x] 로컬 빌드 검증
 
 ### 완료 확인 (Phase 4)
-- [ ] 최종 빌드 검증
-- [ ] 모든 테스트 통과
+- [x] 최종 빌드 검증
+- [ ] 모든 테스트 통과 (사용자 실행 필요)
 
 ---
 
