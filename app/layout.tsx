@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
+import { getPersonStructuredData, getWebSiteStructuredData } from '@/lib/structured-data'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -64,8 +65,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const personData = getPersonStructuredData()
+  const websiteData = getWebSiteStructuredData()
+
   return (
     <html lang="ko" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"

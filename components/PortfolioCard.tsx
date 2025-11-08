@@ -52,10 +52,11 @@ export default function PortfolioCard({ title, description, url, cover, slug, in
             <>
               <Image
                 src={coverImagePath}
-                alt={title}
+                alt={`${title} - ${description}`}
                 fill
                 className="object-cover transition-transform duration-200 ease-out group-hover:scale-110"
                 unoptimized
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </>
