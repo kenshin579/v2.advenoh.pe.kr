@@ -8,17 +8,20 @@ export const portfolioItemSchema = z.object({
   site: z.string().url(),
   title: z.string().optional(),
   description: z.string(),
+  cover: z.string().optional(),
 })
 
 export type PortfolioItem = {
   site: string
   title: string  // Always present after processing
   description: string
+  cover?: string
   slug: string
 }
 
 /**
  * contents/website/ 디렉토리에서 모든 포트폴리오 항목 로드
+ * 각 서브폴더의 index.md 파일을 읽음
  */
 export function getPortfolioItems(): PortfolioItem[] {
   const contentsDir = path.join(process.cwd(), 'contents/website')
@@ -29,28 +32,38 @@ export function getPortfolioItems(): PortfolioItem[] {
     return []
   }
 
-  const files = fs.readdirSync(contentsDir)
-  const mdFiles = files.filter(file => file.endsWith('.md'))
+  // 서브폴더 목록 읽기
+  const entries = fs.readdirSync(contentsDir, { withFileTypes: true })
+  const folders = entries.filter(entry => entry.isDirectory())
 
-  const items = mdFiles.map(filename => {
-    const filePath = path.join(contentsDir, filename)
-    const fileContents = fs.readFileSync(filePath, 'utf8')
-    const { data } = matter(fileContents)
+  const items = folders
+    .map(folder => {
+      const indexPath = path.join(contentsDir, folder.name, 'index.md')
 
-    // Zod로 검증
-    const validated = portfolioItemSchema.parse(data)
+      // index.md 파일이 없으면 스킵
+      if (!fs.existsSync(indexPath)) {
+        console.warn(`No index.md found in ${folder.name}`)
+        return null
+      }
 
-    // title이 없으면 URL에서 추출
-    const title = validated.title || extractTitleFromUrl(validated.site)
+      const fileContents = fs.readFileSync(indexPath, 'utf8')
+      const { data } = matter(fileContents)
 
-    return {
-      ...validated,
-      title,
-      slug: filename.replace('.md', ''),
-    }
-  })
+      // Zod로 검증
+      const validated = portfolioItemSchema.parse(data)
 
-  // 파일명 기준 정렬 (기존 로직 유지)
+      // title이 없으면 URL에서 추출
+      const title = validated.title || extractTitleFromUrl(validated.site)
+
+      return {
+        ...validated,
+        title,
+        slug: folder.name,
+      }
+    })
+    .filter((item): item is PortfolioItem => item !== null)
+
+  // 폴더명 기준 정렬
   return items.sort((a, b) => a.slug.localeCompare(b.slug))
 }
 

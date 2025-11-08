@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/copy-portfolio-images.js",
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "next lint",

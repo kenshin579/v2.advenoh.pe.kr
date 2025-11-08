@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 
@@ -6,10 +7,12 @@ interface PortfolioCardProps {
   title: string
   description: string
   url: string
+  cover?: string
+  slug: string
   index?: number
 }
 
-export default function PortfolioCard({ title, description, url, index = 0 }: PortfolioCardProps) {
+export default function PortfolioCard({ title, description, url, cover, slug, index = 0 }: PortfolioCardProps) {
   const getDomainFromUrl = (url: string) => {
     try {
       return new URL(url).hostname.replace('www.', '')
@@ -18,7 +21,7 @@ export default function PortfolioCard({ title, description, url, index = 0 }: Po
     }
   }
 
-  // Gradient colors for visual variety
+  // Gradient colors for visual variety (fallback when no cover image)
   const gradientColors = [
     'from-purple-500/10 to-blue-500/10',
     'from-blue-500/10 to-cyan-500/10',
@@ -28,6 +31,9 @@ export default function PortfolioCard({ title, description, url, index = 0 }: Po
     'from-yellow-500/10 to-orange-500/10',
   ]
   const gradientColor = gradientColors[index % gradientColors.length]
+
+  // Image path for cover
+  const coverImagePath = cover ? `/portfolio/${slug}/${cover}` : null
 
   return (
     <Link
@@ -41,18 +47,33 @@ export default function PortfolioCard({ title, description, url, index = 0 }: Po
       }}
     >
       <Card className="h-full transition-all duration-200 ease-out hover:shadow-lg cursor-pointer border border-card-border group-hover:scale-105">
-        <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${gradientColor} rounded-t-lg`}>
-          <div className="absolute inset-0 flex items-center justify-center transition-transform duration-200 ease-out group-hover:scale-110">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
-                <ExternalLink className="w-8 h-8 text-primary/40" />
+        <div className={`relative aspect-[16/10] overflow-hidden rounded-t-lg ${!coverImagePath ? `bg-gradient-to-br ${gradientColor}` : ''}`}>
+          {coverImagePath ? (
+            <>
+              <Image
+                src={coverImagePath}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-200 ease-out group-hover:scale-110"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            </>
+          ) : (
+            <>
+              <div className="absolute inset-0 flex items-center justify-center transition-transform duration-200 ease-out group-hover:scale-110">
+                <div className="text-center p-6">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <ExternalLink className="w-8 h-8 text-primary/40" />
+                  </div>
+                  <p className="text-xs text-muted-foreground font-medium">
+                    {getDomainFromUrl(url)}
+                  </p>
+                </div>
               </div>
-              <p className="text-xs text-muted-foreground font-medium">
-                {getDomainFromUrl(url)}
-              </p>
-            </div>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            </>
+          )}
         </div>
 
         <div className="p-6">
