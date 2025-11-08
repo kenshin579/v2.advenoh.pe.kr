@@ -23,6 +23,8 @@ export default function HomePage() {
               title={item.title}
               description={item.description}
               url={item.site}
+              cover={item.cover}
+              slug={item.slug}
               index={index}
             />
           ))}
