@@ -3,27 +3,27 @@
 ## Phase 1: 핵심 SEO 인프라 구축
 
 ### 1.1 Robots.txt 생성
-- [ ] `app/robots.ts` 파일 생성
-- [ ] User-agent 설정 (*모든 크롤러 허용)
-- [ ] Allow/Disallow 규칙 설정
-- [ ] Sitemap 경로 명시
+- [x] `app/robots.ts` 파일 생성
+- [x] User-agent 설정 (*모든 크롤러 허용)
+- [x] Allow/Disallow 규칙 설정
+- [x] Sitemap 경로 명시
 - [ ] 로컬에서 빌드 후 `/robots.txt` 접근 확인
 - [ ] Playwright 테스트 작성 (robots.txt 응답 200 확인)
 
 ### 1.2 Sitemap 자동 생성
-- [ ] `app/sitemap.ts` 파일 생성
-- [ ] Homepage URL 추가 (priority: 1.0, changeFrequency: monthly)
-- [ ] Portfolio 항목 자동 추가 로직 구현 (changeFrequency: monthly)
+- [x] `app/sitemap.ts` 파일 생성
+- [x] Homepage URL 추가 (priority: 1.0, changeFrequency: monthly)
+- [x] Portfolio 항목 자동 추가 로직 구현 (changeFrequency: monthly)
 - [ ] 로컬에서 빌드 후 `/sitemap.xml` 접근 확인
 - [ ] Sitemap XML 형식 유효성 검증
 - [ ] Playwright 테스트 작성 (sitemap.xml 형식 확인)
 
 ### 1.3 메타데이터 개선
-- [ ] `app/layout.tsx`에 `metadataBase` 추가
-- [ ] `keywords` 메타 태그 추가 (['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'])
-- [ ] `robots` 메타 태그 추가
-- [ ] Open Graph `images` 배열 추가 (og-image.png)
-- [ ] Twitter Card `images` 추가 (creator 제외)
+- [x] `app/layout.tsx`에 `metadataBase` 추가
+- [x] `keywords` 메타 태그 추가 (['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'])
+- [x] `robots` 메타 태그 추가
+- [x] Open Graph `images` 배열 추가 (og-image.png)
+- [x] Twitter Card `images` 추가 (creator 제외)
 - [ ] Google Search Console verification 코드 추가 (배포 후)
 - [ ] Playwright 테스트 작성 (메타 태그 존재 확인)
 
@@ -42,27 +42,27 @@
 ## Phase 2: 구조화된 데이터 및 고급 메타데이터
 
 ### 2.1 구조화된 데이터 (JSON-LD) 추가
-- [ ] `lib/structured-data.ts` 파일 생성
-- [ ] `getPersonStructuredData()` 함수 구현
+- [x] `lib/structured-data.ts` 파일 생성
+- [x] `getPersonStructuredData()` 함수 구현
   - @type: Person
   - name, url, sameAs, jobTitle (Software Engineer), description
-- [ ] `getWebSiteStructuredData()` 함수 구현
+- [x] `getWebSiteStructuredData()` 함수 구현
   - @type: WebSite
   - name, url, description, author
-- [ ] `app/layout.tsx`에 JSON-LD 스크립트 추가 (head 섹션)
+- [x] `app/layout.tsx`에 JSON-LD 스크립트 추가 (head 섹션)
 - [ ] Schema.org Validator로 검증 (https://validator.schema.org/)
 - [ ] Playwright 테스트 작성 (JSON-LD 스크립트 존재 확인)
 
 ### 2.2 Site Config 확장
-- [ ] `lib/site-config.ts`에 `jobTitle` 추가 (Software Engineer)
-- [ ] `keywords` 배열 추가 (['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'])
-- [ ] 타입 검증 확인
+- [x] `lib/site-config.ts`에 `jobTitle` 추가 (Software Engineer)
+- [x] `keywords` 배열 추가 (['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'])
+- [x] 타입 검증 확인
 
 ### 2.3 이미지 Alt 텍스트 개선
-- [ ] `components/PortfolioCard.tsx`에서 alt 텍스트 개선
+- [x] `components/PortfolioCard.tsx`에서 alt 텍스트 개선
   - 형식: `{title} - {description}`
-- [ ] `loading="lazy"` 속성 추가
-- [ ] 모든 이미지에 alt 텍스트 적용 확인
+- [x] `loading="lazy"` 속성 추가
+- [x] 모든 이미지에 alt 텍스트 적용 확인
 - [ ] Playwright 테스트 작성 (모든 img 태그에 alt 속성 존재 확인)
 
 ---
@@ -70,16 +70,16 @@
 ## Phase 3: 테스트 및 검증
 
 ### 3.1 Playwright 테스트 작성
-- [ ] `tests/seo.spec.ts` 파일 생성
-- [ ] 메타 태그 테스트 작성
+- [x] `tests/seo.spec.ts` 파일 생성
+- [x] 메타 태그 테스트 작성
   - title, description, og:image 확인
-- [ ] Sitemap 접근 테스트 작성
+- [x] Sitemap 접근 테스트 작성
   - 200 응답, XML 형식 확인
-- [ ] Robots.txt 접근 테스트 작성
+- [x] Robots.txt 접근 테스트 작성
   - 200 응답, sitemap 경로 포함 확인
-- [ ] 구조화된 데이터 테스트 작성
+- [x] 구조화된 데이터 테스트 작성
   - JSON-LD 스크립트 개수 확인
-- [ ] 이미지 Alt 텍스트 테스트 작성
+- [x] 이미지 Alt 텍스트 테스트 작성
   - 모든 이미지 alt 속성 확인
 - [ ] 모든 테스트 실행 및 통과 확인
 
