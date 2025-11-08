@@ -11,10 +11,10 @@ export default function Header() {
 
   const socialLinks = [
     {
-      name: 'Instagram',
-      icon: Instagram,
-      url: siteConfig.author.social.instagram,
-      testId: 'link-instagram',
+      name: 'GitHub',
+      icon: Github,
+      url: siteConfig.author.social.github,
+      testId: 'link-github',
     },
     {
       name: 'LinkedIn',
@@ -23,10 +23,10 @@ export default function Header() {
       testId: 'link-linkedin',
     },
     {
-      name: 'GitHub',
-      icon: Github,
-      url: siteConfig.author.social.github,
-      testId: 'link-github',
+      name: 'Instagram',
+      icon: Instagram,
+      url: siteConfig.author.social.instagram,
+      testId: 'link-instagram',
     },
   ]
 
