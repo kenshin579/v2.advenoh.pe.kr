@@ -15,7 +15,7 @@ npm run check
 npm run build
 
 # Preview production build locally
-npx serve out
+npm run start
 
 # Linting
 npm run lint

@@ -8,6 +8,7 @@ vite.config.ts.*
 
 # Build outputs
 public/
+!public/ads.txt
 
 # Next.js
 .next/
