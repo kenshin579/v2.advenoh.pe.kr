@@ -113,11 +113,11 @@ example.com, pub-XXXXXXXXXX, RESELLER, XXXXXXXX
 
 ## 6. 작업 체크리스트
 
-- [ ] `public/ads.txt` 파일 생성
-- [ ] Google AdSense 정보 입력
-- [ ] 로컬 빌드 테스트 (`npm run build`)
-- [ ] `out/ads.txt` 파일 존재 확인
-- [ ] 로컬 서버에서 접근 테스트 (`npx serve out`)
+- [x] `public/ads.txt` 파일 생성
+- [x] Google AdSense 정보 입력
+- [x] 로컬 빌드 테스트 (`npm run build`)
+- [x] `out/ads.txt` 파일 존재 확인
+- [ ] 로컬 서버에서 접근 테스트 (`npm run start`)
 - [ ] Netlify 배포
 - [ ] 프로덕션 도메인에서 접근 확인
 - [ ] Google AdSense에서 확인 상태 체크
