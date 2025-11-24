@@ -35,11 +35,11 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-background/80 border-b border-border transition-colors">
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="fixed top-0 z-50 w-full mix-blend-difference">
+      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
         <Link
           href="/"
-          className="font-display text-xl font-bold tracking-tight hover-elevate active-elevate-2 transition-all duration-200 px-2 py-1 rounded-md"
+          className="font-display text-xl font-bold tracking-tight text-white hover:opacity-70 transition-opacity"
           data-testid="link-home"
         >
           {siteConfig.author.name}
@@ -56,7 +56,7 @@ export default function Header() {
               aria-label={social.name}
               data-testid={social.testId}
             >
-              <social.icon className="w-5 h-5 text-foreground" />
+              <social.icon className="w-5 h-5 text-white hover:text-white/70 transition-colors" />
             </Link>
           ))}
 

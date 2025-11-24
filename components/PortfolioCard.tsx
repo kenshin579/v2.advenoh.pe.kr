@@ -46,33 +46,32 @@ export default function PortfolioCard({ title, description, url, cover, slug, in
         animation: `fadeIn 0.4s ease-out ${index * 50}ms both`,
       }}
     >
-      <Card className="h-full transition-all duration-200 ease-out hover:shadow-lg cursor-pointer border border-card-border group-hover:scale-105">
-        <div className={`relative aspect-[16/10] overflow-hidden rounded-t-lg ${!coverImagePath ? `bg-gradient-to-br ${gradientColor}` : ''}`}>
+      <Card className="h-full overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/10 cursor-pointer border border-border/50 bg-card/50 backdrop-blur-sm group-hover:-translate-y-1">
+        <div className={`relative aspect-[16/10] overflow-hidden border-b border-border/50 ${!coverImagePath ? `bg-gradient-to-br ${gradientColor}` : ''}`}>
           {coverImagePath ? (
             <>
               <Image
                 src={coverImagePath}
                 alt={`${title} - ${description}`}
                 fill
-                className="object-cover transition-transform duration-200 ease-out group-hover:scale-110"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 unoptimized
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
             </>
           ) : (
             <>
-              <div className="absolute inset-0 flex items-center justify-center transition-transform duration-200 ease-out group-hover:scale-110">
+              <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-105">
                 <div className="text-center p-6">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <ExternalLink className="w-8 h-8 text-primary/40" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center shadow-sm">
+                    <ExternalLink className="w-8 h-8 text-white/80" />
                   </div>
-                  <p className="text-xs text-muted-foreground font-medium">
+                  <p className="text-sm text-white/90 font-medium tracking-wide">
                     {getDomainFromUrl(url)}
                   </p>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </>
           )}
         </div>
@@ -80,14 +79,16 @@ export default function PortfolioCard({ title, description, url, cover, slug, in
         <div className="p-6">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-bold mb-2 text-card-foreground group-hover:text-primary transition-colors duration-200" data-testid={`text-title-${index}`}>
+              <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-200 font-display" data-testid={`text-title-${index}`}>
                 {title}
               </h3>
-              <p className="text-sm text-muted-foreground line-clamp-2" data-testid={`text-description-${index}`}>
+              <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed" data-testid={`text-description-${index}`}>
                 {description}
               </p>
             </div>
-            <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0 mt-1" data-testid={`icon-external-${index}`} />
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+              <ExternalLink className="w-4 h-4 text-primary" data-testid={`icon-external-${index}`} />
+            </div>
           </div>
         </div>
       </Card>
