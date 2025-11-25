@@ -76,7 +76,7 @@ export default function PortfolioCard({ title, description, url, cover, slug, in
           )}
         </div>
 
-        <div className="p-6 pb-8">
+        <div className="p-6 pb-10">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
               <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors duration-200 font-display" data-testid={`text-title-${index}`}>
