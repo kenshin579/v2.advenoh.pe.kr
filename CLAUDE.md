@@ -26,16 +26,15 @@ npm run lint
 **Next.js Static Site**: TypeScript application using Next.js 14 App Router with static site generation (SSG).
 
 - **`app/`** - Next.js App Router
-  - `layout.tsx` - Root layout with ThemeProvider, Header, Footer
+  - `layout.tsx` - Root layout with Header, Footer
   - `page.tsx` - Home page with portfolio grid
   - `not-found.tsx` - 404 error page
-  - `globals.css` - Global styles and theme CSS variables
+  - `globals.css` - Global styles and CSS variables
 
 - **`components/`** - React components
-  - `Header.tsx` - Navigation with theme toggle and SNS links
+  - `Header.tsx` - Navigation with SNS links (Instagram, LinkedIn, GitHub)
   - `Footer.tsx` - Footer with SNS links (Instagram, LinkedIn, GitHub)
   - `PortfolioCard.tsx` - Portfolio item card component
-  - `theme-provider.tsx` - Theme provider using next-themes
   - `ui/` - shadcn/ui components (button, card, etc.)
 
 - **`lib/`** - Utilities and configuration
@@ -52,7 +51,7 @@ npm run lint
 - **Static Site Generation**: All pages pre-rendered at build time to `out/` directory
 - **Content Management**: Portfolio items stored as markdown files, parsed at build time with `gray-matter`
 - **Type Safety**: Zod schemas validate markdown frontmatter data
-- **Theme System**: next-themes provides dark/light mode with localStorage persistence
+- **Theme**: Single dark mode theme
 - **No Backend**: Fully static site, no server runtime required
 
 ## Import Path Aliases
@@ -86,11 +85,9 @@ The `lib/portfolio.ts` loader reads these files at build time, validates with `p
 
 **Framework**: Tailwind CSS v3 + shadcn/ui components (Radix UI primitives)
 
-**Theme System**:
-- next-themes integration in `components/theme-provider.tsx`
-- Dark/light modes with system preference detection
-- Theme persistence via localStorage
-- All components support both themes
+**Theme**:
+- Single dark mode theme
+- CSS variables defined in `globals.css`
 
 **Design Constraints** (from design_guidelines.md):
 - Typography: Inter (body), Space Grotesk (headings) - loaded via next/font
