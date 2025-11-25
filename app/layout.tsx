@@ -75,7 +75,7 @@ export default function RootLayout({
   const websiteData = getWebSiteStructuredData()
 
   return (
-    <html lang="ko">
+    <html lang="ko" className="dark">
       <head>
         <script
           type="application/ld+json"
