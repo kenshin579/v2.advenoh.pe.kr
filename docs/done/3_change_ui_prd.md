@@ -337,5 +337,5 @@ const kvs: Array<[string, string | undefined]> = [
 - 디자인 원본: `docs/start/Profile/Profile v2.html` (CSS L220–257, 마크업 L626–686)
 - 상위 PRD: `docs/done/2_profile_ui_v2_prd.md`
 - 관련 구현: `docs/done/2_profile_ui_v2_implementation.md`
-- 구현 상세(예정): `docs/start/3_change_ui_implementation.md`
-- 작업 체크리스트(예정): `docs/start/3_change_ui_todo.md`
+- 구현 상세(예정): `docs/done/3_change_ui_implementation.md`
+- 작업 체크리스트(예정): `docs/done/3_change_ui_todo.md`

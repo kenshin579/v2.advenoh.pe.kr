@@ -1,7 +1,7 @@
 # Profile UI v2 — UI 조정 구현 문서
 
-> 요구사항: `docs/start/3_change_ui_prd.md`
-> 체크리스트: `docs/start/3_change_ui_todo.md`
+> 요구사항: `docs/done/3_change_ui_prd.md`
+> 체크리스트: `docs/done/3_change_ui_todo.md`
 
 ## 1. 개요
 
