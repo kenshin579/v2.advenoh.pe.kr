@@ -43,14 +43,14 @@
 
 ## Phase 2. 스타일 / 토큰
 
-- [ ] `app/globals.css`에 profile CSS 변수 추가 (bg/fg/line/accent/상태/폰트)
-- [ ] `:root`에 초기값 `data-accent="violet" data-density="comfortable" --noise:35`
-- [ ] `[data-accent="..."]` 5종 스킨 (violet/red/green/orange/amber)
-- [ ] `[data-density="compact"]` 축소 규칙
-- [ ] `tailwind.config.ts` 확장 (`colors.profile.*`, `fontFamily.mono`, `fontFamily.sans-kr`)
-- [ ] `app/layout.tsx`에 IBM Plex Mono / IBM Plex Sans KR 추가 (`next/font/google`)
-- [ ] `Inter` 제거, `Header` / `Footer` import 제거
-- [ ] OKLCH 컬러 검증 (Chromium/Safari/Firefox)
+- [x] `app/globals.css`에 profile CSS 변수 추가 (bg/fg/line/accent/상태/density/noise)
+- [x] `<html>`에 초기값 `data-accent="violet" data-density="comfortable"` 주입 (+ `--profile-noise: 0.35`)
+- [x] `[data-accent="..."]` 5종 스킨 (violet/red/green/orange/amber) — OKLCH
+- [x] `[data-density="compact"|"comfortable"]` 카드/섹션 간격 변수화
+- [x] `tailwind.config.ts` 확장 (`colors.profile.*`, fontFamily sans/mono/display를 var 기반으로 통일)
+- [x] `app/layout.tsx`에 `IBM_Plex_Sans_KR` / `IBM_Plex_Mono` / `Space_Grotesk` 추가 (`next/font/google`, variable `--font-sans` / `--font-mono` / `--font-display`)
+- [x] `Inter` 제거, `Header` / `Footer` import·사용 완전 제거
+- [x] 타입 체크(`npm run check`) 통과 — OKLCH는 모던 Chromium/Safari/Firefox 지원, 브라우저 QA는 Phase 8에서 확인
 
 ## Phase 3. 컴포넌트 구현 (`components/profile/`)
 

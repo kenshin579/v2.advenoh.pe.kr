@@ -1,22 +1,29 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import { IBM_Plex_Mono, IBM_Plex_Sans_KR, Space_Grotesk } from 'next/font/google'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
 import { getPersonStructuredData, getWebSiteStructuredData } from '@/lib/structured-data'
 
-const inter = Inter({
+const ibmPlexSansKR = IBM_Plex_Sans_KR({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
   display: 'swap',
 })
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-heading',
+  weight: ['500', '600', '700'],
+  variable: '--font-display',
   display: 'swap',
 })
 
@@ -75,7 +82,12 @@ export default function RootLayout({
   const websiteData = getWebSiteStructuredData()
 
   return (
-    <html lang="ko" className="dark">
+    <html
+      lang="ko"
+      className="dark"
+      data-accent="violet"
+      data-density="comfortable"
+    >
       <head>
         <script
           type="application/ld+json"
@@ -94,15 +106,11 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body
+        className={`${ibmPlexSansKR.variable} ${ibmPlexMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+      >
         <GoogleAnalytics />
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        {children}
       </body>
     </html>
   )
