@@ -16,5 +16,5 @@ overview: |
   빌드 타임에 Markdown을 JSON으로 변환해 Next.js Static Export로 배포.
   RSS/Sitemap/robots 자동 생성, Netlify 호스팅.
 ext: .md
-order: 2
+order: 4
 ---

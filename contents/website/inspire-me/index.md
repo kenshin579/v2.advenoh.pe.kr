@@ -15,5 +15,6 @@ overview: |
   세계 인물들의 명언을 주제·언어별로 분류해 보여주는 정적 사이트.
   Markdown 기반 콘텐츠 관리, 카테고리 필터, 랜덤 노출 등 단순한 브라우징 경험에 집중.
 ext: .ts
-order: 5
+featured: true
+order: 1
 ---

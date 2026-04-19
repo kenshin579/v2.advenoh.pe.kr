@@ -7,7 +7,24 @@ export type ReadmeData = {
   focus?: string
   based?: string
   xp?: string
+  headline?: string
+  stack?: string[]
+  db?: string[]
+  cloud?: string[]
+  cicd?: string[]
   body: string
+}
+
+function parseArray(v: unknown): string[] | undefined {
+  if (Array.isArray(v)) {
+    const arr = v.filter((x): x is string => typeof x === 'string').map(s => s.trim()).filter(Boolean)
+    return arr.length > 0 ? arr : undefined
+  }
+  if (typeof v === 'string') {
+    const arr = v.split(',').map(s => s.trim()).filter(Boolean)
+    return arr.length > 0 ? arr : undefined
+  }
+  return undefined
 }
 
 export function loadReadme(): ReadmeData {
@@ -20,6 +37,11 @@ export function loadReadme(): ReadmeData {
       focus: typeof data.focus === 'string' ? data.focus : undefined,
       based: typeof data.based === 'string' ? data.based : undefined,
       xp: typeof data.xp === 'string' ? data.xp : undefined,
+      headline: typeof data.headline === 'string' ? data.headline : undefined,
+      stack: parseArray(data.stack),
+      db: parseArray(data.db),
+      cloud: parseArray(data.cloud),
+      cicd: parseArray(data.cicd),
       body: content.trim(),
     }
   } catch {

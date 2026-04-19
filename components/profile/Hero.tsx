@@ -4,6 +4,7 @@ import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'
 import type { HeroStats } from '@/lib/stats'
 import type { ReadmeData } from '@/lib/profile-readme'
+import { siteConfig } from '@/lib/site-config'
 import { TypewriterPrompt } from './TypewriterPrompt'
 import { StatsRow } from './StatsRow'
 
@@ -11,15 +12,19 @@ type HeroProps = {
   stats: HeroStats
   github: GithubContrib
   status: StatusSnapshot
-  stack: string[]
   readme: ReadmeData
 }
 
-export function Hero({ stats, github, status, stack, readme }: HeroProps) {
+export function Hero({ stats, github, status, readme }: HeroProps) {
+  const headline = readme.headline ?? siteConfig.author.jobTitle
+
   const kvs: Array<[string, string | undefined]> = [
     ['role', readme.role],
     ['focus', readme.focus],
-    ['stack', stack.length > 0 ? stack.join(' · ') : undefined],
+    ['stack', readme.stack?.length ? readme.stack.join(' · ') : undefined],
+    ['db', readme.db?.length ? readme.db.join(' · ') : undefined],
+    ['cloud', readme.cloud?.length ? readme.cloud.join(' · ') : undefined],
+    ['ci/cd', readme.cicd?.length ? readme.cicd.join(' · ') : undefined],
     ['based', readme.based],
     ['xp', readme.xp],
   ]
@@ -38,6 +43,8 @@ export function Hero({ stats, github, status, stack, readme }: HeroProps) {
 
       {readme.body && (
         <p className="max-w-2xl text-sm leading-relaxed text-profile-fg-2 whitespace-pre-line">
+          <strong className="font-semibold text-profile-fg">{headline}</strong>
+          <span className="text-profile-muted-2"> — </span>
           {readme.body}
         </p>
       )}

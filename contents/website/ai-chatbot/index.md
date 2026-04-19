@@ -18,7 +18,6 @@ overview: |
   Markdown loader → chunker → OpenAI embedder → ChromaDB → LangChain chain 구조이며, 
   blog-v2와 investment 두 블로그를 각각의 collection으로 분리해 다중 블로그를 지원한다.
   Frontend/Backend 모노레포, Docker 멀티플랫폼 빌드, GitHub Actions 자동 배포.
-featured: true
 ext: .py
-order: 1
+order: 2
 ---

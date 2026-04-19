@@ -1,8 +1,29 @@
 ---
 role: Backend / AI Engineer
-focus: Distributed systems · RAG pipelines · DevEx
-based: Seoul, South Korea
+focus: Distributed systems, Backend, DevOps
+based: Seoul, South Korea · open to remote
 xp: 10+ years
+headline: Software Engineer
+stack:
+  - Claude
+  - Python
+  - Go
+  - TypeScript
+  - Java
+  - Spring Boot
+db:
+  - MySQL
+  - Redis
+  - Kafka
+  - Memcached
+cloud:
+  - Kubernetes
+  - Docker
+  - Helm
+cicd:
+  - GitHub Actions
+  - ArgoCD
+  - Jenkins
 ---
 
 backend·AI 시스템을 설계하고 운영한다. RAG 파이프라인, 분산 시스템,

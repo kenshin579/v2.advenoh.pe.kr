@@ -6,7 +6,6 @@
 import { getStatusSnapshot } from '../lib/status'
 import { getGithubContrib } from '../lib/github'
 import { getWritingBlog, getWritingInvestment } from '../lib/writing'
-import { getSkills } from '../lib/skills'
 
 async function main() {
   const tasks: Array<[string, () => Promise<unknown>]> = [
@@ -14,7 +13,6 @@ async function main() {
     ['github', getGithubContrib],
     ['writing:blog', getWritingBlog],
     ['writing:investment', getWritingInvestment],
-    ['skills', getSkills],
   ]
 
   for (const [label, loader] of tasks) {

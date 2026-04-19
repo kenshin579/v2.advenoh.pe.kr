@@ -8,28 +8,30 @@ type ProjectGridProps = {
 }
 
 export function ProjectGrid({ items }: ProjectGridProps) {
-  const featured = items.find(i => i.featured)
-  const others = items.filter(i => !i.featured)
-
   return (
     <section id="projects" aria-label="projects" className="space-y-4">
-      <header className="flex items-baseline justify-between border-b border-profile-line-2 pb-2">
-        <h2 className="font-mono text-[11px] uppercase tracking-widest text-profile-muted">
-          projects/
+      <header className="flex items-baseline gap-3 pb-2">
+        <h2 className="font-mono text-[13px] uppercase tracking-widest text-profile-fg">
+          projects
         </h2>
-        <span className="font-mono text-[11px] text-profile-muted-2">
-          {String(items.length).padStart(2, '0')} items
+        <span className="font-mono text-[11px] text-profile-muted-2">#02</span>
+        <div className="flex-1 border-t border-profile-line-2" aria-hidden="true" />
+        <span className="font-mono text-[11px] text-profile-muted">
+          ls ./projects · {items.length} items ·{' '}
+          <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">j</kbd>{' '}
+          <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">k</kbd>{' '}
+          to navigate
         </span>
       </header>
 
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        {featured && (
-          <div className="md:col-span-2">
-            <ProjectCardV2 item={featured} variant="featured" />
+      <div className="grid grid-cols-1 gap-[10px] md:grid-cols-6">
+        {items.map(item => (
+          <div
+            key={item.slug}
+            className={item.featured ? 'md:col-span-6' : 'md:col-span-3'}
+          >
+            <ProjectCardV2 item={item} variant={item.featured ? 'featured' : 'default'} />
           </div>
-        )}
-        {others.map(item => (
-          <ProjectCardV2 key={item.slug} item={item} />
         ))}
       </div>
     </section>
