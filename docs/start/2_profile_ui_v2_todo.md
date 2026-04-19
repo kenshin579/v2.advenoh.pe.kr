@@ -56,11 +56,12 @@
 
 ### 레이아웃 컴포넌트
 
-- [ ] `TitleBar.tsx` — dots · breadcrumb (scrollSpy) · ⌘K 힌트 · N/N up
-- [ ] `Sidebar.tsx` — Workspace nav · Status · Links · hop-search
-- [ ] `RightRail.tsx` — CommitGraph · Latest posts · System
-- [ ] `StatusBar.tsx` — 섹션 · 10+ yrs · 단축키 힌트
-- [ ] `LineGutter.tsx` — 라인넘버 gutter
+- [x] `TitleBar.tsx` — dots · breadcrumb · ⌘K 힌트 · N/N up (scrollSpy 연동은 Phase 4)
+- [x] `Sidebar.tsx` — Workspace nav · Status · Links (hop-search는 CommandPalette에 통합 예정)
+- [x] `RightRail.tsx` — Commits 헤더 + Latest posts + System (히트맵 placeholder)
+- [x] `StatusBar.tsx` — 섹션 · 10+ yrs · 단축키 힌트
+- [x] `LineGutter.tsx` — 라인넘버 gutter
+- [x] `app/page.tsx` 3-column 프레임 재작성, 모든 loader 병렬 호출로 initialData 구성
 
 ### Hero 섹션
 
