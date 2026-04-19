@@ -205,7 +205,7 @@
 ```
 GitHub Actions (cron) → Python health_check.py → Supabase Postgres
                                                       ↓
-                                 services · service_status_logs · daily_status_summary (view)
+                                 services · service_status_logs · daily_status_summary (table)
                                                       ↓
                                         advenoh-status 프론트엔드 (anon key + RLS read)
 ```
@@ -222,7 +222,7 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 - 이유: advenoh-status가 별도 백엔드를 운영하지 않고, 추가 인프라(Netlify Functions, 외부 JSON 호스트) 없이 기존 Supabase를 그대로 데이터 소스로 사용. 빌드 타임 쿼리 결과를 HTML에 embed하되, **클라이언트 마운트 시 동일 쿼리를 재실행해 최신값으로 덮어씀** — 페이지 새로고침만으로 fresh 데이터를 확보해 Netlify scheduled build나 webhook 재빌드 없이도 실시간성을 얻는다.
 - **v2 쪽 작업**:
   - `@supabase/supabase-js` 의존성 추가 (서버·클라이언트 양쪽에서 사용)
-  - `lib/status.ts` — **서버 컴포넌트/SSG**용 모듈. `services` + `daily_status_summary` 뷰 조회, Zod 검증, 실패 시 공통 캐시 정책 폴백. `app/page.tsx`가 빌드 타임에 호출해 initialData 생성
+  - `lib/status.ts` — **서버 컴포넌트/SSG**용 모듈. `services` + `daily_status_summary` 테이블 조회, Zod 검증, 실패 시 공통 캐시 정책 폴백. `app/page.tsx`가 빌드 타임에 호출해 initialData 생성
   - `hooks/useLiveStatus.ts` (또는 `lib/status.client.ts`) — `'use client'` 훅. 동일 Supabase 조회를 브라우저에서 재실행해 initialData를 fresh로 교체. fetch 실패 시 initialData 유지(에러 숨김)
   - Sidebar `Status` 블록 · Hero stats (`services up`, `uptime · 90d`) · Title Bar `N/N up` · 우측 레일 `System`은 모두 동일한 hook에서 읽어 **단일 데이터 소스**로 유지 (Context 또는 props drilling)
 - **다른 외부 fetch와의 역할 분리**:
@@ -236,15 +236,17 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
     summary: { up: number; total: number; uptime90d: number; lastIncidentAt: string | null }
   }
   ```
-- **환경변수 (Netlify 빌드 env)**:
+- **환경변수 (Netlify 모든 컨텍스트)**:
   - `NEXT_PUBLIC_SUPABASE_URL` — advenoh-status와 동일한 값
-  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` (RLS가 anon read 허용 시) 또는 `SUPABASE_SERVICE_KEY` (빌드 전용, 공개 env 아님)
-- **선결 조건 (구현 전 확인)**:
-  1. `supabase/migrations/*.sql`에서 `services`, `service_status_logs`, `daily_status_summary` 뷰의 **RLS 정책**이 anon read를 허용하는지 확인
-     - 허용: anon key로 진행
-     - 미허용: (a) advenoh-status 쪽 RLS를 anon read 허용으로 완화, 또는 (b) v2 빌드에 service role key를 Netlify 비공개 env로 주입
-  2. advenoh-status의 테이블/뷰 스키마 변경 시 이 PRD와 `lib/status.ts`도 함께 업데이트 (두 프로젝트 공동 관리 규약)
-  3. Supabase 접속 실패 시 빈 배열·기본값 반환, 사이트 빌드 자체는 성공하도록 보장
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — anon read 전용 (RLS로 권한 제어)
+- **RLS 확인 결과 (완료)**:
+  - `services`: "Public read access for services" `TO anon, authenticated` ✅ (`001_initial_schema.sql:36-38`)
+  - `service_status_logs`: "Public read access for logs" `TO anon, authenticated` ✅ (`001_initial_schema.sql:44-46`)
+  - `daily_status_summary`: "Anyone can read daily_status_summary" `FOR SELECT USING (true)` ✅ (`006_create_daily_status_summary.sql:25-26`)
+  - → **anon key 단독으로 모든 필요 데이터 조회 가능. service_key 불필요.**
+- **운영 규약**:
+  - advenoh-status의 테이블 스키마 변경 시 이 PRD와 `lib/status.ts`도 함께 업데이트 (두 프로젝트 공동 관리)
+  - Supabase 접속 실패 시 공통 캐시 정책(stale → 하드코딩 폴백)으로 빌드 성공 보장
 
 ### GitHub (`Commits · 'YY`)
 - **현재**: 디자인 원본은 랜덤 히트맵. 실제 GitHub 기여(contribution) 데이터로 교체
@@ -373,8 +375,8 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 10. **RSS 피드 2종 연동**: `https://blog.advenoh.pe.kr/rss.xml`, `https://investment.advenoh.pe.kr/rss.xml`을 빌드 타임에 fetch·파싱해 writing 섹션 + 우측 레일 `Latest posts`에 주입 (`rss-parser` 또는 `fast-xml-parser` 의존성 추가 / 캐시·폴백 전략)
 
 11. **GitHub 기여 캘린더 연동** — GraphQL `contributionsCollection` 빌드 타임 fetch (`GITHUB_TOKEN` 필요), 우측 레일 히트맵 + Hero stats `commits · 'YY`
-12. **Status 연동** — Supabase 직접 조회(안 A 확정). `@supabase/supabase-js`로 빌드 타임에 `services` + `daily_status_summary` 뷰 읽어, Hero stats(`services up` / `uptime 90d`), Sidebar `Status`, Title Bar `N/N up`, 우측 레일 `System`에 반영
-    - 선결 조건: advenoh-status 측 RLS가 anon read를 허용하는지 확인 (미허용 시 service role key를 Netlify 비공개 env로 주입)
+12. **Status 연동** — Supabase 직접 조회(안 A 확정). `@supabase/supabase-js`로 빌드 타임에 `services` + `daily_status_summary` 테이블 읽어, Hero stats(`services up` / `uptime 90d`), Sidebar `Status`, Title Bar `N/N up`, 우측 레일 `System`에 반영. 페이지 마운트 시 `useLiveStatus`가 동일 쿼리 재실행해 fresh로 교체
+    - 선결 조건: **완료** — anon key 단독으로 조회 가능 확인됨 (service_key 불필요)
 13. **Skills 연동** — `github.com/kenshin579/kenshin579` 프로필 README를 빌드 타임 fetch해 shields.io 배지에서 스킬 추출, Hero `kvs`의 `stack` 라인에 주입 (하드코딩 대체)
 
 ### Out-of-Scope (별도 티켓)
@@ -461,7 +463,7 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 - ~~블로그 포스트 소스~~ → **RSS 빌드 타임 fetch (blog.advenoh.pe.kr · investment.advenoh.pe.kr)**
 - ~~커밋 그래프 소스~~ → **GitHub GraphQL `contributionsCollection` 실데이터**
 - ~~Hero stack 라인 관리 방식~~ → **GitHub 프로필 README(`kenshin579/kenshin579`)에서 shields.io 배지 자동 추출**
-- ~~Status 연동 방식~~ → **안 A: v2가 `@supabase/supabase-js`로 Supabase를 빌드 타임에 직접 조회** (추가 인프라·Netlify Functions 불필요, 정적 export 결과에 스냅샷 embed. RLS anon read 허용 여부는 구현 전 확인)
+- ~~Status 연동 방식~~ → **안 A: v2가 `@supabase/supabase-js`로 Supabase를 빌드 타임에 직접 조회** (추가 인프라·Netlify Functions 불필요, 정적 export 결과에 스냅샷 embed). **RLS 확인 완료** — `services` / `service_status_logs` / `daily_status_summary` 모두 anon read 허용, service_key 불필요.
 - ~~GitHub PAT 주입 범위~~ → **`kenshin579` fine-grained PAT(`read:user` scope)를 Netlify Production 컨텍스트에만 주입.** Deploy Preview / Branch Deploy에는 노출하지 않으며, PR preview에선 히트맵이 빈 폴백으로 렌더된다.
 - ~~외부 fetch 캐시 정책~~ → **옵션 A 하이브리드**: `.cache/*.json` 레포 루트 + git 커밋(시드). 런타임 fresh fetch 성공 시 덮어쓰기(비커밋), 실패 시 stale 재사용, 파일 부재 시 하드코딩 폴백. 시드 갱신은 수동. (상세: "외부 데이터 연동 · 공통 캐시 정책" 섹션)
 - ~~Sparkline / CommitGraph 구현 방식~~ → **순수 SVG / CSS Grid 자체 구현. 차트 라이브러리 미사용.** `recharts` 의존성은 `package.json`에서 제거한다.

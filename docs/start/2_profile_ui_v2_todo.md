@@ -5,16 +5,13 @@
 
 ## Phase 0. 선결 조건 (외부 레포 PR 및 확인)
 
-- [ ] `advenoh-status/supabase/migrations/*.sql`에서 `services`, `service_status_logs`, `daily_status_summary` 뷰의 RLS anon read 정책 확인
-- [ ] RLS 미허용 시 결정:
-  - [ ] (a) advenoh-status에 RLS 완화 PR, 또는
-  - [ ] (b) `SUPABASE_SERVICE_KEY`를 Netlify 비공개 env로 주입
+- [x] `advenoh-status/supabase/migrations/*.sql`에서 `services`, `service_status_logs`, `daily_status_summary` 테이블의 RLS anon read 정책 확인 → 3개 모두 anon read 허용 확인됨, service_key 대체안 폐기
 - [ ] `blog-v2.advenoh.pe.kr/netlify.toml`에 `/rss.xml` CORS 헤더 추가 PR
 - [ ] `investment.advenoh.pe.kr/netlify.toml`에 `/rss.xml` CORS 헤더 추가 PR
 - [ ] 두 블로그 배포 완료 후 `curl -I` 로 `Access-Control-Allow-Origin` 헤더 응답 확인
 - [ ] `kenshin579` 계정에서 fine-grained PAT 발급 (scope: `read:user`)
 - [ ] Netlify **Production 컨텍스트**에만 `GITHUB_TOKEN` 주입 (Deploy Preview / Branch Deploy 미주입)
-- [ ] Netlify에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` 주입
+- [ ] Netlify에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` 주입 (모든 컨텍스트)
 
 ## Phase 1. 데이터 레이어 (`lib/`, `contents/`)
 
