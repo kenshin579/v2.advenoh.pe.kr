@@ -23,37 +23,32 @@
 ## Phase 3. Hero — headline + KV 확장
 
 ### 3.1 headline
-- [ ] `contents/profile/readme.md` frontmatter에 `headline: Software Engineer` 추가
-- [ ] `lib/profile-readme.ts`의 `ReadmeData`에 `headline?: string` 추가 + `loadReadme()` 파싱
-- [ ] `Hero.tsx`에서 body 앞에 `<strong>{headline}</strong> — ` 렌더
-- [ ] fallback: `siteConfig.author.jobTitle`
-- [ ] 스타일: `font-semibold text-profile-fg` + em dash `text-profile-muted-2`
+- [x] `contents/profile/readme.md` frontmatter에 `headline: Software Engineer` 추가
+- [x] `lib/profile-readme.ts`의 `ReadmeData`에 `headline?: string` 추가 + `loadReadme()` 파싱
+- [x] `Hero.tsx`에서 body 앞에 `<strong>{headline}</strong> — ` 렌더
+- [x] fallback: `siteConfig.author.jobTitle`
+- [x] 스타일: `font-semibold text-profile-fg` + em dash `text-profile-muted-2`
 
 ### 3.2 KV list 업데이트
 
-- [ ] `contents/profile/readme.md` — `focus: Distributed systems, Backend, DevOps`로 변경
-- [ ] `contents/profile/readme.md` — `based: Seoul, South Korea · open to remote`로 변경
+- [x] `contents/profile/readme.md` — `focus: Distributed systems, Backend, DevOps`로 변경
+- [x] `contents/profile/readme.md` — `based: Seoul, South Korea · open to remote`로 변경
 
 ### 3.3 기술 스택 4 카테고리 분리
 
-- [ ] `contents/profile/readme.md`에 배열 필드 추가:
-  - [ ] `stack: [Claude, Python, Go, TypeScript, Java, Spring Boot]` (초안, Claude 포함)
-  - [ ] `db: [MySQL, Redis, Kafka, Memcached]`
-  - [ ] `cloud: [Kubernetes, Docker, Helm]`
-  - [ ] `cicd: [GitHub Actions, ArgoCD, Jenkins]`
-- [ ] `lib/profile-readme.ts`의 `ReadmeData`에 `stack/db/cloud/cicd: string[]` 필드 추가
-- [ ] `loadReadme()`에 `parseArray` 헬퍼(배열/쉼표 구분 문자열 허용) 추가
-- [ ] `Hero.tsx`의 `kvs` 배열 8행으로 확장: `role/focus/stack/db/cloud/ci-cd/based/xp` (값 없는 row는 출력 skip)
-- [ ] Hero/ProfileShell에서 `stack` prop 제거 — readme를 직접 소스로 사용
+- [x] `contents/profile/readme.md`에 배열 필드 추가 (stack/db/cloud/cicd)
+- [x] `lib/profile-readme.ts`의 `ReadmeData`에 `stack/db/cloud/cicd: string[]` 추가 + `parseArray` 헬퍼
+- [x] `Hero.tsx`의 `kvs` 배열 8행 확장 (값 없는 row는 렌더 skip)
+- [x] Hero/ProfileShell에서 `stack` prop 제거 — readme를 직접 소스로 사용
 
 ### 3.4 Skills loader 제거 (cleanup)
 
-- [ ] `lib/skills.ts` 파일 **삭제** (git rm)
-- [ ] `.cache/skills.json` 시드 **삭제** (git rm)
-- [ ] `scripts/warm-cache.ts`에서 skills 관련 entry 제거
-- [ ] `app/page.tsx`에서 `getSkills()` / `pickHeroStack()` import·호출 제거, `skills`·`stack` 변수 제거
-- [ ] `ProfileShell.tsx` / `Hero.tsx`에서 `stack: string[]` prop 타입/사용 제거
-- [ ] 빌드 로그에서 `[cache:WARN] skills ...` 메시지가 더 이상 나오지 않음 확인
+- [x] `lib/skills.ts` 삭제 (git rm)
+- [x] `.cache/skills.json` 삭제 (git rm)
+- [x] `scripts/warm-cache.ts`에서 skills 엔트리 제거
+- [x] `app/page.tsx`에서 `getSkills()` / `pickHeroStack()` import·호출 제거
+- [x] `ProfileShell.tsx` / `Hero.tsx`에서 `stack: string[]` prop 제거
+- [x] `npm run build` 통과, 빌드 로그에서 `[cache:WARN] skills ...` 사라짐
 
 ## Phase 4. Sidebar — Links 블록 재구성
 

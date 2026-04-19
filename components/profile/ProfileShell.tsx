@@ -37,7 +37,6 @@ type ProfileShellProps = {
   portfolioItems: PortfolioItem[]
   quotes: Quote[]
   github: GithubContrib
-  stack: string[]
   readme: ReadmeData
 }
 
@@ -47,7 +46,6 @@ export function ProfileShell({
   portfolioItems,
   quotes,
   github,
-  stack,
   readme,
 }: ProfileShellProps) {
   const status = useLiveStatus(initialStatus)
@@ -69,7 +67,7 @@ export function ProfileShell({
             <LineGutter />
 
             <div className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]">
-              <Hero stats={stats} github={github} status={status} stack={stack} readme={readme} />
+              <Hero stats={stats} github={github} status={status} readme={readme} />
 
               <QuoteBlock quotes={quotes} />
 
