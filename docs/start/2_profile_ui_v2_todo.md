@@ -26,17 +26,19 @@
 
 ### 외부 데이터 Loader
 
-- [ ] `@supabase/supabase-js`, `fast-xml-parser` npm 추가
-- [ ] `lib/status.ts` — Supabase `services` + `daily_status_summary` 조회, Zod 검증, 공통 캐시 정책 적용, 하드코딩 폴백
-- [ ] `lib/github.ts` — GraphQL `contributionsCollection` (26주 윈도우), Zod, 캐시, 폴백. `GITHUB_TOKEN` 부재 시 즉시 폴백
-- [ ] `lib/writing.ts` — 두 RSS `fast-xml-parser` 파싱, 병합, 공통 캐시 정책
-- [ ] `lib/skills.ts` — raw README fetch + shields.io 배지 파서 (URL path segment + 이스케이프 역치환)
-- [ ] `lib/stats.ts` — 4-cell stats 집계 (`services up`, `commits · 26w`, `uptime · 90d`, `blog posts`)
+- [x] `@supabase/supabase-js`, `fast-xml-parser` npm 추가 / `recharts` 제거
+- [x] `lib/cache.ts` — 공통 캐시 유틸 (`withCache`, `readCache`, `writeCache`)
+- [x] `lib/status.ts` — Supabase `services` + `daily_status_summary` 조회, Zod 검증, 공통 캐시 정책 적용, 하드코딩 폴백
+- [x] `lib/github.ts` — GraphQL `contributionsCollection` (26주 윈도우), Zod, 캐시, 폴백. `GITHUB_TOKEN` 부재 시 즉시 폴백
+- [x] `lib/writing.ts` — 두 RSS `fast-xml-parser` 파싱, 병합, 공통 캐시 정책, `getWritingSections` / `getLatestPosts`
+- [x] `lib/skills.ts` — raw README fetch + shields.io 배지 파서 (URL path segment + 이스케이프 역치환), `pickHeroStack` 유틸
+- [x] `lib/stats.ts` — 4-cell stats 집계 (`services up`, `commits · 26w`, `uptime · 90d`, `blog posts`)
+- [x] `scripts/warm-cache.ts` — 로컬에서 시드 생성용 스크립트
 
 ### 캐시 시드
 
-- [ ] `.cache/` 디렉터리 생성 + `.gitignore` 제외 아님 확인
-- [ ] 로컬 빌드 1회 실행 → `.cache/*.json` 5개 생성
+- [ ] `.cache/` 디렉터리 생성 (최초 실행 시 자동 생성됨)
+- [ ] 로컬 `.env.local`에 `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` / `GITHUB_TOKEN` 설정 후 `npx tsx scripts/warm-cache.ts` 실행 → `.cache/*.json` 5개 생성
 - [ ] `.cache/*.json` git에 커밋 (시드)
 
 ## Phase 2. 스타일 / 토큰
