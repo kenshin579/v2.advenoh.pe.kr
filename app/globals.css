@@ -357,3 +357,99 @@
     }
   }
 }
+
+/* ============================================
+ * Profile UI v2 Tokens (IDE/터미널 스타일)
+ * 기존 shadcn 토큰(--background/--foreground 등)과 병존 —
+ * Profile v2 전용 컴포넌트는 --profile-* 네임스페이스만 사용한다.
+ * ============================================ */
+
+:root {
+  /* Backgrounds */
+  --profile-bg: #0a0a0c;
+  --profile-bg-2: #0d0d10;
+  --profile-bg-3: #111115;
+
+  /* Foregrounds — WCAG AA 대비 통과 조정값
+     muted-2 원본(#5a5a59, 2.83:1)은 본문 텍스트에서 AA 미달.
+     #858584로 상향(약 5.0:1)해 작은 텍스트도 통과시킨다. */
+  --profile-fg: #ededec;
+  --profile-fg-2: #c7c7c5;
+  --profile-muted: #979795;
+  --profile-muted-2: #858584;
+
+  /* Lines */
+  --profile-line: rgba(255, 255, 255, 0.07);
+  --profile-line-2: rgba(255, 255, 255, 0.12);
+  --profile-line-3: rgba(255, 255, 255, 0.22);
+
+  /* Accent (기본 violet, data-accent로 재정의) */
+  --profile-accent: oklch(0.68 0.19 295);
+  --profile-accent-soft: oklch(0.68 0.19 295 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 295);
+
+  /* Status colors */
+  --profile-green: #4ade80;
+  --profile-yellow: #facc15;
+  --profile-red: #f87171;
+
+  /* Density (Tweaks panel로 재정의) */
+  --profile-space-card: 1rem;
+  --profile-space-section: 2.5rem;
+
+  /* Noise overlay opacity (0 ~ 1, Tweaks panel slider 0~100 / 100) */
+  --profile-noise: 0.35;
+}
+
+/* Accent 5종 (Tweaks panel로 전환) */
+[data-accent="violet"] {
+  --profile-accent: oklch(0.68 0.19 295);
+  --profile-accent-soft: oklch(0.68 0.19 295 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 295);
+}
+
+[data-accent="red"] {
+  --profile-accent: oklch(0.65 0.22 22);
+  --profile-accent-soft: oklch(0.65 0.22 22 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 22);
+}
+
+[data-accent="green"] {
+  --profile-accent: oklch(0.72 0.17 145);
+  --profile-accent-soft: oklch(0.72 0.17 145 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 145);
+}
+
+[data-accent="orange"] {
+  --profile-accent: oklch(0.73 0.17 60);
+  --profile-accent-soft: oklch(0.73 0.17 60 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 60);
+}
+
+[data-accent="amber"] {
+  --profile-accent: oklch(0.82 0.16 85);
+  --profile-accent-soft: oklch(0.82 0.16 85 / 0.16);
+  --profile-accent-ink: oklch(0.98 0.02 85);
+}
+
+/* Density 2단 */
+[data-density="comfortable"] {
+  --profile-space-card: 1rem;
+  --profile-space-section: 2.5rem;
+}
+
+[data-density="compact"] {
+  --profile-space-card: 0.625rem;
+  --profile-space-section: 1.5rem;
+}
+
+/* Animations (Profile v2 전용) */
+@keyframes profile-caret-blink {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0; }
+}
+
+@keyframes profile-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.25); }
+}

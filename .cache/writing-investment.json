@@ -1,0 +1,698 @@
+{
+  "fetchedAt": "2026-04-19T14:45:59.088Z",
+  "items": [
+    {
+      "source": "INV",
+      "title": "ISA 계좌, 이것만 알면 된다 — 비과세·손익 통산·분리과세 총정리",
+      "link": "https://investment.advenoh.pe.kr/etc/isa-basics",
+      "pubDate": "Sat, 07 Mar 2026 00:00:00 GMT",
+      "description": "ISA(Individual Savings Account, 개인종합자산관리계좌)라는 이름은 들어봤는데, 정확히 뭐가 좋은 건지 모르겠다는 사람이 많다. 이 글은 ISA의 핵심 혜택과 기본 구조를 한 번에 정리하는 스터디 노트다. 핵심 혜택을 한 줄로 요약하면 이렇다: >..."
+    },
+    {
+      "source": "INV",
+      "title": "연금저축, 넣을 때보다 꺼낼 때가 더 중요하다 — 납입부터 인출까지 절세 전략 총정리",
+      "link": "https://investment.advenoh.pe.kr/etc/pension-savings-withdrawal-strategy",
+      "pubDate": "Wed, 04 Mar 2026 00:00:00 GMT",
+      "description": "연금저축은 세액공제라는 확실한 혜택 덕분에 많은 직장인이 가입한다. 매년 최대 148.5만 원을 돌려받을 수 있으니, \"일단 넣으면 이득\"이라는 인식이 강하다. 하지만 정작 꺼낼 때(수령/인출) 전략을 모르면, 그동안 아꼈던 세금을 한꺼번에 토해내거나 건강보험료 폭탄을..."
+    },
+    {
+      "source": "INV",
+      "title": "연말정산 잘 준비하기 — 직장인 절세 실전 가이드",
+      "link": "https://investment.advenoh.pe.kr/etc/year-end-tax-settlement-preparation-guide",
+      "pubDate": "Sun, 01 Mar 2026 00:00:00 GMT",
+      "description": "매년 1~2월이 되면 직장인들은 연말정산을 한다. 하지만 해마다 하면서도 \"소득공제가 뭐고 세액공제가 뭐지?\", \"카드를 많이 쓰면 좋은 건가?\" 같은 질문이 반복된다. 이 글은 연말정산의 기본 개념을 한번 정리하고, 실제로 연말 전에 미리 챙겨야 할 절세 항목들을 정..."
+    },
+    {
+      "source": "INV",
+      "title": "양적완화(QE)와 양적긴축(QT) 완벽 정리 — 통화정책 사이클과 투자 전략",
+      "link": "https://investment.advenoh.pe.kr/etc/quantitative-easing-and-tightening",
+      "pubDate": "Sun, 22 Feb 2026 00:00:00 GMT",
+      "description": "뉴스에서 \"연준이 양적완화를 시작했다\", \"양적긴축에 돌입했다\"는 말을 자주 듣지만, 정확히 무슨 뜻인지 설명하기는 쉽지 않다. 양적완화(QE)와 양적긴축(QT)은 현대 통화정책의 핵심 도구이며, 금융시장과 자산 가격에 직접적인 영향을 미친다. 이 두 정책은 독립적으로..."
+    },
+    {
+      "source": "INV",
+      "title": "투자자가 꼭 알아야 할 기업 호재, 악재 사례 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/essential-corporate-news-analysis-for-investors",
+      "pubDate": "Sat, 27 Sep 2025 00:00:00 GMT",
+      "description": "주식을 하다보면 기업 관련 뉴스가 호재인지 악재인지를 빠르게 판단하는 게 중요하다. 투자를 하다보면 자연스럽게 알게 되기도 하고 아래와 같이 투자 앱에서도 관련 뉴스가 호재인지 악재인지도 AI를 통해서 자동으로 알려주기도 한다. !토스 증권 - 호재 뉴스 주식 투자하는..."
+    },
+    {
+      "source": "INV",
+      "title": "2025 2분기 주식 대가 포트폴리오 변경사항",
+      "link": "https://investment.advenoh.pe.kr/stock/2025-q2-stock-masters-portfolio-changes",
+      "pubDate": "Tue, 19 Aug 2025 00:00:00 GMT",
+      "description": "투자 대가들은 올해 2분기에는 어떤 종목들을 사고 팔았을까? 월가 대표 투자자들의 최신 13F 보고서를 바탕으로 주요 운용사와 대가들의 매수/매도 종목과 투자 전략 변화를 핵심 위주로 분석하고 소개한다. - 새로 추가된 종목 ![](image-20250819214200..."
+    },
+    {
+      "source": "INV",
+      "title": "Tradingview에서 꼭 써봐야 할 유용한 Indicator 추천 모음",
+      "link": "https://investment.advenoh.pe.kr/stock/must-try-tradingview-indicator-recommendations",
+      "pubDate": "Sun, 17 Aug 2025 00:00:00 GMT",
+      "description": "주식이나 암호화폐, 선물 트레이딩을 하다 보면 차트 분석은 필수적인 과정입니다. 하지만 차트만 바라본다고 해서 답이 보이는 것은 아니죠. 이때 도움을 주는 것이 바로 보조지표(Indicator) 입니다. `TradingView`는 전 세계 트레이더들이 가장 많이 활용하..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 8월 2째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-aug-week2-weekly-stock-summary-sector-and-stock-trends",
+      "pubDate": "Sun, 10 Aug 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 8월 1째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-aug-week1-weekly-stock-summary-sector-and-stock-trends",
+      "pubDate": "Sun, 03 Aug 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "SK텔레콤 주가 배당수익률로 방어선은 어디일까?",
+      "link": "https://investment.advenoh.pe.kr/stock/sk-telecom-dividend-yield-support",
+      "pubDate": "Wed, 09 Jul 2025 00:00:00 GMT",
+      "description": "!SK텔레콤 주가 차트 오늘 SK텔레콤(017670)의 최근 주가가 내려갔다가 다시  55,200원으로 올라온 상태이다. 이럴 때 장기 투자자라면 이 가격대에서 배당수익률을 감안하면 추가 하락이 제한적이지 않을까?라는 고민을 하게 된다. 오늘은 SK텔레콤의 연간 배당금..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 5월 5째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-may-week5-weekly-stock-sector-trend",
+      "pubDate": "Sun, 25 May 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "미국 한국 주식시장 연속 상승과 하락은 몇 주까지 가능할까",
+      "link": "https://investment.advenoh.pe.kr/stock/us-kr-stock-market-streaks",
+      "pubDate": "Sat, 24 May 2025 00:00:00 GMT",
+      "description": "주식시장은 흐름의 연속이다. 상승세가 이어질지, 하락이 멈출지 예측하는 것은 쉽지 않지만, 과거 데이터를 기반으로 연속 상승/하락의 패턴을 살펴보면 현재 시장이 어느 국면에 있는지를 가늠하고 투자 전략에도 도움이 될 것 같아 블로그로 정리해본다. 주간 단위의 연속 상승..."
+    },
+    {
+      "source": "INV",
+      "title": "ISA 만기, 연장할까 해지할까? 꼭 알아야 할 선택 가이드",
+      "link": "https://investment.advenoh.pe.kr/stock/isa-maturity-extension-or-termination-guide",
+      "pubDate": "Mon, 05 May 2025 00:00:00 GMT",
+      "description": "ISA(개인종합자산관리계좌)는 다양한 금융상품을 한 계좌에서 운용할 수 있고, 일정 요건을 만족하면 비과세 혜택도 받을 수 있어 많은 투자자들이 활용하고 있는 계좌이다. 그런데 ISA는 가입일로부터 일정 기간이 지나면 만기를 맞게 된다. 일반적으로 만기는 3년 또는 5..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 5월 2째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-may-week2-weekly-stock-sector-trend",
+      "pubDate": "Mon, 05 May 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 5월 1째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-may-week1-weekly-stock-sector-trend",
+      "pubDate": "Sun, 04 May 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 4월 3째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-apr-week3-weekly-stock-sector-trend",
+      "pubDate": "Mon, 14 Apr 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "공매도란? 대차거래부터 개인투자자 영향까지 완벽 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/short-selling-complete-guide",
+      "pubDate": "Wed, 09 Apr 2025 00:00:00 GMT",
+      "description": "저번주에 금지되었던 공매도가 다시 재개되었다. 이는 2023년 11월에 공매도가 금지된 지 17개월 만이다. 하지만 재개 첫날부터 시장은 요동쳤다. 공매도 재개에 대한 불안감에 더해 도널드 트럼프 전 미국 대통령의 상호 관세 부과 가능성 발언까지 겹치면서, 국내 주식 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 4월 2째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-apr-week2-weekly-stock-sector-trend",
+      "pubDate": "Sun, 06 Apr 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "해외주식 양도소득세 신고 대행 서비스 신청 방법 완벽 정리!",
+      "link": "https://investment.advenoh.pe.kr/stock/foreign-stock-capital-gains-tax-filing-guide",
+      "pubDate": "Tue, 01 Apr 2025 00:00:00 GMT",
+      "description": "해외주식을 거래하는 투자자라면 양도소득세 신고를 해야 한다는 사실, 알고 계신가요? 해외주식 거래로 발생한 양도소득은 직접 신고해야 하지만, 다행히도 증권사에서 신고 대행 서비스를 제공하고 있다. 오늘은 미래에셋증권에서 해외주식 양도소득세 신고 대행을 신청하는 방법을 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 4월 1째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-apr-week1-weekly-stock-sector-trend",
+      "pubDate": "Mon, 31 Mar 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 3월 4째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-mar-week4-weekly-stock-sector-trend",
+      "pubDate": "Sun, 23 Mar 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 3월 3째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-mar-week3-weekly-stock-sector-trend",
+      "pubDate": "Sun, 16 Mar 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "주식 고수가 되는 HTS 활용법! 필수 화면 & 사용 패턴 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/hts-usage-patterns-for-stock-masters",
+      "pubDate": "Thu, 13 Mar 2025 00:00:00 GMT",
+      "description": "스마트폰 MTS를 사용하면 여러 계좌의 주식 차트, 뉴스, 매매 정보를 확인하기 위해 여러 번 클릭해야 하므로 신속한 정보 확인과 매매가 어렵다. 하지만 카이로스 HTS를 사용하면 큰 모니터 화면에서 다양한 정보를 동시에 확인하며 빠르게 대응할 수 있다. > 카이로스란..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 3월 2째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-mar-week2-weekly-stock-sector-trend",
+      "pubDate": "Sun, 09 Mar 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "복수 거래소 시대 NXT 도입에 따른 변화",
+      "link": "https://investment.advenoh.pe.kr/stock/multi-exchange-era-changes-with-nxt-introduction",
+      "pubDate": "Mon, 03 Mar 2025 00:00:00 GMT",
+      "description": "2025년 3월 4일, 한국 주식시장에 새로운 변화가 찾아온다. 바로 한국거래소(KRX) 외에 대체거래소인 넥스트레이드(NXT)가 공식 출범하게 되는 것이다. 이번 블로그에서는 NXT의 주요 특징과 투자자들에게 미치는 영향을 살펴본다. NXT의 출범으로 한국 주식시장은..."
+    },
+    {
+      "source": "INV",
+      "title": "카카오뱅크 달러박스 달러 ATM에서 출금하기",
+      "link": "https://investment.advenoh.pe.kr/stock/withdraw-dollars-from-kakaobank-dollar-box-atm",
+      "pubDate": "Sun, 02 Mar 2025 00:00:00 GMT",
+      "description": "카카오뱅크의 달러박스 서비스는 해외 주식을 거래하거나 달러를 직접 인출할 때 매우 유용한 기능이다. 특히 환전 수수료가 무료이기 때문에 달러를 환전할 때 부담이 적고, 적절한 시기에 미리 달러를 확보해둘 수도 있다. 이 글에서는 카카오뱅크 달러박스를 활용해 달러를 환전..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 3월 1째주 주간 주식 정리 - 섹터 및 주식 트랜드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-mar-week1-weekly-stock-sector-trend",
+      "pubDate": "Sun, 02 Mar 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 2월 MSCI 한국 지수서 주요 변경사항",
+      "link": "https://investment.advenoh.pe.kr/stock/2025-feb-msci-korea-index-major-changes",
+      "pubDate": "Sun, 16 Feb 2025 00:00:00 GMT",
+      "description": "- MSCI, 2월 12일 한국 지수 구성 종목서 11개 대량 편출 확정   - 편출 종목 (11개): 롯데케미칼, 포스코DX, LG화학우, 엔켐, 엘앤에프, 금호석유, 한미약품, 삼성 E&A, GS, SK바이오사이언스, 넷마블   - 편입 종목 없음 - 3월 3일 발..."
+    },
+    {
+      "source": "INV",
+      "title": "25년 2월 2째주 주간 주식 정리 - 섹터 및 주식 트렌드",
+      "link": "https://investment.advenoh.pe.kr/weekly/2025-feb-week2-weekly-stock-sector-trend",
+      "pubDate": "Sun, 16 Feb 2025 00:00:00 GMT",
+      "description": "> ETF 수익률을 기준으로 섹터별 수익률을 정렬하고 시간이 지남에 따라 현재 시장에서 주목받는 섹터가 무엇인지 파악하기 위해 아래와 같이 수익률을 정리해보았다. > > 단순히 수익률 기준으로 정렬을 하고 있어서 해당 섹터가 시장에서 가장 주목 받고 있다고 단정하기는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "기업의 분할은 주식에 어떤 영향을 주나?",
+      "link": "https://investment.advenoh.pe.kr/stock/how-company-splits-affect-stocks",
+      "pubDate": "Sat, 11 Jan 2025 00:00:00 GMT",
+      "description": "한화솔루션은 2023년 3월 한화갤러리아를 신규 상장하며 인적분할을 진행했었다. 당시 분할에 대한 이해가 부족해 매도를 하지 않고 주식을 보유했었고, 이후 한화갤러리아 주가는 -75.43% 하락했다. 좀 늦은 감이 있지만, 기업 분할에 대해서 스터디하고 기업 분할은 주..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 ETF 적립식 투자 연말 총정리",
+      "link": "https://investment.advenoh.pe.kr/etf/2024-etf-regular-investing-summary",
+      "pubDate": "Wed, 08 Jan 2025 00:00:00 GMT",
+      "description": "올해 초부터 개별 주식의 성과가 기대에 미치지 못하면서, 보다 안정적이고 장기적인 투자를 위해 ETF로 눈을 돌리게 되었다. 깊게 스터디해야하는 섹터나 개별 주식에 대해서 더 많이 스터디하기가 어려운 상황이다보니 다양한 자산을 담는 ETF가 답이라는 결론에 도달했고, ..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 연말 국내 미국 배당금 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-year-end-domestic-us-dividend-summary",
+      "pubDate": "Tue, 07 Jan 2025 00:00:00 GMT",
+      "description": "미국 투자를 시작하면서 국내 주식과 달리, 미국 기업들이 배당금을 꾸준히 지급한다는 점을 자연스럽게 알게 되었다. 특히 배당금 지급의 지속성에 따라 배당 귀족주, 배당 왕족주와 같은 그룹으로 분류될 만큼 미국 기업들은 매우 주주 친화적이라는 인상을 받았다. 올해 3분기..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 ETF 주식 계좌 vs 토스 소수점 주식 모으기 결과 공개",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-etf-stock-account-vs-toss-fractional-stock-accumulation",
+      "pubDate": "Sat, 04 Jan 2025 00:00:00 GMT",
+      "description": "2024년을 마무리하며 한 해 동안의 주식 투자 결과를 점검해보는 시간을 개인적으로 가져보았다. 올해 10월부터 시작한 투자 프로젝트 중에 토스 주식 모으기를 처음 시작할 때 생각했던 아이디어이다. - ETF 주식 계좌 vs 토스 소수점 주식 모으기 다른 두 가지 전략..."
+    },
+    {
+      "source": "INV",
+      "title": "액면분할이란",
+      "link": "https://investment.advenoh.pe.kr/stock/what-is-stock-split",
+      "pubDate": "Mon, 30 Dec 2024 00:00:00 GMT",
+      "description": "액면분할은 주식시장 참여자들에게 한 번쯤 들어봤을 법한 개념이다. 올해 미국 반도체 기업인 엔비디아은 2024년 6월에 10:1 액면분할을 실시해 $1208.88 → $120.88로 조정이 되었다. 국내주시 시장의 경우 카카오는2021년 4월 코로나19 팬데믹 특수로 ..."
+    },
+    {
+      "source": "INV",
+      "title": "자사주 매입이란",
+      "link": "https://investment.advenoh.pe.kr/stock/what-is-share-buyback",
+      "pubDate": "Fri, 27 Dec 2024 00:00:00 GMT",
+      "description": "주식 시장에서 자사주라는 용어를 자주 접하게 된다. 자사주는 기업이 발행한 주식 중, 그 기업 스스로 다시 매입하여 보유하는 주식을 말한다. 즉, 회사 자신이 보유한 자기 주식이라고 볼 수 있다. 이번 글에서는 자사주의 개념부터 취득 방법, 목적, 그리고 장단점까지 살..."
+    },
+    {
+      "source": "INV",
+      "title": "매매사실을 꼭 공시해야하는 투자자들은 누구인가",
+      "link": "https://investment.advenoh.pe.kr/stock/who-must-disclose-their-trading-activities",
+      "pubDate": "Sun, 01 Dec 2024 00:00:00 GMT",
+      "description": "일반 투자자가 주식을 매수하거나 매도하면 그 사실을 공시하거나 다른 사람에게 알릴 의무는 없다. 하지만 특정한 주주들, 특히 기업의 경영에 영향을 미칠 수 있는 중요한 주주들은 이 매매 사실을 반드시 공시해야 한다. 어떤 주주들이 매매 사실을 반드시 알려야 하고 왜 그..."
+    },
+    {
+      "source": "INV",
+      "title": "무상증자는 주식에 어떤 영향을 미치나",
+      "link": "https://investment.advenoh.pe.kr/stock/how-bonus-issues-affect-stocks",
+      "pubDate": "Sat, 30 Nov 2024 00:00:00 GMT",
+      "description": "유상증자는 기업이 자금 조달을 목적으로 새로운 주식을 발행하여 투자자들에게 판매하는 방식이다. 일반적으로 기존 주가보다 낮은 가격으로 발행되기 때문에 주식 공급량 증가로 인해 주가에 부담을 주고 기존 주주의 가치가 희석되는 결과를 초래할 수 있다. 이는 기업이 필요한 ..."
+    },
+    {
+      "source": "INV",
+      "title": "연금계좌 납입금액 확인하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-check-pension-account-contribution-amount",
+      "pubDate": "Sat, 30 Nov 2024 00:00:00 GMT",
+      "description": "연금계좌는 세액공제를 받을 수 있는 대표적인 절세 상품으로, 연금저축과 IRP를 통해 최대 900만 원까지 납입 가능하다. 연금계좌에 납입한 금액은 연간 소득에 따라 세액공제 비율이 달라지며, 연말정산 시 혜택을 제공받을 수 있다. !연금계좌 - 납입한도 예전에 나만의..."
+    },
+    {
+      "source": "INV",
+      "title": "유상증자는 주식에 어떤 영향을 주나",
+      "link": "https://investment.advenoh.pe.kr/stock/how-does-rights-offering-affect-stocks",
+      "pubDate": "Thu, 28 Nov 2024 00:00:00 GMT",
+      "description": "기업이 주식시장에 상장하는 주된 목적은 자금을 확보하기 위함이다. 충분한 자본은 기업이 연구개발을 수행하고, 생산시설을 확장하며, 제품을 제작하는 데 필수적이다. 또한, 과도한 부채를 안고 있는 경우에는 차입금을 상환하기 위한 용도로 자금을 마련하기도 한다. 기업이 자..."
+    },
+    {
+      "source": "INV",
+      "title": "만기매칭형 ETF란",
+      "link": "https://investment.advenoh.pe.kr/etf/maturity-matching-etf",
+      "pubDate": "Thu, 07 Nov 2024 00:00:00 GMT",
+      "description": "채권은 기업이나 정부가 자금을 마련하기 위해 발행하는 증서로, 일정 기간 동안 정해진 이자를 지급하고 만기 시 원금을 상환하는 방식이다. 채권 투자는 상대적으로 안정적인 수익을 제공하며, 주식에 비해 가격 변동성이 낮아 안전한 투자 상품으로 인식된다. - 채권 투자의 ..."
+    },
+    {
+      "source": "INV",
+      "title": "토스 증권에서 주식 모으기",
+      "link": "https://investment.advenoh.pe.kr/stock/collecting-stocks-with-toss-securities",
+      "pubDate": "Thu, 17 Oct 2024 00:00:00 GMT",
+      "description": "보통 주식을 매수하면 1주당 가격이 정해져 있고 이 가격으로 주식을 매수하게 되어 있다. 하지만, 1주당 주식(ex. AAPL $227.55 → 309,536원) 가격이 부담이 되기도 한다. 그래서 소수점 단위로 주식을 모을 수 있는 주식 모으기 기능을 증권사 마다 내..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 2분기 빌 아크만 포트폴리오",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q2-bill-ackman-portfolio",
+      "pubDate": "Thu, 03 Oct 2024 00:00:00 GMT",
+      "description": "!빌 아크만 > 빌 애크먼(Bill Ackman)은 미국의 유명한 헤지펀드 매니저로, Pershing Square Capital Management의 설립자이자 CEO이다 그는 주주 활동주의 투자 전략을 사용하는 것으로 잘 알려져 있으며, 기업 경영에 적극적으로 개입해..."
+    },
+    {
+      "source": "INV",
+      "title": "TDF에 대해서 알아보자",
+      "link": "https://investment.advenoh.pe.kr/stock/about-target-date-funds",
+      "pubDate": "Sun, 29 Sep 2024 00:00:00 GMT",
+      "description": "종종 연금 투자를 하다보면 TDF라는 용어를 듣게 되는데, TDF 투자는 어떤 것인지 같이 알아보자. TDF는 Target Date Fund의 약자로 아래의 같은 의미를 가지고 있다. TDF는 목표 날짜(보통 은퇴 시점)에 맞춰 자산 배분 전략이 자동으로 조정되는 투자..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 2분기 스탠리 드러켄밀러 포트폴리오",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q2-stanley-druckenmiller-portfolio",
+      "pubDate": "Sun, 08 Sep 2024 00:00:00 GMT",
+      "description": "!스탠리 드러켄밀러 > 스탠리 드러켄밀러(Stanley Druckenmiller)는 미국의 유명한 투자자이자 헤지펀드 매니저이다. 그는 조지 소로스와 함께 일하며 1992년 영국 파운드화를 공략해 \"블랙 웬즈데이\"를 만들어낸 인물로 유명하다. 드러켄밀러는 자신의 투자 ..."
+    },
+    {
+      "source": "INV",
+      "title": "투자 명언",
+      "link": "https://investment.advenoh.pe.kr/etc/investment-quotes",
+      "pubDate": "Sat, 24 Aug 2024 00:00:00 GMT",
+      "description": "- 돈을 통제하면 삶을 통제할 수 있습니다 - 첫 번째 규칙은 절대로 잃지 마라. 두 번째 규칙은 첫 번째를 절대로 따라라 - 당신이 잠자는 동안에도 돈이 들어오는 방법을 찾지 못한다면 당신은 죽을 때까지 일을 해야 할 것이다 - 뛰어난 기업의 주식을 보유하고 있따면 ..."
+    },
+    {
+      "source": "INV",
+      "title": "금리인하시 환노출, 환헤지 어느 ETF 상품이 더 유리할까?",
+      "link": "https://investment.advenoh.pe.kr/etf/etf-currency-hedge-vs-unhedge",
+      "pubDate": "Sat, 24 Aug 2024 00:00:00 GMT",
+      "description": "ETF의 상품명을 보면 H가 붙어 있는 것을 볼 수 있다. H는 Hedge(헤지, 방지)의 약자로, 환율에 영향을 받지 않는 상품이다. 국내 ETF의 경우에는 모든 종목이 원화로 거래되기 때문에 H 개념이 존재하지 않고 해외 상품에만 붙게 된다. H가 붙지 않는 상품은..."
+    },
+    {
+      "source": "INV",
+      "title": "ETF 세금 총정리",
+      "link": "https://investment.advenoh.pe.kr/etf/etf-tax-summary",
+      "pubDate": "Sun, 18 Aug 2024 00:00:00 GMT",
+      "description": "한국에서 ETF(상장지수펀드)에 투자할 때 발생할 수 있는 세금에 대해 알아보자. ETF에 투자할 때 발생하는 세금은 크게 2가지가 있다. 국내 ETF와 해외 ETF에 대한 세금은 다르기 때문에 그 부분에 대해서도 정리한다. - ETF를 팔아 발생하는 매매차익에 대한 ..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 2분기 워렌 버핏 포트폴리오",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q2-warren-buffett-portfolio",
+      "pubDate": "Sat, 17 Aug 2024 00:00:00 GMT",
+      "description": "!워렌 버핏 > 워렌 버핏(Warren Buffett)은 세계적인 투자자로, 버크셔 해서웨이(Berkshire Hathaway)의 회장 겸 CEO이다. 그는 '오마하의 현인'으로 불리며, 주식 시장에서 장기적인 가치 투자를 통해 막대한 부를 쌓았다. 버핏은 기업의 내재..."
+    },
+    {
+      "source": "INV",
+      "title": "주식 대가들의 포트폴리오 확인하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-check-stock-masters-portfolio",
+      "pubDate": "Sat, 17 Aug 2024 00:00:00 GMT",
+      "description": "대가들의 주식 포트폴리오는 개인 투자자들이 벤치마크로 삼고 배우기 좋은 자료이다. 이들은 수십 년간의 경험과 성공적인 투자 전략을 바탕으로 꾸준한 수익을 창출하고 있으며, 이러한 포트폴리오를 분석하고 참고하는 것은 투자 초보자뿐만 아니라 경험이 있는 투자자들에게도 큰 ..."
+    },
+    {
+      "source": "INV",
+      "title": "침체, 인플레이션, 국가부채, 양적완화, 빈부격차 상관 관계",
+      "link": "https://investment.advenoh.pe.kr/stock/recession-inflation-national-debt-qe-inequality",
+      "pubDate": "Thu, 15 Aug 2024 00:00:00 GMT",
+      "description": "정인구님의 오늘 CPI 예상과 침체에 대한 생각 영상을 보면서 침체, 인플레이션, 국가부채, 양적 완화, 빈부격차 간의 관계가 어떻게 얽혀 있고 서로 어떻게 영향을 미치는지 잘 설명이 되어 있어서 스터디 차원에서 정리해둔다. - ![정인구](https://www.you..."
+    },
+    {
+      "source": "INV",
+      "title": "서킷브레이커 vs 사이드카의 차이, 주가지수 폭락 시 작동하는 장치",
+      "link": "https://investment.advenoh.pe.kr/stock/circuit-breaker-vs-sidecar-difference-stock-index-crash-mechanisms",
+      "pubDate": "Sat, 10 Aug 2024 00:00:00 GMT",
+      "description": "이번주 8월 5일 코스피와 코스닥은 11:00, 13:05 각각 매도 사이드카가 발동했고 이어서 13:56, 14:14 서킷브레이커가 발동했다. !코스피 급락 서킷브레이커는 사이드카보다 발동 기준이 높아 사례가 드문데, 이렇게 같은 날 코스피와 코스닥에서 모두 서킷브레..."
+    },
+    {
+      "source": "INV",
+      "title": "연금저축에서 MMF 단기 상품 매매하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-trade-mmf-short-term-products-in-pension-savings",
+      "pubDate": "Sat, 10 Aug 2024 00:00:00 GMT",
+      "description": "연말 정산 세제 공제를 위해 매달 연금 계좌로 50만 원씩 이체하고 있다. 이체하고 적립식으로 성장주 ETF와 채권 ETF를 사 모으고 있다. 안전자산으로 채권형 ETF를 매수할 수 있지만, 다른 대인인 MMF(Money Market Fund, 머니마켓펀드) 펀드도 매..."
+    },
+    {
+      "source": "INV",
+      "title": "경기침체 징조는 어떻게 판단하나",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-identify-signs-of-economic-recession",
+      "pubDate": "Sun, 04 Aug 2024 00:00:00 GMT",
+      "description": "최근 나스닥(KASDAQ), S&P500이 급락하고 경제 지표(ex. 실업률)도 좋지 않아서 경제 침체 우려에 대한 얘기도 최근에 나오고 있어 경제 침체 판단은 어떻게 하고 FOMC에서는 어떻게 대응하는지 알아보도록 한다. !나스닥 차트 !S&P500 차트 > 침체(r..."
+    },
+    {
+      "source": "INV",
+      "title": "3분기 미국 관심 배당주 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/q3-us-dividend-stocks-of-interest",
+      "pubDate": "Tue, 30 Jul 2024 00:00:00 GMT",
+      "description": "국내 3분기 배당주 정리를 한 내용에 이어서 미국 배당주도 정리해본다. 국내 배당주는 네이버 증권 사이트와 같이 잘 정리가 되어 있는 곳들이 있어서 편하게 검색이 가능한데, 미국 배당주는 잘 정리되어 있는 곳을 찾지는 못해서 개인적으로 유튜브나 삼프로에서 접하게 배당주..."
+    },
+    {
+      "source": "INV",
+      "title": "3분기 국내 배당주 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/q3-domestic-dividend-stocks-summary",
+      "pubDate": "Sun, 28 Jul 2024 00:00:00 GMT",
+      "description": "개인적으로 주식 투자를 할 때 분산하여 투자하는 게 좋기 때문에 배당주도 비중을 두어서 투자하고 있다. 배당주는 성장주만큼 많은 이익 실현을 하기는 어려울 수 있지만, 배당주는 꾸준히 모아가는 재미도 있고 특히 주식 시장이 많이 휘청거릴 때 배당금을 받는 주식이면 심리..."
+    },
+    {
+      "source": "INV",
+      "title": "트럼프 vs 바이든 수혜주 찾기",
+      "link": "https://investment.advenoh.pe.kr/stock/finding-beneficiary-stocks-trump-vs-biden",
+      "pubDate": "Mon, 22 Jul 2024 00:00:00 GMT",
+      "description": "> 포스팅 어제 올리자마자 오늘 새벽에 바이든 대통령이 대선 재선 도전 사퇴 의사를 밝혔네요. 미국 대선이 또 어떤 흐름으로 갈지 더 눈여겨봐야 할 듯합니다 11월에 있을 미국 대선에 맞춰서 트럼프와 바이든 간에 어떤 정책을 밀고 있고 그것에 따라서 관심있게 봐야 하는..."
+    },
+    {
+      "source": "INV",
+      "title": "금리인하 수혜주 : 유망 종목과 투자 전략",
+      "link": "https://investment.advenoh.pe.kr/stock/interest-rate-cut-beneficiary-stocks-and-investment-strategies",
+      "pubDate": "Sun, 21 Jul 2024 00:00:00 GMT",
+      "description": "금리 인하는 중앙은행이 경제를 부양하기 위해 기준 금리를 낮추는 것을 의미한다. 이는 경제 활동을 촉진하고 소비를 증가시키기 위해 자금 조달 비용을 줄이는 역할을 한다. 미국에서는 연방준비제도(Federal Reserve) 산하의 연방공개시장위원회(FOMC)가 금리 인..."
+    },
+    {
+      "source": "INV",
+      "title": "Gatsby 블로그 구글 검색에 더 많이 노출하는 방법",
+      "link": "https://investment.advenoh.pe.kr/etc/gatsby-blog-google-seo-tips",
+      "pubDate": "Sat, 20 Jul 2024 00:00:00 GMT",
+      "description": "기존 IT 블로그의 Gatsby 테마를 변경한 이후부터 검색 노출이 확 줄게 되어서 구글 검색에 더 많이 노출하려면 어떻게 하는지 알아보았다. 엔진에 많이 노출하기 위해서는 검색 엔진이 크롤링을 잘할 수 있도록 도와주어야 한다. 그러기 위해서 다음 2가지 작업을 하면 ..."
+    },
+    {
+      "source": "INV",
+      "title": "구글 Adsense 싱가포르 세금 정보 제출방법",
+      "link": "https://investment.advenoh.pe.kr/etc/google-adsense-singapore-tax-submission",
+      "pubDate": "Wed, 10 Jul 2024 00:00:00 GMT",
+      "description": "미국 세금 정보 제출에 이어서 싱가포르 세금 정보도 입력한다. 싱가포르 세무 정보 입력시 반드시 사전에 해야 하는 건 거주자증명서 를 미리 발급 받아야 한다. 거주자증명서 발급은 국세청 홈택스 홈페이지에서 인터넷으로 발급 가능하고 자세한 신청 방법은 아래 링크를 참고해..."
+    },
+    {
+      "source": "INV",
+      "title": "구글 Adsense에 필요한 거주자증명서 발급 신청하는 방법",
+      "link": "https://investment.advenoh.pe.kr/etc/google-adsense-residency-certificate-application",
+      "pubDate": "Tue, 09 Jul 2024 00:00:00 GMT",
+      "description": "구글 애드센스에서 수익이 내고 있다면 구글 애드센스에서 싱가포르 세금 정보를 입력해야 한다. 특히 싱가포르와 같은 국가에서는 세금 원천징수 방지를 위해 거주자증명서를 요구한다. 이 증명서를 제출하면 거주 국가에서 세금을 신고하고 납부하는 것을 증명할 수 있어 싱가포르 ..."
+    },
+    {
+      "source": "INV",
+      "title": "구글 Adsense 미국 세금 정보 입력하는 방법",
+      "link": "https://investment.advenoh.pe.kr/etc/google-adsense-us-tax-info-entry",
+      "pubDate": "Sun, 07 Jul 2024 00:00:00 GMT",
+      "description": "구글은 법적으로 광고 수익에 대해 세금 정보를 수집하고 보고할 의무가 있다. 구글 법인에서 수입을 지급받기 위해서는 미국과 싱가포르 요청에 따라 세금 정보를 입력해야 한다. 정확한 세금 정보를 제공하지 않으면 수익 지급이 지연되거나 중단될 수 있다고 한다. 또한 세금 ..."
+    },
+    {
+      "source": "INV",
+      "title": "구글 Adsense 에 결제 추가하는 방법",
+      "link": "https://investment.advenoh.pe.kr/etc/google-adsense-add-payment-method",
+      "pubDate": "Fri, 05 Jul 2024 00:00:00 GMT",
+      "description": "내 IT 블로그에서 광고 수입 $100 달성을 해서 처음으로 구글로부터 수입을 받을 수 있게 되었다. 기록상 남기면 좋을 듯해서 어떻게 지급 받을 수 있는지 기록해둔다. 구글 Adsense에 로그인하면 아래와 같이 결제 설정하라고 표시가 나타난다. ![](image-2..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 3분기 주요 일정",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q3-key-schedule",
+      "pubDate": "Sun, 30 Jun 2024 00:00:00 GMT",
+      "description": "2024년 3분기 주요 일정 정리한 내용 공유합니다. 3분기의 핵심 키워드는 스포츠, 게임, 패션이 아닐까 싶어요. 7월에는 파리올림픽이 예정되어 있고 8월, 9월 연달아 게임 관련 이벤트가 있다. 3분기에는 정말로 금리인하를 미국에서 할지도 관건이 될 것 같고 또 1..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 4분기 주요 이벤트",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q4-key-schedule",
+      "pubDate": "Sun, 30 Jun 2024 00:00:00 GMT",
+      "description": "2024년 4분기 주요 일정을 정리한다. 3분기에 이어서 4분기에도 게임 관련 이벤트가 있고 연말에는 세계 곳곳의 뷰티 업계 이벤트가 있다. 그외에 10월에는 파리에서 국세 식품전시회 Sial Paris도 개최가 된다. 11월에 미국 대선이 있어서 주식 시장이 휘청휘청..."
+    },
+    {
+      "source": "INV",
+      "title": "기대수익률에 따른 투자",
+      "link": "https://investment.advenoh.pe.kr/stock/investment-based-on-expected-returns",
+      "pubDate": "Sun, 23 Jun 2024 00:00:00 GMT",
+      "description": "![박곰희TV](https://www.youtube.com/watch?v=J_ZIXpMo-B8) 주식 투자를 하다 보니 내가 기대하는 수익률이 무엇인지 고민하게 되었다. 예금보다는 조금 높았으면 좋겠고, 물론 대박을 터트리면 가장 좋겠지만, 1년 동안 주식을 해보니 잃..."
+    },
+    {
+      "source": "INV",
+      "title": "ETF 상장폐지가 되면 어떻게 되나?",
+      "link": "https://investment.advenoh.pe.kr/etf/etf-delisting-what-happens",
+      "pubDate": "Sun, 16 Jun 2024 00:00:00 GMT",
+      "description": "주식으로 2주마다 월세 받는 방법 포스팅을 하면서 ETF 규모가 400억원 때라 자연스럽게 ETF가 상장폐지가 되면 어떻게 되는지 궁금하게 되어 이 포스팅에서 다루게 되었다. ETF는 언제 상장폐지가 되고 투자자에게 어떤 영향을 주는지에 대해서 같이 알아보자. ETF가..."
+    },
+    {
+      "source": "INV",
+      "title": "주식으로 2주마다 월세 받는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-get-monthly-rent-every-2-weeks-with-stocks",
+      "pubDate": "Sun, 16 Jun 2024 00:00:00 GMT",
+      "description": "리치노마드 유튜브에서 언급한 아이디어가 좋아서 저도 개인적으로 검토를 해보았다. 한국 리츠 부동산 ETF 종목 중에 2가지를 비교하는 내용이다. - 476800\tKODEX 한국부동산리츠인프라 - 329200\tTIGER 리츠부동산인프라 개인적으로 ETF 종목도 구글 시트..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 6월 2주차 - 국내, 미국 주간 주도 섹터 정리",
+      "link": "https://investment.advenoh.pe.kr/weekly/2024-june-week2-korea-us-weekly-leading-sector-summary",
+      "pubDate": "Sun, 09 Jun 2024 00:00:00 GMT",
+      "description": "> 현재 주도 섹터가 어디인지, 다음은 어느 섹터로 옮겨가고 있는지를 파악하면서 투자를 하기 위한 개인적인 스터디 목적으로 정리한 내용입니다. 안녕하세요. 프랭크입니다. 6월 2주 차 주간 주도 섹터 정리 내용 공유합니다. !주요증시일정 !테마별 주요 섹터 !테마별 주..."
+    },
+    {
+      "source": "INV",
+      "title": "월별 투자 금액 확인하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-check-monthly-investment-amount",
+      "pubDate": "Sat, 08 Jun 2024 00:00:00 GMT",
+      "description": "여러 계좌에서 여러 주식을 매수하다 보면, 내가 얼마나 매수했는지 감이 오지 않을 때가 있다. 사람마다 투자 스타일이 다르겠지만, 개인적으로는 구체적인 매매 전략을 세우고 정확한 투자 금액을 정하지 않는 편이다. 또한, 한 번에 모든 주식을 사지 않고 분할 매수를 하며..."
+    },
+    {
+      "source": "INV",
+      "title": "금융투자소득세(금투세)에 대해서 알아보자",
+      "link": "https://investment.advenoh.pe.kr/stock/about-financial-investment-income-tax",
+      "pubDate": "Sun, 02 Jun 2024 00:00:00 GMT",
+      "description": "2025년 1월 1일에 시행 예정인 금융투자소득세(이하 금투세)가 실제 시행 여부는 현재 논의 중인 뜨거운 감자이다. 금투세는 금융상품을 사고팔아서 얻은 수익이 일정 금액을 넘으면 매기는 세금이다. 이 정책이 시행되면 소액주주가 얻은 국내 상장 주식 매매차익에도 세금을..."
+    },
+    {
+      "source": "INV",
+      "title": "차트에서 매매내역 표시하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-show-trade-history-on-chart",
+      "pubDate": "Sun, 02 Jun 2024 00:00:00 GMT",
+      "description": "차트에서 실제로 내가 매수하고 매도한 부분을 표시해주고 싶을 경우 어떻게 설정할 수 있는 지 알아보자. 개인적으로 주 거래로 사용중인 미래에셋 MTS 기준으로 설명한다. 1. MTS 실행하고 표시해주고 싶은 주식 종목을 선택한다. 2. 차트를 크게 확대할 수 있는 버튼..."
+    },
+    {
+      "source": "INV",
+      "title": "금투자에 대해서 알아보자",
+      "link": "https://investment.advenoh.pe.kr/stock/about-gold-investment",
+      "pubDate": "Sat, 01 Jun 2024 00:00:00 GMT",
+      "description": "리스크 관리를 위해 안전자산으로 금 투자는 거의? 필수 항목이 아닌가 싶다. 개인 포트폴리오에도 항상 금은 필수로 매매한다. 금 투자는 크게 2가지 방식으로 투자할 수 있다. - 골드바를 사는 금 현물 투자 - 금 관련 ETF를 매수해서 하는 금 투자 골드바를 사려면,..."
+    },
+    {
+      "source": "INV",
+      "title": "미래에셋에서 매매수익률 확인하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-check-trading-profit-in-mirae-asset",
+      "pubDate": "Sat, 01 Jun 2024 00:00:00 GMT",
+      "description": "주식 투자를 하면서 내가 실제로 얼마나 수익을 내고 있는지 궁금하게 된다. 저의 주 증권사인 미래에셋 기준으로 알아봅니다. MTS 에서나 HTS에서 확인할 수 있다. 검색란에매매일지 입력하고 검색 결과 중에 한국 주식은주식 매매일지 선택하고 해외 주식은 해외 매매일지를..."
+    },
+    {
+      "source": "INV",
+      "title": "달러 환전시 증권사 vs 은행권 어디가 좋을까요",
+      "link": "https://investment.advenoh.pe.kr/stock/where-is-better-for-dollar-exchange-securities-vs-banks",
+      "pubDate": "Thu, 30 May 2024 00:00:00 GMT",
+      "description": "한국 증권사에서 미국 주식을 사려면, 일반적으로 먼저 달러를 가지고 있어야 한다. 달러를 사려면, 은행이나 증권사에서 달러를 사서 미국 주식을 사면 된다. - 은행 달러 환전 → 증권사로 이체 (수수료 발생할 수 있음) → 증권 계좌에서 미국 주식 매수 - (or) 증..."
+    },
+    {
+      "source": "INV",
+      "title": "드러캔밀러의 투자 조언",
+      "link": "https://investment.advenoh.pe.kr/stock/stanley-druckenmillers-investment-advice",
+      "pubDate": "Sun, 19 May 2024 00:00:00 GMT",
+      "description": "> 스탠리 드러켄밀러(Stanley Druckenmiller)는 1992년에 조지 소로스와 함께 파운드 매도 트레이딩으로 10억 달러를 번 헤지펀드 매니저이다. <br> !Stanley Druckenmiller 주식 투자할 때 고민해볼만한 조언이라서 블로그에 적어둔다...."
+    },
+    {
+      "source": "INV",
+      "title": "금융소득 종합과세 대상자 피하는 방법",
+      "link": "https://investment.advenoh.pe.kr/stock/how-to-avoid-comprehensive-taxation-on-financial-income",
+      "pubDate": "Wed, 15 May 2024 00:00:00 GMT",
+      "description": "<br> 금융소득종합과세란 다양한 금융 소득(ex. 이자와 배당 등)을 합산해서 세금을 부과하는 제도이다. 금융소득 종합과세는 각종 금융 수익을 따로따로 세금을 부과하는 것이 아니라 모든 금융 수익을 종합하여 하나의 소득으로 취급하여 세액을 계산한다. 통합하여 세액을 ..."
+    },
+    {
+      "source": "INV",
+      "title": "국내 미국다우존스 ETF중에서 어떤 것을 선택하면 좋을까?",
+      "link": "https://investment.advenoh.pe.kr/etf/best-korea-us-dowjones-etf",
+      "pubDate": "Sat, 04 May 2024 00:00:00 GMT",
+      "description": "미국의 다우존스 지수를 추종하는 국내 ETF는 아래와 같다. 여러 ETF 중에서 어떤 것을 선택하면 좋은지 같이 고민을 해보자. - 452360\tSOL 미국배당다우존스(H) - 446720\tSOL 미국배당다우존스 - 402970\tACE 미국배당다우존스 - 458730\t..."
+    },
+    {
+      "source": "INV",
+      "title": "나만의 ETF 적립식 투자",
+      "link": "https://investment.advenoh.pe.kr/etf/my-etf-regular-investing",
+      "pubDate": "Sat, 27 Apr 2024 00:00:00 GMT",
+      "description": "2023년부터 본격적으로 투자 스터디를 하면서 ETF 종목도 계좌별로 매수를 하기 시작했다. 나름 손실을 막고 가격이 저렴한 경우에만 사기 위해서 평균값이나 최소 값보다 낮은 경우에만 ETF를 매수하는 방식으로 투자했다. 나스닥이나 S&P500 지수를 추종하는 ETF의..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 2분기 주요 일정",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q2-key-schedule",
+      "pubDate": "Wed, 20 Mar 2024 00:00:00 GMT",
+      "description": "2024년 2분기 주요 일정 정리한 내용 공유합니다. 4월 말에는 비트코인 반감기가 있어서 관심을 가질 만하고 5월에는 구를 I/O, 6월에 애플 WWDC 컨퍼런스가 예정되어 있어서 관련 주식을 모니터링할 필요가 있다. > 2분기 주요 일정은 구글 캘린더에서 확인할 수..."
+    },
+    {
+      "source": "INV",
+      "title": "인터넷으로 내용증명 작성하기",
+      "link": "https://investment.advenoh.pe.kr/etc/write-content-certification-online",
+      "pubDate": "Sun, 17 Mar 2024 00:00:00 GMT",
+      "description": "<br> 살면서 내용증명을 써볼 줄을 몰랐다. 현재 사는 집이 역전세가 발생하면서 계약 종료 시점에 집주인은 전세금을 바로? 못 돌려준다고 했다. 집주인은 몇 개월 연장을 희망했지만, 연장하는 게 득인지 아닌지를 알아보니 내가 연장해서 득이 되는 건 없다는 결론에 이르..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 ISA 계좌 개편안 총 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-isa-account-reform-plan-summary",
+      "pubDate": "Fri, 01 Mar 2024 00:00:00 GMT",
+      "description": "> ISA 계좌 2024년 개편안이 2월쯤에 통과될 줄 알았지만, 국회 통과가 무산되었네요 ㅜㅜ > 아마 총선을 앞두고 있고 여야가 서로 대립을 이어가면서 민감한 사안의 논의가 뒤로 밀렸습니다. 2024년 4월에 있을 총선 앞두고는 통과는 어려울 것 같고 4월 이후나 ..."
+    },
+    {
+      "source": "INV",
+      "title": "IRP에서 안전자산 ETF는 어떤 것들이 있나",
+      "link": "https://investment.advenoh.pe.kr/etf/irp-safe-asset-etf-list",
+      "pubDate": "Mon, 26 Feb 2024 00:00:00 GMT",
+      "description": "IRP (Individual Retirement Pension) 개인형퇴직 연금제도는 근로자가 직장을 옮기거나 퇴직하면서 지급받은 퇴직급여를 한 계좌로 모아 퇴직이후에 사용할 수 있도록 하는 퇴직 연금 전용 계좌이다. 연금저축 펀드와 달리 IRP에서는 운용상품 구성에 ..."
+    },
+    {
+      "source": "INV",
+      "title": "증권계좌별로 어떤 주식을 매매하면 좋을까?",
+      "link": "https://investment.advenoh.pe.kr/stock/which-stocks-to-trade-by-securities-account",
+      "pubDate": "Tue, 06 Feb 2024 00:00:00 GMT",
+      "description": "> 여러 분은 계좌별로 어떤 주식을 매매를 하고 계신가요? 작년 2023년부터 본격적으로 주식 스터디를 하면서 증권계좌에서 다양한 주식, ETF, 배당주 등 여러 가지를 매매했다. 정확하게 어느 계좌에서 어떤 주식을 사 모으면 나에게 이득이 되는지 잘 알고 접근한 건 ..."
+    },
+    {
+      "source": "INV",
+      "title": "주식 세금 종류",
+      "link": "https://investment.advenoh.pe.kr/stock/types-of-stock-taxes",
+      "pubDate": "Sun, 28 Jan 2024 00:00:00 GMT",
+      "description": "주식 관련 세금에 대해서 알아보자. 주식 매매를 하면서 발생하는 세금은 크게 3가지가 있다. - 증권(주식)을 거래할 때 내는 세금이다     - 매수할 때는 부과되지 않고 매도 할 때만 부과되는 세금이다         - 주식 투자 활성화와 단기 투자를 지향하는 목적..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 1분기 주요 일정",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-q1-key-schedule",
+      "pubDate": "Mon, 25 Dec 2023 00:00:00 GMT",
+      "description": "2024년 1분기 주요 일정 정리한 내용 공유합니다. 1월에 비트코인 현물 ETF가 승인될지가 강권일 듯하고 IT 관련 회사 실적 발표가 1월, 2월에 예정이 되어 있어서 이것도 주목해야 한다. > 1분기 주요 일정은 구글 캘린더에서 확인할 수 있습니다. - 1/8 ~..."
+    },
+    {
+      "source": "INV",
+      "title": "2024년 글로벌 시장 전망 및 주요 일정",
+      "link": "https://investment.advenoh.pe.kr/stock/2024-global-market-outlook-and-key-schedule",
+      "pubDate": "Wed, 20 Dec 2023 00:00:00 GMT",
+      "description": "2023년 작년에는 내가 보유한 주식의 실적 일정이나 주요 이벤트에 거의 관심을 두지 않고 주식 투자를 했던 것 같다. 그러다 보니, 어떤 기준을 가지고 투자하기보다는 무지성으로 주식을 사고팔았던 것 같다. 각 회사의 컨퍼런스, 실적 발표, 배당 일정 등에 따라 주식이..."
+    },
+    {
+      "source": "INV",
+      "title": "투자 용어 (Investment Terms)",
+      "link": "https://investment.advenoh.pe.kr/etc/investment-terms",
+      "pubDate": "Sun, 15 Oct 2023 00:00:00 GMT",
+      "description": "스스로 이해력을 높이기 위해서 투자 관련 용어를 정리해둔다. - ### 가치주     - 저평가된 기업의 주식     - 주식 시장에서 가장 많이 사용되고 있는 투자 스타일이고 본래 가치보다 낮은 가격에 거래되는 주식을 사는 것이다     - 4개 지표 (매출액, 매출..."
+    },
+    {
+      "source": "INV",
+      "title": "미국 3대 주가 지수",
+      "link": "https://investment.advenoh.pe.kr/stock/differences-between-us-three-major-indices",
+      "pubDate": "Sat, 02 Sep 2023 00:00:00 GMT",
+      "description": "<br> 미국 주식 시장은 세계적으로 가장 크고 영향력 있는 시장 중 하나이다. 주식 투자자들은 주식 시장의 변동성을 파악하고 트렌드를 이해하기 위해 다양한 주가 지수를 참고한다. 이 중에서도 미국에서 가장 유명하고 주목받는 주가 지수로는 다우 존스, S&P 500, ..."
+    },
+    {
+      "source": "INV",
+      "title": "성장주와 가치주의 차이점",
+      "link": "https://investment.advenoh.pe.kr/stock/growth-stocks-vs-value-stocks-differences",
+      "pubDate": "Tue, 15 Aug 2023 00:00:00 GMT",
+      "description": "주식 시장에서 성장주와 가치주는 투자자들에게 두 가지 다른 접근 방식을 제공한다. 성장주는 미래 성장 가능성을 기반으로 주식을 선택하는 반면, 가치주는 저평가된 주식을 찾아 투자하는 전략이다. 각 주식 스타일의 특징을 살펴보자. 성장주는 주식 시장에서 미래에 높은 수익..."
+    },
+    {
+      "source": "INV",
+      "title": "연금저축이란?",
+      "link": "https://investment.advenoh.pe.kr/stock/what-is-pension-savings",
+      "pubDate": "Sun, 26 Mar 2023 00:00:00 GMT",
+      "description": "- 저비용이다     - 연금계좌로는 아무런 수수료나 보수를 떼지 않는다         - 중도 인출, 펀드 변경을 해도 수수료 가 없다     - 내가 선택한 펀드에 따라 펀드 공유의 보수만 나간다 - 세제 해택 - 연간 납입한 금액 중 일정 금액 이하의 금액에 대해..."
+    },
+    {
+      "source": "INV",
+      "title": "ETF 고르는 기준",
+      "link": "https://investment.advenoh.pe.kr/etf/etf-selection-criteria",
+      "pubDate": "Sat, 25 Mar 2023 00:00:00 GMT",
+      "description": "다양한 ETF 종목 중에 어떤 종목을 매매해야 할지 결정할 수 있는 요소에 대해서 알아보자 - 순자산이 큰 ETF는 규모로 봐서 다른 ETF보다는 조금 더 신뢰할 있어서 순자산이 높을 수록 좋다 - 순자신이 크면 거래량도 높은 편이다 - 거래량이 많다 = 원하는 가격으..."
+    },
+    {
+      "source": "INV",
+      "title": "주식/ETF 종목 매매 타이밍 전략 정리",
+      "link": "https://investment.advenoh.pe.kr/etf/stock-etf-trading-timing-strategy",
+      "pubDate": "Sat, 18 Mar 2023 00:00:00 GMT",
+      "description": "주식이나 ETF 매매하는 타이밍은 언제가 좋은가? 딱히 정해진 정답이 없다. 주식에는 너무 많은 변수가 존재하므로 예측하기도 어렵다. 나만의 기준을 세우는 게 좋다. 매매하는 전략은 큰 게 3가지 방식으로 나눌 수 있다. - 간단하게 매달 일정하게 매매 하겠다는 전략이..."
+    },
+    {
+      "source": "INV",
+      "title": "증권 계좌 종류별로 투자 가능한 항목 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/investment-options-by-account-type",
+      "pubDate": "Sat, 18 Mar 2023 00:00:00 GMT",
+      "description": "계좌 종류 별로 투자 가능한 항목을 정리합니다. 조금씩 투자하면서 정리해나갈 예정입니다. - 투자 가능     - 펀드: 채권형, 주식형, 혼합형, 해외, 섹터, 자산배분     - ETF (파생제외): 레버리지나 인버스처럼 파생상품으로 구성되어 있는 펀드나 ETF는 ..."
+    },
+    {
+      "source": "INV",
+      "title": "주식 시장 개장시간 정리",
+      "link": "https://investment.advenoh.pe.kr/stock/stock-market-opening-hours-summary",
+      "pubDate": "Sat, 25 Feb 2023 00:00:00 GMT",
+      "description": "국내 주식외에 해외 특히 미국 주식 시장이 한국 시간 기준으로 언제 오픈되고 끝나는지 알아보자. - 09:00 ~ 15:30 - 장 시작: 08:30 ~ 09:00 - 장 마감: 15:20 ~ 15:30 정규시간 앞뒤로 시간외 주식을 매매를 할 수 있다. 시간 외 종가..."
+    },
+    {
+      "source": "INV",
+      "title": "CPI와 PPI의 차이점",
+      "link": "https://investment.advenoh.pe.kr/stock/differences-between-cpi-and-ppi",
+      "pubDate": "Sun, 19 Feb 2023 00:00:00 GMT",
+      "description": "물자지수는 일반적으로 소비자물가지수(CPI)나 생산자물가지수(PPI)로 측정한다. 이들 지수는 소비자와 생산자가 상품과 서비스를 구입하는 데 필요한 비용을 측정한다. 즉 물가지수가 상승하면 인플레이션의 증가를 나타내며, 상품과 서비스를 구입하는 데 더 큰 비용이 들게 ..."
+    },
+    {
+      "source": "INV",
+      "title": "CMA의 종류",
+      "link": "https://investment.advenoh.pe.kr/stock/types-of-cma",
+      "pubDate": "Sun, 19 Feb 2023 00:00:00 GMT",
+      "description": "CMA는 Cash Management Account의 약자로 종합자산관리계좌라는 뜻을 가지고 있고 증권사에서 만들고 수시입출금통장으로 채권이나 주식, 펀드을 관리해 종합적인 자산 관리가 가능한 계좌이다. 카드 사용과 스마트폰 뱅킹 모두 가능하며 자동이체 계좌도 사용할 ..."
+    },
+    {
+      "source": "INV",
+      "title": "금리, 환율, 채권, 주가 서로간의 상관관계",
+      "link": "https://investment.advenoh.pe.kr/stock/correlation-between-interest-rates-exchange-rates-bonds-and-stock-prices",
+      "pubDate": "Sun, 05 Feb 2023 00:00:00 GMT",
+      "description": "소수몽키 유튜브 채널을 보면서 몽키님이 자주 설명하는 지수를 나름 정리해보았다. 현재 시장의 흐름을 아래 지수로 보면서 주식의 흐름이 어떻게 변화가는지 나름 판단하는 기준이 되는 듯하다. 작년에는 아래 지수를 꼼꼼히 확인하면서 시장의 흐름을 파악하지는 못했지만, Tra..."
+    },
+    {
+      "source": "INV",
+      "title": "ETF 상품명 이해하기",
+      "link": "https://investment.advenoh.pe.kr/etf/understanding-etf-product-names",
+      "pubDate": "Tue, 24 Jan 2023 00:00:00 GMT",
+      "description": "ETF를 매매하려고 하면 ETF 종목에 여러 이름에 약자나 익숙하지 않은 용어들이 붙는데, 어떻게 해석을 하면 되는지 같이 알아보자. - 단기     - 만기가 짧은 채권으로 안정성이 아주 높은 채권이다     - 만기 1 ~ 12개월의 단기 채권     - 만기가 긴..."
+    },
+    {
+      "source": "INV",
+      "title": "자산 운용사 약어 모음",
+      "link": "https://investment.advenoh.pe.kr/etc/asset-management-abbreviations",
+      "pubDate": "Sat, 31 Dec 2022 00:00:00 GMT",
+      "description": "ETF는 주식과 다르게 이름 맨 앞에 자산운용사 이름이 붙는다. 이름 맨 앞에 붙는 prefix만 봐도 어디에서 ETF를 만들었는지 알 수 있다. - TIGER 미국채10년선물 (미래에셋자산 운용사에서 만든 ETF) - KBSTAR 국채선물10년 (KB 자산운용사에서 ..."
+    }
+  ]
+}

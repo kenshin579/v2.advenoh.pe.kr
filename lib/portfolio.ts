@@ -3,36 +3,50 @@ import path from 'path'
 import matter from 'gray-matter'
 import { z } from 'zod'
 
-// Zod schema for portfolio items
 export const portfolioItemSchema = z.object({
   site: z.string().url(),
   title: z.string().optional(),
   description: z.string(),
   cover: z.string().optional(),
+
+  // Profile v2 확장 필드 — 기존 레이아웃 호환을 위해 전부 optional
+  status: z.string().optional(),
+  year: z.string().optional(),
+  role: z.string().optional(),
+  stack: z.array(z.string()).optional(),
+  dek: z.string().optional(),
+  overview: z.string().optional(),
+  featured: z.boolean().optional(),
+  ext: z.string().optional(),
+  order: z.number().optional(),
 })
 
 export type PortfolioItem = {
   site: string
-  title: string  // Always present after processing
+  title: string
   description: string
   cover?: string
   slug: string
+
+  status?: string
+  year?: string
+  role?: string
+  stack?: string[]
+  dek?: string
+  overview?: string
+  featured?: boolean
+  ext?: string
+  order?: number
 }
 
-/**
- * contents/website/ 디렉토리에서 모든 포트폴리오 항목 로드
- * 각 서브폴더의 index.md 파일을 읽음
- */
 export function getPortfolioItems(): PortfolioItem[] {
   const contentsDir = path.join(process.cwd(), 'contents/website')
 
-  // 디렉토리가 없으면 빈 배열 반환
   if (!fs.existsSync(contentsDir)) {
     console.warn('Portfolio contents directory not found:', contentsDir)
     return []
   }
 
-  // 서브폴더 목록 읽기
   const entries = fs.readdirSync(contentsDir, { withFileTypes: true })
   const folders = entries.filter(entry => entry.isDirectory())
 
@@ -40,7 +54,6 @@ export function getPortfolioItems(): PortfolioItem[] {
     .map(folder => {
       const indexPath = path.join(contentsDir, folder.name, 'index.md')
 
-      // index.md 파일이 없으면 스킵
       if (!fs.existsSync(indexPath)) {
         console.warn(`No index.md found in ${folder.name}`)
         return null
@@ -49,10 +62,7 @@ export function getPortfolioItems(): PortfolioItem[] {
       const fileContents = fs.readFileSync(indexPath, 'utf8')
       const { data } = matter(fileContents)
 
-      // Zod로 검증
       const validated = portfolioItemSchema.parse(data)
-
-      // title이 없으면 URL에서 추출
       const title = validated.title || extractTitleFromUrl(validated.site)
 
       return {
@@ -63,13 +73,15 @@ export function getPortfolioItems(): PortfolioItem[] {
     })
     .filter((item): item is PortfolioItem => item !== null)
 
-  // 폴더명 기준 정렬
-  return items.sort((a, b) => a.slug.localeCompare(b.slug))
+  // order가 있는 항목 우선, 그 다음 slug 알파벳 순
+  return items.sort((a, b) => {
+    const aOrder = a.order ?? Number.POSITIVE_INFINITY
+    const bOrder = b.order ?? Number.POSITIVE_INFINITY
+    if (aOrder !== bOrder) return aOrder - bOrder
+    return a.slug.localeCompare(b.slug)
+  })
 }
 
-/**
- * URL에서 타이틀 추출 (기존 로직)
- */
 function extractTitleFromUrl(url: string): string {
   try {
     const hostname = new URL(url).hostname
