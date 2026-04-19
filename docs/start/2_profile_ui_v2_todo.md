@@ -18,11 +18,11 @@
 
 ### 스키마 / 콘텐츠
 
-- [ ] `lib/portfolio.ts` schema 확장 (`status`, `year`, `role`, `stack[]`, `dek`, `overview`, `featured`, `ext`, `order`)
-- [ ] 정렬 기준 `order → slug` 로 변경
-- [ ] `contents/website/*/index.md` 5건 frontmatter 확장 (신규 필드 채움)
-- [ ] `contents/profile/readme.md` 신규 — 히어로 KV(role/focus/based/xp), stack 제외
-- [ ] `lib/site-config.ts` — profile 항목 + 외부 링크(github/status/blog/investment) 구조화
+- [x] `lib/portfolio.ts` schema 확장 (`status`, `year`, `role`, `stack[]`, `dek`, `overview`, `featured`, `ext`, `order`) — 기존 필드 optional 유지
+- [x] 정렬 기준 `order → slug` 로 변경
+- [x] `contents/website/*/index.md` 5건 frontmatter 확장 (신규 필드 채움, 추후 사용자가 값 조정 가능)
+- [x] `contents/profile/readme.md` 신규 — 히어로 KV(role/focus/based/xp), stack 제외
+- [x] `lib/site-config.ts` — 외부 링크(github/status/blog rss/investment rss) + 5개 services + `githubLogin` 구조화
 
 ### 외부 데이터 Loader
 
