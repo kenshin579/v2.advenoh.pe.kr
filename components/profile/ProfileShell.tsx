@@ -9,6 +9,8 @@ import type { ReadmeData } from '@/lib/profile-readme'
 import { computeHeroStats } from '@/lib/stats'
 import { useLiveStatus } from '@/hooks/useLiveStatus'
 import { useLiveWriting } from '@/hooks/useLiveWriting'
+import { useKeyboardNav } from '@/hooks/useKeyboardNav'
+import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { TitleBar } from './TitleBar'
 import { Sidebar } from './Sidebar'
 import { RightRail } from './RightRail'
@@ -22,6 +24,8 @@ import { NoiseOverlay } from './NoiseOverlay'
 import { TweaksPanel } from './TweaksPanel'
 import { CommandPalette } from './CommandPalette'
 import { ProjectModal } from './ProjectModal'
+
+const SPY_SECTIONS = ['readme', 'projects', 'writing', 'writing-investment'] as const
 
 type ProfileShellProps = {
   initialStatus: StatusSnapshot
@@ -49,10 +53,13 @@ export function ProfileShell({
   const status = useLiveStatus(initialStatus)
   const writing = useLiveWriting(initialWriting)
   const stats = computeHeroStats(status, github, writing.it)
+  const activeSection = useScrollSpy(SPY_SECTIONS as unknown as string[])
+
+  useKeyboardNav({ itemCount: portfolioItems.length })
 
   return (
     <div className="flex min-h-screen flex-col bg-profile-bg text-profile-fg font-sans">
-      <TitleBar status={status} />
+      <TitleBar status={status} activeSection={activeSection} />
 
       <div className="flex flex-1">
         <Sidebar status={status} />
@@ -79,7 +86,7 @@ export function ProfileShell({
         <RightRail github={github} latestPosts={writing.latest} status={status} />
       </div>
 
-      <StatusBar />
+      <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} />
 
       <NoiseOverlay />
       <TweaksPanel />

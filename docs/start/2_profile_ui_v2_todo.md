@@ -97,11 +97,11 @@
 
 ## Phase 4. 훅 (`hooks/`)
 
-- [ ] `useKeyboardNav.ts` — j/k/Enter/포커스 인덱스. 입력 요소 포커스 시 early return (Phase 4 잔여 — nice-to-have)
-- [x] `useCommandPalette` 로직 — CommandPalette 컴포넌트 내부에 인라인으로 구현 (⌘K/Ctrl+K/`/` 토글)
-- [x] `useProjectModal` 로직 — ProjectModal 컴포넌트 내부에 인라인 + `profile:open-project` CustomEvent 브리지
+- [x] `useKeyboardNav.ts` — j/k로 프로젝트 카드 포커스 순회. 입력 요소·열린 Dialog 감지 시 early return
+- [x] `useCommandPalette` 로직 — CommandPalette 컴포넌트 내부 인라인 (⌘K/Ctrl+K/`/` 토글)
+- [x] `useProjectModal` 로직 — ProjectModal 컴포넌트 내부 인라인 + `profile:open-project` CustomEvent 브리지
 - [x] `useTweaks.ts` — accent/density/noise, `localStorage` 영속화
-- [ ] `useScrollSpy.ts` — 섹션 활성 감지 → breadcrumb 동기화 (Phase 4 잔여 — nice-to-have)
+- [x] `useScrollSpy.ts` — IntersectionObserver로 섹션 감지, TitleBar breadcrumb / StatusBar section 동기화
 - [x] `useLiveStatus.ts` — 클라이언트 마운트 시 Supabase 재조회, initialData 교체, 실패 시 유지
 - [x] `useLiveWriting.ts` — 브라우저 `fetch` + `DOMParser` RSS 파싱, initialData 교체
 

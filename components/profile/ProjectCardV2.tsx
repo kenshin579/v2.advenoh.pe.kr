@@ -21,7 +21,8 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
     <article
       role="button"
       tabIndex={0}
-      aria-keyshortcuts="Enter"
+      data-project-card={item.slug}
+      aria-keyshortcuts="Enter j k"
       onClick={() => openModal(item.slug)}
       onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
