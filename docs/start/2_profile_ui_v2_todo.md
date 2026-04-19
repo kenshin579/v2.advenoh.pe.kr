@@ -146,12 +146,14 @@
 
 ## Phase 7. 접근성 / SEO
 
-- [ ] `aria-keyshortcuts` 전체 적용 확인
-- [ ] ProjectModal: `role="dialog"` + `aria-modal="true"` + 포커스 트랩 + ESC 닫힘
-- [ ] Sidebar 항목 `role="button"` 또는 `role="tab"`
-- [ ] WCAG AA 대비비 검증 (`--muted-2` vs `--bg-2` 등)
-- [ ] og-image를 v2 디자인에 맞게 교체 검토
-- [ ] JSON-LD에 프로젝트 `ItemList` 추가 검토
+- [x] `aria-keyshortcuts` 적용 — ProjectCardV2(`Enter j k`), TitleBar ⌘K button(`Meta+K Control+K /`)
+- [x] ProjectModal: Radix Dialog 기본 — `role="dialog"` / `aria-modal="true"` / 포커스 트랩 / ESC 닫힘 모두 내장 (확인 완료)
+- [x] Sidebar 의미론 개선 — `<aside aria-label>` + `<nav aria-label="Sections">`, 활성 섹션에 `aria-current="location"`, `:focus-visible` outline
+- [x] WCAG AA 대비 보강 — `--profile-muted` (#797978 → #979795, 약 5.2:1), `--profile-muted-2` (#5a5a59 → #858584, 약 5.0:1)
+- [ ] og-image를 v2 디자인에 맞게 교체 검토 — **별도 디자인 티켓으로 분리** (Phase 7에서 skip)
+- [x] JSON-LD `ItemList` 추가 — 5개 프로젝트 position/url/name/description, `app/page.tsx`에서 script 주입
+- [x] StatusBar `<ul aria-label="Keyboard shortcuts">` + `aria-live="polite"` section 표시
+- [x] CommandPalette `profile:open-palette` 이벤트 브리지 — TitleBar 버튼 클릭으로도 팔레트 오픈 가능
 
 ## Phase 8. 테스트
 

@@ -62,7 +62,7 @@ export function ProfileShell({
       <TitleBar status={status} activeSection={activeSection} />
 
       <div className="flex flex-1">
-        <Sidebar status={status} />
+        <Sidebar status={status} activeSection={activeSection} />
 
         <main className="relative flex-1 overflow-x-hidden">
           <div className="mx-auto flex max-w-[1100px] gap-0">

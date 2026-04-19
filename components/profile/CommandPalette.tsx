@@ -49,6 +49,13 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
+  // 버튼 클릭(TitleBar의 ⌘K 힌트 등)으로도 열 수 있도록 브리지
+  useEffect(() => {
+    const openHandler = () => setOpen(true)
+    window.addEventListener('profile:open-palette', openHandler)
+    return () => window.removeEventListener('profile:open-palette', openHandler)
+  }, [])
+
   const jumpSection = (id: string) => {
     close()
     requestAnimationFrame(() => {

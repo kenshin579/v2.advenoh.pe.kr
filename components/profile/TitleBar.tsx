@@ -26,9 +26,15 @@ export function TitleBar({
       <span className="hidden sm:inline truncate text-profile-muted">{path}</span>
 
       <div className="ml-auto flex items-center gap-4">
-        <kbd className="hidden md:inline-flex items-center gap-1 rounded border border-profile-line-2 bg-profile-bg-3 px-1.5 py-0.5 text-[10px] text-profile-muted">
-          ⌘K
-        </kbd>
+        <button
+          type="button"
+          aria-label="Open command palette"
+          aria-keyshortcuts="Meta+K Control+K /"
+          onClick={() => window.dispatchEvent(new Event('profile:open-palette'))}
+          className="hidden md:inline-flex items-center gap-1 rounded border border-profile-line-2 bg-profile-bg-3 px-1.5 py-0.5 text-[10px] text-profile-muted hover:border-profile-accent hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
+        >
+          <kbd className="font-mono">⌘K</kbd>
+        </button>
         <span
           className="inline-flex items-center gap-1.5"
           aria-label={`${status.summary.up} of ${status.summary.total} services up`}

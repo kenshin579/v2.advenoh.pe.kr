@@ -5,33 +5,45 @@ import type { StatusSnapshot } from '@/lib/status'
 import { siteConfig } from '@/lib/site-config'
 
 const NAV_SECTIONS = [
-  { href: '#readme', label: 'readme.md' },
-  { href: '#projects', label: 'projects/' },
-  { href: '#writing', label: 'writing.it' },
-  { href: '#writing-investment', label: 'writing.inv' },
+  { id: 'readme', href: '#readme', label: 'readme.md' },
+  { id: 'projects', href: '#projects', label: 'projects/' },
+  { id: 'writing', href: '#writing', label: 'writing.it' },
+  { id: 'writing-investment', href: '#writing-investment', label: 'writing.inv' },
 ]
 
 type SidebarProps = {
   status: StatusSnapshot
+  activeSection?: string | null
 }
 
-export function Sidebar({ status }: SidebarProps) {
+export function Sidebar({ status, activeSection }: SidebarProps) {
   return (
-    <aside className="hidden md:flex w-[236px] shrink-0 flex-col gap-6 border-r border-profile-line bg-profile-bg-2 p-4 font-mono text-xs">
+    <aside
+      aria-label="Profile sidebar"
+      className="hidden md:flex w-[236px] shrink-0 flex-col gap-6 border-r border-profile-line bg-profile-bg-2 p-4 font-mono text-xs"
+    >
       <div>
         <div className="mb-2 text-[10px] uppercase tracking-widest text-profile-muted-2">
           Workspace
         </div>
-        <nav className="flex flex-col gap-0.5">
-          {NAV_SECTIONS.map(item => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded px-2 py-1 text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg"
-            >
-              {item.label}
-            </a>
-          ))}
+        <nav aria-label="Sections" className="flex flex-col gap-0.5">
+          {NAV_SECTIONS.map(item => {
+            const active = activeSection === item.id
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={active ? 'location' : undefined}
+                className={`rounded px-2 py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent ${
+                  active
+                    ? 'bg-profile-accent-soft text-profile-accent'
+                    : 'text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg'
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          })}
         </nav>
       </div>
 

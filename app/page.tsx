@@ -5,6 +5,7 @@ import { getGithubContrib } from '@/lib/github'
 import { getWritingSections, getLatestPosts } from '@/lib/writing'
 import { getSkills, pickHeroStack } from '@/lib/skills'
 import { loadReadme } from '@/lib/profile-readme'
+import { getProjectsItemListStructuredData } from '@/lib/structured-data'
 import { ProfileShell } from '@/components/profile/ProfileShell'
 
 export default async function HomePage() {
@@ -21,20 +22,27 @@ export default async function HomePage() {
 
   const readme = loadReadme()
   const stack = pickHeroStack(skills)
+  const itemList = getProjectsItemListStructuredData(portfolioItems)
 
   return (
-    <ProfileShell
-      initialStatus={status}
-      initialWriting={{
-        it: writingSections.it,
-        investment: writingSections.investment,
-        latest: latestPosts,
-      }}
-      portfolioItems={portfolioItems}
-      quotes={quotes}
-      github={github}
-      stack={stack}
-      readme={readme}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
+      />
+      <ProfileShell
+        initialStatus={status}
+        initialWriting={{
+          it: writingSections.it,
+          investment: writingSections.investment,
+          latest: latestPosts,
+        }}
+        portfolioItems={portfolioItems}
+        quotes={quotes}
+        github={github}
+        stack={stack}
+        readme={readme}
+      />
+    </>
   )
 }

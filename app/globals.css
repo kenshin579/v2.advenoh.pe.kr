@@ -370,11 +370,13 @@
   --profile-bg-2: #0d0d10;
   --profile-bg-3: #111115;
 
-  /* Foregrounds */
+  /* Foregrounds — WCAG AA 대비 통과 조정값
+     muted-2 원본(#5a5a59, 2.83:1)은 본문 텍스트에서 AA 미달.
+     #858584로 상향(약 5.0:1)해 작은 텍스트도 통과시킨다. */
   --profile-fg: #ededec;
   --profile-fg-2: #c7c7c5;
-  --profile-muted: #797978;
-  --profile-muted-2: #5a5a59;
+  --profile-muted: #979795;
+  --profile-muted-2: #858584;
 
   /* Lines */
   --profile-line: rgba(255, 255, 255, 0.07);
