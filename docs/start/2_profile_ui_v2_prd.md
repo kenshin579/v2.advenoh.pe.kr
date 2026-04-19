@@ -137,7 +137,8 @@
 - 새 데이터 소스:
   - **IT 글쓰기**: `https://blog.advenoh.pe.kr/rss.xml` RSS 피드를 **빌드 타임에 fetch**해 최신 N개 파싱 (`title`, `link`, `pubDate`, `category`, `description`)
   - **투자 글쓰기**: `https://investment.advenoh.pe.kr/rss.xml` RSS 피드를 **빌드 타임에 fetch**해 최신 N개 파싱
-  - `contents/profile/readme.md` — 히어로 KV(role/focus/stack/based/xp/open-for) + badge(`v2.26 · build 2104`)
+  - `contents/profile/readme.md` — 히어로 KV(role/focus/based/xp/open-for) + badge(`v2.26 · build 2104`)
+    - **`stack` 라인은 제외** — GitHub 프로필 README(`github.com/kenshin579/kenshin579`)에서 빌드 타임에 자동 추출 (아래 "외부 데이터 연동 · Skills" 참조)
   - `lib/writing.ts` — 두 RSS 피드를 fetch·파싱하는 로더(Next.js SSG `fetch` + `fast-xml-parser` 또는 `rss-parser` 의존성 추가)
     - 중앙 메인 `#writing`·`#writing-investment` 섹션에 각 5개
     - 우측 레일 `Latest posts`에 두 피드 병합 후 날짜순 상위 6개(IT/INV 태그 포함)
@@ -226,6 +227,30 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
   1. PAT를 어느 GitHub 계정으로 만들 것인가(`kenshin579`)?
   2. Netlify secret으로 주입하되, PR preview 빌드에도 노출할지?
   3. 기간 범위는 "현재 연도 1/1 ~ today" 기본으로 하되 26주 윈도우(디자인 원본)로 맞출지?
+
+### Skills (Hero `stack` 라인)
+- **목적**: Hero `kvs` 섹션의 `stack` 라인을 하드코딩하지 않고 GitHub 프로필 README에서 자동 추출
+- **소스**: `https://github.com/kenshin579/kenshin579/blob/master/README.md`
+  - README에 `shields.io/badge/-<NAME>-...&logo=<LOGO>` 배지로 카테고리별 스킬이 명시되어 있음
+  - 카테고리 그룹(이모지로 구분): `💻 Languages/Framework`, `🛢 Database`, `☁️ Cloud`, `🤖 AI`, `🔧 Tools`
+- **데이터 소스 옵션**:
+  - (1) GitHub Contents API: `GET /repos/kenshin579/kenshin579/contents/README.md` → base64 decode
+  - (2) Raw URL: `https://raw.githubusercontent.com/kenshin579/kenshin579/master/README.md`
+  - **권장: (2) raw URL** — 단순 fetch, 인증 불필요, 캐시 친화
+- **구현**:
+  - `lib/skills.ts` — raw markdown fetch → 그룹 헤더(`- 💻 &nbsp;` 등) 단위로 split → 각 그룹에서 `!\[([^\]]+)\]\(https://img\.shields\.io/badge/[^)]+\)` 정규식으로 스킬명 추출 → 구조화
+  - 반환 타입:
+    ```ts
+    type SkillGroup = { emoji: string; label: string; items: string[] }
+    type Skills = { groups: SkillGroup[]; flat: string[] }
+    ```
+  - Hero `stack` 라인: 대표 스킬만 추려서 표시 (예: Languages 그룹 전체 + Cloud의 K8s/AWS 등). 추림 규칙은 구현 시 결정 — 기본은 `groups[0].items` + `groups[2].items` 병합
+  - 폴백: fetch 실패 시 `.cache/skills.json` 또는 하드코딩 기본값
+- **Rate limit**: raw URL은 GitHub raw 서빙, 인증 없이도 관대한 한도. 빌드당 1회이므로 문제 없음
+- **논의 필요 사항**:
+  1. Hero `stack` 라인에 모든 스킬을 표시할지, 그룹을 선별할지?
+  2. 이름 정규화가 필요한가? (예: `Spring%20Boot` → `Spring Boot`)
+  3. 스킬 로고 이미지도 함께 보여줄지(디자인 원본은 텍스트만) — 기본은 텍스트만
 - `lib/portfolio.ts` — 정렬 기준을 `order → slug`로 변경, `featured` 플래그 지원
 - `lib/site-config.ts` — profile/status/writing/commit 관련 외부 링크(5 services, github, status, blog, investment) 구성
 
@@ -287,6 +312,7 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 11. **GitHub 기여 캘린더 연동** — GraphQL `contributionsCollection` 빌드 타임 fetch (`GITHUB_TOKEN` 필요), 우측 레일 히트맵 + Hero stats `commits · 'YY`
 12. **Status 연동** — advenoh-status의 snapshot JSON (또는 Supabase 직접 조회) 빌드 타임 fetch, Hero stats `services up` / `uptime 90d`, Sidebar `Status`, Title Bar `N/N up`, 우측 레일 `System`에 반영
     - 선결 조건: 안 A/B/C 중 선택 (권장: 안 B — advenoh-status에 `/api/snapshot` 추가)
+13. **Skills 연동** — `github.com/kenshin579/kenshin579` 프로필 README를 빌드 타임 fetch해 shields.io 배지에서 스킬 추출, Hero `kvs`의 `stack` 라인에 주입 (하드코딩 대체)
 
 ### Out-of-Scope (별도 티켓)
 - 프로젝트 상세 **별도 라우트** 만들기 (현재는 모달만 제공)
@@ -327,6 +353,7 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 - `lib/stats.ts` — 외부 데이터(github/status) + RSS 카운트 집계
 - `lib/github.ts` — GitHub GraphQL `contributionsCollection` fetch + 캐시 + Zod 검증
 - `lib/status.ts` — advenoh-status snapshot fetch + Zod 검증 + 폴백
+- `lib/skills.ts` — `github.com/kenshin579/kenshin579` README raw fetch + shields.io 배지 파서 + 카테고리 그룹화
 - `contents/profile/readme.md`
 
 ### 수정
@@ -367,6 +394,7 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 - ~~다국어화(en/ko) 여부~~ → **제외 (한국어 단일)**
 - ~~블로그 포스트 소스~~ → **RSS 빌드 타임 fetch (blog.advenoh.pe.kr · investment.advenoh.pe.kr)**
 - ~~커밋 그래프 소스~~ → **GitHub GraphQL `contributionsCollection` 실데이터**
+- ~~Hero stack 라인 관리 방식~~ → **GitHub 프로필 README(`kenshin579/kenshin579`)에서 shields.io 배지 자동 추출**
 
 ### 논의 필요
 1. **Status 연동 방식 (최우선 결정 필요)**:
