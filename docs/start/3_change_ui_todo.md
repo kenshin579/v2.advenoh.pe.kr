@@ -15,10 +15,10 @@
 
 ## Phase 2. ProfileShell — QuoteBlock 재배치
 
-- [ ] `#writing-investment` 래핑 `<section>` 내부의 `QuoteBlock` 제거
-- [ ] `Hero` 렌더 직후, `ProjectGrid` 직전에 `<QuoteBlock quotes={quotes} />` 삽입
-- [ ] `#writing-investment` id는 `WritingList` 컴포넌트 자체에 부여 (scrollSpy 연동 유지)
-- [ ] `useScrollSpy(SPY_SECTIONS)` dep 그대로 (id 변경 없음)
+- [x] `#writing-investment` 래핑 `<section>` 내부의 `QuoteBlock` 제거
+- [x] `Hero` 렌더 직후, `ProjectGrid` 직전에 `<QuoteBlock quotes={quotes} />` 삽입
+- [x] `#writing-investment` id는 `WritingList` 컴포넌트 자체에 부여 (scrollSpy 연동 유지)
+- [x] `useScrollSpy(SPY_SECTIONS)` dep 그대로 (id 변경 없음)
 
 ## Phase 3. Hero — headline + KV 확장
 

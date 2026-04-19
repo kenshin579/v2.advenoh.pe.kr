@@ -71,14 +71,13 @@ export function ProfileShell({
             <div className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]">
               <Hero stats={stats} github={github} status={status} stack={stack} readme={readme} />
 
+              <QuoteBlock quotes={quotes} />
+
               <ProjectGrid items={portfolioItems} />
 
               <WritingList id="writing" title="writing.it" items={writing.it} />
 
-              <section id="writing-investment" aria-label="recent investment writing" className="space-y-3">
-                <WritingList id="writing-investment-list" title="writing.inv" items={writing.investment} />
-                <QuoteBlock quotes={quotes} />
-              </section>
+              <WritingList id="writing-investment" title="writing.inv" items={writing.investment} />
             </div>
           </div>
         </main>
