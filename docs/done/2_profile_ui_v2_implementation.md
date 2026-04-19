@@ -1,7 +1,7 @@
 # Profile UI v2 — 구현 문서
 
-> 요구사항: `docs/start/2_profile_ui_v2_prd.md`
-> 체크리스트: `docs/start/2_profile_ui_v2_todo.md`
+> 요구사항: `docs/done/2_profile_ui_v2_prd.md`
+> 체크리스트: `docs/done/2_profile_ui_v2_todo.md`
 
 ## 1. 기반 스택
 

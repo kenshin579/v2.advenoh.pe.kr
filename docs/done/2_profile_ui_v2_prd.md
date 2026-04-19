@@ -481,5 +481,5 @@ GitHub Actions (cron) → Python health_check.py → Supabase Postgres
 - 디자인 원본: `docs/start/Profile/Profile v2.html`
 - 이전 단계 디자인: `docs/start/Profile/Profile.html`
 - 에셋: `docs/start/Profile/assets/`
-- 구현 상세: `docs/start/2_profile_ui_v2_implementation.md`
-- 작업 체크리스트: `docs/start/2_profile_ui_v2_todo.md`
+- 구현 상세: `docs/done/2_profile_ui_v2_implementation.md`
+- 작업 체크리스트: `docs/done/2_profile_ui_v2_todo.md`
