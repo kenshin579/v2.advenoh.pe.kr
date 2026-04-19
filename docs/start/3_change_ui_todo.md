@@ -52,11 +52,11 @@
 
 ## Phase 4. Sidebar — Links 블록 재구성
 
-- [ ] `SOCIAL_LINKS` 배열 정의 (github/linkedin/instagram + label + aria)
-- [ ] 기존 4개 `<li>` (github / status / blog / investment) 제거
-- [ ] `SOCIAL_LINKS.map()`으로 li 렌더, `↗ ` prefix + mono 폰트
-- [ ] 각 링크에 `aria-label` 부여 ("GitHub profile: kenshin579" 등)
-- [ ] hover 시 `text-profile-accent`, `focus-visible` outline 유지
+- [x] `SOCIAL_LINKS` 배열 정의 (github/linkedin/instagram + label + aria)
+- [x] 기존 4개 `<li>` (github / status / blog / investment) 제거
+- [x] `SOCIAL_LINKS.map()`으로 li 렌더, `↗ ` prefix + mono 폰트
+- [x] 각 링크에 `aria-label` 부여
+- [x] hover 시 `text-profile-accent`, `focus-visible` outline 유지
 
 ## Phase 5. ProjectGrid — 6-col + sec-head
 

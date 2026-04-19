@@ -79,44 +79,39 @@ export function Sidebar({ status, activeSection }: SidebarProps) {
           Links
         </div>
         <ul className="flex flex-col gap-0.5">
-          <li>
-            <Link
-              href={siteConfig.author.social.github}
-              target="_blank"
-              className="block rounded px-2 py-1 text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg"
-            >
-              github ↗
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={siteConfig.external.status}
-              target="_blank"
-              className="block rounded px-2 py-1 text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg"
-            >
-              status ↗
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://blog.advenoh.pe.kr/"
-              target="_blank"
-              className="block rounded px-2 py-1 text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg"
-            >
-              blog ↗
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://investment.advenoh.pe.kr/"
-              target="_blank"
-              className="block rounded px-2 py-1 text-profile-fg-2 hover:bg-profile-bg-3 hover:text-profile-fg"
-            >
-              investment ↗
-            </Link>
-          </li>
+          {SOCIAL_LINKS.map(({ label, href, aria }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={aria}
+                className="block rounded px-2 py-1 font-mono text-profile-fg-2 hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
+              >
+                ↗ {label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </aside>
   )
 }
+
+const SOCIAL_LINKS = [
+  {
+    label: 'github/kenshin579',
+    href: siteConfig.author.social.github,
+    aria: 'GitHub profile: kenshin579',
+  },
+  {
+    label: 'linkedin/frank-oh',
+    href: siteConfig.author.social.linkedin,
+    aria: 'LinkedIn profile: Frank Oh',
+  },
+  {
+    label: 'instagram/frank.photosnap',
+    href: siteConfig.author.social.instagram,
+    aria: 'Instagram: frank.photosnap',
+  },
+] as const
