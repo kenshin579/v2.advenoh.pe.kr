@@ -23,7 +23,7 @@ npm run lint
 
 ## Project Architecture
 
-**Next.js Static Site**: TypeScript application using Next.js 14 App Router with static site generation (SSG).
+**Next.js Static Site**: TypeScript application using Next.js 16 App Router with static site generation (SSG).
 
 - **`app/`** - Next.js App Router
   - `layout.tsx` - Root layout with Header, Footer

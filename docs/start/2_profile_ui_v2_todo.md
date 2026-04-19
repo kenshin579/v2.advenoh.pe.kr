@@ -1,0 +1,189 @@
+# Profile UI v2 — Todo 체크리스트
+
+> 요구사항: `2_profile_ui_v2_prd.md`
+> 구현 가이드: `2_profile_ui_v2_implementation.md`
+
+## Phase 0. 선결 조건 (외부 레포 PR 및 확인)
+
+- [ ] `advenoh-status/supabase/migrations/*.sql`에서 `services`, `service_status_logs`, `daily_status_summary` 뷰의 RLS anon read 정책 확인
+- [ ] RLS 미허용 시 결정:
+  - [ ] (a) advenoh-status에 RLS 완화 PR, 또는
+  - [ ] (b) `SUPABASE_SERVICE_KEY`를 Netlify 비공개 env로 주입
+- [ ] `blog-v2.advenoh.pe.kr/netlify.toml`에 `/rss.xml` CORS 헤더 추가 PR
+- [ ] `investment.advenoh.pe.kr/netlify.toml`에 `/rss.xml` CORS 헤더 추가 PR
+- [ ] 두 블로그 배포 완료 후 `curl -I` 로 `Access-Control-Allow-Origin` 헤더 응답 확인
+- [ ] `kenshin579` 계정에서 fine-grained PAT 발급 (scope: `read:user`)
+- [ ] Netlify **Production 컨텍스트**에만 `GITHUB_TOKEN` 주입 (Deploy Preview / Branch Deploy 미주입)
+- [ ] Netlify에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` 주입
+
+## Phase 1. 데이터 레이어 (`lib/`, `contents/`)
+
+### 스키마 / 콘텐츠
+
+- [ ] `lib/portfolio.ts` schema 확장 (`status`, `year`, `role`, `stack[]`, `dek`, `overview`, `featured`, `ext`, `order`)
+- [ ] 정렬 기준 `order → slug` 로 변경
+- [ ] `contents/website/*/index.md` 5건 frontmatter 확장 (신규 필드 채움)
+- [ ] `contents/profile/readme.md` 신규 — 히어로 KV(role/focus/based/xp), stack 제외
+- [ ] `lib/site-config.ts` — profile 항목 + 외부 링크(github/status/blog/investment) 구조화
+
+### 외부 데이터 Loader
+
+- [ ] `@supabase/supabase-js`, `fast-xml-parser` npm 추가
+- [ ] `lib/status.ts` — Supabase `services` + `daily_status_summary` 조회, Zod 검증, 공통 캐시 정책 적용, 하드코딩 폴백
+- [ ] `lib/github.ts` — GraphQL `contributionsCollection` (26주 윈도우), Zod, 캐시, 폴백. `GITHUB_TOKEN` 부재 시 즉시 폴백
+- [ ] `lib/writing.ts` — 두 RSS `fast-xml-parser` 파싱, 병합, 공통 캐시 정책
+- [ ] `lib/skills.ts` — raw README fetch + shields.io 배지 파서 (URL path segment + 이스케이프 역치환)
+- [ ] `lib/stats.ts` — 4-cell stats 집계 (`services up`, `commits · 26w`, `uptime · 90d`, `blog posts`)
+
+### 캐시 시드
+
+- [ ] `.cache/` 디렉터리 생성 + `.gitignore` 제외 아님 확인
+- [ ] 로컬 빌드 1회 실행 → `.cache/*.json` 5개 생성
+- [ ] `.cache/*.json` git에 커밋 (시드)
+
+## Phase 2. 스타일 / 토큰
+
+- [ ] `app/globals.css`에 profile CSS 변수 추가 (bg/fg/line/accent/상태/폰트)
+- [ ] `:root`에 초기값 `data-accent="violet" data-density="comfortable" --noise:35`
+- [ ] `[data-accent="..."]` 5종 스킨 (violet/red/green/orange/amber)
+- [ ] `[data-density="compact"]` 축소 규칙
+- [ ] `tailwind.config.ts` 확장 (`colors.profile.*`, `fontFamily.mono`, `fontFamily.sans-kr`)
+- [ ] `app/layout.tsx`에 IBM Plex Mono / IBM Plex Sans KR 추가 (`next/font/google`)
+- [ ] `Inter` 제거, `Header` / `Footer` import 제거
+- [ ] OKLCH 컬러 검증 (Chromium/Safari/Firefox)
+
+## Phase 3. 컴포넌트 구현 (`components/profile/`)
+
+### 레이아웃 컴포넌트
+
+- [ ] `TitleBar.tsx` — dots · breadcrumb (scrollSpy) · ⌘K 힌트 · N/N up
+- [ ] `Sidebar.tsx` — Workspace nav · Status · Links · hop-search
+- [ ] `RightRail.tsx` — CommitGraph · Latest posts · System
+- [ ] `StatusBar.tsx` — 섹션 · 10+ yrs · 단축키 힌트
+- [ ] `LineGutter.tsx` — 라인넘버 gutter
+
+### Hero 섹션
+
+- [ ] `Hero.tsx` — prompt + title + 소개 + KV + stats 조립
+- [ ] `TypewriterPrompt.tsx` — 4시퀀스 + caret blink (1.1s)
+- [ ] `StatsRow.tsx` — 4-cell 렌더
+- [ ] `Sparkline.tsx` — **순수 SVG path 자체 구현** (차트 라이브러리 미사용, 30줄 내외)
+
+### Projects 섹션
+
+- [ ] `ProjectGrid.tsx` — 6-col grid, featured variant 레이아웃
+- [ ] `ProjectCardV2.tsx` — `name.ext` · live dot · preview · desc · stack chips · meta-bot · `↵ open` 뱃지
+- [ ] hover scale(1.02), featured card gradient
+
+### Writing 섹션
+
+- [ ] `WritingList.tsx` — IT/INV activity list 공용, `IT`/`INV` 뱃지 (블로그 소스 기반)
+- [ ] `QuoteBlock.tsx` — 터미널풍 리디자인, 12초 자동 순환 + 수동 rotate
+
+### CommitGraph
+
+- [ ] `CommitGraph.tsx` — 26주×7일 **CSS Grid** + `data-l="0..4"`, hover 툴팁 (차트 라이브러리 미사용)
+- [ ] `contributionLevel` enum → `data-l` 매핑
+
+### 오버레이
+
+- [ ] `ProjectModal.tsx` — `role="dialog"`, `aria-modal="true"`, 포커스 트랩, prev/next, Open live ↗
+- [ ] `CommandPalette.tsx` — 기존 `cmdk` 재사용, 섹션/프로젝트/커맨드/링크 통합 검색
+- [ ] `TweaksPanel.tsx` — 우하단 토글, accent 5색 + density 2단 + noise slider
+- [ ] `NoiseOverlay.tsx` — SVG `feTurbulence`, `mix-blend-mode: overlay`
+
+## Phase 4. 훅 (`hooks/`)
+
+- [ ] `useKeyboardNav.ts` — j/k/Enter/포커스 인덱스. 입력 요소 포커스 시 early return
+- [ ] `useCommandPalette.ts` — 오픈 상태 + 쿼리 + 필터
+- [ ] `useProjectModal.ts` — 오픈 idx + prev/next + ESC
+- [ ] `useTweaks.ts` — accent/density/noise, `localStorage` 영속화
+- [ ] `useScrollSpy.ts` — 섹션 활성 감지 → breadcrumb 동기화
+- [ ] `useLiveStatus.ts` — 클라이언트 마운트 시 Supabase 재조회, initialData 교체
+- [ ] `useLiveWriting.ts` — 브라우저 `fetch` + `DOMParser` RSS 파싱, initialData 교체
+
+### 키보드 단축키 정책 적용
+
+- [ ] 입력 요소(`<input>`, `<textarea>`, `[contenteditable="true"]`) 포커스 시 `j`/`k`/`/` 비활성
+- [ ] `/` 핸들러 첫 줄에 `e.preventDefault()`
+- [ ] 계층 우선순위 구현: Modal > Palette > Global
+- [ ] 프로젝트 카드에 `aria-keyshortcuts="j k Enter"` 명시
+- [ ] 팔레트 트리거에 `aria-keyshortcuts="Meta+K /"` 명시
+- [ ] `:focus-visible` 기반 outline 적용
+
+## Phase 5. 통합
+
+- [ ] `/profile-v2` 임시 라우트에서 개발 (격리)
+- [ ] `app/page.tsx` 빌드 타임 loader 호출 (`lib/status.ts`, `github.ts`, `writing.ts`, `skills.ts`, `portfolio.ts`)
+- [ ] initialData props를 Client component로 전달
+- [ ] Sidebar Status / Hero stats / TitleBar N/N up / RightRail System → `useLiveStatus` 단일 소스 (Context 또는 props drilling)
+- [ ] 애니메이션 적용: caret blink, pulse (1.6s), project hover scale, smooth scroll
+- [ ] 반응형 검증: `≤1200px` RightRail 숨김, `≤780px` Sidebar 숨김
+- [ ] `/profile-v2` → `/`로 스왑
+
+## Phase 6. 정리
+
+### 삭제
+
+- [ ] `components/Header.tsx`
+- [ ] `components/Footer.tsx`
+- [ ] `components/PortfolioCard.tsx`
+- [ ] `components/PortfolioList.tsx`
+- [ ] `components/ProjectCard.tsx`
+- [ ] `components/QuoteRotator.tsx`
+
+### 의존성 정리
+
+- [ ] `package.json`에서 `recharts` 제거
+- [ ] `package.json`에서 `Inter` 사용 확인 후 불필요 시 제거
+
+### 레이아웃 / 라우트
+
+- [ ] `app/layout.tsx`에서 `Header` / `Footer` import·사용 완전 제거
+- [ ] `app/not-found.tsx` 기본 마크업 확인 (참조 없음 이미 검증됨)
+
+## Phase 7. 접근성 / SEO
+
+- [ ] `aria-keyshortcuts` 전체 적용 확인
+- [ ] ProjectModal: `role="dialog"` + `aria-modal="true"` + 포커스 트랩 + ESC 닫힘
+- [ ] Sidebar 항목 `role="button"` 또는 `role="tab"`
+- [ ] WCAG AA 대비비 검증 (`--muted-2` vs `--bg-2` 등)
+- [ ] og-image를 v2 디자인에 맞게 교체 검토
+- [ ] JSON-LD에 프로젝트 `ItemList` 추가 검토
+
+## Phase 8. 테스트
+
+### 빌드 검증
+
+- [ ] `npm run check` 타입 검사 통과
+- [ ] `npm run build` 정적 export 성공
+- [ ] `out/` 디렉터리 산출물 확인 (HTML, CSS, JS, 이미지)
+- [ ] 빌드 로그에서 외부 fetch WARN 발생 시 캐시 폴백 동작 검증
+
+### 수동 QA
+
+- [ ] 반응형 1440 / 1100 / 768 / 375 브레이크포인트 각각 확인
+- [ ] Chrome / Safari 교차 검증 (OKLCH + `mix-blend-mode`)
+- [ ] 5개 프로젝트 + 10개 writing + 6개 quote 로딩 확인
+- [ ] 키보드만으로 전체 내비게이션: `⌘K`, `/`, `j/k`, `Enter`, `←→`, `ESC`
+- [ ] Tweaks panel: accent 5색 전환 · density 토글 · noise slider 동작 + 새로고침 후 `localStorage` 영속화 확인
+- [ ] 페이지 refresh 시 Status / RSS 클라이언트 refresh로 fresh 데이터 반영 확인
+
+### MCP Playwright 자동화
+
+- [ ] `/` 로드 후 Hero KV + stats 렌더 검증
+- [ ] 프로젝트 카드 `j`/`k` 포커스 이동 → `Enter` 모달 열기 → `←`/`→` 이동 → `Esc` 닫기
+- [ ] `⌘K` 커맨드 팔레트 열기 → 섹션 점프 실행 → `Esc` 닫기
+- [ ] `/` 키로 팔레트 재오픈 (Firefox `preventDefault` 검증)
+- [ ] input 포커스 상태에서 `j`/`k` 비활성 검증
+- [ ] Tweaks panel 열기 → accent 5색 전환 → density 토글 → noise slider 0/50/100 → 새로고침 후 영속화 확인
+- [ ] `useLiveStatus` 클라이언트 refresh 검증 (마운트 후 값 업데이트)
+- [ ] 1100px 뷰포트에서 RightRail 숨김, 768px 에서 Sidebar 숨김 확인
+
+## Phase 9. 배포
+
+- [ ] Netlify Deploy Preview 확인 (PR preview 빌드에서 GitHub 히트맵 폴백 표시 검증)
+- [ ] Netlify Production 배포 (GitHub 히트맵 실데이터 로드 검증)
+- [ ] Production 배포 후 `/` 에서 페이지 refresh 시 Status/RSS 클라이언트 refresh 동작 재검증
+- [ ] `status.advenoh.pe.kr` 링크 클릭 이동 확인
+- [ ] 콘솔 에러 0 확인
