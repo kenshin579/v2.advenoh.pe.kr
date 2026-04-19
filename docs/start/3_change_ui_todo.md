@@ -99,9 +99,9 @@
 ## Phase 8. 테스트
 
 ### 빌드 검증
-- [ ] `npm run check` 타입 통과
-- [ ] `npm run build` 정적 export 성공
-- [ ] 콘솔에 sort 순서 또는 렌더 에러 없음 확인
+- [x] `npm run check` 타입 통과
+- [x] `npm run build` 정적 export 성공
+- [x] 콘솔에 sort 순서 또는 렌더 에러 없음 확인
 
 ### 수동 QA
 - [ ] 1440 / 1100 / 768 / 375 뷰포트 확인
