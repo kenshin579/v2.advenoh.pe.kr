@@ -18,5 +18,5 @@ overview: |
   Next.js 정적 대시보드가 90일 uptime 그리드와 월별 캘린더를 렌더한다. 
   상태 변경 시에만 Telegram Bot으로 알림을 보내 과알림을 방지한다.
 ext: .ts
-order: 4
+order: 5
 ---

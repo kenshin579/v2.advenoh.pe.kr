@@ -5,13 +5,13 @@
 
 ## Phase 1. 콘텐츠 frontmatter 재정비
 
-- [ ] `contents/website/inspire-me/index.md` — `featured: true` 추가, `order: 1`
-- [ ] `contents/website/ai-chatbot/index.md` — `featured: true` 제거, `order: 2`
-- [ ] `contents/website/it-blog/index.md` — `order: 3`
-- [ ] `contents/website/investment-blog/index.md` — `order: 4`
-- [ ] `contents/website/status/index.md` — `order: 5`
-- [ ] `npm run check` — schema(`portfolioItemSchema`) 통과 확인
-- [ ] `npm run build` — 정렬 순서 `inspire-me → ai-chatbot → it-blog → investment-blog → status` 검증
+- [x] `contents/website/inspire-me/index.md` — `featured: true` 추가, `order: 1`
+- [x] `contents/website/ai-chatbot/index.md` — `featured: true` 제거, `order: 2`
+- [x] `contents/website/it-blog/index.md` — `order: 3` (기존 유지)
+- [x] `contents/website/investment-blog/index.md` — `order: 4`
+- [x] `contents/website/status/index.md` — `order: 5`
+- [x] `npm run check` 통과
+- [ ] `npm run build` 최종 검증은 Phase 8에서
 
 ## Phase 2. ProfileShell — QuoteBlock 재배치
 
