@@ -3,14 +3,16 @@ import { getStatusSnapshot } from '@/lib/status'
 import { getGithubContrib } from '@/lib/github'
 import { getWritingSections, getLatestPosts } from '@/lib/writing'
 import { getSkills } from '@/lib/skills'
+import { getHeroStats } from '@/lib/stats'
 import { TitleBar } from '@/components/profile/TitleBar'
 import { Sidebar } from '@/components/profile/Sidebar'
 import { RightRail } from '@/components/profile/RightRail'
 import { StatusBar } from '@/components/profile/StatusBar'
 import { LineGutter } from '@/components/profile/LineGutter'
+import { Hero } from '@/components/profile/Hero'
 
 export default async function HomePage() {
-  const [portfolioItems, status, github, writingSections, latestPosts, skills] =
+  const [portfolioItems, status, github, writingSections, latestPosts, skills, stats] =
     await Promise.all([
       Promise.resolve(getPortfolioItems()),
       getStatusSnapshot(),
@@ -18,6 +20,7 @@ export default async function HomePage() {
       getWritingSections(),
       getLatestPosts(6),
       getSkills(),
+      getHeroStats(),
     ])
 
   return (
@@ -32,25 +35,7 @@ export default async function HomePage() {
             <LineGutter />
 
             <div className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]">
-              {/* 3B: Hero */}
-              <section id="readme" aria-label="readme">
-                <div className="rounded-lg border border-profile-line bg-profile-bg-2 p-6 text-profile-muted">
-                  {/* TODO: Hero · TypewriterPrompt · StatsRow · Sparkline */}
-                  <div className="font-mono text-sm">
-                    frank@seoul:~/profile (main)${' '}
-                    <span className="text-profile-fg">cat README.md</span>
-                  </div>
-                  <h1 className="mt-4 font-display text-5xl font-bold text-profile-fg sm:text-7xl">
-                    // frank oh;
-                  </h1>
-                  <p className="mt-6 max-w-xl text-sm text-profile-fg-2">
-                    Hero · KV list · Stats 영역 — Phase 3B에서 구현
-                  </p>
-                  <p className="mt-2 font-mono text-xs text-profile-muted-2">
-                    detected skills: {skills.flat.slice(0, 5).join(', ')}…
-                  </p>
-                </div>
-              </section>
+              <Hero stats={stats} github={github} status={status} skills={skills} />
 
               {/* 3C: Projects */}
               <section id="projects" aria-label="projects">

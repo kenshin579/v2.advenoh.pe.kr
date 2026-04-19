@@ -65,10 +65,10 @@
 
 ### Hero 섹션
 
-- [ ] `Hero.tsx` — prompt + title + 소개 + KV + stats 조립
-- [ ] `TypewriterPrompt.tsx` — 4시퀀스 + caret blink (1.1s)
-- [ ] `StatsRow.tsx` — 4-cell 렌더
-- [ ] `Sparkline.tsx` — **순수 SVG path 자체 구현** (차트 라이브러리 미사용, 30줄 내외)
+- [x] `Hero.tsx` — prompt + title + 소개 + KV + stats 조립, `contents/profile/readme.md` frontmatter/body 로드
+- [x] `TypewriterPrompt.tsx` — 4시퀀스 순환 + caret blink (1.1s)
+- [x] `StatsRow.tsx` — 4-cell (services up / commits 26w / uptime 90d / blog posts), Sparkline + 10-bar uptime 포함
+- [x] `Sparkline.tsx` — 순수 SVG path (currentColor 바인딩, 차트 라이브러리 미사용)
 
 ### Projects 섹션
 
