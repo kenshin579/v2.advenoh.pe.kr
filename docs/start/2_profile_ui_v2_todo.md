@@ -72,19 +72,20 @@
 
 ### Projects 섹션
 
-- [ ] `ProjectGrid.tsx` — 6-col grid, featured variant 레이아웃
-- [ ] `ProjectCardV2.tsx` — `name.ext` · live dot · preview · desc · stack chips · meta-bot · `↵ open` 뱃지
-- [ ] hover scale(1.02), featured card gradient
+- [x] `ProjectGrid.tsx` — 2-col grid(md), featured는 col-span-2 풀 너비
+- [x] `ProjectCardV2.tsx` — `name.ext` · live dot(pulse) · cover Image · dek · stack chips · year/role meta · `↵ open ↗` 뱃지
+- [x] hover scale(1.02), border 색상 변화
 
 ### Writing 섹션
 
-- [ ] `WritingList.tsx` — IT/INV activity list 공용, `IT`/`INV` 뱃지 (블로그 소스 기반)
-- [ ] `QuoteBlock.tsx` — 터미널풍 리디자인, 12초 자동 순환 + 수동 rotate
+- [x] `WritingList.tsx` — IT/INV activity list 공용, 블로그 소스 기반 `IT`/`INV` 뱃지
+- [x] `QuoteBlock.tsx` — 터미널풍(`$ fortune`), 12초 자동 순환 + 수동 ↻ rotate 버튼
 
 ### CommitGraph
 
-- [ ] `CommitGraph.tsx` — 26주×7일 **CSS Grid** + `data-l="0..4"`, hover 툴팁 (차트 라이브러리 미사용)
-- [ ] `contributionLevel` enum → `data-l` 매핑
+- [x] `CommitGraph.tsx` — 26주×7일 CSS Grid + `data-l="0..4"`, title 속성 tooltip (차트 라이브러리 미사용)
+- [x] `contributionLevel` enum → `data-l` 매핑 + `color-mix` 기반 accent 그라데이션
+- [x] Less/More 레전드 포함
 
 ### 오버레이
 
