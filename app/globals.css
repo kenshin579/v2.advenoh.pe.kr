@@ -453,3 +453,14 @@
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.25); }
 }
+
+/* ProjectCardV2 — 포커스/hover 시 `↵ open` 뱃지 노출 + preview scale */
+.project-card:hover .kbd,
+.project-card:focus-visible .kbd,
+.project-card:focus-within .kbd {
+  opacity: 1;
+}
+
+.project-card:hover img {
+  transform: scale(1.02);
+}

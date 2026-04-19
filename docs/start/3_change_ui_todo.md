@@ -67,36 +67,34 @@
 ## Phase 6. ProjectCardV2 — 원본 스타일 재작성
 
 ### 공통
-- [ ] 루트 `<article>`에 `relative` + 기존 role/tabIndex/data 속성 유지
-- [ ] hover: `border-profile-accent` + accent-soft → bg-2 그라데이션
-- [ ] focus-visible: `outline: 1px solid accent; outline-offset: -2px`
-- [ ] 카드 내부 레이아웃 `flex flex-col gap-[10px]`
-- [ ] `.kbd` 우상단 절대 배치 + 포커스/hover 시 opacity 1
+- [x] 루트 `<article>`에 `.project-card` 클래스 + 기존 role/tabIndex/data-project-card 유지
+- [x] hover: `border-profile-accent` + accent-soft → bg-2 linear-gradient (arbitrary value)
+- [x] focus-visible outline 1px solid accent, `-outline-offset-2`
+- [x] 카드 내부 레이아웃 flex + gap-[10px]
+- [x] `.kbd` 우상단 절대 배치 + 포커스/hover 시 opacity 1 (globals.css에서 처리)
 
 ### 일반 카드
-- [ ] name `font-mono text-sm font-medium`에 `before:content-['▸_']` prefix (muted)
-- [ ] ext는 `<span>`으로 accent 색
-- [ ] status 6×6 원형 + glow box-shadow(`var(--profile-green)`)
-- [ ] preview 고정 `h-[120px]` + `rounded-md` + `border-profile-line`
-- [ ] preview hover `scale-[1.02]` transition 400ms
-- [ ] desc `font-sans text-[13px] leading-[1.55] text-profile-fg-2`
-- [ ] stack chips `px-[7px] py-0.5 rounded-sm border-profile-line-2 text-[10px]`
-- [ ] meta-bot `border-t border-dashed border-profile-line text-[10px] text-profile-muted`
-- [ ] footer 좌측에 `→ {host}`, 우측에 `{year} · {role}`
+- [x] name `before:content-['▸_']` prefix, ext는 accent 색
+- [x] status 6×6 원형 + glow box-shadow(inline style)
+- [x] preview 고정 `h-[120px]` + rounded-md + border
+- [x] desc `text-[13px] leading-[1.55] text-profile-fg-2`
+- [x] stack chips `px-[7px] py-0.5 rounded-sm border-profile-line-2 text-[10px]`
+- [x] meta-bot dashed border-top
+- [x] footer 좌측 `→ {host}`, 우측 `{year} · {role}`
 
 ### Featured variant
-- [ ] 컨테이너 `md:grid md:grid-cols-[1.2fr_1fr] md:gap-[22px] md:p-[22px]`
-- [ ] 좌측 영역: row + desc + stack + meta-bot (`md:col-start-1`)
-- [ ] 우측 영역: preview 풀 높이 (`md:col-start-2 md:row-start-1 md:row-end-[span_4] min-h-[240px]`)
-- [ ] name `font-display text-[32px] font-medium tracking-[-0.02em]` + `before:content-['★_'] before:text-profile-accent`
-- [ ] desc `text-[15px] leading-[1.6] max-w-[48ch]`
-- [ ] 우상단 `featured-tag` 배지: `bg-profile-accent text-profile-accent-ink uppercase tracking-[0.14em] text-[10px] px-2.5 py-1 rounded`
-- [ ] 모바일(sm): 1-col + preview 상단 배치
+- [x] 컨테이너 `md:grid md:grid-cols-[1.2fr_1fr] md:gap-[22px] md:p-[22px]`
+- [x] 좌측: row + desc + stack + meta-bot (`md:col-start-1`)
+- [x] 우측: preview 풀 높이 (`md:col-start-2 md:row-start-1 md:row-span-full min-h-[240px]`)
+- [x] name `font-display text-[28px]~[32px] tracking-[-0.02em]` + `before:content-['★_']` accent
+- [x] desc `text-[15px] leading-[1.6] max-w-[48ch]`
+- [x] 우상단 `featured-tag` 배지 (bg accent + accent-ink, uppercase tracking-[0.14em])
+- [x] 모바일: 1-col + preview `order-first`로 상단 배치
 
-## Phase 7. globals.css 보강 (선택)
+## Phase 7. globals.css 보강
 
-- [ ] `.project-card .kbd` opacity transition 스타일 추가 (Tailwind arbitrary로 대체 가능 시 skip)
-- [ ] `.project-card .status-dot` glow box-shadow 추가 (또는 inline style)
+- [x] `.project-card:hover/:focus-visible/:focus-within .kbd { opacity: 1 }` 규칙 추가
+- [x] `.project-card:hover img { transform: scale(1.02) }` preview 확대
 
 ## Phase 8. 테스트
 
