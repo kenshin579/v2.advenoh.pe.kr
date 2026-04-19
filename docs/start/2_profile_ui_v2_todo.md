@@ -89,10 +89,11 @@
 
 ### 오버레이
 
-- [ ] `ProjectModal.tsx` — `role="dialog"`, `aria-modal="true"`, 포커스 트랩, prev/next, Open live ↗
-- [ ] `CommandPalette.tsx` — 기존 `cmdk` 재사용, 섹션/프로젝트/커맨드/링크 통합 검색
-- [ ] `TweaksPanel.tsx` — 우하단 토글, accent 5색 + density 2단 + noise slider
-- [ ] `NoiseOverlay.tsx` — SVG `feTurbulence`, `mix-blend-mode: overlay`
+- [x] `ProjectModal.tsx` — Radix Dialog(role/aria-modal/focus trap), prev/next, ←/→/ESC 키보드, `profile:open-project` CustomEvent 브리지
+- [x] `CommandPalette.tsx` — cmdk 기반, Sections/Projects/Latest posts/Links 4그룹, ⌘K/Ctrl+K/`/` 토글 (입력 포커스 시 비활성)
+- [x] `TweaksPanel.tsx` — 우하단 토글, accent 5색 + density 2단 + noise slider + localStorage 영속화
+- [x] `NoiseOverlay.tsx` — SVG `feTurbulence`, `mix-blend-mode: overlay`, `--profile-noise` 바인딩
+- [x] `ProjectCardV2.tsx` Client 전환 — 카드 클릭/Enter로 모달 열기, `live ↗` 링크는 stopPropagation로 외부 이동 유지
 
 ## Phase 4. 훅 (`hooks/`)
 

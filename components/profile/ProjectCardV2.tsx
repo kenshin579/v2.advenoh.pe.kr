@@ -1,9 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import type { PortfolioItem } from '@/lib/portfolio'
 
 type ProjectCardV2Props = {
   item: PortfolioItem
   variant?: 'featured' | 'default'
+}
+
+function openModal(slug: string) {
+  window.dispatchEvent(new CustomEvent('profile:open-project', { detail: slug }))
 }
 
 export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props) {
@@ -13,7 +19,17 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
 
   return (
     <article
-      className={`group relative flex flex-col overflow-hidden rounded-lg border border-profile-line bg-profile-bg-2 transition hover:border-profile-line-2 hover:bg-profile-bg-3 ${
+      role="button"
+      tabIndex={0}
+      aria-keyshortcuts="Enter"
+      onClick={() => openModal(item.slug)}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          openModal(item.slug)
+        }
+      }}
+      className={`group relative flex flex-col overflow-hidden rounded-lg border border-profile-line bg-profile-bg-2 transition cursor-pointer hover:border-profile-line-2 hover:bg-profile-bg-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent ${
         variant === 'featured' ? 'md:grid md:grid-cols-[1.2fr_1fr]' : ''
       }`}
     >
@@ -86,9 +102,10 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
             href={item.site}
             target="_blank"
             rel="noreferrer noopener"
+            onClick={e => e.stopPropagation()}
             className="inline-flex items-center gap-1 rounded border border-profile-line-2 bg-profile-bg-3 px-1.5 py-0.5 text-profile-fg-2 hover:border-profile-accent hover:text-profile-accent"
           >
-            ↵ open ↗
+            live ↗
           </a>
         </footer>
       </div>

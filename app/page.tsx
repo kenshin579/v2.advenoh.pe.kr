@@ -14,6 +14,10 @@ import { Hero } from '@/components/profile/Hero'
 import { ProjectGrid } from '@/components/profile/ProjectGrid'
 import { WritingList } from '@/components/profile/WritingList'
 import { QuoteBlock } from '@/components/profile/QuoteBlock'
+import { NoiseOverlay } from '@/components/profile/NoiseOverlay'
+import { TweaksPanel } from '@/components/profile/TweaksPanel'
+import { CommandPalette } from '@/components/profile/CommandPalette'
+import { ProjectModal } from '@/components/profile/ProjectModal'
 
 export default async function HomePage() {
   const [portfolioItems, quotes, status, github, writingSections, latestPosts, skills, stats] =
@@ -59,7 +63,11 @@ export default async function HomePage() {
 
       <StatusBar />
 
-      {/* TODO: CommandPalette · ProjectModal · TweaksPanel · NoiseOverlay */}
+      {/* Overlays */}
+      <NoiseOverlay />
+      <TweaksPanel />
+      <CommandPalette projects={portfolioItems} latestPosts={latestPosts} />
+      <ProjectModal items={portfolioItems} />
     </div>
   )
 }
