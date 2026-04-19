@@ -1,6 +1,6 @@
-import { getStatusSnapshot } from './status'
-import { getGithubContrib } from './github'
-import { getWritingBlog } from './writing'
+import type { StatusSnapshot } from './status'
+import type { GithubContrib } from './github'
+import type { WritingItem } from './writing'
 
 export type HeroStats = {
   servicesUp: { up: number; total: number }
@@ -10,20 +10,18 @@ export type HeroStats = {
 }
 
 /**
- * Hero 4-cell stats 집계.
- * 각 소스는 개별 캐시/폴백이 있으므로 하나가 실패해도 다른 값은 살아 있음.
+ * Hero 4-cell stats 집계. 서버/클라이언트 공용 순수 함수.
+ * 서버(page.tsx)는 초기값 계산, 클라이언트는 useLiveStatus/Writing 적용 후 재계산.
  */
-export async function getHeroStats(): Promise<HeroStats> {
-  const [status, github, blog] = await Promise.all([
-    getStatusSnapshot(),
-    getGithubContrib(),
-    getWritingBlog(),
-  ])
-
+export function computeHeroStats(
+  status: StatusSnapshot,
+  github: GithubContrib,
+  blogItems: WritingItem[]
+): HeroStats {
   return {
     servicesUp: { up: status.summary.up, total: status.summary.total },
     commits26w: github.totalContributions,
     uptime90d: status.summary.uptime90d,
-    blogPosts: blog.items.length,
+    blogPosts: blogItems.length,
   }
 }

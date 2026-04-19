@@ -1,3 +1,5 @@
+'use client'
+
 import type { StatusSnapshot } from '@/lib/status'
 
 type TitleBarProps = {

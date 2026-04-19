@@ -97,13 +97,13 @@
 
 ## Phase 4. 훅 (`hooks/`)
 
-- [ ] `useKeyboardNav.ts` — j/k/Enter/포커스 인덱스. 입력 요소 포커스 시 early return
-- [ ] `useCommandPalette.ts` — 오픈 상태 + 쿼리 + 필터
-- [ ] `useProjectModal.ts` — 오픈 idx + prev/next + ESC
-- [ ] `useTweaks.ts` — accent/density/noise, `localStorage` 영속화
-- [ ] `useScrollSpy.ts` — 섹션 활성 감지 → breadcrumb 동기화
-- [ ] `useLiveStatus.ts` — 클라이언트 마운트 시 Supabase 재조회, initialData 교체
-- [ ] `useLiveWriting.ts` — 브라우저 `fetch` + `DOMParser` RSS 파싱, initialData 교체
+- [ ] `useKeyboardNav.ts` — j/k/Enter/포커스 인덱스. 입력 요소 포커스 시 early return (Phase 4 잔여 — nice-to-have)
+- [x] `useCommandPalette` 로직 — CommandPalette 컴포넌트 내부에 인라인으로 구현 (⌘K/Ctrl+K/`/` 토글)
+- [x] `useProjectModal` 로직 — ProjectModal 컴포넌트 내부에 인라인 + `profile:open-project` CustomEvent 브리지
+- [x] `useTweaks.ts` — accent/density/noise, `localStorage` 영속화
+- [ ] `useScrollSpy.ts` — 섹션 활성 감지 → breadcrumb 동기화 (Phase 4 잔여 — nice-to-have)
+- [x] `useLiveStatus.ts` — 클라이언트 마운트 시 Supabase 재조회, initialData 교체, 실패 시 유지
+- [x] `useLiveWriting.ts` — 브라우저 `fetch` + `DOMParser` RSS 파싱, initialData 교체
 
 ### 키보드 단축키 정책 적용
 
@@ -116,34 +116,33 @@
 
 ## Phase 5. 통합
 
-- [ ] `/profile-v2` 임시 라우트에서 개발 (격리)
-- [ ] `app/page.tsx` 빌드 타임 loader 호출 (`lib/status.ts`, `github.ts`, `writing.ts`, `skills.ts`, `portfolio.ts`)
-- [ ] initialData props를 Client component로 전달
-- [ ] Sidebar Status / Hero stats / TitleBar N/N up / RightRail System → `useLiveStatus` 단일 소스 (Context 또는 props drilling)
-- [ ] 애니메이션 적용: caret blink, pulse (1.6s), project hover scale, smooth scroll
-- [ ] 반응형 검증: `≤1200px` RightRail 숨김, `≤780px` Sidebar 숨김
-- [ ] `/profile-v2` → `/`로 스왑
+- [x] `app/page.tsx` 빌드 타임 loader 호출 (portfolio/quotes/status/github/writing/skills/readme)
+- [x] ProfileShell client wrapper — initialData props + useLiveStatus/useLiveWriting 단일 소스, computeHeroStats로 fresh stats 재계산
+- [x] Sidebar/Hero/TitleBar/RightRail 모두 ProfileShell에서 같은 status/writing 공유 (props drilling)
+- [x] 애니메이션 적용: caret blink(1.1s), pulse(1.6s), project hover scale(1.02), smooth scroll
+- [x] 반응형 검증 (Tailwind md/xl 브레이크포인트): md(768) 이상 Sidebar/LineGutter, xl(1280) 이상 RightRail
+- [x] 격리 라우트 없이 `/` 직접 스왑 (Phase 6 파일 삭제로 구 컴포넌트 참조 소멸)
 
 ## Phase 6. 정리
 
-### 삭제
+### 삭제 (완료)
 
-- [ ] `components/Header.tsx`
-- [ ] `components/Footer.tsx`
-- [ ] `components/PortfolioCard.tsx`
-- [ ] `components/PortfolioList.tsx`
-- [ ] `components/ProjectCard.tsx`
-- [ ] `components/QuoteRotator.tsx`
+- [x] `components/Header.tsx`
+- [x] `components/Footer.tsx`
+- [x] `components/PortfolioCard.tsx`
+- [x] `components/PortfolioList.tsx`
+- [x] `components/ProjectCard.tsx`
+- [x] `components/QuoteRotator.tsx`
 
-### 의존성 정리
+### 의존성 정리 (완료)
 
-- [ ] `package.json`에서 `recharts` 제거
-- [ ] `package.json`에서 `Inter` 사용 확인 후 불필요 시 제거
+- [x] `package.json`에서 `recharts` 제거 (Phase 1)
+- [x] `Inter` 제거 — `next/font/google` import 삭제 (Phase 2)
 
-### 레이아웃 / 라우트
+### 레이아웃 / 라우트 (완료)
 
-- [ ] `app/layout.tsx`에서 `Header` / `Footer` import·사용 완전 제거
-- [ ] `app/not-found.tsx` 기본 마크업 확인 (참조 없음 이미 검증됨)
+- [x] `app/layout.tsx`에서 `Header` / `Footer` import·사용 완전 제거 (Phase 2)
+- [x] `app/not-found.tsx` 기본 마크업 유지 (Header/Footer 참조 없음 확인)
 
 ## Phase 7. 접근성 / SEO
 

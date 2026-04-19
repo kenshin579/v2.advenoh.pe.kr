@@ -1,3 +1,5 @@
+'use client'
+
 import type { PortfolioItem } from '@/lib/portfolio'
 import { ProjectCardV2 } from './ProjectCardV2'
 

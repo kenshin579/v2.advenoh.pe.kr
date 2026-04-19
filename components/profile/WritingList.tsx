@@ -1,3 +1,5 @@
+'use client'
+
 import type { WritingItem } from '@/lib/writing'
 
 type WritingListProps = {

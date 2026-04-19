@@ -1,3 +1,5 @@
+'use client'
+
 import type { ContributionLevel, GithubContrib } from '@/lib/github'
 
 type CommitGraphProps = {

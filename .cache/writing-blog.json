@@ -1,0 +1,145 @@
+{
+  "fetchedAt": "2026-04-19T14:36:11.145Z",
+  "items": [
+    {
+      "source": "IT",
+      "title": "Golang Concurrency 5편 - Context 완벽 가이드",
+      "link": "https://blog.advenoh.pe.kr/golang-concurrency-5-context-완벽-가이드",
+      "pubDate": "Sat, 18 Apr 2026 00:00:00 GMT",
+      "description": "Go에서 여러 goroutine을 다루다 보면 자연스럽게 마주치는 문제가 있다. \"이 goroutine을 언제 멈춰야 하지?\", \"요청이 3초 안에 끝나지 않으면 어떻게 하지?\", \"요청 ID를 하위 함수까지 어떻게 전달하지?\" 이 모든 질문에 대한 답이 바로 context 패키지다. 1. 서론 - context 패키지가 필요한 이유 서버가 HTTP 요청을 처리할 때, 하나의 요청이 여러 goroutine으로 분산되어 처리되는 것은 흔한 일이다. 이때 세 가지 핵심 요구사항이 생긴다. goroutine 취소: 클라이언트가 연결을 끊..."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency (4) - sync 패키지 완벽 가이드",
+      "link": "https://blog.advenoh.pe.kr/golang-concurrency-4-sync-패키지",
+      "pubDate": "Wed, 15 Apr 2026 00:00:00 GMT",
+      "description": "Go는 channel을 통한 통신을 권장하지만, 모든 상황에서 channel이 최적은 아니다. 단순한 공유 메모리 보호에는 sync 패키지의 동기화 프리미티브가 더 직관적이고 효율적이다. 이번 편에서는 sync 패키지의 핵심 도구인 WaitGroup, Mutex, RWMutex, Once, sync.Map의 사용법과 각각의 적용 시점을 다룬다. 1. 왜 Synchronization이 필요한가 여러 goroutine이 같은 변수에 동시에 접근하면 Race Condition이 발생한다. Race Condition이란 두 개 이상의 go..."
+    },
+    {
+      "source": "IT",
+      "title": "Terraform 완벽 가이드: 기본 개념부터 GitOps 실전까지",
+      "link": "https://blog.advenoh.pe.kr/terraform-완벽-가이드-기본-개념부터-gitops-실전까지",
+      "pubDate": "Tue, 14 Apr 2026 00:00:00 GMT",
+      "description": "1. 들어가며 인프라를 관리하다 보면 \"이 서버 설정을 누가, 언제, 왜 바꿨지?\"라는 상황을 자주 겪게 된다. 수동으로 콘솔에서 클릭하고, CLI로 명령어를 입력하고, 그 과정을 문서로 남기려 하지만 결국 현재 상태와 문서 사이에 차이가 생긴다. **IaC(Infrastructure as Code)**는 이 문제를 해결한다. 인프라를 코드로 정의하면: 버전 관리: Git으로 변경 이력을 추적할 수 있다 재현성: 같은 코드를 실행하면 동일한 환경이 만들어진다 코드 리뷰: 인프라 변경도 PR로 리뷰할 수 있다 자동화: CI/CD 파이..."
+    },
+    {
+      "source": "IT",
+      "title": "Go pprof 프로파일링으로 성능 문제 진단하기 (Profiling Go Programs with pprof)",
+      "link": "https://blog.advenoh.pe.kr/go-pprof-프로파일링으로-성능-문제-진단하기",
+      "pubDate": "Thu, 09 Apr 2026 00:00:00 GMT",
+      "description": "1. 개요 1.1 프로파일링이란? 프로파일링(Profiling)은 프로그램이 실행되는 동안 CPU, 메모리, I/O 등 자원 사용 패턴을 측정하고 분석하는 기법이다. 프로파일링을 통해 성능 병목(bottleneck) 지점을 정확하게 식별하고, 최적화가 필요한 코드 영역을 찾아낼 수 있다. 프로파일링 없이 \"느린 것 같다\"는 감에 의존하면, 실제 병목과 무관한 코드를 최적화하느라 시간을 낭비하게 된다. \"측정 없이 최적화하지 마라(Don't optimize without measuring)\" 는 소프트웨어 성능 분석의 기본 원칙이다...."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency (3) - Select와 Channel 심화 패턴",
+      "link": "https://blog.advenoh.pe.kr/golang-concurrency-3-select와-channel-심화",
+      "pubDate": "Wed, 08 Apr 2026 00:00:00 GMT",
+      "description": "select문은 여러 channel을 동시에 기다리는 Go만의 강력한 제어 구조다. 이를 활용하면 timeout, fan-in/fan-out, 동적 channel 관리 등 다양한 동시성 패턴을 구현할 수 있다. 1. Select 문 기본 select는 switch와 비슷하지만 channel 연산에 특화되어 있다. 여러 case 중 준비된 것 하나를 실행한다. select { case msg := &#x3C;-ch1: // ch1에서 먼저 데이터가 오면 실행 fmt.Println(\"ch1:\", msg) case msg := &#x3C..."
+    },
+    {
+      "source": "IT",
+      "title": "Frank's IT Biweekly News (2026-03-18 ~ 2026-04-01)",
+      "link": "https://blog.advenoh.pe.kr/news-2026-04-01",
+      "pubDate": "Wed, 01 Apr 2026 00:00:00 GMT",
+      "description": "2주간의 주요 IT 뉴스를 카테고리별로 정리했습니다. ☁️ Cloud &#x26; Infra EP208: Load Balancer vs API Gateway - ByteByteGo Newsletter How Netflix Live Streams to 100 Million Devices in 60 Seconds - ByteByteGo Newsletter LINE 서비스의 대규모 광고 데이터를 처리하기 위한 Spark on Kubernetes 적용기 - LY Corporation Tech Blog SRE 팀의 반복 작업을 10분의 1로..."
+    },
+    {
+      "source": "IT",
+      "title": "Claude Code 확장 기능 완벽 가이드: Command, Skill, Subagent",
+      "link": "https://blog.advenoh.pe.kr/claude-code-확장-기능-완벽-가이드-command-skill-subagent",
+      "pubDate": "Tue, 24 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 Claude Code는 Anthropic에서 만든 AI 기반 CLI 도구로, 터미널에서 직접 코드를 읽고 수정하며 다양한 개발 작업을 수행할 수 있다. 단순한 질문-응답을 넘어 파일 탐색, 코드 수정, Git 작업, 테스트 실행까지 자율적으로 처리하는 에이전트형 코딩 도구이다. Claude Code를 기본 설정 그대로 사용해도 충분히 생산적이지만, 반복적인 작업 패턴이 생기거나 프로젝트별 규칙을 적용하고 싶을 때는 확장 기능이 필요하다. Claude Code는 이를 위해 세 가지 핵심 메커니즘을 제공한다. 구분 Custo..."
+    },
+    {
+      "source": "IT",
+      "title": "Claude Code Plugin & Hooks 완벽 가이드: 확장 기능 패키징부터 이벤트 자동화까지",
+      "link": "https://blog.advenoh.pe.kr/claude-code-plugin-hooks-완벽-가이드",
+      "pubDate": "Thu, 19 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 이전 글 Claude Code 확장 기능 완벽 가이드: Command, Skill, Subagent에서는 Claude Code의 세 가지 핵심 확장 기능인 Command, Skill, Subagent의 개념과 실전 활용법을 다뤘다. 이번 글에서는 중복 없이 다음 단계인 Hooks(이벤트 기반 자동화)와 Plugin 시스템(확장 기능 패키징 및 배포)을 중심으로 새로운 내용을 정리한다. 1.1 단독 설정 vs Plugin의 차이 개별 확장 기능은 .claude/ 디렉토리에 직접 설정하여 바로 사용할 수 있다. 하지만 팀과 ..."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency (2) - Channel 완전 정복",
+      "link": "https://blog.advenoh.pe.kr/golang-concurrency-2-channel-완전-정복",
+      "pubDate": "Thu, 19 Mar 2026 00:00:00 GMT",
+      "description": "Channel은 goroutine 간 데이터를 주고받는 통신 수단이다. Go의 동시성 철학인 \"메모리를 공유하지 말고, 통신으로 메모리를 공유하라\"를 실현하는 핵심 메커니즘이다. 이번 편에서는 Channel의 기본 동작부터 buffered/unbuffered 차이, 방향 제한, close 규칙까지 완전히 다룬다. 1. Channel 개념과 생성 Channel은 make 함수로 생성한다. 타입이 지정된 파이프라고 생각하면 된다. ch := make(chan int) // unbuffered channel (int 타입) ch := m..."
+    },
+    {
+      "source": "IT",
+      "title": "Grafana Pyroscope로 Go 애플리케이션 Continuous Profiling 시작하기",
+      "link": "https://blog.advenoh.pe.kr/grafana-pyroscope로-go-애플리케이션-continuous-profiling-시작하기",
+      "pubDate": "Mon, 16 Mar 2026 00:00:00 GMT",
+      "description": "1. 들어가며 Go에서 성능 분석을 할 때 net/http/pprof나 runtime/pprof를 주로 사용한다. 개발 환경에서 특정 시점의 CPU 사용량이나 메모리 할당을 스냅샷으로 확인하기에는 충분하지만, 프로덕션 환경에서는 몇 가지 한계가 있다. 문제가 발생한 시점에 수동으로 프로파일을 수집해야 한다 수집한 프로파일은 로컬 파일로만 남아 시간 경과에 따른 비교가 어렵다 여러 인스턴스에서 분산된 프로파일 데이터를 중앙에서 관리할 수 없다 Continuous Profiling은 이러한 한계를 해결한다. 프로덕션에서 상시 낮은 오버..."
+    },
+    {
+      "source": "IT",
+      "title": "Frank's IT Biweekly News (2026-03-01 ~ 2026-03-15)",
+      "link": "https://blog.advenoh.pe.kr/news-2026-03-15",
+      "pubDate": "Sun, 15 Mar 2026 00:00:00 GMT",
+      "description": "2주간의 주요 IT 뉴스를 카테고리별로 정리했습니다. ☁️ Cloud &#x26; Infra LY Corporation의 클라우드 인프라 개편: 거대한 두 개의 클라우드를 통합한 차세대 플랫폼 Flava의 아키텍처 소개 - LY Corporation Tech Blog You can't stream the energy: A developer's guide to Google Cloud Next '26 in Vegas - Google Developers Blog 맥북 네오에서 Parallels 가상 머신으로 윈도우 실행 가능 확인 - G..."
+    },
+    {
+      "source": "IT",
+      "title": "Go 1.26 변경사항 총정리 (What's New in Go 1.26)",
+      "link": "https://blog.advenoh.pe.kr/go-1-26-변경사항-whats-new-in-go-1-26",
+      "pubDate": "Fri, 13 Mar 2026 00:00:00 GMT",
+      "description": "Go 1.26은 2026년 2월에 릴리스되었다. 이번 버전의 핵심 테마는 언어 표현력 향상, 성능 대폭 개선, 보안 강화이다. new(expr) 초기값 지정, 제네릭 자기참조, Green Tea GC 기본 활성화, cgo 30% 성능 향상 등 실무에 바로 적용할 수 있는 변경사항이 많다. 1.언어 변경사항 1.1 new() 함수 확장 - 초기값 지정 Go 1.26에서 가장 눈에 띄는 언어 변경사항이다. 기존 new(T)는 제로값 포인터만 생성할 수 있었지만, 이제 new(expr) 형태로 초기값을 지정한 포인터를 한 줄로 생성할 수..."
+    },
+    {
+      "source": "IT",
+      "title": "ArgoCD에서 여러 Application을 GitOps로 관리하기: App of Apps vs ApplicationSet",
+      "link": "https://blog.advenoh.pe.kr/argocd-여러-application-gitops-관리",
+      "pubDate": "Tue, 10 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 GitOps 환경에서 Helm Chart로 여러 애플리케이션을 관리할 때, 각 애플리케이션마다 ArgoCD Application을 수동으로 생성하는 것은 번거롭고 실수가 발생하기 쉽다. 예를 들어, 다음과 같은 Helm Chart 구조가 있다고 가정해보자. chart/ ├── echo-server/ ├── hello-world-server/ └── hello-world-server-hook/ 이 3개의 애플리케이션을 ArgoCD로 배포하려면 어떻게 해야 할까? ArgoCD가 제공하는 배포 패턴 패턴 설명 자동화 수준 유연..."
+    },
+    {
+      "source": "IT",
+      "title": "Ingress NGINX 지원 종료 이후, Gateway API로의 마이그레이션 전략",
+      "link": "https://blog.advenoh.pe.kr/ingress-nginx-지원-종료-이후-gateway-api로의-마이그레이션-전략",
+      "pubDate": "Tue, 10 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 Kubernetes 환경에서 가장 널리 사용되던 Ingress Controller 중 하나인 Ingress NGINX가 **2026년 3월을 기점으로 공식 지원 종료(EOL)**를 예고했다. 지원 종료는 단순히 \"더 이상 업데이트가 없다\"는 의미에 그치지 않는다. 신규 기능 개발 중단 보안 패치 제공 중단 가능성 Kubernetes 생태계 내에서의 점진적 비권장(Deprecated) 포지션 즉, 장기적으로 Ingress NGINX에 의존하는 구조는 기술 부채가 된다는 의미다. 이로 인해 Kubernetes 공식 SIG-N..."
+    },
+    {
+      "source": "IT",
+      "title": "OpenClaw Telegram 멀티 에이전트 구성하기: 하나의 Gateway에서 여러 AI 봇 운영",
+      "link": "https://blog.advenoh.pe.kr/openclaw-telegram-멀티-에이전트-구성하기",
+      "pubDate": "Mon, 09 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 OpenClaw는 WhatsApp, Telegram, Discord 등 메시징 앱을 AI 에이전트와 연결하는 자체 호스팅 게이트웨이다. 기본적으로 하나의 에이전트가 모든 메시지를 처리하지만, 실제 운영에서는 용도별로 봇을 분리하고 싶은 경우가 많다. 예를 들어: 알림봇: 서버 장애나 배포 알림만 전달 모니터링봇: 시스템 메트릭 분석 및 리포트 어시스턴트봇: 일상적인 질문과 작업 처리 OpenClaw의 멀티 에이전트 기능을 사용하면 이런 구성이 가능하다. 각 에이전트는 완전히 격리된 독립적인 \"뇌(brain)\"로 동작하며,..."
+    },
+    {
+      "source": "IT",
+      "title": "OpenClaw에서 gog로 Google Workspace 연동하기",
+      "link": "https://blog.advenoh.pe.kr/openclaw에서-gog로-google-workspace-연동하기",
+      "pubDate": "Sun, 08 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 OpenClaw에 Google Workspace를 연동하면 Telegram 채팅만으로 Gmail, Calendar, Drive를 제어할 수 있다. 이 글에서는 gog(Google Workspace CLI)를 OpenClaw에 설정하는 과정을 정리한다. Google Cloud Console에서 OAuth JSON 파일을 다운로드한 이후, 모든 작업을 Telegram 채팅으로만 진행했다. 터미널에서 직접 명령어를 입력한 적이 없다. Google Cloud Console에서 OAuth 설정 (웹 브라우저) JSON creden..."
+    },
+    {
+      "source": "IT",
+      "title": "Go Wails로 데스크톱 앱 만들기",
+      "link": "https://blog.advenoh.pe.kr/go-wails-desktop-app",
+      "pubDate": "Sun, 08 Mar 2026 00:00:00 GMT",
+      "description": "팀원 중 한 명이 내부 디버깅용 도구를 Wails로 개발했는데, 너무 깔끔하게 만들어졌고 우리가 익숙한 Golang 으로 개발해서 이번 기회에 Wails에 대해 스터디해 보면 좋겠다 싶어 블로그로 정리하게 되었다. Go로 웹 서버나 CLI 도구를 만드는 것은 익숙하지만, 데스크톱 앱은 어떨까? Wails는 Go 백엔드와 웹 프론트엔드(React, Vue, Svelte 등)를 결합하여 크로스 플랫폼 데스크톱 애플리케이션을 만들 수 있는 프레임워크다. Electron처럼 Chromium을 번들링하지 않고 OS의 네이티브 WebView를..."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency (1) - 개요와 Goroutine 기초",
+      "link": "https://blog.advenoh.pe.kr/golang-concurrency-1-goroutine-기초",
+      "pubDate": "Sat, 07 Mar 2026 00:00:00 GMT",
+      "description": "Go 언어가 다른 언어와 차별화되는 가장 큰 특징 중 하나는 동시성(Concurrency) 지원이다. Go는 언어 차원에서 goroutine과 channel을 제공하여, 복잡한 동시성 프로그래밍을 간결하고 안전하게 작성할 수 있도록 설계되었다. 이 시리즈에서는 Go의 Concurrency를 기초부터 실전까지 단계별로 다룬다. 첫 번째 편에서는 Concurrency의 기본 개념과 Go의 핵심 실행 단위인 Goroutine에 대해 알아본다. 1. Concurrency vs Parallelism Concurrency와 Parallelis..."
+    },
+    {
+      "source": "IT",
+      "title": "Claude Code에서 사용하면 좋은 MCP 서버 추천 가이드",
+      "link": "https://blog.advenoh.pe.kr/claude-code-mcp-추천-가이드",
+      "pubDate": "Wed, 04 Mar 2026 00:00:00 GMT",
+      "description": "1. 개요 Claude Code는 Anthropic에서 만든 AI 기반 CLI 도구로, 터미널에서 코드를 읽고 수정하며 다양한 개발 작업을 수행할 수 있다. 기본 기능만으로도 강력하지만, MCP(Model Context Protocol) 서버를 연결하면 GitHub PR 생성, 브라우저 테스트, DB 쿼리, 최신 문서 검색 등을 자연어 한 줄로 처리할 수 있다. 이 글에서는 MCP의 기본 개념부터 Claude Code에서의 설정 방법, 그리고 개발자에게 실질적으로 유용한 MCP 서버를 카테고리별로 추천한다. 2. MCP란 무엇인가 ..."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Generics (3) - 실전 예제 모음",
+      "link": "https://blog.advenoh.pe.kr/golang-generics-3-실전-예제-모음",
+      "pubDate": "Tue, 03 Mar 2026 00:00:00 GMT",
+      "description": "1편에서 기본 문법을, 2편에서 Type Constraint를 다뤘다. 이번 편에서는 Generics를 활용한 실전 예제들을 구현해본다. 자료구조, 유틸 함수, 함수형 패턴, 그리고 Go 1.21+ 표준 라이브러리까지 살펴본다. 1. Generic 자료구조 구현 1.1 Generic Stack LIFO(Last In, First Out) 구조의 Stack을 Generics로 구현한다. type Stack[T any] struct { items []T } func NewStack[T any]() *Stack[T] { return &#..."
+    }
+  ]
+}

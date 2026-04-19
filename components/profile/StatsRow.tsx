@@ -1,3 +1,5 @@
+'use client'
+
 import type { HeroStats } from '@/lib/stats'
 import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'

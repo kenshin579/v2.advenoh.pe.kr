@@ -1,3 +1,5 @@
+'use client'
+
 import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'
 import type { WritingItem } from '@/lib/writing'

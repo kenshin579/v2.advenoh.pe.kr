@@ -1,53 +1,25 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+'use client'
+
 import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'
 import type { HeroStats } from '@/lib/stats'
-import { pickHeroStack, type Skills } from '@/lib/skills'
+import type { ReadmeData } from '@/lib/profile-readme'
 import { TypewriterPrompt } from './TypewriterPrompt'
 import { StatsRow } from './StatsRow'
-
-type ReadmeData = {
-  role?: string
-  focus?: string
-  based?: string
-  xp?: string
-  body: string
-}
-
-function loadReadme(): ReadmeData {
-  try {
-    const p = path.join(process.cwd(), 'contents/profile/readme.md')
-    const raw = fs.readFileSync(p, 'utf8')
-    const { data, content } = matter(raw)
-    return {
-      role: typeof data.role === 'string' ? data.role : undefined,
-      focus: typeof data.focus === 'string' ? data.focus : undefined,
-      based: typeof data.based === 'string' ? data.based : undefined,
-      xp: typeof data.xp === 'string' ? data.xp : undefined,
-      body: content.trim(),
-    }
-  } catch {
-    return { body: '' }
-  }
-}
 
 type HeroProps = {
   stats: HeroStats
   github: GithubContrib
   status: StatusSnapshot
-  skills: Skills
+  stack: string[]
+  readme: ReadmeData
 }
 
-export function Hero({ stats, github, status, skills }: HeroProps) {
-  const readme = loadReadme()
-  const stack = pickHeroStack(skills)
-
+export function Hero({ stats, github, status, stack, readme }: HeroProps) {
   const kvs: Array<[string, string | undefined]> = [
     ['role', readme.role],
     ['focus', readme.focus],
-    ['stack', stack.join(' · ')],
+    ['stack', stack.length > 0 ? stack.join(' · ') : undefined],
     ['based', readme.based],
     ['xp', readme.xp],
   ]
