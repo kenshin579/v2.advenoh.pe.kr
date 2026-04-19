@@ -60,13 +60,9 @@
 
 ## Phase 5. ProjectGrid — 6-col + sec-head
 
-- [ ] 기존 2-col grid → `grid grid-cols-1 md:grid-cols-6 gap-[10px]`
-- [ ] featured 카드 wrapper `md:col-span-6`, 일반 카드 wrapper `md:col-span-3`
-- [ ] 섹션 헤더를 `sec-head` 구조로 재작성:
-  - [ ] `<h2>projects</h2>`
-  - [ ] `<span class="hash">#02</span>` (muted-2)
-  - [ ] `<div>` bar (`flex-1 border-t border-profile-line-2`)
-  - [ ] `<span>` cnt 텍스트 `ls ./projects · N items · [j] [k] to navigate` (kbd 태그 포함)
+- [x] 기존 2-col grid → `grid grid-cols-1 md:grid-cols-6 gap-[10px]`
+- [x] featured 카드 wrapper `md:col-span-6`, 일반 카드 wrapper `md:col-span-3`
+- [x] 섹션 헤더 `sec-head` 구조 재작성 (h2 + #02 + bar + cnt with kbd)
 
 ## Phase 6. ProjectCardV2 — 원본 스타일 재작성
 
