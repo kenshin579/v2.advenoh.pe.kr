@@ -19,17 +19,17 @@
 
 ## 2. `QuoteBlock` 리팩터링
 
-- [ ] `components/profile/QuoteBlock.tsx` 재작성
-  - [ ] props 제거 (외부 주입 없음)
-  - [ ] 상태: `loading | ready | error`
-  - [ ] `useEffect`로 마운트 시 fetch
-  - [ ] KST(`Asia/Seoul`) 기준 `YYYY-MM-DD` 키로 `localStorage` 일일 캐시
-  - [ ] 로딩 시 `min-h-[104px]` 스켈레톤 (CLS 방지)
-  - [ ] ready 시 `<a target="_blank" rel="noopener noreferrer" aria-label>` 로 감싸기
-  - [ ] hover/focus 시 `text-profile-accent`
-  - [ ] 에러 시 FALLBACK 렌더(링크 비활성)
-  - [ ] 상단 라벨 `$ quote-of-the-day`
-  - [ ] `↻ rotate` 버튼 제거
+- [x] `components/profile/QuoteBlock.tsx` 재작성
+  - [x] props 제거 (외부 주입 없음)
+  - [x] 상태: `loading | ready | error`
+  - [x] `useEffect`로 마운트 시 fetch
+  - [x] KST(`Asia/Seoul`) 기준 `YYYY-MM-DD` 키로 `localStorage` 일일 캐시
+  - [x] 로딩 시 `min-h-[104px]` 스켈레톤 (CLS 방지)
+  - [x] ready 시 `<a target="_blank" rel="noopener noreferrer" aria-label>` 로 감싸기
+  - [x] hover/focus 시 `text-profile-accent`
+  - [x] 에러 시 FALLBACK 렌더(링크 비활성)
+  - [x] 상단 라벨 `$ quote-of-the-day`
+  - [x] `↻ rotate` 버튼 제거
 
 ## 3. 호출부 정리
 
