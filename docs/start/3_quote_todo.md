@@ -75,10 +75,10 @@
 
 ## 8. PR & 배포
 
-- [ ] 커밋 메시지: `[#이슈번호] feat: 오늘의 명언 inspire-me widget API 연동`
-- [ ] `gh pr create --title "..." --body "$(cat <<'EOF' ... EOF)"` (HEREDOC)
-- [ ] 리뷰어 지정: `kenshin579`
-- [ ] PR 머지 → Netlify 자동 배포
+- [x] feature 브랜치 push: `feat/40-inspire-me-qotd`
+- [x] PR 생성: [#41](https://github.com/kenshin579/v2.advenoh.pe.kr/pull/41)
+- [x] 리뷰어 지정: `kenshin579`
+- [ ] PR 머지 → Netlify 자동 배포 (리뷰 대기)
 - [ ] 운영 도메인 `https://v2.advenoh.pe.kr` 에서 최종 확인
   - [ ] QOTD 렌더 정상
   - [ ] 링크 클릭 → inspire-me 상세 열림
@@ -86,6 +86,6 @@
 
 ## 9. 후처리
 
-- [ ] feature 브랜치 삭제
-- [ ] 관련 이슈 close 코멘트 작성
+- [ ] (머지 후) feature 브랜치 삭제
+- [ ] (머지 후) 이슈 #40 자동 close (PR `Closes #40`)
 - [ ] (옵션) `POST /api/widget/impression` 전송 도입 여부 별도 티켓화
