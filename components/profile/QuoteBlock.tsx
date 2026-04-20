@@ -13,7 +13,9 @@ type State =
   | { kind: 'ready'; quote: TodayQuote }
   | { kind: 'error'; quote: TodayQuote }
 
-const LS_KEY = (date: string, lang: string) => `quote:today:${date}:${lang}`
+const LS_KEY = (lang: string) => `quote:today:${lang}`
+
+type CachedEntry = { date: string; quote: TodayQuote }
 
 function kstDate(): string {
   return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date())
@@ -25,15 +27,18 @@ export function QuoteBlock() {
   useEffect(() => {
     let cancelled = false
     const lang = 'ko'
-    const dateKey = kstDate()
+    const today = kstDate()
 
-    const cached = typeof window !== 'undefined'
-      ? window.localStorage.getItem(LS_KEY(dateKey, lang))
+    const raw = typeof window !== 'undefined'
+      ? window.localStorage.getItem(LS_KEY(lang))
       : null
-    if (cached) {
+    if (raw) {
       try {
-        setState({ kind: 'ready', quote: JSON.parse(cached) as TodayQuote })
-        return
+        const cached = JSON.parse(raw) as CachedEntry
+        if (cached.date === today && cached.quote) {
+          setState({ kind: 'ready', quote: cached.quote })
+          return
+        }
       } catch {
         /* fall through to fetch */
       }
@@ -44,7 +49,8 @@ export function QuoteBlock() {
       if (quote) {
         setState({ kind: 'ready', quote })
         try {
-          window.localStorage.setItem(LS_KEY(dateKey, lang), JSON.stringify(quote))
+          const entry: CachedEntry = { date: today, quote }
+          window.localStorage.setItem(LS_KEY(lang), JSON.stringify(entry))
         } catch {
           /* ignore quota errors */
         }

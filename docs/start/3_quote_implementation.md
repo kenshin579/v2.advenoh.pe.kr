@@ -119,7 +119,8 @@ type State =
   | { kind: 'ready'; quote: TodayQuote }
   | { kind: 'error'; quote: TodayQuote }
 
-const LS_KEY = (d: string, lang: string) => `quote:today:${d}:${lang}`
+const LS_KEY = (lang: string) => `quote:today:${lang}`
+type CachedEntry = { date: string; quote: TodayQuote }
 const kstDate = () =>
   new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date())
 
@@ -129,15 +130,18 @@ export function QuoteBlock() {
   useEffect(() => {
     let cancelled = false
     const lang = 'ko'
-    const dateKey = kstDate()
+    const today = kstDate()
 
-    const cached = typeof window !== 'undefined'
-      ? window.localStorage.getItem(LS_KEY(dateKey, lang))
+    const raw = typeof window !== 'undefined'
+      ? window.localStorage.getItem(LS_KEY(lang))
       : null
-    if (cached) {
+    if (raw) {
       try {
-        setState({ kind: 'ready', quote: JSON.parse(cached) as TodayQuote })
-        return
+        const cached = JSON.parse(raw) as CachedEntry
+        if (cached.date === today && cached.quote) {
+          setState({ kind: 'ready', quote: cached.quote })
+          return
+        }
       } catch {/* fall through */}
     }
 
@@ -146,7 +150,8 @@ export function QuoteBlock() {
       if (quote) {
         setState({ kind: 'ready', quote })
         try {
-          window.localStorage.setItem(LS_KEY(dateKey, lang), JSON.stringify(quote))
+          const entry: CachedEntry = { date: today, quote }
+          window.localStorage.setItem(LS_KEY(lang), JSON.stringify(entry))
         } catch {/* ignore quota errors */}
       } else {
         setState({ kind: 'error', quote: FALLBACK_QUOTE })
@@ -227,7 +232,7 @@ function QuoteBody({ quote, disabled }: { quote: TodayQuote; disabled: boolean }
 ## 5. 데이터 흐름
 
 1. 사용자가 `v2.advenoh.pe.kr` 접속 → 정적 HTML 전달 (스켈레톤만 포함).
-2. `QuoteBlock` 마운트 → `localStorage`에 `quote:today:YYYY-MM-DD:ko` 존재하면 그대로 사용.
+2. `QuoteBlock` 마운트 → `localStorage`의 `quote:today:ko` 값이 있고 `date === 오늘(KST)`이면 그대로 사용.
 3. 캐시 미스면 `GET /api/widget/quote-of-the-day?lang=ko` 호출.
 4. 서버는 Redis 캐시 히트 또는 `QuoteOfTheDayUsecase.GetToday` 로 오늘자 명언 결정 (해시 시드, DB 저장으로 날짜 내 고정).
 5. 응답 `{ data: {...} }` → zod 파싱 → `ready` 상태 렌더 + `localStorage` 저장.

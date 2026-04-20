@@ -23,7 +23,7 @@
   - [x] props 제거 (외부 주입 없음)
   - [x] 상태: `loading | ready | error`
   - [x] `useEffect`로 마운트 시 fetch
-  - [x] KST(`Asia/Seoul`) 기준 `YYYY-MM-DD` 키로 `localStorage` 일일 캐시
+  - [x] `localStorage` 일일 캐시: 키 `quote:today:{lang}`, 값 `{ date, quote }` — KST 오늘과 다르면 무시
   - [x] 로딩 시 `min-h-[104px]` 스켈레톤 (CLS 방지)
   - [x] ready 시 `<a target="_blank" rel="noopener noreferrer" aria-label>` 로 감싸기
   - [x] hover/focus 시 `text-profile-accent`
@@ -63,7 +63,7 @@
 - [x] 명언 영역이 `<a target="_blank" rel="noopener noreferrer">` 로 감싸져 있는지 확인
 - [x] `href`가 `https://inspire-me.advenoh.pe.kr/quotes/{uuid}` 패턴 검증 (실제 UUID 확인됨)
 - [x] `aria-label="inspire-me에서 이 명언 자세히 보기"` 확인
-- [x] `localStorage` 키 `quote:today:2026-04-20:ko` 저장 확인
+- [x] `localStorage` 키 `quote:today:ko` 저장 확인 (값에 `date` 포함)
 - [x] 재로드 시 같은 명언 유지(캐시 동작) 확인
 - [ ] 오프라인/API 다운 시 FALLBACK 렌더 확인 — 수동 DevTools(offline 토글) 권장. 코드 리뷰로 try/catch → null → FALLBACK 경로 확인 완료.
 

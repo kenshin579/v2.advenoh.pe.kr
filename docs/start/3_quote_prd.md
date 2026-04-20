@@ -187,7 +187,7 @@ export async function fetchTodayQuote(lang: 'ko' | 'en' = 'ko'): Promise<TodayQu
 - 상태: `loading | ready | error` 3상태.
 - ready 시 `<a href="{INSPIRE_ME}/quotes/{id}" target="_blank" rel="noopener noreferrer">` 로 감싸고 `aria-label="inspire-me에서 이 명언 자세히 보기"`.
 - fallback 명언 1건을 모듈 상수로 내장 (현 7건 중 1건 선택).
-- `localStorage` 키 `quote:today:{YYYY-MM-DD}:{lang}` 로 일일 캐시(옵션).
+- `localStorage` 키 `quote:today:{lang}`, 값 `{ date, quote }` 로 일일 캐시. 읽을 때 `date`를 KST 오늘과 비교해 구형 캐시는 무시(옵션).
 
 #### 4.2.3 주변 수정
 
