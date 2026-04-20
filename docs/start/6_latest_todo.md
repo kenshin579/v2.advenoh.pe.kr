@@ -67,12 +67,12 @@
 
 ## 7. 커밋 & PR
 
-- [ ] 한국어 커밋 메시지로 커밋 (예: `feat: RightRail Latest posts 노출 개수 6 → 10`)
-- [ ] 원격 push: `git push -u origin feat/{issue-number}-latest-posts-10`
-- [ ] `gh pr create` + HEREDOC으로 PR 생성
-- [ ] reviewer `kenshin579` 지정
-- [ ] PR 본문 Summary에 변경 파일 3종 및 Before/After 요약 포함
-- [ ] PR 본문 Test plan에 로컬 시각 검증 + Playwright 검증 체크리스트 포함
+- [x] 한국어 커밋 메시지로 커밋 (docs: PRD/impl/todo, feat: 코드 3곳)
+- [x] 원격 push: `git push -u origin feat/42-latest-posts-10`
+- [x] `gh pr create` + HEREDOC으로 PR 생성 (#43)
+- [x] reviewer `kenshin579` 지정
+- [x] PR 본문 Summary에 변경 파일 3종 및 Before/After 요약 포함
+- [x] PR 본문 Test plan에 Playwright 검증 체크리스트 포함
 
 ## 8. 배포 & 최종 확인
 
