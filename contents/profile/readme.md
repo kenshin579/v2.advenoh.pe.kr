@@ -5,10 +5,10 @@ based: Seoul, South Korea · open to remote
 xp: 10+ years
 headline: Software Engineer
 stack:
-  - Claude
-  - Python
   - Go
-  - TypeScript
+  - Python
+  - Claude
+  - Cursor
   - Java
   - Spring Boot
 db:
