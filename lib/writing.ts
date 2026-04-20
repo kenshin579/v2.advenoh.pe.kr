@@ -99,9 +99,9 @@ export async function getWritingSections() {
 }
 
 /**
- * 우측 레일 Latest posts용 (IT+INV 병합, 날짜순 상위 6개)
+ * 우측 레일 Latest posts용 (IT+INV 병합, 날짜순 상위 10개)
  */
-export async function getLatestPosts(limit = 6): Promise<WritingItem[]> {
+export async function getLatestPosts(limit = 10): Promise<WritingItem[]> {
   const [itBundle, invBundle] = await Promise.all([getWritingBlog(), getWritingInvestment()])
   return [...itBundle.items, ...invBundle.items]
     .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())

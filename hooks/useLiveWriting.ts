@@ -61,7 +61,7 @@ export function useLiveWriting(initial: {
 
         const latest = [...it, ...inv]
           .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
-          .slice(0, 6)
+          .slice(0, 10)
 
         setData({
           it: it.slice(0, 5),

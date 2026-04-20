@@ -13,7 +13,7 @@ export default async function HomePage() {
       getStatusSnapshot(),
       getGithubContrib(),
       getWritingSections(),
-      getLatestPosts(6),
+      getLatestPosts(10),
     ])
 
   const readme = loadReadme()
