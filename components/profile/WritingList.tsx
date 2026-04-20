@@ -5,6 +5,7 @@ import type { WritingItem } from '@/lib/writing'
 type WritingListProps = {
   id: string
   title: string
+  hash?: string
   items: WritingItem[]
 }
 
@@ -14,16 +15,20 @@ function formatDate(pubDate: string): string {
   return d.toISOString().slice(0, 10)
 }
 
-export function WritingList({ id, title, items }: WritingListProps) {
+export function WritingList({ id, title, hash, items }: WritingListProps) {
   const source = items[0]?.source
 
   return (
     <section id={id} aria-label={title} className="space-y-3">
-      <header className="flex items-baseline justify-between border-b border-profile-line-2 pb-2">
-        <h2 className="font-mono text-[11px] uppercase tracking-widest text-profile-muted">
+      <header className="mb-[18px] flex items-baseline gap-3">
+        <h2 className="m-0 font-mono text-[12px] font-medium uppercase tracking-[0.14em] text-profile-muted before:content-['//_'] before:text-profile-accent">
           {title}
         </h2>
-        <span className="font-mono text-[11px] text-profile-muted-2">
+        {hash && (
+          <span className="font-mono text-[11px] text-profile-muted-2">{hash}</span>
+        )}
+        <div className="flex-1 border-t border-profile-line" aria-hidden="true" />
+        <span className="font-mono text-[11px] text-profile-muted">
           {items.length} / recent
         </span>
       </header>

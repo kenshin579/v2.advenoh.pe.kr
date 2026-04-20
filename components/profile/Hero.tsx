@@ -37,8 +37,12 @@ export function Hero({ stats, github, status, readme }: HeroProps) {
     >
       <TypewriterPrompt />
 
-      <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-profile-fg sm:text-7xl md:text-8xl">
-        <span className="text-profile-accent">//</span> frank oh<span className="text-profile-muted-2">;</span>
+      <h1 className="font-display font-medium leading-[0.9] tracking-[-0.035em] text-profile-fg text-5xl sm:text-7xl md:text-8xl">
+        <span className="text-profile-muted">//</span>
+        {' '}
+        frank{' '}
+        <span className="text-profile-accent">oh</span>
+        <span className="text-profile-muted-2">;</span>
       </h1>
 
       {readme.body && (
@@ -49,12 +53,12 @@ export function Hero({ stats, github, status, readme }: HeroProps) {
         </p>
       )}
 
-      <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1 font-mono text-xs sm:text-sm">
+      <dl className="mt-7 mb-3 grid grid-cols-[120px_1fr] gap-x-5 gap-y-[7px] font-mono text-[13px]">
         {kvs.map(([k, v]) => (
           v ? (
             <div key={k} className="contents">
-              <dt className="text-profile-muted-2">{k}</dt>
-              <dd className="text-profile-fg-2">{v}</dd>
+              <dt className="text-profile-muted lowercase tracking-[0.02em] before:content-['·_']">{k}</dt>
+              <dd className="text-profile-fg">{v}</dd>
             </div>
           ) : null
         ))}

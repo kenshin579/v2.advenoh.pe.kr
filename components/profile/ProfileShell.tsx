@@ -73,9 +73,9 @@ export function ProfileShell({
 
               <ProjectGrid items={portfolioItems} />
 
-              <WritingList id="writing" title="writing.it" items={writing.it} />
+              <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} />
 
-              <WritingList id="writing-investment" title="writing.inv" items={writing.investment} />
+              <WritingList id="writing-investment" title="writing.inv" hash="#04" items={writing.investment} />
             </div>
           </div>
         </main>
