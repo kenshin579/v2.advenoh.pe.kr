@@ -120,23 +120,7 @@
 
 - [x] 브랜치 푸시 (`origin feat/34-remove-google-adsense`)
 - [x] PR 생성 → https://github.com/kenshin579/v2.advenoh.pe.kr/pull/35
-  ```bash
-  gh pr create --title "chore: Google AdSense 제거" --body "$(cat <<'EOF'
-  ## Summary
-  - app/layout.tsx의 AdSense Script 블록 제거
-  - public/ads.txt 삭제
-  - Google Analytics 유지 (광고와 무관)
-
-  ## Test plan
-  - [ ] npm run check / lint / build 통과
-  - [ ] grep -r "adsbygoogle" out/ 결과 없음
-  - [ ] out/ads.txt 부재
-  - [ ] DevTools Network에 AdSense 요청 없음
-  - [ ] 배포 후 프로덕션 URL 재검증
-  EOF
-  )"
-  ```
-- [ ] 리뷰어(`kenshin579`) 지정
+- [x] 리뷰어(`kenshin579`) 지정
 
 ---
 
