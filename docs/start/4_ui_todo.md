@@ -160,8 +160,10 @@
 
 ## Phase 5 — 정리
 
-- [ ] 불필요 import 제거 (`ChevronLeft`/`ChevronRight`/`ExternalLink` 등 사용 여부에 따라)
-- [ ] 주석 최소화 — 로직 변경 없는 부분은 주석 불필요
-- [ ] `git diff` 리뷰 후 PR 생성
-  - 브랜치: `feature/{이슈번호}-project-modal-profile-v2-style`
-  - `gh pr create` + HEREDOC, reviewer: `kenshin579`
+- [x] 불필요 import 제거 — `ExternalLink` 제거, `X` / `ChevronLeft` / `ChevronRight`는 유지 사용
+- [x] 주석 최소화 — JSX 블록 마커 주석만 유지 (A. Modal Chrome, B. Section Header 등)
+- [x] `git diff` 리뷰 후 PR 생성
+  - 브랜치: `feat/31-project-modal-profile-v2-style`
+  - GitHub Issue: #31
+  - PR: https://github.com/kenshin579/v2.advenoh.pe.kr/pull/32
+  - reviewer / assignee: `kenshin579`
