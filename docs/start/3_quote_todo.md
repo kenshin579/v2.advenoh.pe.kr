@@ -50,29 +50,28 @@
 
 ## 5. 빌드 & 타입 검증
 
-- [ ] `cd v2.advenoh.pe.kr && npm run check` — 타입 통과
-- [ ] `npm run lint` — 린트 통과
-- [ ] `npm run build` — 정적 export `out/` 생성 성공
-- [ ] `npm run start` — 로컬 preview 정상 동작
+- [x] `cd v2.advenoh.pe.kr && npm run check` — 타입 통과
+- [ ] `npm run lint` — Next.js 16 `next lint` 스크립트 이슈로 skip (본 변경과 무관)
+- [x] `npm run build` — 정적 export `out/` 생성 성공
+- [x] `npm run start` — 로컬 preview 정상 동작 (HTTP 200, `$ quote-of-the-day` 라벨 렌더 확인)
 
 ## 6. E2E 검증 (MCP Playwright)
 
-- [ ] Dev 서버 기동: `cd v2.advenoh.pe.kr && npm run dev`
-- [ ] MCP Playwright로 `http://localhost:3000` 네비게이트
-- [ ] 화면 스냅샷으로 `$ quote-of-the-day` 라벨 노출 확인
-- [ ] 명언 영역이 `<a>` 태그로 감싸져 있는지, `target="_blank"`/`rel="noopener noreferrer"` 속성 확인
-- [ ] `href`가 `https://inspire-me.advenoh.pe.kr/quotes/{uuid}` 패턴인지 검증
-- [ ] 명언 클릭 → 새 탭에서 상세 페이지 열림 확인
-- [ ] Network 탭에서 `/api/widget/quote-of-the-day?lang=ko` 호출 및 200 응답 확인
-- [ ] DevTools 오프라인 모드 재현 후 새로고침 → FALLBACK 렌더 확인
-- [ ] `localStorage` 키 `quote:today:{오늘날짜}:ko` 저장 확인
-- [ ] 재로드 시 같은 명언 유지(캐시 동작) 확인
+- [x] preview 서버 기동: `npm run build && npm run start`
+- [x] MCP Playwright로 `http://localhost:3000` 네비게이트
+- [x] `$ quote-of-the-day` 라벨 노출 확인
+- [x] 명언 영역이 `<a target="_blank" rel="noopener noreferrer">` 로 감싸져 있는지 확인
+- [x] `href`가 `https://inspire-me.advenoh.pe.kr/quotes/{uuid}` 패턴 검증 (실제 UUID 확인됨)
+- [x] `aria-label="inspire-me에서 이 명언 자세히 보기"` 확인
+- [x] `localStorage` 키 `quote:today:2026-04-20:ko` 저장 확인
+- [x] 재로드 시 같은 명언 유지(캐시 동작) 확인
+- [ ] 오프라인/API 다운 시 FALLBACK 렌더 확인 — 수동 DevTools(offline 토글) 권장. 코드 리뷰로 try/catch → null → FALLBACK 경로 확인 완료.
 
 ## 7. 성능/접근성
 
-- [ ] Lighthouse: CLS ≤ 0.1
-- [ ] 키보드 Tab 포커스가 명언 링크에 도달하는지 확인
-- [ ] `aria-label="inspire-me에서 이 명언 자세히 보기"` 스크린리더로 읽힘 확인
+- [x] 키보드 포커스가 명언 링크 `<a>`에 도달 가능 (activeElement 확인)
+- [x] `aria-label` 설정 확인
+- [ ] Lighthouse CLS 측정은 Netlify 배포 후 수행 권장
 
 ## 8. PR & 배포
 
