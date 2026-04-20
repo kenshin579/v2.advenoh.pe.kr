@@ -5,12 +5,11 @@
 
 ## Phase 1. TypewriterPrompt — prompt 색 반전
 
-- [ ] `components/profile/TypewriterPrompt.tsx`에서 컨테이너 class 교체:
-  - [ ] `font-mono text-sm text-profile-muted` → `font-mono text-[12.5px] tracking-[0.02em] text-profile-accent`
-- [ ] `frank@seoul` 부분을 `<strong className="font-medium text-profile-fg">` 로 감싸기
-- [ ] typed 명령어의 `text-profile-fg` 클래스 제거 (부모 accent 상속)
-- [ ] `prompt` prop 문자열 분해: `USERNAME = 'frank@seoul'`, `PATH_SUFFIX = ':~/profile (main)$ '` 내부 상수로 처리
-- [ ] caret bar는 기존 accent 그대로 유지
+- [x] 컨테이너 class 교체: `text-[12.5px] tracking-[0.02em] text-profile-accent`
+- [x] `frank@seoul` 부분을 `<strong className="font-medium text-profile-fg">` 로 감싸기
+- [x] typed `text-profile-fg` 클래스 제거 (부모 accent 상속)
+- [x] `prompt` prop 제거, `USERNAME` / `PATH_SUFFIX` 내부 상수화
+- [x] caret bar accent 그대로 유지
 
 ## Phase 2. Hero title `// frank oh;`
 

@@ -9,15 +9,16 @@ const DEFAULT_SEQUENCE = [
   'echo "hire me?"',
 ]
 
+const USERNAME = 'frank@seoul'
+const PATH_SUFFIX = ':~/profile (main)$ '
+
 type TypewriterPromptProps = {
-  prompt?: string
   sequence?: string[]
   charIntervalMs?: number
   holdMs?: number
 }
 
 export function TypewriterPrompt({
-  prompt = 'frank@seoul:~/profile (main)$ ',
   sequence = DEFAULT_SEQUENCE,
   charIntervalMs = 55,
   holdMs = 1400,
@@ -39,9 +40,10 @@ export function TypewriterPrompt({
   }, [charIdx, cmdIdx, current, charIntervalMs, holdMs, sequence.length])
 
   return (
-    <div className="font-mono text-sm text-profile-muted">
-      <span>{prompt}</span>
-      <span className="text-profile-fg">{current.slice(0, charIdx)}</span>
+    <div className="font-mono text-[12.5px] tracking-[0.02em] text-profile-accent">
+      <strong className="font-medium text-profile-fg">{USERNAME}</strong>
+      <span>{PATH_SUFFIX}</span>
+      <span>{current.slice(0, charIdx)}</span>
       <span
         aria-hidden="true"
         className="ml-px inline-block h-4 w-2 translate-y-0.5 bg-profile-accent"
