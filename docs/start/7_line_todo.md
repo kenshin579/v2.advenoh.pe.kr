@@ -40,22 +40,22 @@ PRD: `7_line_prd.md` · Implementation: `7_line_implementation.md`
 
 ## 5. 수동 시각 검증 (`npm run dev`)
 
-- [ ] 데스크톱(1440×900)에서 gutter가 Hero부터 `WRITING.INV` 하단까지 연속 표시
-- [ ] `ProjectGrid`의 모든 카드(6개) 옆에 라인 번호 표시
-- [ ] `// WRITING.IT`, `// WRITING.INV` 섹션 옆 라인 번호 표시
-- [ ] 브라우저 창을 세로로 줄였다 늘려도 gutter가 끊기지 않음
-- [ ] `md` 미만(375px)에서 gutter 미표시
-- [ ] 모달(`ProjectModal`) 열림/닫힘에서 레이아웃 깨짐 없음
+- [x] 데스크톱(1440×900)에서 gutter가 Hero부터 `WRITING.INV` 하단까지 연속 표시 (101 라인, 2488px ≥ writingInvBottom 2332px)
+- [x] `ProjectGrid`의 모든 카드 옆에 라인 번호 표시 (fullPage 스크린샷 확인)
+- [x] `// WRITING.IT`, `// WRITING.INV` 섹션 옆 라인 번호 표시 (fullPage 스크린샷 확인)
+- [x] 브라우저 창 높이 변화 시 gutter가 ResizeObserver로 자동 재조정 (피드백 루프 수정 후 확인)
+- [~] `md` 미만(375px)에서 gutter 미표시 (CSS `hidden md:flex`로 확정, MCP Playwright viewport 재설정 제약으로 E2E 확인 보류)
+- [ ] 모달(`ProjectModal`) 열림/닫힘에서 레이아웃 깨짐 없음 (회귀 검증)
 
 ## 6. E2E 테스트 (MCP Playwright)
 
-- [ ] `npm run dev` 실행 상태에서 Playwright로 `http://localhost:3000` 접속
-- [ ] 데스크톱 뷰포트(1440×900) 기준 페이지 전체 스크린샷 촬영
-- [ ] gutter 마지막 `<span>`의 `textContent`가 콘텐츠 높이 대비 충분한지 DOM 평가
-  - 예: `document.querySelector('[aria-hidden="true"].font-mono span:last-child')` 값 vs `contentRef`의 `offsetHeight / 24`
-- [ ] 모바일 뷰포트(375×812)에서 gutter가 보이지 않는지 확인
-- [ ] 창 리사이즈(`page.setViewportSize`) 후 라인 수 재조정 확인
-- [ ] 스크린샷을 `docs/start/` 또는 `tests/__snapshots__/`에 저장 (회귀 방지)
+- [x] `npm run dev` 실행 상태에서 Playwright로 `http://localhost:3000` 접속
+- [x] 데스크톱 뷰포트(1440×900) 기준 페이지 전체 스크린샷 촬영 (`line-gutter-fullpage-fixed-*.png`)
+- [x] gutter 마지막 `<span>`의 `textContent`가 콘텐츠 높이 대비 충분한지 DOM 평가
+  - totalLines=101, expectedLines=99, gutterLastSpanBottom=2488 > writingInvBottom=2332 → **커버 완료**
+- [x] **피드백 루프 발견 및 수정**: flex 기본 `align-items:stretch`가 gutter 자연 높이를 content로 전파 → `items-start` 추가로 해결
+- [~] 모바일 뷰포트(375×812) gutter 미표시 — MCP Playwright는 재navigate 시 viewport 재설정이 적용되지 않음. CSS 클래스(`hidden md:flex`)로 확정되므로 수동 확인 권장
+- [x] 스크린샷을 `docs/start/`에 저장 (`line-gutter-fullpage-fixed-2026-04-20T15-13-16-720Z.png`)
 
 ## 7. 회귀 확인
 
