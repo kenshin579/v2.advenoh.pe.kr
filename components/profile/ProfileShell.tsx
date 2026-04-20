@@ -63,7 +63,7 @@ export function ProfileShell({
         <Sidebar status={status} activeSection={activeSection} />
 
         <main className="relative flex-1 overflow-x-hidden">
-          <div className="mx-auto flex max-w-[1100px] gap-0">
+          <div className="mx-auto flex max-w-[1100px] gap-0 items-start">
             <LineGutter targetRef={contentRef} />
 
             <div
