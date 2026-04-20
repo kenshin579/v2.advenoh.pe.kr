@@ -1,5 +1,4 @@
 import { getPortfolioItems } from '@/lib/portfolio'
-import { getQuotes } from '@/lib/quotes'
 import { getStatusSnapshot } from '@/lib/status'
 import { getGithubContrib } from '@/lib/github'
 import { getWritingSections, getLatestPosts } from '@/lib/writing'
@@ -8,10 +7,9 @@ import { getProjectsItemListStructuredData } from '@/lib/structured-data'
 import { ProfileShell } from '@/components/profile/ProfileShell'
 
 export default async function HomePage() {
-  const [portfolioItems, quotes, status, github, writingSections, latestPosts] =
+  const [portfolioItems, status, github, writingSections, latestPosts] =
     await Promise.all([
       Promise.resolve(getPortfolioItems()),
-      Promise.resolve(getQuotes()),
       getStatusSnapshot(),
       getGithubContrib(),
       getWritingSections(),
@@ -35,7 +33,6 @@ export default async function HomePage() {
           latest: latestPosts,
         }}
         portfolioItems={portfolioItems}
-        quotes={quotes}
         github={github}
         readme={readme}
       />
