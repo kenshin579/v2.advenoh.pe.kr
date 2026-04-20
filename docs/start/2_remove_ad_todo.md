@@ -49,37 +49,37 @@
 
 ### Step 3: 타입 검사 / 린트
 
-- [ ] `npm run check` 실행 → 에러 없음
-- [ ] `npm run lint` 실행 → 에러 없음
+- [x] `npm run check` 실행 → 에러 없음
+- [~] `npm run lint` 실행 → Next.js 16에서 `next lint` deprecated (기존 이슈, 이번 작업과 무관)
 
 ### Step 4: 프로덕션 빌드
 
-- [ ] 기존 빌드 캐시 정리 (선택)
+- [x] 기존 빌드 캐시 정리 (선택)
   ```bash
   rm -rf .next out
   ```
-- [ ] `npm run build` 실행 → 성공
-- [ ] `out/` 디렉토리 생성 확인
+- [x] `npm run build` 실행 → 성공
+- [x] `out/` 디렉토리 생성 확인
 
 ### Step 5: 빌드 산출물 검증
 
-- [ ] AdSense 스크립트 흔적 0건
+- [x] AdSense 스크립트 흔적 0건
   ```bash
   grep -r "adsbygoogle" out/
   ```
-- [ ] AdSense CDN 도메인 흔적 0건
+- [x] AdSense CDN 도메인 흔적 0건
   ```bash
   grep -r "pagead2.googlesyndication.com" out/
   ```
-- [ ] Publisher ID 흔적 0건
+- [x] Publisher ID 흔적 0건
   ```bash
   grep -r "ca-pub-8868959494983515" out/
   ```
-- [ ] `out/ads.txt` 부재 확인
+- [x] `out/ads.txt` 부재 확인
   ```bash
   [ ! -f out/ads.txt ] && echo "OK" || echo "FAIL"
   ```
-- [ ] `out/index.html`의 `<head>`에 AdSense 태그 없음
+- [x] `out/index.html`의 `<head>`에 AdSense 태그 없음
 
 ---
 
