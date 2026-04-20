@@ -157,8 +157,14 @@
 
 ## Phase 6. 마무리
 
-- [ ] `git status` 로 변경 범위 재확인
-- [ ] 의도치 않게 수정된 파일 되돌리기
-- [ ] 커밋: `[#N] feat: 프로젝트 상세 모달을 Profile v2 레퍼런스 포맷으로 재정렬`
-- [ ] PR 생성 (`gh pr create` + HEREDOC, 리뷰어 `kenshin579`)
-- [ ] PR 본문에 Before/After 스크린샷 첨부
+- [x] `git status` 로 변경 범위 재확인
+- [x] 관련 없는 파일(.cache/*, next-env.d.ts 등) 스테이징 제외
+- [x] Phase별 커밋 5건 완료
+  - `[#36] feat: 포트폴리오 overview를 Markdown → HTML로 빌드 타임 변환`
+  - `[#36] refactor: ProjectModal을 Profile v2 레퍼런스(README 스타일)로 재설계`
+  - `[#36] feat: ProjectGrid에 j/k/Enter 키보드 네비게이션 추가`
+  - `[#36] chore: Phase 4 품질 게이트 통과 기록`
+  - `[#36] content: ai-chatbot overview를 Markdown 구조(strong/ul/code)로 확장`
+- [x] Feature branch push: `feat/36-project-detail-profile-v2-realign`
+- [x] PR 생성 (`gh pr create` + HEREDOC, reviewer `kenshin579`) → #37
+- [x] PR 본문에 E2E 검증 결과 + 스크린샷 경로 첨부
