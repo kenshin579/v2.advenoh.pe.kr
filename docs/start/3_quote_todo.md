@@ -33,14 +33,14 @@
 
 ## 3. 호출부 정리
 
-- [ ] `components/profile/ProfileShell.tsx`
-  - [ ] `quotes: Quote[]` prop 제거
-  - [ ] `import type { Quote }` 제거
-  - [ ] `<QuoteBlock />` 호출에서 props 제거
-- [ ] `app/page.tsx`
-  - [ ] `getQuotes` import 제거
-  - [ ] `Promise.all`에서 `getQuotes()` 제거
-  - [ ] `ProfileShell`의 `quotes` prop 전달 제거
+- [x] `components/profile/ProfileShell.tsx`
+  - [x] `quotes: Quote[]` prop 제거
+  - [x] `import type { Quote }` 제거
+  - [x] `<QuoteBlock />` 호출에서 props 제거
+- [x] `app/page.tsx`
+  - [x] `getQuotes` import 제거
+  - [x] `Promise.all`에서 `getQuotes()` 제거
+  - [x] `ProfileShell`의 `quotes` prop 전달 제거
 
 ## 4. 로컬 데이터 제거
 

@@ -1,7 +1,6 @@
 'use client'
 
 import type { PortfolioItem } from '@/lib/portfolio'
-import type { Quote } from '@/lib/quotes'
 import type { StatusSnapshot } from '@/lib/status'
 import type { GithubContrib } from '@/lib/github'
 import type { WritingItem } from '@/lib/writing'
@@ -35,7 +34,6 @@ type ProfileShellProps = {
     latest: WritingItem[]
   }
   portfolioItems: PortfolioItem[]
-  quotes: Quote[]
   github: GithubContrib
   readme: ReadmeData
 }
@@ -44,7 +42,6 @@ export function ProfileShell({
   initialStatus,
   initialWriting,
   portfolioItems,
-  quotes,
   github,
   readme,
 }: ProfileShellProps) {
@@ -69,7 +66,7 @@ export function ProfileShell({
             <div className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]">
               <Hero stats={stats} github={github} status={status} readme={readme} />
 
-              <QuoteBlock quotes={quotes} />
+              <QuoteBlock />
 
               <ProjectGrid items={portfolioItems} />
 
