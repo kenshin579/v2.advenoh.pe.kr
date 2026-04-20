@@ -142,11 +142,11 @@
 
 ### Step 13: 문서 이동
 
-- [ ] 완료된 문서를 `docs/done/`으로 이동
+- [x] 완료된 문서를 `docs/done/`으로 이동
   ```bash
-  mv docs/start/2_remove_ad_prd.md docs/done/
-  mv docs/start/2_remove_ad_implementation.md docs/done/
-  mv docs/start/2_remove_ad_todo.md docs/done/
+  git mv docs/start/2_remove_ad_prd.md docs/done/
+  git mv docs/start/2_remove_ad_implementation.md docs/done/
+  git mv docs/start/2_remove_ad_todo.md docs/done/
   ```
 
 ### Step 14 (선택): AdSense 콘솔 정리

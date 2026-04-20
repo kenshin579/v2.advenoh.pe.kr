@@ -233,6 +233,6 @@ Netlify 자동 배포 이후 프로덕션(`https://advenoh.pe.kr`)에서 동일 
 
 - PRD: [`2_remove_ad_prd.md`](./2_remove_ad_prd.md)
 - TODO: [`2_remove_ad_todo.md`](./2_remove_ad_todo.md)
-- 최초 통합 PRD: [`../done/1_adsense_prd.md`](../done/1_adsense_prd.md)
+- 최초 통합 PRD: [`1_adsense_prd.md`](./1_adsense_prd.md)
 - Next.js Script: https://nextjs.org/docs/app/api-reference/components/script
 - AdSense 사이트 제거: https://support.google.com/adsense/answer/10513?hl=ko

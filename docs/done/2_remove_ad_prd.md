@@ -189,8 +189,8 @@ npm run start
 
 ## 🔗 관련 문서
 
-- 기존 통합 PRD: [`docs/done/1_adsense_prd.md`](../done/1_adsense_prd.md)
-- 기존 구현 가이드: [`docs/done/1_adsense_implementation.md`](../done/1_adsense_implementation.md)
-- 기존 TODO: [`docs/done/1_adsense_todo.md`](../done/1_adsense_todo.md)
+- 기존 통합 PRD: [`1_adsense_prd.md`](./1_adsense_prd.md)
+- 기존 구현 가이드: [`1_adsense_implementation.md`](./1_adsense_implementation.md)
+- 기존 TODO: [`1_adsense_todo.md`](./1_adsense_todo.md)
 - Next.js Script: https://nextjs.org/docs/app/api-reference/components/script
 - AdSense 사이트 제거 가이드: https://support.google.com/adsense/answer/10513?hl=ko
