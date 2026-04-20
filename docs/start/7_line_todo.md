@@ -66,7 +66,7 @@ PRD: `7_line_prd.md` · Implementation: `7_line_implementation.md`
 
 ## 8. 마무리
 
-- [ ] 변경 diff 최종 리뷰 (`LineGutter.tsx`, `ProfileShell.tsx` 외 변경 없음 확인)
-- [ ] feature 브랜치(`fix/{issue}-line-gutter-cutoff`) 생성 및 커밋
-- [ ] PR 생성 (`gh pr create` + HEREDOC, reviewer: kenshin579)
-- [ ] 완료 후 문서 `docs/start/` → `docs/done/` 이동
+- [x] 변경 diff 최종 리뷰 (`LineGutter.tsx`, `ProfileShell.tsx` 외 변경 없음 확인)
+- [x] feature 브랜치(`fix/45-line-gutter-cutoff`) 생성 및 커밋
+- [x] PR 생성 (`gh pr create` + HEREDOC, reviewer: kenshin579) — https://github.com/kenshin579/v2.advenoh.pe.kr/pull/46
+- [ ] 머지 후 문서 `docs/start/` → `docs/done/` 이동
