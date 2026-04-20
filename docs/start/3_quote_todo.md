@@ -10,12 +10,12 @@
 
 ## 1. 클라이언트 모듈 신규
 
-- [ ] `v2.advenoh.pe.kr/lib/quotes-client.ts` 작성
-  - [ ] `INSPIRE_ME_URL` 상수 하드코딩 (`https://inspire-me.advenoh.pe.kr`)
-  - [ ] zod `todayQuoteSchema` + `widgetRespSchema` 정의
-  - [ ] `fetchTodayQuote(lang)` 함수 (2xx + 파싱 실패 시 `null`)
-  - [ ] `quoteDetailUrl(id)` 헬퍼
-  - [ ] `FALLBACK_QUOTE` 상수
+- [x] `v2.advenoh.pe.kr/lib/quotes-client.ts` 작성
+  - [x] `INSPIRE_ME_URL` 상수 하드코딩 (`https://inspire-me.advenoh.pe.kr`)
+  - [x] zod `todayQuoteSchema` + `widgetRespSchema` 정의
+  - [x] `fetchTodayQuote(lang)` 함수 (2xx + 파싱 실패 시 `null`)
+  - [x] `quoteDetailUrl(id)` 헬퍼
+  - [x] `FALLBACK_QUOTE` 상수
 
 ## 2. `QuoteBlock` 리팩터링
 
