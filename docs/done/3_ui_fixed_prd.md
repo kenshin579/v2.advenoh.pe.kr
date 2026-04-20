@@ -267,5 +267,5 @@ PR #28 머지 후 `Profile v2.html` 원본과 **현재 렌더링 간의 4가지 
 
 - 디자인 원본: `docs/start/Profile/Profile v2.html` (CSS L168–202, 마크업 L580–599)
 - 직전 PR: `docs/done/3_change_ui_prd.md` / `docs/done/3_change_ui_implementation.md`
-- 구현 상세(예정): `docs/start/3_ui_fixed_implementation.md`
-- 작업 체크리스트(예정): `docs/start/3_ui_fixed_todo.md`
+- 구현 상세(예정): `docs/done/3_ui_fixed_implementation.md`
+- 작업 체크리스트(예정): `docs/done/3_ui_fixed_todo.md`
