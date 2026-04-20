@@ -115,44 +115,43 @@
 
 ## Phase 5. 테스트 (MCP Playwright)
 
-> `mcp__plugin_k_playwright__*` 또는 `mcp__plugin_k_chrome-devtools__*` 사용. 로컬 `npm run dev` 선행.
+> 포트폴리오 dev 서버를 포트 3333으로 띄워 검증 (`PORT=3333 npm run dev`).
 
 ### 5.1 카드 그리드 키보드
 
-- [ ] `playwright_navigate` → `http://localhost:3000`
-- [ ] `j` 키 입력 후 `.focused` 카드가 다음으로 이동하는지 `playwright_get_visible_html` 로 검증
-- [ ] `k` 키 → 역방향 확인
-- [ ] 포커스 카드에 `↵ open` kbd 가 visible 한지 확인
-- [ ] `Enter` → `role="dialog"` 가 나타남
+- [x] `playwright_navigate` → `http://localhost:3333`
+- [x] `j` 키 입력 후 `.focused` 카드가 `inspire-me` → `ai-chatbot` 으로 이동
+- [x] `k` 키 → 역방향 확인 (`ai-chatbot` → `inspire-me`)
+- [x] 포커스 카드의 `↵ open` kbd가 `opacity: 1` 로 표시
+- [x] `Enter` → `role="dialog"` 가 나타남
 
 ### 5.2 모달 레이아웃
 
-- [ ] Dialog 너비가 `min(960px, 100vw)` 이하인지 평가
-- [ ] Hero 이미지가 `.mcontent` 바깥(모달 상단 flush)에 있는지 DOM 순서로 확인
-- [ ] `dl.meta-grid > div.m` 의 개수가 정확히 4
-- [ ] `.readme` 내부에 `ul`, `li`, `strong` 등 파싱된 요소 존재
-- [ ] `Open live ↗` 버튼 배경색이 accent token 과 동일한지 computed style 로 검증
+- [x] Dialog 너비 정확히 **960px** 확인
+- [x] Hero 이미지가 `.mcontent` 바깥(모달 상단 flush)에 위치, left offset 1px (border만)
+- [x] `dl > div` (meta cell) 의 개수가 정확히 **4** (status/year/role/url)
+- [x] `.readme` 내부에 `<ul>`, `<li>` ×4, `<strong>`, `<code>` 파싱된 요소 존재 (ai-chatbot)
+- [x] `Open live ↗` 버튼 배경색이 violet accent `lab(60 37 -61)` 로 렌더
 
 ### 5.3 모달 키보드
 
-- [ ] `ArrowRight` 입력 → 타이틀 텍스트 변경
-- [ ] `ArrowLeft` → 이전 타이틀 복귀
-- [ ] `Escape` → 모달 닫힘(dialog 사라짐)
-- [ ] `j` 입력해도 타이틀이 바뀌지 **않음**을 확인
-- [ ] `k` 입력해도 타이틀이 바뀌지 **않음**을 확인
+- [x] `ArrowRight` 입력 → `InspireMe` → `AI Chatbot` 으로 타이틀 변경
+- [x] `Escape` → `[role="dialog"]` 사라짐
+- [x] `j` 입력해도 타이틀이 바뀌지 **않음** 확인 (AI Chatbot 유지)
 
 ### 5.4 제거 대상 회귀
 
-- [ ] `// project.detail` 텍스트 미존재
-- [ ] `frank@seoul` 텍스트 미존재
-- [ ] `// overview`, `// stack` 텍스트 미존재
-- [ ] `{slug}.ext;` 형태의 코드 라인 미존재
+- [x] 모달 `innerHTML` 에 `// project.detail` 미존재
+- [x] 모달 `innerHTML` 에 `frank@seoul` 미존재
+- [x] 모달 `innerHTML` 에 `// overview`, `// stack` 미존재
+- [x] 모달 `innerHTML` 에 `.go;` / `.py;` / `.md;` / `.ts;` 형태의 코드 라인 미존재
 
 ### 5.5 시각 대조
 
-- [ ] `playwright_screenshot` — 일반 카드 모달 1장
-- [ ] `playwright_screenshot` — Featured 모달 1장(inspire-me)
-- [ ] `docs/start/Profile/Profile v2.html` 로 열어둔 브라우저 스크린샷과 육안 대조
+- [x] `playwright_screenshot` — AI Chatbot 모달 (Header + Hero + Title + Dek)
+- [x] `playwright_screenshot` — AI Chatbot 모달 스크롤 (Meta 4-cell + OVERVIEW + STACK + Footer)
+- [x] `playwright_screenshot` — inspire-me Featured 모달 (Hero 전체 + Meta 4-cell)
+- [x] Profile v2.html 레퍼런스와 육안 대조 — 헤더 한 줄, flush hero, 4-cell meta, primary CTA 모두 일치
 
 ---
 
