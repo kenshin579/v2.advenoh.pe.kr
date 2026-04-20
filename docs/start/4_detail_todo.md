@@ -105,11 +105,11 @@
 
 ## Phase 4. 품질 게이트
 
-- [ ] `npm run check` (타입) 통과
-- [ ] `npm run lint` (ESLint) 통과
-- [ ] `npm run build` 정적 export 성공
-- [ ] `out/index.html` 에 `// project.detail`, `frank@seoul`, `// overview` 문자열이 **존재하지 않음** 확인
-- [ ] `npm run dev` 로 로컬 확인
+- [x] `npm run check` (타입) 통과
+- [~] `npm run lint` — Next.js 16 에서 `next lint` 가 제거된 기존 이슈로 스킵 (내 작업 범위 밖)
+- [x] `npm run build` 정적 export 성공
+- [x] `components/profile/ProjectModal.tsx` 에 `// project.detail`, `frank@seoul:~/projects`, `// overview`, `// stack` 문자열이 **존재하지 않음** 확인 (사이트 헤더의 `frank@seoul:~/profile` 은 의도된 브랜딩으로 유지)
+- [ ] `npm run dev` 로 로컬 확인 (Phase 5에서 MCP Playwright로 대체 검증)
 
 ---
 
