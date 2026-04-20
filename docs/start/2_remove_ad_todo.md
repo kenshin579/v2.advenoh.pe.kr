@@ -104,39 +104,22 @@
 
 ### Step 8: 브랜치 생성
 
-- [ ] main 최신화
+- [x] main 최신화
   ```bash
   git checkout main && git pull origin main
   ```
-- [ ] feature 브랜치 생성
-  ```bash
-  git checkout -b feature/remove-google-adsense
-  ```
+- [x] feature 브랜치 생성 (`feat/34-remove-google-adsense`)
 
 ### Step 9: 커밋
 
-- [ ] 변경사항 확인
-  ```bash
-  git status
-  git diff v2.advenoh.pe.kr/app/layout.tsx
-  ```
-- [ ] 파일 스테이징
-  ```bash
-  git add v2.advenoh.pe.kr/app/layout.tsx
-  git add -u v2.advenoh.pe.kr/public/ads.txt
-  ```
-- [ ] 커밋
-  ```bash
-  git commit -m "chore: Google AdSense 스크립트 및 ads.txt 제거"
-  ```
+- [x] 변경사항 확인
+- [x] 파일 스테이징 (`app/layout.tsx`, `.gitignore`, `public/ads.txt` 삭제, 관련 docs)
+- [x] 커밋 (`[#34] chore: Google AdSense 스크립트 및 ads.txt 제거`)
 
 ### Step 10: PR 생성
 
-- [ ] 브랜치 푸시
-  ```bash
-  git push -u origin feature/remove-google-adsense
-  ```
-- [ ] PR 생성 (`gh pr create` + HEREDOC 사용)
+- [x] 브랜치 푸시 (`origin feat/34-remove-google-adsense`)
+- [x] PR 생성 → https://github.com/kenshin579/v2.advenoh.pe.kr/pull/35
   ```bash
   gh pr create --title "chore: Google AdSense 제거" --body "$(cat <<'EOF'
   ## Summary
