@@ -44,9 +44,9 @@
 
 ## 4. 로컬 데이터 제거
 
-- [ ] `lib/quotes.ts` 삭제
-- [ ] `contents/quote/*.md` (7개 파일) 삭제
-- [ ] `grep -R "lib/quotes" v2.advenoh.pe.kr/` 로 잔여 참조 없는지 확인
+- [x] `lib/quotes.ts` 삭제
+- [x] `contents/quote/*.md` (7개 파일) 삭제
+- [x] `grep -R "lib/quotes" v2.advenoh.pe.kr/` 로 잔여 참조 없는지 확인 (소스 코드 참조 0건)
 
 ## 5. 빌드 & 타입 검증
 

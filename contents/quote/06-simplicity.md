@@ -1,4 +1,0 @@
----
-quote: "Simplicity is the soul of efficiency."
-author: "Austin Freeman"
----
