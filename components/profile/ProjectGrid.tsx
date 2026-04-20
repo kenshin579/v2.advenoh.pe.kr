@@ -10,12 +10,12 @@ type ProjectGridProps = {
 export function ProjectGrid({ items }: ProjectGridProps) {
   return (
     <section id="projects" aria-label="projects" className="space-y-4">
-      <header className="flex items-baseline gap-3 pb-2">
-        <h2 className="font-mono text-[13px] uppercase tracking-widest text-profile-fg">
+      <header className="mb-[18px] flex items-baseline gap-3">
+        <h2 className="m-0 font-mono text-[12px] font-medium uppercase tracking-[0.14em] text-profile-muted before:content-['//_'] before:text-profile-accent">
           projects
         </h2>
         <span className="font-mono text-[11px] text-profile-muted-2">#02</span>
-        <div className="flex-1 border-t border-profile-line-2" aria-hidden="true" />
+        <div className="flex-1 border-t border-profile-line" aria-hidden="true" />
         <span className="font-mono text-[11px] text-profile-muted">
           ls ./projects · {items.length} items ·{' '}
           <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">j</kbd>{' '}

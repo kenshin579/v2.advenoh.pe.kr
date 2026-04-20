@@ -13,67 +13,38 @@
 
 ## Phase 2. Hero title `// frank oh;`
 
-- [ ] `components/profile/Hero.tsx` h1 class 변경:
-  - [ ] `font-bold` → `font-medium`
-  - [ ] `tracking-tight` → `tracking-[-0.035em]`
-  - [ ] `leading-[0.95]` → `leading-[0.9]`
-- [ ] 내부 span 재매핑:
-  - [ ] `//` 감싼 span class `text-profile-accent` → `text-profile-muted`
-  - [ ] `oh`를 `<span className="text-profile-accent">oh</span>`로 감싸기
-  - [ ] `;` span은 `text-profile-muted-2` 유지
-  - [ ] `frank ` 부분은 span 없이 기본 fg 상속
+- [x] h1 class: `font-medium` + `leading-[0.9]` + `tracking-[-0.035em]`
+- [x] `//` → `text-profile-muted`, `oh`는 `<span className="text-profile-accent">`, `;`은 muted-2 유지
 
 ## Phase 3. Hero KV list 포맷
 
-- [ ] `Hero.tsx`의 `<dl>` class 변경:
-  - [ ] `grid-cols-[max-content_1fr]` → `grid-cols-[120px_1fr]`
-  - [ ] `gap-x-4 gap-y-1` → `gap-x-5 gap-y-[7px]`
-  - [ ] `text-xs sm:text-sm` → `text-[13px]`
-  - [ ] margin 조정: `my-7 mb-3` 추가 (원본 `margin: 28px 0 12px`)
-- [ ] `<dt>` class 변경:
-  - [ ] `text-profile-muted-2` → `text-profile-muted`
-  - [ ] `lowercase tracking-[0.02em]` 추가
-  - [ ] `before:content-['·_']` 추가
-- [ ] `<dd>` class 변경:
-  - [ ] `text-profile-fg-2` → `text-profile-fg`
+- [x] `<dl>` — `grid-cols-[120px_1fr]` + `gap-x-5 gap-y-[7px]` + `text-[13px]` + `mt-7 mb-3`
+- [x] `<dt>` — `text-profile-muted lowercase tracking-[0.02em] before:content-['·_']`
+- [x] `<dd>` — `text-profile-fg`
 
 ## Phase 4. inspire-me ext 정정
 
-- [ ] `contents/website/inspire-me/index.md` — `ext: .ts` → `ext: .go` (원본 Profile v2.html L640 따름)
+- [x] `contents/website/inspire-me/index.md` — `ext: .go`
 
 ## Phase 5. 섹션 헤더 `// ` accent prefix
 
 ### 5.1 ProjectGrid
-
-- [ ] `components/profile/ProjectGrid.tsx` 섹션 `<header>` class 조정:
-  - [ ] `mb-[18px] flex items-baseline gap-3`
-- [ ] h2 class:
-  - [ ] `font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-profile-muted m-0`
-  - [ ] `before:content-['//_'] before:text-profile-accent`
-- [ ] `#02` span: `font-mono text-[11px] text-profile-muted-2`
-- [ ] bar: `flex-1 border-t border-profile-line` (line-2 아님)
-- [ ] cnt span: `font-mono text-[11px] text-profile-muted`
+- [x] header class: `mb-[18px] flex items-baseline gap-3`
+- [x] h2: `font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-profile-muted` + `before:content-['//_'] before:text-profile-accent`
+- [x] hash `text-profile-muted-2`, bar `border-profile-line` (line-2 아님), cnt muted
 
 ### 5.2 WritingList
-
-- [ ] `WritingListProps`에 `hash?: string` 필드 추가
-- [ ] 섹션 `<header>` 구조 재작성 (ProjectGrid와 동일 패턴):
-  - [ ] h2에 `before:content-['//_'] before:text-profile-accent`
-  - [ ] h2 color `text-profile-muted`, letter-spacing 0.14em
-  - [ ] `hash && <span>{hash}</span>` 조건부 렌더
-  - [ ] bar: `flex-1 border-t border-profile-line`
-  - [ ] cnt는 기존 `{items.length} / recent` 유지
+- [x] `WritingListProps`에 `hash?: string` 추가
+- [x] 섹션 `<header>` 구조 재작성 (ProjectGrid와 동일 패턴)
 
 ### 5.3 ProfileShell
-
-- [ ] `WritingList id="writing"` 호출에 `hash="#03"` prop 추가
-- [ ] `WritingList id="writing-investment"` 호출에 `hash="#04"` prop 추가
+- [x] writing.it `hash="#03"`, writing.inv `hash="#04"`
 
 ## Phase 6. 빌드 검증
 
-- [ ] `npm run check` 타입 체크 통과
-- [ ] `npm run build` 정적 export 성공
-- [ ] 콘솔에 렌더 에러·경고 없음
+- [x] `npm run check` 타입 통과
+- [x] `npm run build` 정적 export 성공
+- [x] 콘솔 렌더 에러·경고 없음
 
 ## Phase 7. 수동 QA (Deploy Preview)
 
