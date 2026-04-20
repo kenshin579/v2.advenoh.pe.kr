@@ -10,33 +10,33 @@ PRD: `7_line_prd.md` · Implementation: `7_line_implementation.md`
 
 ## 2. LineGutter 리팩터링
 
-- [ ] `'use client'` 지시자 추가
-- [ ] `useEffect`, `useState`, `RefObject` import
-- [ ] 상수 선언: `LINE_HEIGHT_PX = 24`, `INITIAL_LINES = 80`
-- [ ] `LineGutterProps` 타입 수정: `lines?` 제거, `targetRef: RefObject<HTMLElement | null>` 추가
-- [ ] state: `useState<number>(INITIAL_LINES)`
-- [ ] `useEffect` 내 로직 구현
-  - [ ] `targetRef.current` null 가드
-  - [ ] `update()` — `getBoundingClientRect().height` → `Math.ceil(h / LINE_HEIGHT_PX) + 2`
-  - [ ] `Math.max(INITIAL_LINES, needed)` 적용
-  - [ ] 동일값 갱신 방지(`prev === needed` 짧은 회로)
-  - [ ] `ResizeObserver` 생성·관찰·cleanup
-- [ ] JSDoc 주석 갱신 (동적 라인 수 설명)
-- [ ] 기존 `aria-hidden`, className 유지
+- [x] `'use client'` 지시자 추가
+- [x] `useEffect`, `useState`, `RefObject` import
+- [x] 상수 선언: `LINE_HEIGHT_PX = 24`, `INITIAL_LINES = 80`
+- [x] `LineGutterProps` 타입 수정: `lines?` 제거, `targetRef: RefObject<HTMLElement | null>` 추가
+- [x] state: `useState<number>(INITIAL_LINES)`
+- [x] `useEffect` 내 로직 구현
+  - [x] `targetRef.current` null 가드
+  - [x] `update()` — `getBoundingClientRect().height` → `Math.ceil(h / LINE_HEIGHT_PX) + 2`
+  - [x] `Math.max(INITIAL_LINES, needed)` 적용
+  - [x] 동일값 갱신 방지(`prev === needed` 짧은 회로)
+  - [x] `ResizeObserver` 생성·관찰·cleanup
+- [x] JSDoc 주석 갱신 (동적 라인 수 설명)
+- [x] 기존 `aria-hidden`, className 유지
 
 ## 3. ProfileShell 수정
 
-- [ ] `useRef` import 추가
-- [ ] `contentRef = useRef<HTMLDivElement>(null)` 선언
-- [ ] `<LineGutter targetRef={contentRef} />`로 변경
-- [ ] 콘텐츠 `<div>`에 `ref={contentRef}` 부착 (className 변경 없음)
-- [ ] 기존 Sidebar/RightRail/StatusBar 영향 없음 확인
+- [x] `useRef` import 추가
+- [x] `contentRef = useRef<HTMLDivElement>(null)` 선언
+- [x] `<LineGutter targetRef={contentRef} />`로 변경
+- [x] 콘텐츠 `<div>`에 `ref={contentRef}` 부착 (className 변경 없음)
+- [x] 기존 Sidebar/RightRail/StatusBar 영향 없음 확인
 
 ## 4. 타입·빌드 검증
 
-- [ ] `npm run check` — 타입 오류 없음 확인
-- [ ] `npm run lint` — 린트 통과 확인
-- [ ] `npm run build` — 정적 export 정상 생성 확인
+- [x] `npm run check` — 타입 오류 없음 확인
+- [~] `npm run lint` — 기존 환경에서 CLI 파싱 오류(`next lint`)로 실행 불가, 빌드 과정의 TypeScript 단계로 갈음
+- [x] `npm run build` — 정적 export 정상 생성 확인
 
 ## 5. 수동 시각 검증 (`npm run dev`)
 

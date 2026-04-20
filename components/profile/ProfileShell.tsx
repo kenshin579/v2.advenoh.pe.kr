@@ -1,5 +1,6 @@
 'use client'
 
+import { useRef } from 'react'
 import type { PortfolioItem } from '@/lib/portfolio'
 import type { StatusSnapshot } from '@/lib/status'
 import type { GithubContrib } from '@/lib/github'
@@ -52,6 +53,8 @@ export function ProfileShell({
 
   useKeyboardNav({ itemCount: portfolioItems.length })
 
+  const contentRef = useRef<HTMLDivElement>(null)
+
   return (
     <div className="flex min-h-screen flex-col bg-profile-bg text-profile-fg font-sans">
       <TitleBar status={status} activeSection={activeSection} />
@@ -61,9 +64,12 @@ export function ProfileShell({
 
         <main className="relative flex-1 overflow-x-hidden">
           <div className="mx-auto flex max-w-[1100px] gap-0">
-            <LineGutter />
+            <LineGutter targetRef={contentRef} />
 
-            <div className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]">
+            <div
+              ref={contentRef}
+              className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]"
+            >
               <Hero stats={stats} github={github} status={status} readme={readme} />
 
               <QuoteBlock />
