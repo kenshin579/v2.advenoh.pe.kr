@@ -457,10 +457,68 @@
 /* ProjectCardV2 — 포커스/hover 시 `↵ open` 뱃지 노출 + preview scale */
 .project-card:hover .kbd,
 .project-card:focus-visible .kbd,
-.project-card:focus-within .kbd {
+.project-card:focus-within .kbd,
+.project-card.focused .kbd {
   opacity: 1;
 }
 
 .project-card:hover img {
   transform: scale(1.02);
+}
+
+.project-card.focused {
+  outline: 1px solid var(--profile-accent);
+  outline-offset: -2px;
+}
+
+/* ProjectModal — .readme (Overview HTML prose) */
+.readme {
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--profile-fg-2);
+  max-width: 72ch;
+}
+.readme > *:first-child { margin-top: 0; }
+.readme > *:last-child { margin-bottom: 0; }
+.readme p { margin: 0 0 8px; }
+.readme ul, .readme ol { padding-left: 20px; margin: 8px 0; }
+.readme ul { list-style: disc; }
+.readme ol { list-style: decimal; }
+.readme li { margin-bottom: 4px; }
+.readme b, .readme strong { color: var(--profile-fg); font-weight: 500; }
+.readme em { font-style: italic; }
+.readme code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12.5px;
+  background: var(--profile-bg-3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--profile-accent);
+}
+.readme pre {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12.5px;
+  background: var(--profile-bg-3);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--profile-line);
+  overflow: auto;
+  margin: 10px 0;
+}
+.readme pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--profile-fg-2);
+}
+.readme a {
+  color: var(--profile-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.readme blockquote {
+  border-left: 2px solid var(--profile-line-2);
+  padding-left: 12px;
+  color: var(--profile-muted);
+  margin: 8px 0;
 }

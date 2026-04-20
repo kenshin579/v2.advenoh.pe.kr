@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 import { z } from 'zod'
 
 export const portfolioItemSchema = z.object({
@@ -34,9 +35,20 @@ export type PortfolioItem = {
   stack?: string[]
   dek?: string
   overview?: string
+  overviewHtml?: string
   featured?: boolean
   ext?: string
   order?: number
+}
+
+function renderOverviewHtml(source: string | undefined, slug: string): string | undefined {
+  if (!source) return undefined
+  try {
+    return marked.parse(source, { async: false, gfm: true, breaks: false }) as string
+  } catch (err) {
+    console.warn(`Failed to render overview Markdown for ${slug}:`, err)
+    return source
+  }
 }
 
 export function getPortfolioItems(): PortfolioItem[] {
@@ -64,12 +76,15 @@ export function getPortfolioItems(): PortfolioItem[] {
 
       const validated = portfolioItemSchema.parse(data)
       const title = validated.title || extractTitleFromUrl(validated.site)
+      const overviewHtml = renderOverviewHtml(validated.overview, folder.name)
 
-      return {
+      const item: PortfolioItem = {
         ...validated,
         title,
         slug: folder.name,
+        ...(overviewHtml ? { overviewHtml } : {}),
       }
+      return item
     })
     .filter((item): item is PortfolioItem => item !== null)
 
