@@ -43,11 +43,11 @@
 ## 6. 커밋 & PR
 
 - [x] 한국어 커밋 메시지로 커밋 (예: `chore: 프로필 stack 항목 재정렬 및 Cursor 추가`)
-- [ ] 원격 push: `git push -u origin feat/38-update-profile-stack`
-- [ ] `gh pr create` + HEREDOC으로 PR 생성
-- [ ] reviewer `kenshin579` 지정
-- [ ] PR 본문 Summary에 Before/After stack 목록 포함
-- [ ] PR 본문 Test plan에 로컬 시각 검증 결과 체크리스트 포함
+- [x] 원격 push: `git push -u origin feat/38-update-profile-stack`
+- [x] `gh pr create` + HEREDOC으로 PR 생성 (#39)
+- [x] reviewer `kenshin579` 지정
+- [x] PR 본문 Summary에 Before/After stack 목록 포함
+- [x] PR 본문 Test plan에 로컬 시각 검증 결과 체크리스트 포함
 
 ## 7. 배포 & 최종 확인
 
