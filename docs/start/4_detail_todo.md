@@ -87,19 +87,19 @@
 
 ### 3.1 ProjectGrid
 
-- [ ] `focusIdx` 상태 도입
-- [ ] 전역 `keydown` 리스너: `j` / `ArrowDown` → 다음, `k` / `ArrowUp` → 이전, `Enter` → 모달 open 이벤트 발행
-- [ ] 모달이 열려있을 때는 리스너 skip
-- [ ] 포커스된 카드 `scrollIntoView({ block: 'nearest', behavior: 'smooth' })`
-- [ ] 각 카드에 `focused` prop + `onFocus` 핸들러 전달
+- [x] `focusIdx` 상태 도입
+- [x] 전역 `keydown` 리스너: `j` / `ArrowDown` → 다음, `k` / `ArrowUp` → 이전, `Enter` → 모달 open 이벤트 발행
+- [x] 모달이 열려있을 때는 리스너 skip
+- [x] 포커스된 카드 `scrollIntoView({ block: 'nearest', behavior: 'smooth' })`
+- [x] 각 카드에 `focused` prop + `onFocus` 핸들러 전달
 
 ### 3.2 ProjectCardV2
 
-- [ ] props 추가: `focused?: boolean`, `onFocus?: () => void`
-- [ ] 루트에 `onMouseEnter={onFocus}` 추가
-- [ ] `focused` 일 때 `outline-1 outline-profile-accent -outline-offset-2` 적용
-- [ ] `.kbd (↵ open)` 을 `focused ? 'opacity-100' : 'opacity-0'` 로 전환
-- [ ] Featured `h3` 를 `text-[32px]` 고정 (반응형 축소 제거)
+- [x] props 추가: `focused?: boolean`, `onFocus?: () => void`
+- [x] 루트에 `onMouseEnter={onFocus}` 추가
+- [x] `focused` 일 때 `outline-1 outline-profile-accent -outline-offset-2` 적용
+- [x] `.kbd (↵ open)` 을 `focused ? 'opacity-100' : 'opacity-0'` 로 전환
+- [x] Featured `h3` 를 `text-[32px]` 고정 (반응형 축소 제거)
 
 ---
 

@@ -6,6 +6,8 @@ import type { PortfolioItem } from '@/lib/portfolio'
 type ProjectCardV2Props = {
   item: PortfolioItem
   variant?: 'featured' | 'default'
+  focused?: boolean
+  onFocus?: () => void
 }
 
 function openModal(slug: string) {
@@ -20,14 +22,20 @@ function hostOf(site: string): string {
   }
 }
 
-export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props) {
+export function ProjectCardV2({
+  item,
+  variant = 'default',
+  focused = false,
+  onFocus,
+}: ProjectCardV2Props) {
   const dek = item.dek ?? item.description
   const isLive = item.status?.toLowerCase().startsWith('live') ?? false
   const coverSrc = item.cover ? `/portfolio/${item.slug}/${item.cover}` : null
   const host = hostOf(item.site)
 
-  const base =
-    'project-card relative cursor-pointer rounded-[10px] border border-profile-line bg-profile-bg-2 transition hover:border-profile-accent hover:bg-[linear-gradient(180deg,var(--profile-accent-soft),var(--profile-bg-2))] focus-visible:outline focus-visible:outline-1 focus-visible:outline-profile-accent focus-visible:-outline-offset-2'
+  const base = `project-card${
+    focused ? ' focused' : ''
+  } relative cursor-pointer rounded-[10px] border border-profile-line bg-profile-bg-2 transition hover:border-profile-accent hover:bg-[linear-gradient(180deg,var(--profile-accent-soft),var(--profile-bg-2))] focus-visible:outline focus-visible:outline-1 focus-visible:outline-profile-accent focus-visible:-outline-offset-2`
 
   if (variant === 'featured') {
     return (
@@ -37,6 +45,7 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
         data-project-card={item.slug}
         aria-keyshortcuts="Enter j k"
         onClick={() => openModal(item.slug)}
+        onMouseEnter={onFocus}
         onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault()
@@ -51,7 +60,7 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
 
         <div className="flex flex-col gap-[14px] md:col-start-1">
           <div className="row flex items-baseline justify-between gap-3">
-            <h3 className="font-display text-[28px] font-medium leading-tight tracking-[-0.02em] text-profile-fg sm:text-[32px] before:content-['★_'] before:text-profile-accent">
+            <h3 className="font-display text-[32px] font-medium leading-tight tracking-[-0.02em] text-profile-fg before:content-['★_'] before:text-profile-accent">
               {item.slug}
               <span className="text-profile-accent">{item.ext ?? ''}</span>
             </h3>
@@ -120,6 +129,7 @@ export function ProjectCardV2({ item, variant = 'default' }: ProjectCardV2Props)
       data-project-card={item.slug}
       aria-keyshortcuts="Enter j k"
       onClick={() => openModal(item.slug)}
+      onMouseEnter={onFocus}
       onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
