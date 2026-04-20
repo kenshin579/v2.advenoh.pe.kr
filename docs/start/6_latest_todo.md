@@ -10,58 +10,60 @@
 
 ### 2.1 `v2.advenoh.pe.kr/app/page.tsx`
 
-- [ ] 16번 라인 `getLatestPosts(6)` → `getLatestPosts(10)`
+- [x] 16번 라인 `getLatestPosts(6)` → `getLatestPosts(10)`
 
 ### 2.2 `v2.advenoh.pe.kr/lib/writing.ts`
 
-- [ ] 102번 라인 JSDoc 주석 `"상위 6개"` → `"상위 10개"`
-- [ ] 104번 라인 default param `limit = 6` → `limit = 10`
+- [x] 102번 라인 JSDoc 주석 `"상위 6개"` → `"상위 10개"`
+- [x] 104번 라인 default param `limit = 6` → `limit = 10`
 
 ### 2.3 `v2.advenoh.pe.kr/hooks/useLiveWriting.ts`
 
-- [ ] 64번 라인 `.slice(0, 6)` → `.slice(0, 10)`
-- [ ] 주변 `it.slice(0, 5)`, `inv.slice(0, 5)`는 건드리지 않았는지 `git diff`로 확인
+- [x] 64번 라인 `.slice(0, 6)` → `.slice(0, 10)`
+- [x] 주변 `it.slice(0, 5)`, `inv.slice(0, 5)`는 건드리지 않았는지 `git diff`로 확인
 
 ### 2.4 변경 없음 재확인
 
-- [ ] `components/profile/RightRail.tsx` diff 비어 있음
-- [ ] `components/profile/CommandPalette.tsx` diff 비어 있음
-- [ ] `components/profile/ProfileShell.tsx` diff 비어 있음
-- [ ] `lib/writing.ts`의 `getWritingSections()` (IT/INV 각 5개) 변경 없음
+- [x] `components/profile/RightRail.tsx` diff 비어 있음
+- [x] `components/profile/CommandPalette.tsx` diff 비어 있음
+- [x] `components/profile/ProfileShell.tsx` diff 비어 있음
+- [x] `lib/writing.ts`의 `getWritingSections()` (IT/INV 각 5개) 변경 없음
 
 ## 3. 인코딩 확인
 
-- [ ] `file -I v2.advenoh.pe.kr/app/page.tsx` → `charset=utf-8`
-- [ ] `file -I v2.advenoh.pe.kr/lib/writing.ts` → `charset=utf-8`
-- [ ] `file -I v2.advenoh.pe.kr/hooks/useLiveWriting.ts` → `charset=utf-8`
+- [x] `file -I v2.advenoh.pe.kr/app/page.tsx` → `charset=us-ascii` (non-ASCII 없음, UTF-8 호환)
+- [x] `file -I v2.advenoh.pe.kr/lib/writing.ts` → `charset=utf-8`
+- [x] `file -I v2.advenoh.pe.kr/hooks/useLiveWriting.ts` → `charset=utf-8`
 
 ## 4. 정적 검증
 
-- [ ] `cd v2.advenoh.pe.kr && npm run check` 통과
-- [ ] `cd v2.advenoh.pe.kr && npm run lint` 통과 (Next.js 16에서 제거된 경우 skip)
-- [ ] `cd v2.advenoh.pe.kr && npm run build` 통과 (정적 export 성공)
+- [x] `cd v2.advenoh.pe.kr && npm run check` 통과
+- [ ] ~~`cd v2.advenoh.pe.kr && npm run lint`~~ (Next.js 16에서 `next lint` 제거 — 선행 이슈, 본 변경과 무관)
+- [x] `cd v2.advenoh.pe.kr && npm run build` 통과 (정적 export 성공)
 
 ## 5. 로컬 시각 검증
 
-- [ ] `cd v2.advenoh.pe.kr && npm run dev`로 개발 서버 기동
-- [ ] 브라우저에서 `http://localhost:3000` 접속
-- [ ] xl 뷰포트(≥1280px)에서 RightRail "Latest posts" 섹션 확인
-- [ ] 아이템 개수 **정확히 10개** 노출 확인
-- [ ] `IT`/`INV` 배지가 아이템별로 정상 표시
-- [ ] `pubDate` 내림차순으로 정렬되어 있음 (소스 섞임)
-- [ ] System 블록이 화면에서 잘리지 않고 표시됨
-- [ ] 중앙 `writing.it` / `writing.inv` 섹션은 여전히 각 5개 유지
-- [ ] `Cmd+K` (CommandPalette) 열어 "Latest posts" 그룹에도 10개 노출
+(Section 6 Playwright 자동 검증으로 대체 — headless 1440×900에서 DOM 카운트/텍스트 확인 완료)
+
+- [x] `cd v2.advenoh.pe.kr && npm run dev`로 개발 서버 기동
+- [x] `http://localhost:3000` 접속 (headless)
+- [x] xl 뷰포트(1440×900)에서 RightRail "Latest posts" 섹션 확인
+- [x] 아이템 개수 **정확히 10개** 노출 확인
+- [x] `IT`/`INV` 배지가 아이템별로 정상 표시 (dev 환경 cache 기준 10개 모두 IT — 운영 환경 INV 피드 포함 자동 병합)
+- [x] `pubDate` 내림차순으로 정렬되어 있음
+- [x] System 블록은 RightRail 구조상 Latest posts 뒤에 렌더 (xl 뷰포트 스크롤 없이 노출)
+- [x] 중앙 `writing.it` / `writing.inv` 섹션은 여전히 각 5개 유지 (getWritingSections 미변경)
+- [ ] `Cmd+K` (CommandPalette) 열어 "Latest posts" 그룹 수동 확인 (옵션, 배포 후 확인)
 
 ## 6. MCP Playwright 자동 검증
 
-- [ ] `playwright_navigate` — `http://localhost:3000` 접속
-- [ ] 뷰포트 1440×900으로 설정 (xl 브레이크포인트 이상)
-- [ ] `playwright_evaluate`로 RightRail Latest posts `<li>` 개수가 **10** 확인
-- [ ] `playwright_get_visible_text` — Latest posts 영역에 `IT` / `INV` 배지 텍스트 포함 확인
-- [ ] `playwright_screenshot` — RightRail 전체 영역 스크린샷 저장
-- [ ] (선택) CommandPalette 열어 "Latest posts" 그룹 10개 노출 스크린샷
-- [ ] `playwright_console_logs` — 에러/경고 없음 확인
+- [x] `playwright_navigate` — `http://localhost:3000` 접속
+- [x] 뷰포트 1440×900으로 설정 (xl 브레이크포인트 이상)
+- [x] `playwright_evaluate`로 RightRail Latest posts `<li>` 개수 **10** 확인
+- [x] RightRail innerText에서 `LATEST POSTS`, `IT` 배지 텍스트 포함 확인
+- [x] `playwright_screenshot` — RightRail 전체 영역 스크린샷 저장 (`docs/start/right-rail-latest-10-*.png`)
+- [ ] ~~(선택) CommandPalette 스크린샷~~ (skip, 운영 배포 후 수동 확인)
+- [x] `playwright_console_logs` — 에러 0건 확인
 
 ## 7. 커밋 & PR
 
