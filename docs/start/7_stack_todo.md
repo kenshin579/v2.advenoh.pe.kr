@@ -46,9 +46,9 @@
 
 ## 6단계: 커밋 & PR
 
-- [ ] 커밋: `[#47] chore: 포트폴리오 stack 배열을 실제 저장소 기준으로 업데이트`
-- [ ] `gh pr create` + HEREDOC 으로 PR 작성 (Summary / Test plan)
-- [ ] 리뷰어 지정: `kenshin579`
+- [x] 커밋: `[#47] chore: 포트폴리오 stack 배열을 실제 저장소 기준으로 업데이트` (commit `02e1fc7`)
+- [x] `gh pr create` + HEREDOC 으로 PR 작성 — https://github.com/kenshin579/v2.advenoh.pe.kr/pull/48
+- [x] 리뷰어 지정: `kenshin579`
 - [ ] merge 후 Netlify 자동 재빌드 확인 (프로덕션 카드에서 스택 확인)
 
 ## 롤백 (필요 시)
