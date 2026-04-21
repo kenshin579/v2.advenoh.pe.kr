@@ -7,21 +7,21 @@
 
 ### Viewport 메타데이터
 
-- [ ] `app/layout.tsx` 에 `viewport: Viewport` export 추가 (`width`, `initialScale: 1`, `maximumScale: 5`, `viewportFit: 'cover'`, `themeColor: '#0a0a0c'`, `colorScheme: 'dark'`)
-- [ ] `npm run check` 타입 검사 통과
+- [x] `app/layout.tsx` 에 `viewport: Viewport` export 추가 (`width`, `initialScale: 1`, `maximumScale: 5`, `viewportFit: 'cover'`, `themeColor: '#0a0a0c'`, `colorScheme: 'dark'`)
+- [x] `npm run check` 타입 검사 통과
 - [ ] 모바일 크롬 DevTools 에뮬레이션으로 `<meta name="viewport">` 및 `<meta name="theme-color">` 렌더 확인
 
 ### 컴포넌트 본문 추출
 
-- [ ] `components/profile/SidebarContent.tsx` 신규 — `Sidebar.tsx` 의 `<aside>` 내부 JSX 이동
-- [ ] `SidebarContent` 에 `onNavigate?: () => void` prop 추가하여 Workspace nav 링크 `onClick` 에 호출
-- [ ] `SidebarContent` 최상단에 **Search & jump** 버튼 추가 → 클릭 시 `onNavigate?.()` + `profile:open-palette` dispatch
-- [ ] Status 서비스 리스트 `.slice(0, 6)` 유지 (Q4 결정 사항)
-- [ ] `SOCIAL_LINKS` 상수를 `SidebarContent.tsx` 로 함께 이동
-- [ ] `components/profile/Sidebar.tsx` 를 `<aside className="hidden md:flex ..."><SidebarContent /></aside>` 래퍼로 축소
-- [ ] `components/profile/RightRailContent.tsx` 신규 — `RightRail.tsx` 의 `<aside>` 내부 JSX 이동 (CommitGraph `size="sm"` 유지)
-- [ ] `components/profile/RightRail.tsx` 를 `<aside className="hidden xl:flex ..."><RightRailContent /></aside>` 래퍼로 축소
-- [ ] `npm run check` 통과 확인
+- [x] `components/profile/SidebarContent.tsx` 신규 — `Sidebar.tsx` 의 `<aside>` 내부 JSX 이동
+- [x] `SidebarContent` 에 `onNavigate?: () => void` prop 추가하여 Workspace nav 링크 `onClick` 에 호출
+- [x] `SidebarContent` 최상단에 **Search & jump** 버튼 추가 → 클릭 시 `onNavigate?.()` + `profile:open-palette` dispatch
+- [x] Status 서비스 리스트 `.slice(0, 6)` 유지 (Q4 결정 사항)
+- [x] `SOCIAL_LINKS` 상수를 `SidebarContent.tsx` 로 함께 이동
+- [x] `components/profile/Sidebar.tsx` 를 `<aside className="hidden md:flex ..."><SidebarContent /></aside>` 래퍼로 축소
+- [x] `components/profile/RightRailContent.tsx` 신규 — `RightRail.tsx` 의 `<aside>` 내부 JSX 이동 (CommitGraph `size="sm"` 유지)
+- [x] `components/profile/RightRail.tsx` 를 `<aside className="hidden xl:flex ..."><RightRailContent /></aside>` 래퍼로 축소
+- [x] `npm run check` 통과 확인
 - [ ] 데스크톱 `md` / `xl` 뷰포트에서 기존 Sidebar / RightRail 렌더 회귀 없음 확인
 
 ## Phase 2. 모바일 Drawer 2종 구현
