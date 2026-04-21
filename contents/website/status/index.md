@@ -7,11 +7,11 @@ status: live
 year: 2026 — now
 role: Solo
 stack:
-  - Next.js 16
+  - Next.js
+  - Python
   - Supabase
   - GitHub Actions
-  - Python
-  - Telegram Bot
+  - Netlify
 dek: 개인 서비스 가용성 모니터링 — GitHub Actions cron 헬스체크 + Supabase + 정적 대시보드.
 overview: |
   5분 주기 GitHub Actions가 Python 헬스체크를 실행해 Supabase Postgres에 상태 변경을 기록하고,

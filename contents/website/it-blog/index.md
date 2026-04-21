@@ -8,9 +8,8 @@ year: 2020 — now
 role: Author
 stack:
   - Next.js
-  - React 18
   - Markdown
-  - shadcn/ui
+  - Netlify
 dek: 개발·클라우드·데이터베이스 경험을 공유하는 기술 블로그.
 overview: |
   Markdown 기반 IT 기술 블로그. 
