@@ -81,48 +81,50 @@
 
 ### ProjectModal 모바일 padding (R9)
 
-- [ ] `components/profile/ProjectModal.tsx:122` — `px-8 py-6` → `px-4 py-5 sm:px-8 sm:py-6`
+- [x] `components/profile/ProjectModal.tsx:122` — `px-8 py-6` → `px-4 py-5 sm:px-8 sm:py-6`
 - [ ] 데스크톱 모달 레이아웃 회귀 없음 확인
 
 ### Hero 모바일 조정 (R10)
 
-- [ ] `components/profile/Hero.tsx:40` — hero title 폰트 `text-5xl` → `text-[40px]` (320px 에서 wrap 여부 확인 후 필요 시 조정)
-- [ ] `components/profile/Hero.tsx:56` — `grid-cols-[120px_1fr]` → `grid-cols-[90px_1fr] sm:grid-cols-[120px_1fr]`
+- [x] `components/profile/Hero.tsx:40` — hero title 폰트 `text-5xl` → `text-[40px]` (320px 에서 wrap 여부 확인 후 필요 시 조정)
+- [x] `components/profile/Hero.tsx:56` — `grid-cols-[120px_1fr]` → `grid-cols-[90px_1fr] sm:grid-cols-[120px_1fr]`
 - [ ] 375px / 320px 뷰포트에서 `// frank oh;` 1줄 유지 확인
 - [ ] KV dl 각 value 텍스트 잘림 없음 확인
 
 ### 키보드 단축키 힌트 모바일 숨김 (R12)
 
-- [ ] `components/profile/ProjectGrid.tsx:61-70` — "j k to navigate" 부분(` · <kbd>j</kbd> <kbd>k</kbd> to navigate`)을 `<span className="hidden sm:inline">...</span>` 으로 감싸기
+- [x] `components/profile/ProjectGrid.tsx:61-70` — "j k to navigate" 부분(` · <kbd>j</kbd> <kbd>k</kbd> to navigate`)을 `<span className="hidden sm:inline">...</span>` 으로 감싸기
 - [ ] 모바일에서 `ls ./projects · N items` 만 표시되는지 확인
 - [ ] 데스크톱에서 기존 힌트 그대로 노출되는지 확인
 
 ### 터치 타겟 확장 (R7)
 
-- [ ] `SidebarContent` 내 Workspace nav 링크 padding: `px-2 py-1` → `px-2 py-2.5 md:py-1` (모바일에서 44px 이상 확보)
-- [ ] Links 블록(`SOCIAL_LINKS`) 링크 padding 동일 적용
+- [x] `SidebarContent` 내 Workspace nav 링크 padding: `px-2 py-1` → `px-2 py-2.5 md:py-1` (모바일에서 44px 이상 확보)
+- [x] Links 블록(`SOCIAL_LINKS`) 링크 padding 동일 적용
 - [ ] TitleBar 의 신규 버튼들 44×44px 실측 확인 (Chrome DevTools Accessibility tab)
 
 ## Phase 5. 테스트 & QA
 
 ### 자동화
 
-- [ ] `npm run check` 타입 검사 통과
-- [ ] `npm run lint` 린트 통과
-- [ ] `npm run build` 정적 export 빌드 성공 (`out/` 생성)
+- [x] `npm run check` 타입 검사 통과
+- [ ] ~~`npm run lint` 린트 통과~~ — Next.js 16에서 `next lint` deprecated (기존 레포 이슈, 본 PR 범위 밖)
+- [x] `npm run build` 정적 export 빌드 성공 (`out/` 생성)
 - [ ] 기존 Playwright 테스트 (`tests/`) 회귀 없음
 
 ### MCP Playwright — 모바일 뷰포트 자동화
 
-- [ ] `npm run dev` 로컬 서버 기동
-- [ ] MCP Playwright 로 모바일 뷰포트(375×812 iPhone 15) 시뮬레이션
-- [ ] 햄버거 버튼 클릭 → 좌측 drawer 오픈 스크린샷 캡처
-- [ ] Workspace 링크 탭 → drawer 자동 close + 섹션 스크롤 점프 확인
-- [ ] drawer 내 "Search & jump" 버튼 → CommandPalette 오픈 확인
-- [ ] `PanelRight` 버튼 클릭 → 우측 drawer 오픈 + CommitGraph / Latest posts / System 렌더 확인
-- [ ] ESC 키 · overlay 클릭으로 drawer close 확인
-- [ ] 데스크톱 뷰포트(1440×900) 에서 모바일 트리거 버튼 미노출 확인
-- [ ] ProjectModal 모바일 패딩 개선 스크린샷 캡처 비교
+- [x] `npm run dev` 로컬 서버 기동
+- [x] MCP Playwright 로 모바일 뷰포트(393×852 iPhone 15) 시뮬레이션
+- [x] 햄버거 버튼 클릭 → 좌측 drawer 오픈 스크린샷 캡처 (`docs/start/mobile-sidebar-drawer-*.png`)
+- [x] Workspace 링크 탭 → drawer 자동 close + 섹션 스크롤 점프 확인 (`docs/start/mobile-after-nav-*.png`)
+- [x] drawer 내 "Search & jump" 버튼 → CommandPalette 오픈 확인 (`docs/start/mobile-command-palette-*.png`)
+- [x] `PanelRight` 버튼 클릭 → 우측 drawer 오픈 + CommitGraph / Latest posts / System 렌더 확인 (`docs/start/mobile-rightrail-drawer-*.png`)
+- [x] ESC 키 · overlay 클릭으로 drawer close 확인 (`docs/start/mobile-after-esc-*.png`)
+- [x] 데스크톱 뷰포트(1440×900) 에서 모바일 트리거 버튼 미노출 확인 — 1440 에서 `hamburger/panelRight: false`, `kbd/sidebar/rightRail: true`
+- [x] 768px (md 경계) 에서 `hamburger/panelRight: false`, `sidebar: true`, `rightRail: false (xl 기준)` 확인
+- [x] 320px 극단 뷰포트에서 `// frank oh;` 1줄 유지 및 햄버거/PanelRight 표시 확인
+- [x] viewport 및 theme-color 메타 태그 정상 주입 확인 (curl + grep)
 
 ### 브레이크포인트 수동 QA
 
