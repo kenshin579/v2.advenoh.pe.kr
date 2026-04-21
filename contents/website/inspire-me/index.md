@@ -8,8 +8,14 @@ year: 2023 — now
 role: Solo
 stack:
   - Next.js
-  - Tailwind
-  - Markdown
+  - Go
+  - Echo
+  - GORM
+  - MySQL
+  - Redis
+  - OpenAI
+  - Kubernetes
+  - Helm
 dek: 주제·언어별 명언 아카이브 — 일일 영감을 위한 큐레이션.
 overview: |
   세계 인물들의 명언을 주제·언어별로 분류해 보여주는 정적 사이트.

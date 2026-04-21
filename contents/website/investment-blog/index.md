@@ -7,9 +7,9 @@ status: live
 year: 2024 — now
 role: Author
 stack:
-  - Next.js 15
-  - React 19
-  - Tailwind
+  - Next.js
+  - Markdown
+  - Netlify
 dek: 국내외 주식·ETF·채권·펀드에 대한 전문 투자 분석·인사이트 블로그.
 overview: |
   투자 관련 분석글 100+ 편을 보유한 정적 사이트. 

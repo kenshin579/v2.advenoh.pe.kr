@@ -7,11 +7,14 @@ status: live
 year: 2024 — now
 role: Solo
 stack:
-  - Next.js 16
+  - Next.js
+  - Python
   - FastAPI
   - LangChain
   - ChromaDB
   - OpenAI
+  - Kubernetes
+  - Helm
 dek: RAG 기반 블로그 Q&A 챗봇 — 기술 블로그/투자 블로그 콘텐츠를 임베딩해 자연어로 질의응답.
 overview: |
   **왜 만들었나.** 글이 쌓일수록 키워드 검색이 한계에 부딪히는 블로그를, 자연어 질의로 탐색할 수 있게 만들고 싶었다.
