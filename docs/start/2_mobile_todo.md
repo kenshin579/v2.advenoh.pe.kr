@@ -58,24 +58,24 @@
 
 ### TitleBar 수정
 
-- [ ] `components/profile/TitleBar.tsx` 에 `Menu`, `PanelRight` lucide 아이콘 import
-- [ ] 좌측 dots 3개 직후에 햄버거 버튼 추가 (`md:hidden`, `h-[44px] w-[44px]`, `aria-label="Open navigation"`)
+- [x] `components/profile/TitleBar.tsx` 에 `Menu`, `PanelRight` lucide 아이콘 import
+- [x] 좌측 dots 3개 직후에 햄버거 버튼 추가 (`md:hidden`, `h-[44px] w-[44px]`, `aria-label="Open navigation"`)
   - onClick: `window.dispatchEvent(new Event('profile:open-sidebar'))`
-- [ ] 우측 `ml-auto` 컨테이너 내부, 기존 `⌘K` 버튼 좌측에 `PanelRight` 버튼 추가 (`md:hidden`, `h-[44px] w-[44px]`, `aria-label="Open activity panel"`)
+- [x] 우측 `ml-auto` 컨테이너 내부, 기존 `⌘K` 버튼 좌측에 `PanelRight` 버튼 추가 (`md:hidden`, `h-[44px] w-[44px]`, `aria-label="Open activity panel"`)
   - onClick: `window.dispatchEvent(new Event('profile:open-rightrail'))`
-- [ ] 기존 `⌘K` 버튼은 `hidden md:inline-flex` 유지 (변경 없음)
-- [ ] breadcrumb `<span>` 은 `hidden sm:inline` 유지 (변경 없음)
-- [ ] TitleBar 자체에 `pt-[env(safe-area-inset-top)]` + `h-[calc(40px+env(safe-area-inset-top))]` 적용
+- [x] 기존 `⌘K` 버튼은 `hidden md:inline-flex` 유지 (변경 없음)
+- [x] breadcrumb `<span>` 은 `hidden sm:inline` 유지 (변경 없음)
+- [x] TitleBar 자체에 `pt-[env(safe-area-inset-top)]` + `h-[calc(40px+env(safe-area-inset-top))]` 적용
 
 ### StatusBar 수정
 
-- [ ] `components/profile/StatusBar.tsx` 에 `pb-[env(safe-area-inset-bottom)]` + `h-[calc(28px+env(safe-area-inset-bottom))]` 적용
+- [x] `components/profile/StatusBar.tsx` 에 `pb-[env(safe-area-inset-bottom)]` + `h-[calc(28px+env(safe-area-inset-bottom))]` 적용
 - [ ] iOS Safari 시뮬레이터에서 홈 인디케이터 영역과 겹침 없음 확인
 
 ### ProfileShell 마운트
 
-- [ ] `components/profile/ProfileShell.tsx` 하단 overlay 마운트 섹션에 `<MobileSidebarDrawer ... />`, `<MobileRightRailDrawer ... />` 2줄 추가
-- [ ] 필요한 props 전달: `status`, `activeSection`, `github`, `latestPosts` (기존 변수 재사용)
+- [x] `components/profile/ProfileShell.tsx` 하단 overlay 마운트 섹션에 `<MobileSidebarDrawer ... />`, `<MobileRightRailDrawer ... />` 2줄 추가
+- [x] 필요한 props 전달: `status`, `activeSection`, `github`, `latestPosts` (기존 변수 재사용)
 
 ## Phase 4. 부가 개선
 

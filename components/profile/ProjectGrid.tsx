@@ -59,14 +59,17 @@ export function ProjectGrid({ items }: ProjectGridProps) {
         <span className="font-mono text-[11px] text-profile-muted-2">#02</span>
         <div className="flex-1 border-t border-profile-line" aria-hidden="true" />
         <span className="font-mono text-[11px] text-profile-muted">
-          ls ./projects · {items.length} items ·{' '}
-          <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">
-            j
-          </kbd>{' '}
-          <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">
-            k
-          </kbd>{' '}
-          to navigate
+          ls ./projects · {items.length} items
+          <span className="hidden sm:inline">
+            {' · '}
+            <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">
+              j
+            </kbd>{' '}
+            <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">
+              k
+            </kbd>{' '}
+            to navigate
+          </span>
         </span>
       </header>
 

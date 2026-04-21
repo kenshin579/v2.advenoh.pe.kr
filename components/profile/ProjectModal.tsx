@@ -119,7 +119,7 @@ export function ProjectModal({ items }: ProjectModalProps) {
                   </div>
                 )}
 
-                <div className="px-8 py-6">
+                <div className="px-4 py-5 sm:px-8 sm:py-6">
                   {/* Title + Dek */}
                   <Dialog.Title asChild>
                     <h3 className="m-0 mb-1.5 font-display text-[32px] font-medium leading-tight tracking-[-0.02em] text-profile-fg">

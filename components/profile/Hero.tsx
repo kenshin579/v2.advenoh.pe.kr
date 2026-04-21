@@ -37,7 +37,7 @@ export function Hero({ stats, github, status, readme }: HeroProps) {
     >
       <TypewriterPrompt />
 
-      <h1 className="font-display font-medium leading-[0.9] tracking-[-0.035em] text-profile-fg text-5xl sm:text-7xl md:text-8xl">
+      <h1 className="font-display font-medium leading-[0.9] tracking-[-0.035em] text-profile-fg text-[40px] sm:text-7xl md:text-8xl">
         <span className="text-profile-muted">//</span>
         {' '}
         frank{' '}
@@ -53,7 +53,7 @@ export function Hero({ stats, github, status, readme }: HeroProps) {
         </p>
       )}
 
-      <dl className="mt-7 mb-3 grid grid-cols-[120px_1fr] gap-x-5 gap-y-[7px] font-mono text-[13px]">
+      <dl className="mt-7 mb-3 grid grid-cols-[90px_1fr] sm:grid-cols-[120px_1fr] gap-x-5 gap-y-[7px] font-mono text-[13px]">
         {kvs.map(([k, v]) => (
           v ? (
             <div key={k} className="contents">
