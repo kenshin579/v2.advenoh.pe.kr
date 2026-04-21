@@ -7,7 +7,7 @@ export function StatusBar({ section = '#readme', xp = '10+ yrs' }: StatusBarProp
   return (
     <footer
       aria-label="Status bar"
-      className="sticky bottom-0 z-20 flex h-7 items-center gap-4 border-t border-profile-line-2 bg-profile-bg-2/95 px-4 font-mono text-[11px] text-profile-muted backdrop-blur"
+      className="sticky bottom-0 z-20 flex h-[calc(28px+env(safe-area-inset-bottom))] items-center gap-4 border-t border-profile-line-2 bg-profile-bg-2/95 px-4 pb-[env(safe-area-inset-bottom)] font-mono text-[11px] text-profile-muted backdrop-blur"
     >
       <span className="text-profile-fg-2" aria-live="polite">
         {section}

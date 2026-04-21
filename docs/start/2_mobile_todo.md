@@ -28,25 +28,25 @@
 
 ### 좌측 Drawer (MobileSidebarDrawer)
 
-- [ ] `components/profile/MobileSidebarDrawer.tsx` 신규 (`'use client'`)
-- [ ] `useState<boolean>` + `profile:open-sidebar` 이벤트 구독 훅 작성
-- [ ] Radix `Dialog.Root` / `Portal` / `Overlay` / `Content` 구조
-- [ ] `Dialog.Content` 스타일: `fixed inset-y-0 left-0 z-[55] w-[280px] bg-profile-bg-2 border-r border-profile-line shadow-2xl md:hidden overflow-y-auto`
-- [ ] `tailwindcss-animate` 슬라이드 유틸 적용 (`data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left`)
-- [ ] Safe-area inset: `pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1rem)]`
-- [ ] `Dialog.Close` 버튼 우상단 배치 (`h-[44px] w-[44px]`, `X` 아이콘)
-- [ ] `Dialog.Title` 은 `sr-only` 로 "Navigation" 라벨
-- [ ] `SidebarContent` 에 `onNavigate={() => setOpen(false)}` 연결하여 섹션 점프 시 자동 close
+- [x] `components/profile/MobileSidebarDrawer.tsx` 신규 (`'use client'`)
+- [x] `useState<boolean>` + `profile:open-sidebar` 이벤트 구독 훅 작성
+- [x] Radix `Dialog.Root` / `Portal` / `Overlay` / `Content` 구조
+- [x] `Dialog.Content` 스타일: `fixed inset-y-0 left-0 z-[55] w-[280px] bg-profile-bg-2 border-r border-profile-line shadow-2xl md:hidden overflow-y-auto`
+- [x] `tailwindcss-animate` 슬라이드 유틸 적용 (`data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left`)
+- [x] Safe-area inset: `pt-[calc(env(safe-area-inset-top)+1rem)] pb-[calc(env(safe-area-inset-bottom)+1rem)]`
+- [x] `Dialog.Close` 버튼 우상단 배치 (`h-[44px] w-[44px]`, `X` 아이콘)
+- [x] `Dialog.Title` 은 `sr-only` 로 "Navigation" 라벨
+- [x] `SidebarContent` 에 `onNavigate={() => setOpen(false)}` 연결하여 섹션 점프 시 자동 close
 
 ### 우측 Drawer (MobileRightRailDrawer)
 
-- [ ] `components/profile/MobileRightRailDrawer.tsx` 신규 — 좌측 drawer 미러 구조
-- [ ] `profile:open-rightrail` 이벤트 구독
-- [ ] `Dialog.Content` 스타일: `fixed inset-y-0 right-0 z-[55] w-[85vw] max-w-[340px] border-l md:hidden`
-- [ ] `slide-in-from-right` / `slide-out-to-right` 애니메이션
-- [ ] `RightRailContent` 삽입 (`github`, `latestPosts`, `status` props)
-- [ ] Safe-area inset 좌측 drawer와 동일 적용
-- [ ] `Dialog.Close` 좌상단 배치 (`X` 아이콘, 44×44px)
+- [x] `components/profile/MobileRightRailDrawer.tsx` 신규 — 좌측 drawer 미러 구조
+- [x] `profile:open-rightrail` 이벤트 구독
+- [x] `Dialog.Content` 스타일: `fixed inset-y-0 right-0 z-[55] w-[85vw] max-w-[340px] border-l md:hidden`
+- [x] `slide-in-from-right` / `slide-out-to-right` 애니메이션
+- [x] `RightRailContent` 삽입 (`github`, `latestPosts`, `status` props)
+- [x] Safe-area inset 좌측 drawer와 동일 적용
+- [x] `Dialog.Close` 좌상단 배치 (`X` 아이콘, 44×44px)
 
 ### 공통 확인
 
