@@ -24,6 +24,8 @@ import { NoiseOverlay } from './NoiseOverlay'
 import { TweaksPanel } from './TweaksPanel'
 import { CommandPalette } from './CommandPalette'
 import { ProjectModal } from './ProjectModal'
+import { MobileSidebarDrawer } from './MobileSidebarDrawer'
+import { MobileRightRailDrawer } from './MobileRightRailDrawer'
 
 const SPY_SECTIONS = ['readme', 'projects', 'writing', 'writing-investment'] as const
 
@@ -92,6 +94,12 @@ export function ProfileShell({
       <TweaksPanel />
       <CommandPalette projects={portfolioItems} latestPosts={writing.latest} />
       <ProjectModal items={portfolioItems} />
+      <MobileSidebarDrawer status={status} activeSection={activeSection} />
+      <MobileRightRailDrawer
+        github={github}
+        latestPosts={writing.latest}
+        status={status}
+      />
     </div>
   )
 }

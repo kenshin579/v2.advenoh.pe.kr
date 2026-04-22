@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Mono, IBM_Plex_Sans_KR, Space_Grotesk } from 'next/font/google'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
@@ -70,6 +70,15 @@ export const metadata: Metadata = {
       'naver-site-verification': 'b63b630c8f37fb1c0d2bd69cbbaa6e0b3a999a57',
     },
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: '#0a0a0c',
+  colorScheme: 'dark',
 }
 
 export default function RootLayout({
