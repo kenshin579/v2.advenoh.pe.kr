@@ -7,7 +7,9 @@ vite.config.ts.*
 .idea
 
 # Build outputs
-public/
+public/*
+# AdSense publisher 인증 파일 (계정 등록 유지 중) — 삭제 금지
+!public/ads.txt
 
 # Next.js
 .next/
