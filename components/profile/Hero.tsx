@@ -4,6 +4,7 @@ import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'
 import type { HeroStats } from '@/lib/stats'
 import type { ReadmeData } from '@/lib/profile-readme'
+import type { Dict } from '@/lib/i18n/types'
 import { siteConfig } from '@/lib/site-config'
 import { TypewriterPrompt } from './TypewriterPrompt'
 import { StatsRow } from './StatsRow'
@@ -13,9 +14,10 @@ type HeroProps = {
   github: GithubContrib
   status: StatusSnapshot
   readme: ReadmeData
+  t: Dict
 }
 
-export function Hero({ stats, github, status, readme }: HeroProps) {
+export function Hero({ stats, github, status, readme, t }: HeroProps) {
   const headline = readme.headline ?? siteConfig.author.jobTitle
 
   const kvs: Array<[string, string | undefined]> = [
@@ -64,7 +66,7 @@ export function Hero({ stats, github, status, readme }: HeroProps) {
         ))}
       </dl>
 
-      <StatsRow stats={stats} github={github} status={status} />
+      <StatsRow stats={stats} github={github} status={status} t={t} />
     </section>
   )
 }
