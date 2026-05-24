@@ -9,7 +9,7 @@ import { ProfileShell } from '@/components/profile/ProfileShell'
 export default async function HomePage() {
   const [portfolioItems, status, github, writingSections, latestPosts] =
     await Promise.all([
-      Promise.resolve(getPortfolioItems()),
+      Promise.resolve(getPortfolioItems('en')),
       getStatusSnapshot(),
       getGithubContrib(),
       getWritingSections(),
