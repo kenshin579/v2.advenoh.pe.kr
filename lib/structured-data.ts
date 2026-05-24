@@ -1,7 +1,7 @@
 import { siteConfig } from './site-config'
 import type { PortfolioItem } from './portfolio'
 
-export function getPersonStructuredData() {
+export function getPersonStructuredData(description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -13,17 +13,17 @@ export function getPersonStructuredData() {
       siteConfig.author.social.instagram,
     ],
     jobTitle: 'Software Engineer',
-    description: siteConfig.description,
+    description,
   }
 }
 
-export function getWebSiteStructuredData() {
+export function getWebSiteStructuredData(description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
+    description,
     author: {
       '@type': 'Person',
       name: siteConfig.author.name,

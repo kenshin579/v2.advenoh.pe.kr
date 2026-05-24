@@ -4,6 +4,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
 import { getPersonStructuredData, getWebSiteStructuredData } from '@/lib/structured-data'
+import { en } from '@/lib/i18n/en'
 
 const ibmPlexSansKR = IBM_Plex_Sans_KR({
   subsets: ['latin'],
@@ -86,8 +87,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const personData = getPersonStructuredData()
-  const websiteData = getWebSiteStructuredData()
+  const personData = getPersonStructuredData(en.meta.description)
+  const websiteData = getWebSiteStructuredData(en.meta.description)
 
   return (
     <html
