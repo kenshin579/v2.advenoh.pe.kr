@@ -9,6 +9,12 @@ export const metadata: Metadata = {
     title: ko.meta.title,
     description: ko.meta.description,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: ko.meta.title,
+    description: ko.meta.description,
+    images: ['/og-image.png'],
+  },
   alternates: {
     canonical: '/ko/',
     languages: {

@@ -3,7 +3,6 @@ import { IBM_Plex_Mono, IBM_Plex_Sans_KR, Space_Grotesk } from 'next/font/google
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
-import { getPersonStructuredData, getWebSiteStructuredData } from '@/lib/structured-data'
 import { en } from '@/lib/i18n/en'
 
 const ibmPlexSansKR = IBM_Plex_Sans_KR({
@@ -95,9 +94,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const personData = getPersonStructuredData(en.meta.description)
-  const websiteData = getWebSiteStructuredData(en.meta.description)
-
   return (
     <html
       lang="en"
@@ -105,16 +101,6 @@ export default function RootLayout({
       data-accent="violet"
       data-density="comfortable"
     >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
-        />
-      </head>
       <body
         className={`${ibmPlexSansKR.variable} ${ibmPlexMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
       >
