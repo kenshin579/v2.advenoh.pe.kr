@@ -83,13 +83,13 @@ export function ProfileShell({
             >
               <Hero stats={stats} github={github} status={status} readme={readme} />
 
-              <QuoteBlock />
+              <QuoteBlock t={t} />
 
               <ProjectGrid items={portfolioItems} t={t} />
 
-              <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} />
+              <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} t={t} />
 
-              <WritingList id="writing-investment" title="writing.inv" hash="#04" items={writing.investment} />
+              <WritingList id="writing-investment" title="writing.inv" hash="#04" items={writing.investment} t={t} />
             </div>
           </div>
         </main>
