@@ -40,6 +40,7 @@ export const en = {
     open: 'open',
   },
   modal: {
+    press: 'press',
     overview: 'Overview',
     stack: 'Stack',
     close: 'close · ESC',

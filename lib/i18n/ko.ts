@@ -42,6 +42,7 @@ export const ko: Dict = {
     open: '열기',
   },
   modal: {
+    press: '누르기',
     overview: '개요',
     stack: '기술 스택',
     close: '닫기 · ESC',

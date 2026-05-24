@@ -119,7 +119,7 @@ export function ProjectCardV2({
         )}
 
         <span className="kbd absolute top-[14px] right-[14px] opacity-0 transition-opacity font-mono text-[10px] text-profile-accent">
-          ↵ open
+          ↵ {t.projects.open}
         </span>
       </article>
     )

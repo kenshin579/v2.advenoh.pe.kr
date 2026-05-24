@@ -184,7 +184,7 @@ export function ProjectModal({ items, t }: ProjectModalProps) {
               {/* Footer .mf */}
               <footer className="flex flex-col items-stretch gap-3 border-t border-profile-line bg-profile-bg-3 px-4 py-3 font-mono text-[11px] text-profile-muted sm:flex-row sm:items-center sm:justify-between">
                 <span className="flex items-center gap-1.5">
-                  press{' '}
+                  {t.modal.press}{' '}
                   <kbd className="rounded border border-profile-line-2 bg-profile-bg-2 px-1.5 py-[1px] text-[10px] text-profile-fg-2">
                     ←
                   </kbd>
