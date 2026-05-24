@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import type { Locale } from './i18n/types'
 
 export type ReadmeData = {
   role?: string
@@ -27,22 +28,32 @@ function parseArray(v: unknown): string[] | undefined {
   return undefined
 }
 
-export function loadReadme(): ReadmeData {
+function pickStr(data: Record<string, unknown>, base: string, locale: Locale): string | undefined {
+  const localed = data[`${base}_${locale}`]
+  if (typeof localed === 'string' && localed.trim()) return localed
+  const fallback = data[base]
+  if (typeof fallback === 'string' && fallback.trim()) return fallback
+  const other = data[`${base}_${locale === 'en' ? 'ko' : 'en'}`]
+  return typeof other === 'string' && other.trim() ? other : undefined
+}
+
+export function loadReadme(locale: Locale): ReadmeData {
   try {
     const p = path.join(process.cwd(), 'contents/profile/readme.md')
     const raw = fs.readFileSync(p, 'utf8')
     const { data, content } = matter(raw)
+    const body = pickStr(data, 'body', locale) ?? content.trim()
     return {
-      role: typeof data.role === 'string' ? data.role : undefined,
-      focus: typeof data.focus === 'string' ? data.focus : undefined,
-      based: typeof data.based === 'string' ? data.based : undefined,
-      xp: typeof data.xp === 'string' ? data.xp : undefined,
-      headline: typeof data.headline === 'string' ? data.headline : undefined,
+      role: pickStr(data, 'role', locale),
+      focus: pickStr(data, 'focus', locale),
+      based: pickStr(data, 'based', locale),
+      xp: pickStr(data, 'xp', locale),
+      headline: pickStr(data, 'headline', locale),
       stack: parseArray(data.stack),
       db: parseArray(data.db),
       cloud: parseArray(data.cloud),
       cicd: parseArray(data.cicd),
-      body: content.trim(),
+      body,
     }
   } catch {
     return { body: '' }

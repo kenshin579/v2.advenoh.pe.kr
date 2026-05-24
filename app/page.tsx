@@ -16,7 +16,7 @@ export default async function HomePage() {
       getLatestPosts(10),
     ])
 
-  const readme = loadReadme()
+  const readme = loadReadme('en')
   const itemList = getProjectsItemListStructuredData(portfolioItems)
 
   return (
