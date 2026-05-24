@@ -29,16 +29,24 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://advenoh.pe.kr'),
-  title: siteConfig.name,
-  description: siteConfig.description,
+  title: en.meta.title,
+  description: en.meta.description,
   authors: [{ name: siteConfig.author.name }],
   keywords: ['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'],
+  alternates: {
+    canonical: '/',
+    languages: {
+      en: '/',
+      ko: '/ko/',
+      'x-default': '/',
+    },
+  },
   openGraph: {
     type: 'website',
-    locale: 'ko_KR',
+    locale: 'en_US',
     url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: en.meta.title,
+    description: en.meta.description,
     siteName: siteConfig.name,
     images: [
       {
@@ -51,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: en.meta.title,
+    description: en.meta.description,
     images: ['/og-image.png'],
   },
   robots: {
@@ -92,7 +100,7 @@ export default function RootLayout({
 
   return (
     <html
-      lang="ko"
+      lang="en"
       className="dark"
       data-accent="violet"
       data-density="comfortable"

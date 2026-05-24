@@ -1,23 +1,21 @@
 import { loadHomeData } from '@/lib/home-data'
 import { getProjectsItemListStructuredData } from '@/lib/structured-data'
 import { ProfileShell } from '@/components/profile/ProfileShell'
-import { AutoLangRedirect } from '@/components/profile/AutoLangRedirect'
-import { en } from '@/lib/i18n/en'
+import { ko } from '@/lib/i18n/ko'
 
-export default async function HomePage() {
-  const data = await loadHomeData('en')
+export default async function KoHomePage() {
+  const data = await loadHomeData('ko')
   const itemList = getProjectsItemListStructuredData(data.portfolioItems)
 
   return (
     <>
-      <AutoLangRedirect />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
       />
       <ProfileShell
-        locale="en"
-        t={en}
+        locale="ko"
+        t={ko}
         initialStatus={data.status}
         initialWriting={data.writing}
         portfolioItems={data.portfolioItems}
