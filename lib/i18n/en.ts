@@ -16,6 +16,7 @@ export const en = {
     instagramProfile: 'Instagram: frank.photosnap',
     quoteDetail: 'View this quote on inspire-me',
     langToggle: 'Switch language',
+    navSections: 'Sections',
   },
   sidebar: {
     searchJump: 'Search & jump',

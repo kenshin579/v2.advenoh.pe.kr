@@ -58,7 +58,7 @@ export function SidebarContent({ status, activeSection, onNavigate, t }: Sidebar
         <div className="mb-2 text-[10px] uppercase tracking-widest text-profile-muted-2">
           {t.sidebar.workspace}
         </div>
-        <nav aria-label="Sections" className="flex flex-col gap-0.5">
+        <nav aria-label={t.a11y.navSections} className="flex flex-col gap-0.5">
           {NAV_SECTIONS.map(item => {
             const active = activeSection === item.id
             return (

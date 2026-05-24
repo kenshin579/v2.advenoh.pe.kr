@@ -18,6 +18,7 @@ export const ko: Dict = {
     instagramProfile: 'Instagram: frank.photosnap',
     quoteDetail: 'inspire-me에서 이 명언 자세히 보기',
     langToggle: '언어 전환',
+    navSections: '섹션',
   },
   sidebar: {
     searchJump: '검색 & 이동',
