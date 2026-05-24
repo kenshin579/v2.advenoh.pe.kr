@@ -19,3 +19,6 @@ out/
 client.old/
 server.old/
 tsconfig*
+# Playwright
+/playwright-report/
+/test-results/
