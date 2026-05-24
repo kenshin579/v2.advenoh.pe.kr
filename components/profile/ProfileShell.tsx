@@ -94,7 +94,7 @@ export function ProfileShell({
           </div>
         </main>
 
-        <RightRail github={github} latestPosts={writing.latest} status={status} />
+        <RightRail github={github} latestPosts={writing.latest} status={status} t={t} />
       </div>
 
       <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} />
@@ -108,6 +108,7 @@ export function ProfileShell({
         github={github}
         latestPosts={writing.latest}
         status={status}
+        t={t}
       />
     </div>
   )

@@ -1,10 +1,12 @@
 'use client'
 
 import type { ContributionLevel, GithubContrib } from '@/lib/github'
+import type { Dict } from '@/lib/i18n/types'
 
 type CommitGraphProps = {
   data: GithubContrib
   size?: 'sm' | 'md'
+  t: Dict
 }
 
 const LEVEL_TO_DATA_L: Record<ContributionLevel, '0' | '1' | '2' | '3' | '4'> = {
@@ -23,7 +25,7 @@ const LEVEL_COLOR: Record<ContributionLevel, string> = {
   FOURTH_QUARTILE: 'var(--profile-accent)',
 }
 
-export function CommitGraph({ data, size = 'sm' }: CommitGraphProps) {
+export function CommitGraph({ data, size = 'sm', t }: CommitGraphProps) {
   const cellSize = size === 'sm' ? 10 : 14
   const gap = 2
 
@@ -65,7 +67,7 @@ export function CommitGraph({ data, size = 'sm' }: CommitGraphProps) {
       </div>
 
       <div className="flex items-center justify-end gap-1 font-mono text-[10px] text-profile-muted-2">
-        <span>Less</span>
+        <span>{t.commits.less}</span>
         {(['NONE', 'FIRST_QUARTILE', 'SECOND_QUARTILE', 'THIRD_QUARTILE', 'FOURTH_QUARTILE'] as ContributionLevel[]).map(l => (
           <span
             key={l}
@@ -73,7 +75,7 @@ export function CommitGraph({ data, size = 'sm' }: CommitGraphProps) {
             style={{ width: 10, height: 10, backgroundColor: LEVEL_COLOR[l] }}
           />
         ))}
-        <span>More</span>
+        <span>{t.commits.more}</span>
       </div>
     </div>
   )
