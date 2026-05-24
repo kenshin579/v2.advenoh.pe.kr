@@ -17,6 +17,7 @@ export const en = {
     quoteDetail: 'View this quote on inspire-me',
     langToggle: 'Switch language',
     navSections: 'Sections',
+    noiseIntensity: 'Noise intensity',
   },
   sidebar: {
     searchJump: 'Search & jump',

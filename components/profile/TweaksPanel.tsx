@@ -101,7 +101,7 @@ export function TweaksPanel({ t }: TweaksPanelProps) {
               max={100}
               value={tweaks.noise}
               onChange={e => update({ noise: Number(e.target.value) })}
-              aria-label="Noise intensity"
+              aria-label={t.a11y.noiseIntensity}
               className="w-full accent-[var(--profile-accent)]"
             />
           </div>
