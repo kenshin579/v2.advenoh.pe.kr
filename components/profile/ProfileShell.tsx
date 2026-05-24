@@ -85,7 +85,7 @@ export function ProfileShell({
 
               <QuoteBlock />
 
-              <ProjectGrid items={portfolioItems} />
+              <ProjectGrid items={portfolioItems} t={t} />
 
               <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} />
 
@@ -102,7 +102,7 @@ export function ProfileShell({
       <NoiseOverlay />
       <TweaksPanel />
       <CommandPalette projects={portfolioItems} latestPosts={writing.latest} />
-      <ProjectModal items={portfolioItems} />
+      <ProjectModal items={portfolioItems} t={t} />
       <MobileSidebarDrawer status={status} activeSection={activeSection} t={t} />
       <MobileRightRailDrawer
         github={github}
