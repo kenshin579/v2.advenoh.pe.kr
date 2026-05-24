@@ -1,11 +1,12 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import type { PortfolioItem } from '@/lib/portfolio'
 import type { StatusSnapshot } from '@/lib/status'
 import type { GithubContrib } from '@/lib/github'
 import type { WritingItem } from '@/lib/writing'
 import type { ReadmeData } from '@/lib/profile-readme'
+import type { Dict, Locale } from '@/lib/i18n/types'
 import { computeHeroStats } from '@/lib/stats'
 import { useLiveStatus } from '@/hooks/useLiveStatus'
 import { useLiveWriting } from '@/hooks/useLiveWriting'
@@ -30,6 +31,8 @@ import { MobileRightRailDrawer } from './MobileRightRailDrawer'
 const SPY_SECTIONS = ['readme', 'projects', 'writing', 'writing-investment'] as const
 
 type ProfileShellProps = {
+  locale: Locale
+  t: Dict
   initialStatus: StatusSnapshot
   initialWriting: {
     it: WritingItem[]
@@ -42,6 +45,8 @@ type ProfileShellProps = {
 }
 
 export function ProfileShell({
+  locale,
+  t,
   initialStatus,
   initialWriting,
   portfolioItems,
@@ -54,6 +59,10 @@ export function ProfileShell({
   const activeSection = useScrollSpy(SPY_SECTIONS as unknown as string[])
 
   useKeyboardNav({ itemCount: portfolioItems.length })
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
 
   const contentRef = useRef<HTMLDivElement>(null)
 

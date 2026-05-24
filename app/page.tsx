@@ -5,6 +5,7 @@ import { getWritingSections, getLatestPosts } from '@/lib/writing'
 import { loadReadme } from '@/lib/profile-readme'
 import { getProjectsItemListStructuredData } from '@/lib/structured-data'
 import { ProfileShell } from '@/components/profile/ProfileShell'
+import { en } from '@/lib/i18n/en'
 
 export default async function HomePage() {
   const [portfolioItems, status, github, writingSections, latestPosts] =
@@ -26,6 +27,8 @@ export default async function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }}
       />
       <ProfileShell
+        locale="en"
+        t={en}
         initialStatus={status}
         initialWriting={{
           it: writingSections.it,
