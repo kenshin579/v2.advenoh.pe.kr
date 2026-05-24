@@ -71,7 +71,7 @@ export function ProfileShell({
       <TitleBar status={status} activeSection={activeSection} t={t} />
 
       <div className="flex flex-1">
-        <Sidebar status={status} activeSection={activeSection} />
+        <Sidebar status={status} activeSection={activeSection} t={t} />
 
         <main className="relative flex-1 overflow-x-hidden">
           <div className="mx-auto flex max-w-[1100px] gap-0 items-start">
@@ -103,7 +103,7 @@ export function ProfileShell({
       <TweaksPanel />
       <CommandPalette projects={portfolioItems} latestPosts={writing.latest} />
       <ProjectModal items={portfolioItems} />
-      <MobileSidebarDrawer status={status} activeSection={activeSection} />
+      <MobileSidebarDrawer status={status} activeSection={activeSection} t={t} />
       <MobileRightRailDrawer
         github={github}
         latestPosts={writing.latest}
