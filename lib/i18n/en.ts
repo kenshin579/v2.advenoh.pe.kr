@@ -103,12 +103,6 @@ export const en = {
     description:
       'Frank Oh — Backend / AI Engineer in Seoul. Backend, distributed systems, AI, and Kubernetes GitOps infrastructure.',
   },
-} as const
-
-type DeepMutable<T> = {
-  -readonly [K in keyof T]: T[K] extends Record<string, unknown>
-    ? DeepMutable<T[K]>
-    : string
 }
 
-export type Dict = DeepMutable<typeof en>
+export type Dict = typeof en
