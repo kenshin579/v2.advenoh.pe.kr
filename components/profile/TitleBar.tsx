@@ -2,17 +2,21 @@
 
 import { Menu, PanelRight } from 'lucide-react'
 import type { StatusSnapshot } from '@/lib/status'
+import { LangToggle } from './LangToggle'
+import type { Dict } from '@/lib/i18n/types'
 
 type TitleBarProps = {
   status: StatusSnapshot
   breadcrumb?: string
   activeSection?: string | null
+  t: Dict
 }
 
 export function TitleBar({
   status,
   breadcrumb = 'frank@seoul:~/profile (main)',
   activeSection,
+  t,
 }: TitleBarProps) {
   const path = activeSection ? `${breadcrumb} / #${activeSection}` : breadcrumb
 
@@ -44,6 +48,8 @@ export function TitleBar({
         >
           <PanelRight size={16} />
         </button>
+
+        <LangToggle label={t.a11y.langToggle} />
 
         <button
           type="button"

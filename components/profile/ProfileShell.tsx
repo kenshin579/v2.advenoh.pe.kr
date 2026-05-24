@@ -68,7 +68,7 @@ export function ProfileShell({
 
   return (
     <div className="flex min-h-screen flex-col bg-profile-bg text-profile-fg font-sans">
-      <TitleBar status={status} activeSection={activeSection} />
+      <TitleBar status={status} activeSection={activeSection} t={t} />
 
       <div className="flex flex-1">
         <Sidebar status={status} activeSection={activeSection} />
