@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Settings2, X } from 'lucide-react'
 import { useTweaks } from '@/hooks/useTweaks'
+import type { Dict } from '@/lib/i18n/types'
 
 const ACCENT_SWATCH: Record<string, string> = {
   violet: 'oklch(0.68 0.19 295)',
@@ -12,9 +13,18 @@ const ACCENT_SWATCH: Record<string, string> = {
   amber: 'oklch(0.82 0.16 85)',
 }
 
-export function TweaksPanel() {
+type TweaksPanelProps = {
+  t: Dict
+}
+
+export function TweaksPanel({ t }: TweaksPanelProps) {
   const { tweaks, update, accents } = useTweaks()
   const [open, setOpen] = useState(false)
+
+  const densityLabel: Record<'comfortable' | 'compact', string> = {
+    comfortable: t.tweaks.comfortable,
+    compact: t.tweaks.compact,
+  }
 
   return (
     <div className="fixed bottom-16 right-4 z-50 font-mono text-xs">
@@ -22,12 +32,12 @@ export function TweaksPanel() {
         <div className="w-64 rounded-lg border border-profile-line-2 bg-profile-bg-2 p-4 shadow-2xl space-y-4">
           <header className="flex items-center justify-between">
             <span className="text-[11px] uppercase tracking-widest text-profile-muted">
-              tweaks
+              {t.tweaks.title}
             </span>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Close tweaks"
+              aria-label={t.a11y.closeTweaks}
               className="text-profile-muted hover:text-profile-fg"
             >
               <X size={14} />
@@ -36,7 +46,7 @@ export function TweaksPanel() {
 
           <div className="space-y-1.5">
             <label className="text-[10px] uppercase tracking-wider text-profile-muted-2">
-              accent
+              {t.tweaks.accent}
             </label>
             <div className="flex gap-1.5">
               {accents.map(a => (
@@ -59,7 +69,7 @@ export function TweaksPanel() {
 
           <div className="space-y-1.5">
             <label className="text-[10px] uppercase tracking-wider text-profile-muted-2">
-              density
+              {t.tweaks.density}
             </label>
             <div className="flex gap-1">
               {(['comfortable', 'compact'] as const).map(d => (
@@ -74,7 +84,7 @@ export function TweaksPanel() {
                       : 'border-profile-line-2 text-profile-fg-2 hover:border-profile-line-3'
                   }`}
                 >
-                  {d}
+                  {densityLabel[d]}
                 </button>
               ))}
             </div>
@@ -82,7 +92,7 @@ export function TweaksPanel() {
 
           <div className="space-y-1.5">
             <div className="flex justify-between text-[10px] uppercase tracking-wider text-profile-muted-2">
-              <span>noise</span>
+              <span>{t.tweaks.noise}</span>
               <span>{tweaks.noise}</span>
             </div>
             <input
@@ -100,7 +110,7 @@ export function TweaksPanel() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label="Open tweaks panel"
+          aria-label={t.a11y.openTweaks}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-profile-line-2 bg-profile-bg-2 text-profile-muted shadow-xl hover:border-profile-accent hover:text-profile-accent"
         >
           <Settings2 size={16} />

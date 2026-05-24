@@ -97,11 +97,11 @@ export function ProfileShell({
         <RightRail github={github} latestPosts={writing.latest} status={status} t={t} />
       </div>
 
-      <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} />
+      <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} t={t} />
 
       <NoiseOverlay />
-      <TweaksPanel />
-      <CommandPalette projects={portfolioItems} latestPosts={writing.latest} />
+      <TweaksPanel t={t} />
+      <CommandPalette projects={portfolioItems} latestPosts={writing.latest} t={t} />
       <ProjectModal items={portfolioItems} t={t} />
       <MobileSidebarDrawer status={status} activeSection={activeSection} t={t} />
       <MobileRightRailDrawer
