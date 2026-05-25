@@ -5,9 +5,11 @@ import Image from 'next/image'
 import * as Dialog from '@radix-ui/react-dialog'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { PortfolioItem } from '@/lib/portfolio'
+import type { Dict } from '@/lib/i18n/types'
 
 type ProjectModalProps = {
   items: PortfolioItem[]
+  t: Dict
 }
 
 function hostOf(site: string): string {
@@ -18,7 +20,7 @@ function hostOf(site: string): string {
   }
 }
 
-export function ProjectModal({ items }: ProjectModalProps) {
+export function ProjectModal({ items, t }: ProjectModalProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null)
 
   const openSlug = useCallback(
@@ -96,10 +98,10 @@ export function ProjectModal({ items }: ProjectModalProps) {
                   <b className="font-medium text-profile-accent">{current.slug}</b>
                 </div>
                 <Dialog.Close
-                  aria-label="Close"
+                  aria-label={t.modal.closeAria}
                   className="flex items-center gap-1 rounded px-1.5 py-0.5 text-profile-muted hover:bg-profile-line hover:text-profile-fg"
                 >
-                  <span>close · ESC</span>
+                  <span>{t.modal.close}</span>
                   <X size={12} aria-hidden="true" />
                 </Dialog.Close>
               </div>
@@ -138,10 +140,10 @@ export function ProjectModal({ items }: ProjectModalProps) {
                   {/* Meta Grid — 4-cell box */}
                   {(current.status || current.year || current.role || host) && (
                     <dl className="my-[18px] grid grid-cols-2 rounded-lg border border-profile-line py-4 sm:grid-cols-4">
-                      <MetaCell label="status" value={current.status} />
-                      <MetaCell label="year" value={current.year} />
-                      <MetaCell label="role" value={current.role} />
-                      <MetaCell label="url" value={host} isLast />
+                      <MetaCell label={t.modal.metaStatus} value={current.status} />
+                      <MetaCell label={t.modal.metaYear} value={current.year} />
+                      <MetaCell label={t.modal.metaRole} value={current.role} />
+                      <MetaCell label={t.modal.metaUrl} value={host} isLast />
                     </dl>
                   )}
 
@@ -149,7 +151,7 @@ export function ProjectModal({ items }: ProjectModalProps) {
                   {current.overviewHtml && (
                     <section>
                       <h4 className="mb-2 mt-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-profile-accent">
-                        Overview
+                        {t.modal.overview}
                       </h4>
                       <div
                         className="readme"
@@ -162,7 +164,7 @@ export function ProjectModal({ items }: ProjectModalProps) {
                   {current.stack && current.stack.length > 0 && (
                     <section>
                       <h4 className="mb-2 mt-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-profile-accent">
-                        Stack
+                        {t.modal.stack}
                       </h4>
                       <ul className="flex flex-wrap gap-1.5 font-mono text-[11px] text-profile-fg-2">
                         {current.stack.map(tech => (
@@ -182,33 +184,33 @@ export function ProjectModal({ items }: ProjectModalProps) {
               {/* Footer .mf */}
               <footer className="flex flex-col items-stretch gap-3 border-t border-profile-line bg-profile-bg-3 px-4 py-3 font-mono text-[11px] text-profile-muted sm:flex-row sm:items-center sm:justify-between">
                 <span className="flex items-center gap-1.5">
-                  press{' '}
+                  {t.modal.press}{' '}
                   <kbd className="rounded border border-profile-line-2 bg-profile-bg-2 px-1.5 py-[1px] text-[10px] text-profile-fg-2">
                     ←
                   </kbd>
                   <kbd className="rounded border border-profile-line-2 bg-profile-bg-2 px-1.5 py-[1px] text-[10px] text-profile-fg-2">
                     →
                   </kbd>{' '}
-                  to navigate projects
+                  {t.modal.pressNavigate}
                 </span>
                 <div className="flex gap-2">
                   <button
                     type="button"
                     onClick={prev}
-                    aria-label="Previous project"
+                    aria-label={t.modal.prevAria}
                     aria-keyshortcuts="ArrowLeft"
                     className="flex items-center gap-1 rounded-md border border-profile-line-2 px-3 py-[7px] text-[12px] text-profile-fg transition hover:border-profile-accent hover:bg-profile-accent-soft hover:text-profile-accent"
                   >
-                    <ChevronLeft size={12} aria-hidden="true" /> prev
+                    <ChevronLeft size={12} aria-hidden="true" /> {t.modal.prev}
                   </button>
                   <button
                     type="button"
                     onClick={next}
-                    aria-label="Next project"
+                    aria-label={t.modal.nextAria}
                     aria-keyshortcuts="ArrowRight"
                     className="flex items-center gap-1 rounded-md border border-profile-line-2 px-3 py-[7px] text-[12px] text-profile-fg transition hover:border-profile-accent hover:bg-profile-accent-soft hover:text-profile-accent"
                   >
-                    next <ChevronRight size={12} aria-hidden="true" />
+                    {t.modal.next} <ChevronRight size={12} aria-hidden="true" />
                   </button>
                   <a
                     href={current.site}
@@ -216,7 +218,7 @@ export function ProjectModal({ items }: ProjectModalProps) {
                     rel="noreferrer noopener"
                     className="flex items-center gap-1 rounded-md border border-profile-accent bg-profile-accent px-3 py-[7px] text-[12px] text-profile-accent-ink transition hover:brightness-110"
                   >
-                    Open live <span aria-hidden="true">↗</span>
+                    {t.modal.openLive} <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </footer>

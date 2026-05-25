@@ -2,12 +2,14 @@
 
 import Image from 'next/image'
 import type { PortfolioItem } from '@/lib/portfolio'
+import type { Dict } from '@/lib/i18n/types'
 
 type ProjectCardV2Props = {
   item: PortfolioItem
   variant?: 'featured' | 'default'
   focused?: boolean
   onFocus?: () => void
+  t: Dict
 }
 
 function openModal(slug: string) {
@@ -27,6 +29,7 @@ export function ProjectCardV2({
   variant = 'default',
   focused = false,
   onFocus,
+  t,
 }: ProjectCardV2Props) {
   const dek = item.dek ?? item.description
   const isLive = item.status?.toLowerCase().startsWith('live') ?? false
@@ -55,7 +58,7 @@ export function ProjectCardV2({
         className={`${base} md:grid md:grid-cols-[1.2fr_1fr] md:items-stretch md:gap-[22px] md:p-[22px] p-[18px] flex flex-col gap-[14px]`}
       >
         <span className="featured-tag absolute top-[14px] right-[14px] rounded bg-profile-accent px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-profile-accent-ink z-10">
-          featured
+          {t.projects.featured}
         </span>
 
         <div className="flex flex-col gap-[14px] md:col-start-1">
@@ -116,7 +119,7 @@ export function ProjectCardV2({
         )}
 
         <span className="kbd absolute top-[14px] right-[14px] opacity-0 transition-opacity font-mono text-[10px] text-profile-accent">
-          ↵ open
+          ↵ {t.projects.open}
         </span>
       </article>
     )
@@ -194,7 +197,7 @@ export function ProjectCardV2({
       </footer>
 
       <span className="kbd absolute top-[14px] right-[14px] opacity-0 transition-opacity font-mono text-[10px] text-profile-accent">
-        ↵ open
+        ↵ {t.projects.open}
       </span>
     </article>
   )

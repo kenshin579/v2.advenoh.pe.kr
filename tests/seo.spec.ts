@@ -7,11 +7,11 @@ test.describe('SEO Optimization', () => {
 
   test('should have proper meta tags', async ({ page }) => {
     // Title
-    await expect(page).toHaveTitle(/Frank Oh Portfolio/)
+    await expect(page).toHaveTitle(/Frank Oh — Backend \/ AI Engineer/)
 
     // Description
     const description = page.locator('meta[name="description"]')
-    await expect(description).toHaveAttribute('content', 'Portfolio website showcasing web development projects')
+    await expect(description).toHaveAttribute('content', 'Frank Oh — Backend / AI Engineer in Seoul. Backend, distributed systems, AI, and Kubernetes GitOps infrastructure.')
 
     // Keywords
     const keywords = page.locator('meta[name="keywords"]')
@@ -25,10 +25,10 @@ test.describe('SEO Optimization', () => {
 
     // Open Graph tags
     const ogTitle = page.locator('meta[property="og:title"]')
-    await expect(ogTitle).toHaveAttribute('content', 'Frank Oh Portfolio')
+    await expect(ogTitle).toHaveAttribute('content', 'Frank Oh — Backend / AI Engineer')
 
     const ogDescription = page.locator('meta[property="og:description"]')
-    await expect(ogDescription).toHaveAttribute('content', 'Portfolio website showcasing web development projects')
+    await expect(ogDescription).toHaveAttribute('content', 'Frank Oh — Backend / AI Engineer in Seoul. Backend, distributed systems, AI, and Kubernetes GitOps infrastructure.')
 
     const ogImage = page.locator('meta[property="og:image"]')
     await expect(ogImage).toHaveAttribute('content', /og-image\.png/)
@@ -52,8 +52,8 @@ test.describe('SEO Optimization', () => {
     const jsonLdScripts = page.locator('script[type="application/ld+json"]')
     const count = await jsonLdScripts.count()
 
-    // Should have exactly 2 JSON-LD scripts (Person + WebSite)
-    expect(count).toBe(2)
+    // Should have exactly 3 JSON-LD scripts (Person + WebSite + ItemList)
+    expect(count).toBe(3)
 
     // Validate Person schema
     const personScript = jsonLdScripts.nth(0)
@@ -137,7 +137,8 @@ test.describe('SEO Files', () => {
 
     expect(response?.status()).toBe(200)
 
-    const content = await page.textContent('body')
+    // Use response body directly to avoid XML rendering issues in browser
+    const content = await response!.text()
 
     // Should be valid XML sitemap format
     expect(content).toContain('<?xml')
@@ -145,7 +146,7 @@ test.describe('SEO Files', () => {
     expect(content).toContain('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')
 
     // Should contain homepage
-    expect(content).toContain('<loc>https://advenoh.pe.kr</loc>')
+    expect(content).toContain('<loc>https://advenoh.pe.kr/</loc>')
 
     // Should contain changeFrequency
     expect(content).toContain('<changefreq>monthly</changefreq>')

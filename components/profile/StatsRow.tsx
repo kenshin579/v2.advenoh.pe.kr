@@ -3,15 +3,17 @@
 import type { HeroStats } from '@/lib/stats'
 import type { GithubContrib } from '@/lib/github'
 import type { StatusSnapshot } from '@/lib/status'
+import type { Dict } from '@/lib/i18n/types'
 import { Sparkline } from './Sparkline'
 
 type StatsRowProps = {
   stats: HeroStats
   github: GithubContrib
   status: StatusSnapshot
+  t: Dict
 }
 
-export function StatsRow({ stats, github, status }: StatsRowProps) {
+export function StatsRow({ stats, github, status, t }: StatsRowProps) {
   // 주(week) 단위 contributionCount 합계 → 26개 sparkline 값
   const weekTotals = github.weeks.map(w =>
     w.contributionDays.reduce((sum, d) => sum + d.contributionCount, 0)
@@ -22,7 +24,7 @@ export function StatsRow({ stats, github, status }: StatsRowProps) {
   return (
     <div className="grid grid-cols-2 gap-[var(--profile-space-card)] sm:grid-cols-4">
       <Cell
-        label="services up"
+        label={t.stats.servicesUp}
         value={`${stats.servicesUp.up}/${stats.servicesUp.total}`}
         trailing={
           <span
@@ -67,7 +69,7 @@ export function StatsRow({ stats, github, status }: StatsRowProps) {
       />
 
       <Cell
-        label="blog posts"
+        label={t.stats.blogPosts}
         value={stats.blogPosts.toString()}
       />
     </div>

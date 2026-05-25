@@ -7,6 +7,7 @@ import {
   FALLBACK_QUOTE,
   type TodayQuote,
 } from '@/lib/quotes-client'
+import type { Dict } from '@/lib/i18n/types'
 
 type State =
   | { kind: 'loading' }
@@ -21,7 +22,7 @@ function kstDate(): string {
   return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date())
 }
 
-export function QuoteBlock() {
+export function QuoteBlock({ t }: { t: Dict }) {
   const [state, setState] = useState<State>({ kind: 'loading' })
 
   useEffect(() => {
@@ -75,13 +76,13 @@ export function QuoteBlock() {
           <div className="h-3 w-1/3 rounded bg-profile-line-2/40 animate-pulse" />
         </div>
       ) : (
-        <QuoteBody quote={state.quote} disabled={state.kind === 'error'} />
+        <QuoteBody quote={state.quote} disabled={state.kind === 'error'} t={t} />
       )}
     </div>
   )
 }
 
-function QuoteBody({ quote, disabled }: { quote: TodayQuote; disabled: boolean }) {
+function QuoteBody({ quote, disabled, t }: { quote: TodayQuote; disabled: boolean; t: Dict }) {
   const body = (
     <blockquote className="mt-3 space-y-2">
       <p className="text-sm text-profile-fg-2 leading-relaxed">“{quote.content}”</p>
@@ -96,7 +97,7 @@ function QuoteBody({ quote, disabled }: { quote: TodayQuote; disabled: boolean }
       href={quoteDetailUrl(quote.id)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="inspire-me에서 이 명언 자세히 보기"
+      aria-label={t.a11y.quoteDetail}
       className="block transition-colors hover:text-profile-accent focus-visible:text-profile-accent focus-visible:outline-none"
     >
       {body}

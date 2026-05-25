@@ -1,11 +1,12 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import type { PortfolioItem } from '@/lib/portfolio'
 import type { StatusSnapshot } from '@/lib/status'
 import type { GithubContrib } from '@/lib/github'
 import type { WritingItem } from '@/lib/writing'
 import type { ReadmeData } from '@/lib/profile-readme'
+import type { Dict, Locale } from '@/lib/i18n/types'
 import { computeHeroStats } from '@/lib/stats'
 import { useLiveStatus } from '@/hooks/useLiveStatus'
 import { useLiveWriting } from '@/hooks/useLiveWriting'
@@ -30,6 +31,8 @@ import { MobileRightRailDrawer } from './MobileRightRailDrawer'
 const SPY_SECTIONS = ['readme', 'projects', 'writing', 'writing-investment'] as const
 
 type ProfileShellProps = {
+  locale: Locale
+  t: Dict
   initialStatus: StatusSnapshot
   initialWriting: {
     it: WritingItem[]
@@ -42,6 +45,8 @@ type ProfileShellProps = {
 }
 
 export function ProfileShell({
+  locale,
+  t,
   initialStatus,
   initialWriting,
   portfolioItems,
@@ -55,14 +60,18 @@ export function ProfileShell({
 
   useKeyboardNav({ itemCount: portfolioItems.length })
 
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   const contentRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className="flex min-h-screen flex-col bg-profile-bg text-profile-fg font-sans">
-      <TitleBar status={status} activeSection={activeSection} />
+      <TitleBar status={status} activeSection={activeSection} t={t} />
 
       <div className="flex flex-1">
-        <Sidebar status={status} activeSection={activeSection} />
+        <Sidebar status={status} activeSection={activeSection} t={t} />
 
         <main className="relative flex-1 overflow-x-hidden">
           <div className="mx-auto flex max-w-[1100px] gap-0 items-start">
@@ -72,33 +81,34 @@ export function ProfileShell({
               ref={contentRef}
               className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]"
             >
-              <Hero stats={stats} github={github} status={status} readme={readme} />
+              <Hero stats={stats} github={github} status={status} readme={readme} t={t} />
 
-              <QuoteBlock />
+              <QuoteBlock t={t} />
 
-              <ProjectGrid items={portfolioItems} />
+              <ProjectGrid items={portfolioItems} t={t} />
 
-              <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} />
+              <WritingList id="writing" title="writing.it" hash="#03" items={writing.it} t={t} />
 
-              <WritingList id="writing-investment" title="writing.inv" hash="#04" items={writing.investment} />
+              <WritingList id="writing-investment" title="writing.inv" hash="#04" items={writing.investment} t={t} />
             </div>
           </div>
         </main>
 
-        <RightRail github={github} latestPosts={writing.latest} status={status} />
+        <RightRail github={github} latestPosts={writing.latest} status={status} t={t} />
       </div>
 
-      <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} />
+      <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} t={t} />
 
       <NoiseOverlay />
-      <TweaksPanel />
-      <CommandPalette projects={portfolioItems} latestPosts={writing.latest} />
-      <ProjectModal items={portfolioItems} />
-      <MobileSidebarDrawer status={status} activeSection={activeSection} />
+      <TweaksPanel t={t} />
+      <CommandPalette projects={portfolioItems} latestPosts={writing.latest} t={t} />
+      <ProjectModal items={portfolioItems} t={t} />
+      <MobileSidebarDrawer status={status} activeSection={activeSection} t={t} />
       <MobileRightRailDrawer
         github={github}
         latestPosts={writing.latest}
         status={status}
+        t={t}
       />
     </div>
   )

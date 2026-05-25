@@ -5,11 +5,13 @@ import { Command } from 'cmdk'
 import { Search, FileText, ArrowUpRight, Layers, ExternalLink } from 'lucide-react'
 import type { PortfolioItem } from '@/lib/portfolio'
 import type { WritingItem } from '@/lib/writing'
+import type { Dict } from '@/lib/i18n/types'
 import { siteConfig } from '@/lib/site-config'
 
 type CommandPaletteProps = {
   projects: PortfolioItem[]
   latestPosts: WritingItem[]
+  t: Dict
 }
 
 const SECTIONS = [
@@ -19,7 +21,7 @@ const SECTIONS = [
   { id: 'writing-investment', label: 'writing.inv' },
 ] as const
 
-export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
+export function CommandPalette({ projects, latestPosts, t }: CommandPaletteProps) {
   const [open, setOpen] = useState(false)
 
   const close = useCallback(() => setOpen(false), [])
@@ -74,20 +76,20 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Command palette"
+      aria-label={t.a11y.commandPalette}
       className="fixed inset-0 z-[60] flex items-start justify-center bg-black/60 px-4 pt-[20vh] backdrop-blur"
       onClick={close}
     >
       <Command
         onClick={e => e.stopPropagation()}
-        label="Command Menu"
+        label={t.palette.label}
         className="w-full max-w-lg overflow-hidden rounded-lg border border-profile-line-2 bg-profile-bg-2 shadow-2xl font-mono"
       >
         <div className="flex items-center gap-2 border-b border-profile-line-2 px-3 py-2.5 text-profile-muted">
           <Search size={14} />
           <Command.Input
             autoFocus
-            placeholder="jump, search, open…"
+            placeholder={t.palette.placeholder}
             className="flex-1 bg-transparent text-sm text-profile-fg outline-none placeholder:text-profile-muted-2"
           />
           <kbd className="text-[10px] text-profile-muted-2">esc</kbd>
@@ -95,11 +97,11 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
 
         <Command.List className="max-h-[50vh] overflow-auto p-2 text-xs">
           <Command.Empty className="p-4 text-center text-profile-muted-2">
-            No results.
+            {t.palette.noResults}
           </Command.Empty>
 
           <Command.Group
-            heading="Sections"
+            heading={t.palette.sections}
             className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-widest [&_[cmdk-group-heading]]:text-profile-muted-2"
           >
             {SECTIONS.map(s => (
@@ -117,7 +119,7 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
           </Command.Group>
 
           <Command.Group
-            heading="Projects"
+            heading={t.palette.projects}
             className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-widest [&_[cmdk-group-heading]]:text-profile-muted-2"
           >
             {projects.map(p => (
@@ -139,7 +141,7 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
           </Command.Group>
 
           <Command.Group
-            heading="Latest posts"
+            heading={t.palette.latestPosts}
             className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-widest [&_[cmdk-group-heading]]:text-profile-muted-2"
           >
             {latestPosts.map(item => (
@@ -165,7 +167,7 @@ export function CommandPalette({ projects, latestPosts }: CommandPaletteProps) {
           </Command.Group>
 
           <Command.Group
-            heading="Links"
+            heading={t.palette.links}
             className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-widest [&_[cmdk-group-heading]]:text-profile-muted-2"
           >
             <Command.Item

@@ -1,12 +1,14 @@
 'use client'
 
 import type { WritingItem } from '@/lib/writing'
+import type { Dict } from '@/lib/i18n/types'
 
 type WritingListProps = {
   id: string
   title: string
   hash?: string
   items: WritingItem[]
+  t: Dict
 }
 
 function formatDate(pubDate: string): string {
@@ -15,7 +17,7 @@ function formatDate(pubDate: string): string {
   return d.toISOString().slice(0, 10)
 }
 
-export function WritingList({ id, title, hash, items }: WritingListProps) {
+export function WritingList({ id, title, hash, items, t }: WritingListProps) {
   const source = items[0]?.source
 
   return (
@@ -29,12 +31,12 @@ export function WritingList({ id, title, hash, items }: WritingListProps) {
         )}
         <div className="flex-1 border-t border-profile-line" aria-hidden="true" />
         <span className="font-mono text-[11px] text-profile-muted">
-          {items.length} / recent
+          {items.length} {t.writing.recent}
         </span>
       </header>
 
       {items.length === 0 ? (
-        <p className="font-mono text-xs text-profile-muted-2">no recent posts</p>
+        <p className="font-mono text-xs text-profile-muted-2">{t.writing.noPosts}</p>
       ) : (
         <ul className="flex flex-col gap-1.5 font-mono text-xs">
           {items.map(item => (

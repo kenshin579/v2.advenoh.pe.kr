@@ -2,17 +2,21 @@
 
 import { Menu, PanelRight } from 'lucide-react'
 import type { StatusSnapshot } from '@/lib/status'
+import { LangToggle } from './LangToggle'
+import type { Dict } from '@/lib/i18n/types'
 
 type TitleBarProps = {
   status: StatusSnapshot
   breadcrumb?: string
   activeSection?: string | null
+  t: Dict
 }
 
 export function TitleBar({
   status,
   breadcrumb = 'frank@seoul:~/profile (main)',
   activeSection,
+  t,
 }: TitleBarProps) {
   const path = activeSection ? `${breadcrumb} / #${activeSection}` : breadcrumb
 
@@ -26,7 +30,7 @@ export function TitleBar({
 
       <button
         type="button"
-        aria-label="Open navigation"
+        aria-label={t.a11y.openNavigation}
         onClick={() => window.dispatchEvent(new Event('profile:open-sidebar'))}
         className="md:hidden flex h-[44px] w-[44px] items-center justify-center text-profile-muted hover:text-profile-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
       >
@@ -38,16 +42,18 @@ export function TitleBar({
       <div className="ml-auto flex items-center gap-2 md:gap-4">
         <button
           type="button"
-          aria-label="Open activity panel"
+          aria-label={t.a11y.openActivityPanel}
           onClick={() => window.dispatchEvent(new Event('profile:open-rightrail'))}
           className="md:hidden flex h-[44px] w-[44px] items-center justify-center text-profile-muted hover:text-profile-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
         >
           <PanelRight size={16} />
         </button>
 
+        <LangToggle label={t.a11y.langToggle} />
+
         <button
           type="button"
-          aria-label="Open command palette"
+          aria-label={t.a11y.commandPalette}
           aria-keyshortcuts="Meta+K Control+K /"
           onClick={() => window.dispatchEvent(new Event('profile:open-palette'))}
           className="hidden md:inline-flex items-center gap-1 rounded border border-profile-line-2 bg-profile-bg-3 px-1.5 py-0.5 text-[10px] text-profile-muted hover:border-profile-accent hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
@@ -68,7 +74,7 @@ export function TitleBar({
               animation: 'profile-pulse 1.6s ease-in-out infinite',
             }}
           />
-          {status.summary.up}/{status.summary.total} up
+          {status.summary.up}/{status.summary.total} {t.titleBar.up}
         </span>
       </div>
     </header>

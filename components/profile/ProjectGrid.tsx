@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import type { PortfolioItem } from '@/lib/portfolio'
+import type { Dict } from '@/lib/i18n/types'
 import { ProjectCardV2 } from './ProjectCardV2'
 
 type ProjectGridProps = {
   items: PortfolioItem[]
+  t: Dict
 }
 
-export function ProjectGrid({ items }: ProjectGridProps) {
+export function ProjectGrid({ items, t }: ProjectGridProps) {
   const [focusIdx, setFocusIdx] = useState(0)
   const cardRefs = useRef<Array<HTMLDivElement | null>>([])
 
@@ -68,7 +70,7 @@ export function ProjectGrid({ items }: ProjectGridProps) {
             <kbd className="rounded border border-profile-line-2 px-1 py-[1px] text-[10px] text-profile-muted">
               k
             </kbd>{' '}
-            to navigate
+            {t.projects.toNavigate}
           </span>
         </span>
       </header>
@@ -87,6 +89,7 @@ export function ProjectGrid({ items }: ProjectGridProps) {
               variant={item.featured ? 'featured' : 'default'}
               focused={idx === focusIdx}
               onFocus={() => setFocusIdx(idx)}
+              t={t}
             />
           </div>
         ))}

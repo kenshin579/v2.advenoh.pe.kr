@@ -3,7 +3,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans_KR, Space_Grotesk } from 'next/font/google
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 import { siteConfig } from '@/lib/site-config'
-import { getPersonStructuredData, getWebSiteStructuredData } from '@/lib/structured-data'
+import { en } from '@/lib/i18n/en'
 
 const ibmPlexSansKR = IBM_Plex_Sans_KR({
   subsets: ['latin'],
@@ -28,16 +28,24 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://advenoh.pe.kr'),
-  title: siteConfig.name,
-  description: siteConfig.description,
+  title: en.meta.title,
+  description: en.meta.description,
   authors: [{ name: siteConfig.author.name }],
   keywords: ['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'],
+  alternates: {
+    canonical: '/',
+    languages: {
+      en: '/',
+      ko: '/ko/',
+      'x-default': '/',
+    },
+  },
   openGraph: {
     type: 'website',
-    locale: 'ko_KR',
+    locale: 'en_US',
     url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: en.meta.title,
+    description: en.meta.description,
     siteName: siteConfig.name,
     images: [
       {
@@ -50,8 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: en.meta.title,
+    description: en.meta.description,
     images: ['/og-image.png'],
   },
   robots: {
@@ -86,26 +94,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const personData = getPersonStructuredData()
-  const websiteData = getWebSiteStructuredData()
-
   return (
     <html
-      lang="ko"
+      lang="en"
       className="dark"
       data-accent="violet"
       data-density="comfortable"
     >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
-        />
-      </head>
       <body
         className={`${ibmPlexSansKR.variable} ${ibmPlexMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
       >
