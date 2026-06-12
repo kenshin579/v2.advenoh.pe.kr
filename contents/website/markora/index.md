@@ -10,7 +10,7 @@ stack:
   - KaTeX
   - Mermaid
 ext: .kt
-order: 6
+order: 2
 status_en: live
 status_ko: 운영 중
 year_en: 2026 — now

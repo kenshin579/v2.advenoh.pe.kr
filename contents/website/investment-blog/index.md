@@ -7,7 +7,7 @@ stack:
   - Markdown
   - Netlify
 ext: .md
-order: 4
+order: 6
 status_en: live
 status_ko: 운영 중
 year_en: 2024 — now
