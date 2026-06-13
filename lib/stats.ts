@@ -1,6 +1,5 @@
 import type { StatusSnapshot } from './status'
 import type { GithubContrib } from './github'
-import type { WritingItem } from './writing'
 
 export type HeroStats = {
   servicesUp: { up: number; total: number }
@@ -16,12 +15,12 @@ export type HeroStats = {
 export function computeHeroStats(
   status: StatusSnapshot,
   github: GithubContrib,
-  blogItems: WritingItem[]
+  blogPostsTotal: number
 ): HeroStats {
   return {
     servicesUp: { up: status.summary.up, total: status.summary.total },
     commits26w: github.totalContributions,
     uptime90d: status.summary.uptime90d,
-    blogPosts: blogItems.length,
+    blogPosts: blogPostsTotal,
   }
 }

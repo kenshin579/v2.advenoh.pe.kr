@@ -88,7 +88,7 @@ export const ko: Dict = {
   },
   stats: {
     servicesUp: '서비스 정상',
-    blogPosts: '블로그 글',
+    blogPosts: '전체 블로그 글',
   },
   commits: {
     less: '적음',

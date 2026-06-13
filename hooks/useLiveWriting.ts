@@ -37,6 +37,7 @@ export function useLiveWriting(initial: {
   it: WritingItem[]
   investment: WritingItem[]
   latest: WritingItem[]
+  totals: { it: number; investment: number }
 }) {
   const [data, setData] = useState(initial)
 
@@ -67,6 +68,7 @@ export function useLiveWriting(initial: {
           it: it.slice(0, 5),
           investment: inv.slice(0, 5),
           latest,
+          totals: { it: it.length, investment: inv.length },
         })
       } catch {
         // 실패 시 initialData 유지

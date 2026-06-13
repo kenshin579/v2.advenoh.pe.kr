@@ -38,6 +38,7 @@ type ProfileShellProps = {
     it: WritingItem[]
     investment: WritingItem[]
     latest: WritingItem[]
+    totals: { it: number; investment: number }
   }
   portfolioItems: PortfolioItem[]
   github: GithubContrib
@@ -55,7 +56,7 @@ export function ProfileShell({
 }: ProfileShellProps) {
   const status = useLiveStatus(initialStatus)
   const writing = useLiveWriting(initialWriting)
-  const stats = computeHeroStats(status, github, writing.it)
+  const stats = computeHeroStats(status, github, writing.totals.it + writing.totals.investment)
   const activeSection = useScrollSpy(SPY_SECTIONS as unknown as string[])
 
   useKeyboardNav({ itemCount: portfolioItems.length })

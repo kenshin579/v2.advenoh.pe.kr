@@ -86,7 +86,7 @@ export const en = {
   },
   stats: {
     servicesUp: 'services up',
-    blogPosts: 'blog posts',
+    blogPosts: 'total blog posts',
   },
   commits: {
     less: 'Less',
