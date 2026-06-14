@@ -95,6 +95,7 @@ export async function getWritingSections() {
   return {
     it: itBundle.items.slice(0, 5),
     investment: invBundle.items.slice(0, 5),
+    totals: { it: itBundle.items.length, investment: invBundle.items.length },
   }
 }
 

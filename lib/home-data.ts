@@ -25,6 +25,7 @@ export async function loadHomeData(locale: Locale) {
       it: writingSections.it,
       investment: writingSections.investment,
       latest: latestPosts,
+      totals: writingSections.totals,
     },
     readme,
   }
