@@ -80,7 +80,7 @@ export function ProfileShell({
 
             <div
               ref={contentRef}
-              className="flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]"
+              className="min-w-0 flex-1 px-4 sm:px-6 pt-6 pb-16 space-y-[var(--profile-space-section)]"
             >
               <Hero stats={stats} github={github} status={status} readme={readme} t={t} />
 
