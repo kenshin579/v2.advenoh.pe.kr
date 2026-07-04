@@ -12,7 +12,7 @@ stack:
   - Kubernetes
   - Helm
 ext: .py
-order: 7
+order: 8
 status_en: live
 status_ko: 운영 중
 year_en: 2024 — now

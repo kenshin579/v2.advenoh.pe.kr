@@ -13,7 +13,7 @@ stack:
   - Kubernetes
   - Helm
 ext: .go
-order: 3
+order: 4
 status_en: live
 status_ko: 운영 중
 year_en: 2026 — now
