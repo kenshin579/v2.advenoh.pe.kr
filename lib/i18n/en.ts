@@ -9,8 +9,6 @@ export const en = {
     closeNavigation: 'Close navigation',
     closeActivityPanel: 'Close activity panel',
     commandPalette: 'Command palette',
-    openTweaks: 'Open tweaks panel',
-    closeTweaks: 'Close tweaks',
     githubProfile: 'GitHub profile: kenshin579',
     linkedinProfile: 'LinkedIn profile: Frank Oh',
     instagramProfile: 'Instagram: frank.photosnap',
@@ -18,7 +16,6 @@ export const en = {
     langToggle: 'Switch language',
     navSections: 'Sections',
     statusPage: 'Open system status page',
-    noiseIntensity: 'Noise intensity',
   },
   sidebar: {
     searchJump: 'Search & jump',
@@ -76,14 +73,6 @@ export const en = {
     open: 'open',
     search: 'search',
     close: 'close',
-  },
-  tweaks: {
-    title: 'tweaks',
-    accent: 'accent',
-    density: 'density',
-    comfortable: 'comfortable',
-    compact: 'compact',
-    noise: 'noise',
   },
   stats: {
     servicesUp: 'services up',

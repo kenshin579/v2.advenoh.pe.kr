@@ -11,8 +11,6 @@ export const ko: Dict = {
     closeNavigation: '내비게이션 닫기',
     closeActivityPanel: '활동 패널 닫기',
     commandPalette: '커맨드 팔레트',
-    openTweaks: '설정 패널 열기',
-    closeTweaks: '설정 닫기',
     githubProfile: 'GitHub 프로필: kenshin579',
     linkedinProfile: 'LinkedIn 프로필: Frank Oh',
     instagramProfile: 'Instagram: frank.photosnap',
@@ -20,7 +18,6 @@ export const ko: Dict = {
     langToggle: '언어 전환',
     navSections: '섹션',
     statusPage: '시스템 상태 페이지 열기',
-    noiseIntensity: '노이즈 강도',
   },
   sidebar: {
     searchJump: '검색 & 이동',
@@ -78,14 +75,6 @@ export const ko: Dict = {
     open: '열기',
     search: '검색',
     close: '닫기',
-  },
-  tweaks: {
-    title: '설정',
-    accent: '강조색',
-    density: '밀도',
-    comfortable: '여유',
-    compact: '조밀',
-    noise: '노이즈',
   },
   stats: {
     servicesUp: '서비스 정상',
