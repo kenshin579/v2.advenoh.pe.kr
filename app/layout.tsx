@@ -95,12 +95,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className="dark"
-      data-accent="violet"
-      data-density="comfortable"
-    >
+    <html lang="en" className="dark">
       <body
         className={`${ibmPlexSansKR.variable} ${ibmPlexMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
       >

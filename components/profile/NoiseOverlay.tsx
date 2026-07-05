@@ -1,6 +1,5 @@
 /**
  * 화면 전체 fractalNoise 오버레이. `--profile-noise` CSS 변수로 opacity 바인딩.
- * Tweaks panel의 noise slider가 --profile-noise를 수정하면 즉시 반응.
  * 정적 SVG + CSS만이므로 Client 불필요.
  */
 export function NoiseOverlay() {

@@ -22,7 +22,6 @@ import { ProjectGrid } from './ProjectGrid'
 import { WritingList } from './WritingList'
 import { QuoteBlock } from './QuoteBlock'
 import { NoiseOverlay } from './NoiseOverlay'
-import { TweaksPanel } from './TweaksPanel'
 import { CommandPalette } from './CommandPalette'
 import { ProjectModal } from './ProjectModal'
 import { MobileSidebarDrawer } from './MobileSidebarDrawer'
@@ -101,7 +100,6 @@ export function ProfileShell({
       <StatusBar section={activeSection ? `#${activeSection}` : '#readme'} t={t} />
 
       <NoiseOverlay />
-      <TweaksPanel t={t} />
       <CommandPalette projects={portfolioItems} latestPosts={writing.latest} t={t} />
       <ProjectModal items={portfolioItems} t={t} />
       <MobileSidebarDrawer status={status} activeSection={activeSection} t={t} />
