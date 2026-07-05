@@ -80,12 +80,22 @@ export function SidebarContent({ status, activeSection, onNavigate, t }: Sidebar
         </nav>
       </div>
 
-      <div>
-        <div className="mb-2 text-[10px] uppercase tracking-widest text-profile-muted-2">
-          {t.sidebar.status} · {status.summary.up}/{status.summary.total}
+      <a
+        href={siteConfig.external.status}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label={t.a11y.statusPage}
+        onClick={() => onNavigate?.()}
+        className="group -mx-2 block rounded px-2 py-1 transition-colors hover:bg-profile-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
+      >
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-[10px] uppercase tracking-widest text-profile-muted-2 group-hover:text-profile-accent">
+            {t.sidebar.status} · {status.summary.up}/{status.summary.total}
+          </span>
+          <span className="text-[10px] text-profile-muted-2 group-hover:text-profile-accent">↗</span>
         </div>
         <ul className="flex flex-col gap-1">
-          {status.services.slice(0, 6).map(svc => (
+          {status.services.slice(0, 3).map(svc => (
             <li key={svc.id} className="flex items-center gap-2 px-2 py-0.5">
               <span
                 className="h-1.5 w-1.5 rounded-full"
@@ -104,8 +114,13 @@ export function SidebarContent({ status, activeSection, onNavigate, t }: Sidebar
           {status.services.length === 0 && (
             <li className="px-2 py-0.5 text-profile-muted-2">{t.sidebar.offline}</li>
           )}
+          {status.services.length > 3 && (
+            <li className="px-2 py-0.5 tracking-[0.15em] text-profile-muted-2 group-hover:text-profile-accent">
+              ···
+            </li>
+          )}
         </ul>
-      </div>
+      </a>
 
       <div>
         <div className="mb-2 text-[10px] uppercase tracking-widest text-profile-muted-2">

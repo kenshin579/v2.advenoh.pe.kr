@@ -19,6 +19,7 @@ export const ko: Dict = {
     quoteDetail: 'inspire-me에서 이 명언 자세히 보기',
     langToggle: '언어 전환',
     navSections: '섹션',
+    statusPage: '시스템 상태 페이지 열기',
     noiseIntensity: '노이즈 강도',
   },
   sidebar: {
