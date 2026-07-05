@@ -84,7 +84,7 @@ export function SidebarContent({ status, activeSection, onNavigate, t }: Sidebar
         href={siteConfig.external.status}
         target="_blank"
         rel="noreferrer noopener"
-        aria-label={t.a11y.statusPage}
+        aria-label={`${t.a11y.statusPage} (${status.summary.up}/${status.summary.total})`}
         onClick={() => onNavigate?.()}
         className="group -mx-2 block rounded px-2 py-1 transition-colors hover:bg-profile-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
       >

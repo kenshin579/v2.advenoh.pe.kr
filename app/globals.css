@@ -393,11 +393,11 @@
   --profile-yellow: #facc15;
   --profile-red: #f87171;
 
-  /* Density (Tweaks panel로 재정의) */
+  /* Density */
   --profile-space-card: 1rem;
   --profile-space-section: 2.5rem;
 
-  /* Noise overlay opacity (0 ~ 1, Tweaks panel slider 0~100 / 100) */
+  /* Noise overlay opacity (0 ~ 1) */
   --profile-noise: 0.35;
 }
 
