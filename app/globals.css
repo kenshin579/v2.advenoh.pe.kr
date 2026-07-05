@@ -383,7 +383,7 @@
   --profile-line-2: rgba(255, 255, 255, 0.12);
   --profile-line-3: rgba(255, 255, 255, 0.22);
 
-  /* Accent (기본 violet, data-accent로 재정의) */
+  /* Accent (기본 violet) */
   --profile-accent: oklch(0.68 0.19 295);
   --profile-accent-soft: oklch(0.68 0.19 295 / 0.16);
   --profile-accent-ink: oklch(0.98 0.02 295);
@@ -399,48 +399,6 @@
 
   /* Noise overlay opacity (0 ~ 1, Tweaks panel slider 0~100 / 100) */
   --profile-noise: 0.35;
-}
-
-/* Accent 5종 (Tweaks panel로 전환) */
-[data-accent="violet"] {
-  --profile-accent: oklch(0.68 0.19 295);
-  --profile-accent-soft: oklch(0.68 0.19 295 / 0.16);
-  --profile-accent-ink: oklch(0.98 0.02 295);
-}
-
-[data-accent="red"] {
-  --profile-accent: oklch(0.65 0.22 22);
-  --profile-accent-soft: oklch(0.65 0.22 22 / 0.16);
-  --profile-accent-ink: oklch(0.98 0.02 22);
-}
-
-[data-accent="green"] {
-  --profile-accent: oklch(0.72 0.17 145);
-  --profile-accent-soft: oklch(0.72 0.17 145 / 0.16);
-  --profile-accent-ink: oklch(0.98 0.02 145);
-}
-
-[data-accent="orange"] {
-  --profile-accent: oklch(0.73 0.17 60);
-  --profile-accent-soft: oklch(0.73 0.17 60 / 0.16);
-  --profile-accent-ink: oklch(0.98 0.02 60);
-}
-
-[data-accent="amber"] {
-  --profile-accent: oklch(0.82 0.16 85);
-  --profile-accent-soft: oklch(0.82 0.16 85 / 0.16);
-  --profile-accent-ink: oklch(0.98 0.02 85);
-}
-
-/* Density 2단 */
-[data-density="comfortable"] {
-  --profile-space-card: 1rem;
-  --profile-space-section: 2.5rem;
-}
-
-[data-density="compact"] {
-  --profile-space-card: 0.625rem;
-  --profile-space-section: 1.5rem;
 }
 
 /* Animations (Profile v2 전용) */
