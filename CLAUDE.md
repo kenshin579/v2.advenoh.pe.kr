@@ -5,155 +5,75 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ```bash
-# Development server with hot reload
-npm run dev
+npm run dev      # Dev server (http://localhost:3000)
+npm run check    # Type check (tsc --noEmit)
+npm run lint     # next lint
+npm run build    # Static export → out/ (runs prebuild: copy-portfolio-images.js)
+npm run start    # Serve the built out/ locally
 
-# Type checking
-npm run check
+npm test         # Playwright e2e tests
+npm run test:ui  # Playwright in UI mode
+npx playwright test tests/seo.spec.ts                       # single test file
+npx playwright test tests/seo.spec.ts -g "sitemap"          # single test by name
 
-# Build for production (static export)
-npm run build
-
-# Preview production build locally
-npm run start
-
-# Linting
-npm run lint
+npx tsx scripts/warm-cache.ts   # regenerate .cache/*.json seeds (see Data Layer)
 ```
 
-## Project Architecture
+Next.js 16 (App Router) + React 19 + TypeScript, static export (`output: 'export'`). ESM throughout (`"type": "module"`).
 
-**Next.js Static Site**: TypeScript application using Next.js 16 App Router with static site generation (SSG).
+## Big Picture
 
-- **`app/`** - Next.js App Router
-  - `layout.tsx` - Root layout with Header, Footer
-  - `page.tsx` - Home page with portfolio grid
-  - `not-found.tsx` - 404 error page
-  - `globals.css` - Global styles and CSS variables
+Despite being a **static export**, this is not a plain static site. It is a personal portfolio/profile page (`advenoh.pe.kr`) that aggregates *live external data* at build time and re-hydrates it in the browser. Understanding the data flow is the key to working here.
 
-- **`components/`** - React components
-  - `Header.tsx` - Navigation with SNS links (Instagram, LinkedIn, GitHub)
-  - `Footer.tsx` - Footer with SNS links (Instagram, LinkedIn, GitHub)
-  - `PortfolioCard.tsx` - Portfolio item card component
-  - `ui/` - shadcn/ui components (button, card, etc.)
+### Data Layer (build-time fetch + cache fallback)
 
-- **`lib/`** - Utilities and configuration
-  - `utils.ts` - Utility functions (cn for className merging)
-  - `site-config.ts` - Site metadata and author information
-  - `portfolio.ts` - Portfolio data loader (reads markdown files)
+`lib/home-data.ts::loadHomeData(locale)` is the single orchestrator called by both pages. It runs these loaders in parallel:
 
-- **`contents/website/`** - Markdown-based portfolio content
-  - Each `.md` file represents a portfolio item with frontmatter
+| Loader | Source | Notes |
+|--------|--------|-------|
+| `lib/portfolio.ts` | local markdown in `contents/website/**` | pure local, no network |
+| `lib/status.ts` | **Supabase** (`@supabase/supabase-js`) | service uptime snapshot |
+| `lib/github.ts` | GitHub GraphQL (`GITHUB_TOKEN`) | contribution calendar |
+| `lib/writing.ts` | RSS feeds (blog + investment, `fast-xml-parser`) | latest posts, totals |
+| `lib/profile-readme.ts` | local markdown (`contents/profile`) | profile facts |
 
-- **`shared/`** - Legacy shared schemas (being phased out)
+Every network loader is wrapped by `lib/cache.ts::withCache(file, fetcher, fallback)` with a **hybrid policy**: try live fetch → on success overwrite `.cache/<file>.json` and return fresh → on failure return the last cached value (stale, logs WARN) → if no cache exists return `fallback`. Because Netlify builds may hit rate limits or outages, seed caches are generated locally with `scripts/warm-cache.ts` and **`.cache/*.json` is committed to git** (not gitignored). Regenerate and commit these when feeds change.
 
-**Key Architectural Patterns**:
-- **Static Site Generation**: All pages pre-rendered at build time to `out/` directory
-- **Content Management**: Portfolio items stored as markdown files, parsed at build time with `gray-matter`
-- **Type Safety**: Zod schemas validate markdown frontmatter data
-- **Theme**: Single dark mode theme
-- **No Backend**: Fully static site, no server runtime required
+### Client live re-fetch
 
-## Import Path Aliases
+After the static HTML loads, `hooks/useLiveStatus.ts` and `hooks/useLiveWriting.ts` re-query the same sources from the browser to replace build-time data with fresh values (silently keeping initial data on failure). **`useLiveStatus` duplicates the Supabase query logic in `lib/status.ts`** — if the Supabase table schema changes, both must be updated together.
 
-**Critical**: This project uses TypeScript path aliases configured in `tsconfig.json`:
+### i18n / routing
 
-```typescript
-import Component from "@/components/Component"  // → components/Component
-import { siteConfig } from "@/lib/site-config" // → lib/site-config
-```
+Two locales, English is the default:
+- `app/page.tsx` → English at `/` (calls `loadHomeData('en')`)
+- `app/ko/page.tsx` → Korean at `/ko/`
+- `components/profile/AutoLangRedirect.tsx` redirects visitors by preference; `LangToggle.tsx` switches manually.
+- Translation strings live in `lib/i18n/{en,ko}.ts` (typed by `lib/i18n/types.ts`) and are threaded through components as a `t` prop.
+- `trailingSlash: true` in `next.config.mjs` so routes emit `/ko/index.html`.
 
-Always use the `@/` alias instead of relative paths.
+### UI structure
+
+The live UI is entirely under **`components/profile/`** — a terminal/IDE-themed single-page shell (`ProfileShell` → `Sidebar`, `RightRail`, `Hero`, `ProjectGrid`/`ProjectModal`, `CommitGraph`, `StatusBar`, `CommandPalette`, mobile drawers). `components/ui/` holds shadcn/ui (Radix) primitives. There is a **single dark theme** — `next-themes` is not used despite what older docs suggest.
 
 ## Content System
 
-Portfolio items are markdown files in `contents/website/` with required frontmatter:
+Portfolio items are markdown files under `contents/website/<slug>/` parsed at build time with `gray-matter` + `marked`, validated by `portfolioItemSchema` in `lib/portfolio.ts`. Frontmatter supports **per-locale fields** (`description_en`/`description_ko`, `dek_*`, `overview_*`, `status_*`, `year_*`, `role_*`) plus `site` (required URL), `stack`, `cover`, `featured`, and `order` (controls display order). The loader resolves the correct locale variant based on the `Locale` argument.
 
-```markdown
----
-site: https://example.com  # Required - URL to project
-title: Project Title        # Optional - defaults to derived from URL
-description: Brief desc     # Required - shown on portfolio card
----
+## Environment Variables
 
-Body content (currently unused, reserved for future detail pages)
-```
+Required for live data (loaders degrade to cache/fallback when absent, so `npm run dev` works without them):
 
-The `lib/portfolio.ts` loader reads these files at build time, validates with `portfolioItemSchema`, and returns sorted by filename.
+- `GITHUB_TOKEN` — GitHub GraphQL for the contribution calendar
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` — status snapshot (used both server- and client-side)
 
-## Styling and Design System
+## Conventions
 
-**Framework**: Tailwind CSS v3 + shadcn/ui components (Radix UI primitives)
-
-**Theme**:
-- Single dark mode theme
-- CSS variables defined in `globals.css`
-
-**Design Constraints** (from design_guidelines.md):
-- Typography: Inter (body), Space Grotesk (headings) - loaded via next/font
-- Spacing rhythm: Tailwind units 2, 4, 6, 8, 12, 16, 20
-- Portfolio grid: 1 col (mobile), 2 col (tablet), 3 col (desktop)
-- Card aspect ratio: 16:10 for preview images
-- Animations: Subtle hover effects (scale-105), 200ms transitions
-
-## SEO and Metadata
-
-**Configured in `app/layout.tsx`**:
-- Site title: "Frank Oh Portfolio"
-- Description and author metadata
-- Open Graph tags for social sharing
-- Twitter Card metadata
-
-**Site Configuration** (`lib/site-config.ts`):
-- Site name and description
-- Author information (Frank Oh)
-- Social media links (Instagram, LinkedIn, GitHub)
-
-## Build Output
-
-**Static Export**:
-- Build command: `npm run build`
-- Output directory: `out/`
-- Files: Static HTML, CSS, JS, and assets
-- No server required for deployment
-
-**next.config.mjs**:
-```javascript
-output: 'export',  // Enable static export
-images: {
-  unoptimized: true  // Required for static hosting
-}
-```
+- **Path aliases** (`tsconfig.json`): use `@/*` for repo root (e.g. `@/lib/site-config`, `@/components/...`) and `@shared/*` for `shared/`. Never use relative `../` paths across directories.
+- `lib/site-config.ts` is the source of truth for author info, external data-source URLs, sidebar service links, and `githubLogin`. Add new external services/links here.
+- SEO/structured data: `app/sitemap.ts`, `app/robots.ts`, and `lib/structured-data.ts` (JSON-LD injected in the page components).
+- `docs/done/` holds completed PRD/implementation notes and regression screenshots — useful history, not active spec.
 
 ## Deployment
 
-**Netlify Configuration** (`netlify.toml`):
-- Build command: `npm run build`
-- Publish directory: `out`
-- Security headers configured
-- 404 redirect handling
-
-Deploy with:
-```bash
-# Install Netlify CLI
-npm install -D netlify-cli
-
-# Deploy to production
-npx netlify deploy --prod
-```
-
-## Module System
-
-**ESM modules throughout**:
-- `package.json` has `"type": "module"`
-- All config files use ES modules (`.mjs` extension where needed)
-- No CommonJS require() syntax
-
-## Migration Notes
-
-This project was migrated from Express + Vite to Next.js static site:
-- Previous backend (`server/`) removed
-- Previous frontend (`client/`) migrated to Next.js App Router
-- API routes replaced with build-time data loading
-- Database (Drizzle ORM) removed (was unused)
-- Static export replaces server-side rendering
+Netlify (`netlify.toml`): build `npm run build`, publish `out/`, with security headers and a 404 redirect. `next.config.mjs` sets `output: 'export'` and `images.unoptimized: true` (required for static hosting).
