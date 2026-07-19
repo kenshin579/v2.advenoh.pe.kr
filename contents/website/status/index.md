@@ -9,7 +9,7 @@ stack:
   - GitHub Actions
   - Netlify
 ext: .ts
-order: 6
+order: 7
 status_en: live
 status_ko: 운영 중
 year_en: 2026 — now
