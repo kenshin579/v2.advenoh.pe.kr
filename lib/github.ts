@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { withCache } from './cache'
+import { FALLBACK_FETCHED_AT } from './github-fallback'
 import { siteConfig } from './site-config'
 
 const levelSchema = z.enum([
@@ -67,7 +68,7 @@ function buildFallback(): GithubContrib {
   const from = new Date(to)
   from.setUTCDate(from.getUTCDate() - 26 * 7 + 1)
   return {
-    fetchedAt: new Date(0).toISOString(),
+    fetchedAt: FALLBACK_FETCHED_AT,
     login: siteConfig.githubLogin,
     totalContributions: 0,
     weeks: buildEmptyWeeks(from, to),
@@ -120,13 +121,4 @@ async function fetchGithubContrib(): Promise<GithubContrib> {
 
 export function getGithubContrib(): Promise<GithubContrib> {
   return withCache('github-contrib.json', fetchGithubContrib, buildFallback(), 'github')
-}
-
-/**
- * 폴백 데이터 판별.
- * `buildFallback()` 의 `fetchedAt: new Date(0)` 이 epoch 를 만드는 유일한 지점이고,
- * 실제 GitHub 응답 경로는 `new Date().toISOString()` 을 쓰므로 오탐이 없다.
- */
-export function isFallbackContrib(c: GithubContrib): boolean {
-  return new Date(c.fetchedAt).getTime() === 0
 }
