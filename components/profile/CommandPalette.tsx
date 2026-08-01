@@ -6,7 +6,7 @@ import { Search, FileText, ArrowUpRight, Layers, ExternalLink } from 'lucide-rea
 import type { PortfolioItem } from '@/lib/portfolio'
 import type { WritingItem } from '@/lib/writing'
 import type { Dict } from '@/lib/i18n/types'
-import { siteConfig } from '@/lib/site-config'
+import { siteConfig, socialUrl } from '@/lib/site-config'
 
 type CommandPaletteProps = {
   projects: PortfolioItem[]
@@ -172,7 +172,7 @@ export function CommandPalette({ projects, latestPosts, t }: CommandPaletteProps
           >
             <Command.Item
               value="link github"
-              onSelect={() => openUrl(siteConfig.author.social.github)}
+              onSelect={() => openUrl(socialUrl.github)}
               className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-profile-fg-2 data-[selected=true]:bg-profile-bg-3 data-[selected=true]:text-profile-fg"
             >
               <ExternalLink size={12} className="text-profile-muted" />

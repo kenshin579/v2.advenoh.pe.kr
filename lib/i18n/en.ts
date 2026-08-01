@@ -9,9 +9,6 @@ export const en = {
     closeNavigation: 'Close navigation',
     closeActivityPanel: 'Close activity panel',
     commandPalette: 'Command palette',
-    githubProfile: 'GitHub profile: kenshin579',
-    linkedinProfile: 'LinkedIn profile: Frank Oh',
-    instagramProfile: 'Instagram: frank.photosnap',
     quoteDetail: 'View this quote on inspire-me',
     langToggle: 'Switch language',
     navSections: 'Sections',
@@ -81,6 +78,7 @@ export const en = {
   commits: {
     less: 'Less',
     more: 'More',
+    unavailable: 'data unavailable',
   },
   mobile: {
     navigation: 'Navigation',

@@ -13,24 +13,6 @@ const NAV_SECTIONS = [
   { id: 'writing-investment', href: '#writing-investment', label: 'writing.inv' },
 ]
 
-const SOCIAL_LINKS = [
-  {
-    label: 'github/kenshin579',
-    href: siteConfig.author.social.github,
-    ariaKey: 'githubProfile' as const,
-  },
-  {
-    label: 'linkedin/frank-oh',
-    href: siteConfig.author.social.linkedin,
-    ariaKey: 'linkedinProfile' as const,
-  },
-  {
-    label: 'instagram/frank.photosnap',
-    href: siteConfig.author.social.instagram,
-    ariaKey: 'instagramProfile' as const,
-  },
-] as const
-
 type SidebarContentProps = {
   status: StatusSnapshot
   activeSection?: string | null
@@ -127,17 +109,17 @@ export function SidebarContent({ status, activeSection, onNavigate, t }: Sidebar
           {t.sidebar.links}
         </div>
         <ul className="flex flex-col gap-0.5">
-          {SOCIAL_LINKS.map(({ label, href, ariaKey }) => (
-            <li key={href}>
+          {siteConfig.author.social.map(({ label, url }) => (
+            <li key={url}>
               <Link
-                href={href}
+                href={url}
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label={t.a11y[ariaKey]}
                 onClick={() => onNavigate?.()}
-                className="block rounded px-2 py-2.5 md:py-1 font-mono text-profile-fg-2 hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
+                className="flex items-center gap-1 rounded px-2 py-2.5 md:py-1 font-mono text-profile-fg-2 hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
               >
-                ↗ {label}
+                <span aria-hidden="true" className="shrink-0">↗</span>
+                <span className="min-w-0 truncate">{label}</span>
               </Link>
             </li>
           ))}

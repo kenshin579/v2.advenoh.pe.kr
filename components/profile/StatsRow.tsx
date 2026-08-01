@@ -2,6 +2,7 @@
 
 import type { HeroStats } from '@/lib/stats'
 import type { GithubContrib } from '@/lib/github'
+import { isFallbackContrib } from '@/lib/github-fallback'
 import type { StatusSnapshot } from '@/lib/status'
 import type { Dict } from '@/lib/i18n/types'
 import { Sparkline } from './Sparkline'
@@ -20,6 +21,7 @@ export function StatsRow({ stats, github, status, t }: StatsRowProps) {
   )
 
   const allUp = status.summary.up === status.summary.total
+  const fallback = isFallbackContrib(github)
 
   return (
     <div className="grid grid-cols-2 gap-[var(--profile-space-card)] sm:grid-cols-4">
@@ -39,9 +41,11 @@ export function StatsRow({ stats, github, status, t }: StatsRowProps) {
 
       <Cell
         label="commits · 26w"
-        value={stats.commits26w.toLocaleString()}
+        value={fallback ? '—' : stats.commits26w.toLocaleString()}
         trailing={
-          <Sparkline values={weekTotals} width={70} height={20} className="text-profile-accent" />
+          fallback ? undefined : (
+            <Sparkline values={weekTotals} width={70} height={20} className="text-profile-accent" />
+          )
         }
       />
 

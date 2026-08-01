@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { withCache } from './cache'
+import { FALLBACK_FETCHED_AT } from './github-fallback'
 import { siteConfig } from './site-config'
 
 const levelSchema = z.enum([
@@ -67,7 +68,7 @@ function buildFallback(): GithubContrib {
   const from = new Date(to)
   from.setUTCDate(from.getUTCDate() - 26 * 7 + 1)
   return {
-    fetchedAt: new Date(0).toISOString(),
+    fetchedAt: FALLBACK_FETCHED_AT,
     login: siteConfig.githubLogin,
     totalContributions: 0,
     weeks: buildEmptyWeeks(from, to),

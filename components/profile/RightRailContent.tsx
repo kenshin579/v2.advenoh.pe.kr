@@ -1,6 +1,7 @@
 'use client'
 
 import type { GithubContrib } from '@/lib/github'
+import { isFallbackContrib } from '@/lib/github-fallback'
 import type { StatusSnapshot } from '@/lib/status'
 import type { WritingItem } from '@/lib/writing'
 import type { Dict } from '@/lib/i18n/types'
@@ -14,14 +15,22 @@ type RightRailContentProps = {
 }
 
 export function RightRailContent({ github, latestPosts, status, t }: RightRailContentProps) {
+  const fallback = isFallbackContrib(github)
+
   return (
     <div className="flex flex-col gap-6 font-mono text-xs">
       <div>
         <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-widest text-profile-muted-2">
           <span>{t.rightRail.commits} · 26w</span>
-          <span>{github.totalContributions}</span>
+          <span>{fallback ? '—' : github.totalContributions}</span>
         </div>
-        <CommitGraph data={github} size="sm" t={t} />
+        {fallback ? (
+          <div className="rounded border border-dashed border-profile-line-2 px-2 py-4 text-center text-profile-muted-2">
+            {t.commits.unavailable}
+          </div>
+        ) : (
+          <CommitGraph data={github} size="sm" t={t} />
+        )}
       </div>
 
       <div>
