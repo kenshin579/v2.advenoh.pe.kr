@@ -323,40 +323,47 @@ npm run check && npm run lint
 
 Expected: 둘 다 에러 없이 종료
 
-- [ ] **Step 6: 정상 경로 회귀 확인**
+- [ ] **Step 6: 회귀 테스트 상태 확인**
 
-시드 캐시가 있으므로 그래프는 여전히 정상 렌더되어야 한다.
+이 변경 이후 `tests/github-contrib.spec.ts` 의 **실패 지점이 이동한다.** 폴백일 때 `CommitGraph` 자체를 렌더하지 않으므로 `data-l` 셀이 0개가 되어, 두 번째 단언(`zeroCells < total`)이 아니라 첫 번째(`total > 0`)에서 걸린다.
 
 ```bash
 unset GITHUB_TOKEN
 npx playwright test tests/github-contrib.spec.ts
 ```
 
-Expected: PASS
+- **Task 2 미완료 상태**: FAIL — `expect(received).toBeGreaterThan(expected)`, received `0`, expected `0`. **정상이다.** 시드 캐시가 없으면 실제 데이터가 있을 수 없다.
+- **Task 2 완료 상태**: PASS — 시드가 stale 로 제공되어 실제 레벨 분포가 렌더된다.
 
-- [ ] **Step 7: 폴백 경로 수동 확인**
+테스트를 통과시키려고 UI 를 되돌리지 마라. 이 테스트는 Task 2 가 채워질 때 GREEN 이 된다.
 
-폴백 상태는 환경 의존적이라 e2e 로 결정적으로 만들 수 없다. 시드를 잠시 치우고 눈으로 확인한다.
+> 테스트 의미는 오히려 선명해진다 — 이제 "그래프가 있고 그 안에 실제 활동이 있다"를 요구한다. 폴백이 배포되면 어느 쪽 단언이든 반드시 걸린다.
+
+- [ ] **Step 7: 폴백 화면 확인**
+
+Task 2 가 아직이면 폴백이 **현재 로컬의 기본 상태**이므로 시드를 치울 필요 없이 바로 확인된다.
 
 ```bash
-mv .cache/github-contrib.json .cache/github-contrib.json.bak
 unset GITHUB_TOKEN
 npm run dev
 ```
 
-브라우저에서 `http://localhost:3000` 확인:
-- Hero 통계 `commits · 26w` 값이 `—` 이고 sparkline 이 사라짐
-- 우측 활동 패널(창 폭 1280px 이상)의 commits 자리에 점선 박스 + `data unavailable`
-- `http://localhost:3000/ko/` 에서는 `데이터 없음`
-
-확인 후 반드시 되돌린다.
+다른 셸에서 렌더 결과를 직접 확인한다.
 
 ```bash
-mv .cache/github-contrib.json.bak .cache/github-contrib.json
-git status --short
+curl -s http://localhost:3000/    | grep -c 'data unavailable'
+curl -s http://localhost:3000/ko/ | grep -c '데이터 없음'
+curl -s http://localhost:3000/    | grep -o 'data-l=' | wc -l
 ```
 
-Expected: `.cache/github-contrib.json` 이 변경/삭제 목록에 없음
+Expected: 앞의 두 명령은 `1` 이상, 세 번째는 `0` (그래프 미렌더)
+
+브라우저로도 `http://localhost:3000` 을 열어 확인한다:
+- Hero 통계 `commits · 26w` 값이 `—`, sparkline 없음
+- 우측 활동 패널(창 폭 1280px 이상) commits 자리에 점선 박스 + `data unavailable`
+
+> Task 2 를 먼저 끝냈다면 시드를 잠시 치우고 같은 확인을 한다.
+> `mv .cache/github-contrib.json .cache/github-contrib.json.bak` → 확인 → `mv .cache/github-contrib.json.bak .cache/github-contrib.json`
 
 > **주의:** 셸에 `GITHUB_TOKEN` 이 있는 채로 `npm run dev` 나 `npm run build` 를 돌리면 `withCache` 가 성공 경로를 타면서 `.cache/github-contrib.json` 을 **덮어쓴다.** 커밋 전에 항상 `git status` 를 확인한다.
 
