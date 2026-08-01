@@ -66,7 +66,8 @@ commits · 26w = 0, sparkline 완전 평평
 | 토큰 스코프 권고 | `read:user` 만. 기존 토큰은 `admin:enterprise, admin:org, repo, user, workflow, write:discussion` 로 정적 빌드에 과도 |
 | Netlify 설정 권고 | "Same value in all deploy contexts" 로 통일 (기존: `4 values in 4 deploy contexts`) |
 | 안전망 | 시드 캐시 커밋 + UI 폴백 표시 **둘 다** |
-| 폴백 감지 | `fetchedAt` 이 epoch 인지로 판별 (`buildFallback()` 이 심는 유일한 값) |
+| 폴백 감지 | `FALLBACK_FETCHED_AT` 상수를 `buildFallback()` 이 심고 `isFallbackContrib` 가 읽음 |
+| 판별 로직 위치 | 신규 leaf 모듈 `lib/github-fallback.ts` (`lib/github.ts` 는 `fs` 의존이라 클라이언트 번들 불가) |
 | 소셜 구조 | `author.social` 을 `{id, label, url}` **배열**로 전환 + 파생 `socialUrl` 맵 |
 | aria 라벨 | 계정별 aria 키 **삭제**, 보이는 링크 텍스트를 접근 가능한 이름으로 사용 |
 | 새 계정 id | `instagram-coffee` |
@@ -74,16 +75,35 @@ commits · 26w = 0, sparkline 완전 평평
 
 ## 설계
 
-### 1. 폴백 감지 헬퍼 — `lib/github.ts`
+### 1. 폴백 감지 — 신규 leaf 모듈 `lib/github-fallback.ts`
 
 ```ts
-export function isFallbackContrib(c: GithubContrib): boolean {
-  return new Date(c.fetchedAt).getTime() === 0
+export const FALLBACK_FETCHED_AT = new Date(0).toISOString()
+
+export function isFallbackContrib(c: { fetchedAt: string }): boolean {
+  return c.fetchedAt === FALLBACK_FETCHED_AT
 }
 ```
 
-`buildFallback()` 의 `fetchedAt: new Date(0).toISOString()` 이 epoch 를 만드는 **유일한 지점**이므로 센티넬로 안전하다.
-값을 만드는 곳과 해석하는 곳을 한 파일에 두어, 폴백 표현이 바뀌면 판별도 같이 바뀌도록 묶는다.
+`lib/github.ts` 는 `buildFallback()` 에서 이 상수를 심고, 클라이언트 컴포넌트는 `isFallbackContrib` 로 읽는다.
+센티넬이 **상수 하나로 공유**되므로 생산자와 해석자가 어긋날 수 없다.
+
+#### 왜 `lib/github.ts` 가 아니라 별도 모듈인가
+
+처음 설계는 이 헬퍼를 `lib/github.ts` 에 두는 것이었으나 **빌드가 깨진다.**
+
+```
+Module not found: Can't resolve 'fs'
+  ./lib/cache.ts [Client Component Browser]
+  ./lib/github.ts [Client Component Browser]
+  ./components/profile/StatsRow.tsx [Client Component Browser]
+```
+
+`lib/github.ts` → `lib/cache.ts` → `fs` 의존 사슬이 있는데, 지금까지 모든 클라이언트 컴포넌트가 `import type { GithubContrib }` 만 써서(타입 임포트는 컴파일 시 소거) 이 사슬이 브라우저 번들에 끌려온 적이 없었다. `isFallbackContrib` 는 `'use client'` 컴포넌트가 이 파일에서 **값**으로 가져오는 최초의 심볼이라, 임포트하는 순간 `fs` 까지 번들 대상이 되어 `npm run build` 가 실패한다.
+
+따라서 판별 로직은 **런타임 의존이 전혀 없는 leaf 모듈**에 둔다. 파라미터를 `GithubContrib` 대신 구조적 타입 `{ fetchedAt: string }` 으로 받아 `lib/github.ts` 로의 타입 임포트조차 만들지 않는다 — 순환도, 번들러 엣지 케이스도 남기지 않기 위해서다.
+
+`lib/github-fallback.ts` 에는 **어떤 import 도 추가하지 않는다.** 추가하는 순간 같은 함정이 되살아난다.
 
 ### 2. UI 분기 — 2곳
 

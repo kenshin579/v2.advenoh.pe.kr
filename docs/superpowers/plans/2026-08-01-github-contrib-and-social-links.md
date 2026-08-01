@@ -240,18 +240,62 @@ git commit -m "feat: 컨트리뷰션 폴백 감지 헬퍼와 안내 문구 추�
 ### Task 4: UI 폴백 분기
 
 **Files:**
+- Create: `lib/github-fallback.ts`
+- Modify: `lib/github.ts` (Task 3 에서 추가한 헬퍼를 옮기고 상수 사용)
 - Modify: `components/profile/RightRailContent.tsx:3, 19-25`
 - Modify: `components/profile/StatsRow.tsx:4, 16-22, 40-46`
 
-- [ ] **Step 1: `RightRailContent` 임포트 교체**
+> **왜 Task 3 의 결과물을 다시 옮기는가:** Task 3 은 `isFallbackContrib` 를 `lib/github.ts` 에 두었는데, `'use client'` 컴포넌트가 그걸 **값으로** 임포트하면 `lib/github.ts` → `lib/cache.ts` → `fs` 사슬이 브라우저 번들에 끌려와 `npm run build` 가 `Module not found: Can't resolve 'fs'` 로 실패한다. 기존 컴포넌트들은 전부 `import type` 만 써서 이 경계가 드러난 적이 없었다.
 
-3행의 `import type { GithubContrib } from '@/lib/github'` 를 아래로 바꾼다. 인라인 `type` 수식자를 쓰면 중복 임포트 없이 값과 타입을 함께 가져올 수 있다.
+- [ ] **Step 1: leaf 모듈 생성**
+
+`lib/github-fallback.ts` 를 새로 만든다. **이 파일에는 어떤 import 도 넣지 않는다** — 넣는 순간 같은 함정이 되살아난다.
 
 ```ts
-import { isFallbackContrib, type GithubContrib } from '@/lib/github'
+/**
+ * 컨트리뷰션 데이터가 실데이터인지 폴백인지 가르는 센티넬.
+ *
+ * `lib/github.ts::buildFallback()` 이 이 값을 심고, 클라이언트 컴포넌트가 읽는다.
+ * 상수를 공유하므로 생산자와 해석자가 어긋날 수 없다.
+ *
+ * `lib/github.ts` 가 아니라 별도 leaf 모듈인 이유: 그 파일은 `lib/cache.ts` → `fs`
+ * 에 의존해서, 'use client' 컴포넌트가 값(타입 아님)으로 임포트하면 브라우저 번들에
+ * fs 가 끌려와 빌드가 깨진다. 이 모듈은 런타임 의존이 없어야 한다 — import 금지.
+ *
+ * 파라미터를 GithubContrib 대신 구조적 타입으로 받는 것도 같은 이유다.
+ */
+export const FALLBACK_FETCHED_AT = new Date(0).toISOString()
+
+export function isFallbackContrib(c: { fetchedAt: string }): boolean {
+  return c.fetchedAt === FALLBACK_FETCHED_AT
+}
 ```
 
-- [ ] **Step 2: `RightRailContent` 본문 분기**
+- [ ] **Step 2: `lib/github.ts` 정리**
+
+Task 3 에서 파일 끝에 추가했던 `isFallbackContrib` 함수와 그 JSDoc 블록을 **삭제**한다.
+
+임포트를 추가한다 (`import { withCache } from './cache'` 아래).
+
+```ts
+import { FALLBACK_FETCHED_AT } from './github-fallback'
+```
+
+`buildFallback()` 안의 `fetchedAt` 을 상수로 바꾼다.
+
+```ts
+    fetchedAt: FALLBACK_FETCHED_AT,
+```
+
+- [ ] **Step 3: `RightRailContent` 임포트 교체**
+
+3행의 `import type { GithubContrib } from '@/lib/github'` 는 **그대로 두고**, 아래 줄을 추가한다.
+
+```ts
+import { isFallbackContrib } from '@/lib/github-fallback'
+```
+
+- [ ] **Step 4: `RightRailContent` 본문 분기**
 
 함수 본문 첫 줄에 폴백 여부를 계산하고, 19-25행의 commits 블록을 교체한다.
 
@@ -278,15 +322,15 @@ export function RightRailContent({ github, latestPosts, status, t }: RightRailCo
 
 이하 `latestPosts` / `system` 블록은 그대로 둔다.
 
-- [ ] **Step 3: `StatsRow` 임포트 교체**
+- [ ] **Step 5: `StatsRow` 임포트 교체**
 
-4행의 `import type { GithubContrib } from '@/lib/github'` 를 아래로 바꾼다.
+4행의 `import type { GithubContrib } from '@/lib/github'` 는 **그대로 두고**, 아래 줄을 추가한다.
 
 ```ts
-import { isFallbackContrib, type GithubContrib } from '@/lib/github'
+import { isFallbackContrib } from '@/lib/github-fallback'
 ```
 
-- [ ] **Step 4: `StatsRow` 본문 분기**
+- [ ] **Step 6: `StatsRow` 본문 분기**
 
 16-22행에 `fallback` 계산을 추가한다.
 
@@ -315,15 +359,19 @@ export function StatsRow({ stats, github, status, t }: StatsRowProps) {
       />
 ```
 
-- [ ] **Step 5: 타입 검사와 린트**
+- [ ] **Step 7: 타입 검사 · 린트 · 빌드**
 
 ```bash
-npm run check && npm run lint
+npm run check && npm run lint && npm run build
 ```
 
-Expected: 둘 다 에러 없이 종료
+Expected: 셋 다 에러 없이 종료
 
-- [ ] **Step 6: 회귀 테스트 상태 확인**
+**`npm run build` 를 반드시 포함한다.** `tsc --noEmit` 은 클라이언트/서버 번들 경계를 보지 않으므로 `fs` 문제를 통과시킨다. 이 태스크를 처음 시도했을 때 `npm run check` 는 깨끗했는데 빌드가 `Module not found: Can't resolve 'fs'` 로 죽었다. 번들 경계를 검증하는 유일한 명령이 빌드다.
+
+빌드가 `fs` 로 실패하면 `lib/github-fallback.ts` 에 import 가 들어갔거나, 컴포넌트가 `@/lib/github` 에서 값을 임포트하고 있는 것이다.
+
+- [ ] **Step 8: 회귀 테스트 상태 확인**
 
 이 변경 이후 `tests/github-contrib.spec.ts` 의 **실패 지점이 이동한다.** 폴백일 때 `CommitGraph` 자체를 렌더하지 않으므로 `data-l` 셀이 0개가 되어, 두 번째 단언(`zeroCells < total`)이 아니라 첫 번째(`total > 0`)에서 걸린다.
 
@@ -339,7 +387,7 @@ npx playwright test tests/github-contrib.spec.ts
 
 > 테스트 의미는 오히려 선명해진다 — 이제 "그래프가 있고 그 안에 실제 활동이 있다"를 요구한다. 폴백이 배포되면 어느 쪽 단언이든 반드시 걸린다.
 
-- [ ] **Step 7: 폴백 화면 확인**
+- [ ] **Step 9: 폴백 화면 확인**
 
 Task 2 가 아직이면 폴백이 **현재 로컬의 기본 상태**이므로 시드를 치울 필요 없이 바로 확인된다.
 
@@ -367,13 +415,17 @@ Expected: 앞의 두 명령은 `1` 이상, 세 번째는 `0` (그래프 미렌�
 
 > **주의:** 셸에 `GITHUB_TOKEN` 이 있는 채로 `npm run dev` 나 `npm run build` 를 돌리면 `withCache` 가 성공 경로를 타면서 `.cache/github-contrib.json` 을 **덮어쓴다.** 커밋 전에 항상 `git status` 를 확인한다.
 
-- [ ] **Step 8: 커밋**
+- [ ] **Step 10: 커밋**
 
 ```bash
-git add components/profile/RightRailContent.tsx components/profile/StatsRow.tsx
+git add lib/github-fallback.ts lib/github.ts \
+        components/profile/RightRailContent.tsx components/profile/StatsRow.tsx
 git commit -m "feat: 컨트리뷰션 데이터가 폴백일 때 그래프 대신 안내 문구 표시
 
 * 전부-0 그래프가 '커밋 0회'로 오독되던 문제 해소
+* 센티넬을 FALLBACK_FETCHED_AT 상수로 공유해 생산자/해석자 불일치 방지
+* 판별 로직은 런타임 의존 없는 leaf 모듈에 배치 — lib/github.ts 는 fs 의존이라
+  'use client' 컴포넌트가 값으로 임포트하면 번들이 깨진다
 * CommitGraph 는 그대로 두고 호출부에서 분기"
 ```
 
