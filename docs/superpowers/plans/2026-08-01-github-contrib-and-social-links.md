@@ -20,6 +20,20 @@
 
 > **스펙과의 차이 (의도적):** 스펙은 "커밋 2개"로 스케치했으나, 이 계획은 TDD 사이클마다 커밋해 6개가 된다. 스펙의 실제 제약은 **PR 1개**(양쪽 작업이 `lib/i18n/{en,ko}.ts` 를 함께 건드려 브랜치 분리 시 충돌)였고 그 제약은 지킨다.
 
+## 작업 중 발생하는 부수 변경 (커밋하지 말 것)
+
+`npm run dev` / `npx playwright test` / `npm run build` 를 돌리면 아래 파일들이 이번 변경과 무관하게 수정된다. 커밋 전에 되돌린다.
+
+| 파일 | 원인 |
+|------|------|
+| `.cache/writing-blog.json`, `.cache/writing-investment.json` | RSS 로더가 성공해 `withCache` 가 캐시를 갱신 |
+| `next-env.d.ts` | Next.js 16 이 dev 는 `./.next/dev/types/routes.d.ts`, build 는 `./.next/types/routes.d.ts` 로 자동 전환 |
+| `.cache/github-contrib.json` | 셸에 `GITHUB_TOKEN` 이 있으면 라이브 fetch 성공분으로 덮어씀 (Task 2 이후) |
+
+```bash
+git checkout -- .cache/writing-blog.json .cache/writing-investment.json next-env.d.ts
+```
+
 ## 사람의 개입이 필요한 지점
 
 **Task 2 는 GitHub PAT 가 셸 환경에 있어야 실행 가능하다.** 에이전트가 단독으로 완료할 수 없다.
@@ -472,7 +486,14 @@ export const socialUrl = Object.fromEntries(
 
 `components/profile/SidebarContent.tsx` 의 `SOCIAL_LINKS` 상수(16-32행)를 **통째로 삭제**한다.
 
-그리고 Links 블록의 `<ul>`(129-144행)을 교체한다. `aria-label` 을 제거하고 `↗` 를 `aria-hidden` 처리하면, 접근 가능한 이름이 화면에 보이는 텍스트와 일치하게 된다.
+그리고 Links 블록의 `<ul>`(129-144행)을 교체한다. 세 가지가 동시에 바뀐다.
+
+1. `aria-label` 제거 + `↗` 를 `aria-hidden` 처리 → 접근 가능한 이름이 화면에 보이는 텍스트와 일치
+2. `block` → `flex items-center gap-1` → 화살표와 라벨이 한 줄에 고정
+3. 라벨에 `min-w-0 truncate` → 사이드바 폭(`w-[236px]`)을 넘으면 말줄임
+
+3번이 필요한 이유: 현재 `↗ instagram/frank.photosnap` 이 사이드바 폭을 아슬아슬하게 넘겨 화살표만 남고 라벨이 다음 줄로 떨어진다. 추가되는 `frank.coffeetime` 은 한 글자 더 길어 같은 증상이 난다.
+Tailwind 의 `truncate` 는 flex 자식에서 `min-width: auto` 때문에 동작하지 않으므로 `min-w-0` 을 반드시 함께 준다.
 
 ```tsx
         <ul className="flex flex-col gap-0.5">
@@ -483,14 +504,17 @@ export const socialUrl = Object.fromEntries(
                 target="_blank"
                 rel="noreferrer noopener"
                 onClick={() => onNavigate?.()}
-                className="block rounded px-2 py-2.5 md:py-1 font-mono text-profile-fg-2 hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
+                className="flex items-center gap-1 rounded px-2 py-2.5 md:py-1 font-mono text-profile-fg-2 hover:text-profile-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-profile-accent"
               >
-                <span aria-hidden="true">↗</span> {label}
+                <span aria-hidden="true" className="shrink-0">↗</span>
+                <span className="min-w-0 truncate">{label}</span>
               </Link>
             </li>
           ))}
         </ul>
 ```
+
+> `truncate` 는 CSS `text-overflow` 이므로 DOM 의 텍스트는 온전히 남는다. Task 5 의 `getByRole('link', { name: 'instagram/frank.coffeetime' })` 은 그대로 동작하며 테스트 수정은 필요 없다.
 
 - [ ] **Step 4: JSON-LD `sameAs` 를 파생으로 교체**
 
@@ -559,7 +583,18 @@ npx playwright test tests/social-links.spec.ts
 
 Expected: 2 passed
 
-- [ ] **Step 10: 커밋**
+- [ ] **Step 10: 줄바꿈 수정 수동 확인**
+
+```bash
+npm run dev
+```
+
+`http://localhost:3000` 사이드바 `LINKS` 섹션에서 확인:
+- 항목 4개가 각각 **한 줄**에 렌더된다 (화살표만 남고 라벨이 다음 줄로 떨어지는 현상 없음)
+- 넘치는 라벨은 `instagram/frank.coffeeti…` 처럼 말줄임 처리된다
+- 창 폭을 좁혀 모바일 드로어(햄버거 → Navigation)를 열어도 동일하다. 드로어는 `w-[280px]` 로 더 넓어 말줄임 없이 다 보일 수 있다
+
+- [ ] **Step 11: 커밋**
 
 ```bash
 git add lib/site-config.ts lib/structured-data.ts lib/i18n/en.ts lib/i18n/ko.ts \
@@ -569,6 +604,7 @@ git commit -m "feat: 소셜 링크 배열 구조 전환 및 frank.coffeetime 추
 * author.social 을 {id,label,url} 배열 단일 원천으로 전환
 * 사이드바 · JSON-LD sameAs · 커맨드 팔레트가 배열에서 파생
 * 계정별 aria 키 제거 — 보이는 링크 텍스트를 접근 가능한 이름으로 사용
+* 사이드바 Links 항목이 줄바꿈되던 문제를 flex + truncate 로 수정
 * instagram/frank.coffeetime 추가"
 ```
 
