@@ -121,3 +121,12 @@ async function fetchGithubContrib(): Promise<GithubContrib> {
 export function getGithubContrib(): Promise<GithubContrib> {
   return withCache('github-contrib.json', fetchGithubContrib, buildFallback(), 'github')
 }
+
+/**
+ * 폴백 데이터 판별.
+ * `buildFallback()` 의 `fetchedAt: new Date(0)` 이 epoch 를 만드는 유일한 지점이고,
+ * 실제 GitHub 응답 경로는 `new Date().toISOString()` 을 쓰므로 오탐이 없다.
+ */
+export function isFallbackContrib(c: GithubContrib): boolean {
+  return new Date(c.fetchedAt).getTime() === 0
+}

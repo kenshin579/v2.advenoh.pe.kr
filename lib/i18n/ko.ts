@@ -83,6 +83,7 @@ export const ko: Dict = {
   commits: {
     less: '적음',
     more: '많음',
+    unavailable: '데이터 없음',
   },
   mobile: {
     navigation: '내비게이션',

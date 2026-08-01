@@ -81,6 +81,7 @@ export const en = {
   commits: {
     less: 'Less',
     more: 'More',
+    unavailable: 'data unavailable',
   },
   mobile: {
     navigation: 'Navigation',
