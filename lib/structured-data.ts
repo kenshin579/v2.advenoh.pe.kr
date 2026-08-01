@@ -7,11 +7,7 @@ export function getPersonStructuredData(description: string) {
     '@type': 'Person',
     name: siteConfig.author.name,
     url: siteConfig.url,
-    sameAs: [
-      siteConfig.author.social.linkedin,
-      siteConfig.author.social.github,
-      siteConfig.author.social.instagram,
-    ],
+    sameAs: siteConfig.author.social.map(s => s.url),
     jobTitle: 'Software Engineer',
     description,
   }

@@ -5,11 +5,14 @@ export const siteConfig = {
   author: {
     name: "Frank Oh",
     jobTitle: "Software Engineer",
-    social: {
-      instagram: "https://www.instagram.com/frank.photosnap/",
-      linkedin: "https://www.linkedin.com/in/frank-oh-abb80b10/",
-      github: "https://github.com/kenshin579"
-    }
+    // 사이드바 Links · JSON-LD sameAs · 커맨드 팔레트가 모두 이 배열에서 파생된다.
+    // 계정을 추가하려면 여기에 항목 한 줄만 넣으면 된다.
+    social: [
+      { id: "github", label: "github/kenshin579", url: "https://github.com/kenshin579" },
+      { id: "linkedin", label: "linkedin/frank-oh", url: "https://www.linkedin.com/in/frank-oh-abb80b10/" },
+      { id: "instagram", label: "instagram/frank.photosnap", url: "https://www.instagram.com/frank.photosnap/" },
+      { id: "instagram-coffee", label: "instagram/frank.coffeetime", url: "https://www.instagram.com/frank.coffeetime/" },
+    ],
   },
   keywords: ['portfolio', 'web development', 'Frank Oh', '포트폴리오', '웹 개발', 'backend', '서버', 'AI'],
 
@@ -38,3 +41,14 @@ export const siteConfig = {
 } as const
 
 export type SiteConfig = typeof siteConfig
+
+export type SocialId = (typeof siteConfig.author.social)[number]['id']
+
+/**
+ * id → url 조회용 파생 맵.
+ * `as const` 덕분에 SocialId 가 리터럴 유니온이라 `socialUrl.github` 이 타입 안전하고,
+ * 배열에서 항목을 지우면 소비처가 컴파일 에러로 잡힌다.
+ */
+export const socialUrl = Object.fromEntries(
+  siteConfig.author.social.map(s => [s.id, s.url])
+) as Record<SocialId, string>
