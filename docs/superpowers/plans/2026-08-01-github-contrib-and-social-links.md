@@ -20,6 +20,18 @@
 
 > **스펙과의 차이 (의도적):** 스펙은 "커밋 2개"로 스케치했으나, 이 계획은 TDD 사이클마다 커밋해 6개가 된다. 스펙의 실제 제약은 **PR 1개**(양쪽 작업이 `lib/i18n/{en,ko}.ts` 를 함께 건드려 브랜치 분리 시 충돌)였고 그 제약은 지킨다.
 
+## `npm run lint` 는 사용하지 않는다 (사전 고장)
+
+```
+$ npm run lint
+> next lint
+Invalid project directory provided, no such directory: .../lint
+```
+
+Next.js 16 에서 `next lint` 가 제거되어 `lint` 를 디렉터리 인자로 해석한다. **`main` 브랜치에서도 동일하게 실패**하므로 이번 변경과 무관하다. 저장소에 ESLint 설정 자체가 없다.
+
+이 계획의 모든 검증 단계에서 `npm run lint` 를 뺐다. 대신 `npm run check`(tsc)와 `npm run build` 로 검증한다. 별도 chore 로 다룰 사안이며 이번 범위가 아니다. (`CLAUDE.md:10` 의 `npm run lint` 안내도 같이 낡았다.)
+
 ## 작업 중 발생하는 부수 변경 (커밋하지 말 것)
 
 `npm run dev` / `npx playwright test` / `npm run build` 를 돌리면 아래 파일들이 이번 변경과 무관하게 수정된다. 커밋 전에 되돌린다.
@@ -362,7 +374,7 @@ export function StatsRow({ stats, github, status, t }: StatsRowProps) {
 - [ ] **Step 7: 타입 검사 · 린트 · 빌드**
 
 ```bash
-npm run check && npm run lint && npm run build
+npm run check && npm run build
 ```
 
 Expected: 셋 다 에러 없이 종료
