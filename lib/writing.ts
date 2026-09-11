@@ -1,9 +1,10 @@
 import { XMLParser } from 'fast-xml-parser'
 import { z } from 'zod'
 import { withCache } from './cache'
-import { siteConfig } from './site-config'
+import { writingFeeds, type WritingSource } from './writing-feeds'
+import type { Locale } from './i18n/types'
 
-export type WritingSource = 'IT' | 'INV'
+export type { WritingSource }
 
 export const writingItemSchema = z.object({
   source: z.enum(['IT', 'INV']),
@@ -69,42 +70,49 @@ async function fetchWritingBundle(source: WritingSource, url: string): Promise<W
   return writingBundleSchema.parse(bundle)
 }
 
-export function getWritingBlog(): Promise<WritingBundle> {
-  return withCache(
-    'writing-blog.json',
-    () => fetchWritingBundle('IT', siteConfig.external.rss.blog),
-    buildFallback(),
-    'writing:blog'
-  )
-}
-
-export function getWritingInvestment(): Promise<WritingBundle> {
-  return withCache(
-    'writing-investment.json',
-    () => fetchWritingBundle('INV', siteConfig.external.rss.investment),
-    buildFallback(),
-    'writing:investment'
-  )
+/**
+ * locale 에 해당하는 IT/투자 번들을 캐시 정책과 함께 읽는다.
+ * 캐시 파일은 writing-feeds.ts 가 결정한다 (ko: writing-blog.json, en: writing-blog-en.json).
+ */
+export async function getWritingBundles(
+  locale: Locale
+): Promise<{ it: WritingBundle; investment: WritingBundle }> {
+  const [itFeed, invFeed] = writingFeeds(locale)
+  const [it, investment] = await Promise.all([
+    withCache(
+      itFeed.cacheFile,
+      () => fetchWritingBundle(itFeed.source, itFeed.url),
+      buildFallback(),
+      `writing:${itFeed.cacheFile}`
+    ),
+    withCache(
+      invFeed.cacheFile,
+      () => fetchWritingBundle(invFeed.source, invFeed.url),
+      buildFallback(),
+      `writing:${invFeed.cacheFile}`
+    ),
+  ])
+  return { it, investment }
 }
 
 /**
  * 중앙 writing 섹션용 (IT / INV 각각 5개)
  */
-export async function getWritingSections() {
-  const [itBundle, invBundle] = await Promise.all([getWritingBlog(), getWritingInvestment()])
+export async function getWritingSections(locale: Locale) {
+  const { it, investment } = await getWritingBundles(locale)
   return {
-    it: itBundle.items.slice(0, 5),
-    investment: invBundle.items.slice(0, 5),
-    totals: { it: itBundle.items.length, investment: invBundle.items.length },
+    it: it.items.slice(0, 5),
+    investment: investment.items.slice(0, 5),
+    totals: { it: it.items.length, investment: investment.items.length },
   }
 }
 
 /**
  * 우측 레일 Latest posts용 (IT+INV 병합, 날짜순 상위 10개)
  */
-export async function getLatestPosts(limit = 10): Promise<WritingItem[]> {
-  const [itBundle, invBundle] = await Promise.all([getWritingBlog(), getWritingInvestment()])
-  return [...itBundle.items, ...invBundle.items]
+export async function getLatestPosts(locale: Locale, limit = 10): Promise<WritingItem[]> {
+  const { it, investment } = await getWritingBundles(locale)
+  return [...it.items, ...investment.items]
     .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
     .slice(0, limit)
 }

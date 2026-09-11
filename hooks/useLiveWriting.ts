@@ -1,15 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { WritingItem, WritingSource } from '@/lib/writing'
-import { siteConfig } from '@/lib/site-config'
-
-type Source = { source: WritingSource; url: string }
-
-const SOURCES: Source[] = [
-  { source: 'IT', url: siteConfig.external.rss.blog },
-  { source: 'INV', url: siteConfig.external.rss.investment },
-]
+import type { WritingItem } from '@/lib/writing'
+import { writingFeeds, type WritingSource } from '@/lib/writing-feeds'
+import type { Locale } from '@/lib/i18n/types'
 
 function parseRss(xml: string, source: WritingSource): WritingItem[] {
   const doc = new DOMParser().parseFromString(xml, 'application/xml')
@@ -33,25 +27,29 @@ function parseRss(xml: string, source: WritingSource): WritingItem[] {
  * 브라우저 DOMParser 사용 — 번들 의존성 0.
  * CORS 헤더는 Phase 0에서 두 블로그에 추가됨.
  */
-export function useLiveWriting(initial: {
-  it: WritingItem[]
-  investment: WritingItem[]
-  latest: WritingItem[]
-  totals: { it: number; investment: number }
-}) {
+export function useLiveWriting(
+  initial: {
+    it: WritingItem[]
+    investment: WritingItem[]
+    latest: WritingItem[]
+    totals: { it: number; investment: number }
+  },
+  locale: Locale
+) {
   const [data, setData] = useState(initial)
 
   useEffect(() => {
     let cancelled = false
+    const feeds = writingFeeds(locale)
 
     ;(async () => {
       try {
         const results = await Promise.all(
-          SOURCES.map(async s => {
-            const res = await fetch(s.url)
+          feeds.map(async f => {
+            const res = await fetch(f.url)
             if (!res.ok) return [] as WritingItem[]
             const xml = await res.text()
-            return parseRss(xml, s.source)
+            return parseRss(xml, f.source)
           })
         )
 
@@ -76,7 +74,7 @@ export function useLiveWriting(initial: {
     })()
 
     return () => { cancelled = true }
-  }, [])
+  }, [locale])
 
   return data
 }

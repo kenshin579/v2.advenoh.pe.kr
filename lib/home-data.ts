@@ -11,8 +11,8 @@ export async function loadHomeData(locale: Locale) {
       Promise.resolve(getPortfolioItems(locale)),
       getStatusSnapshot(),
       getGithubContrib(),
-      getWritingSections(),
-      getLatestPosts(10),
+      getWritingSections(locale),
+      getLatestPosts(locale, 10),
     ])
 
   const readme = loadReadme(locale)

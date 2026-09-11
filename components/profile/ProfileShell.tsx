@@ -54,7 +54,7 @@ export function ProfileShell({
   readme,
 }: ProfileShellProps) {
   const status = useLiveStatus(initialStatus)
-  const writing = useLiveWriting(initialWriting)
+  const writing = useLiveWriting(initialWriting, locale)
   const stats = computeHeroStats(status, github, writing.totals.it + writing.totals.investment)
   const activeSection = useScrollSpy(SPY_SECTIONS as unknown as string[])
 
