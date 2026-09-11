@@ -11,7 +11,7 @@ stack:
   - SQLite
   - MQTT
 ext: .go
-order: 3
+order: 4
 status_en: released
 status_ko: 출시됨
 year_en: 2026 — now

@@ -7,7 +7,7 @@ stack:
   - Redis
   - Lua
 ext: .go
-order: 6
+order: 7
 status_en: open source
 status_ko: 오픈소스
 year_en: 2026 — now
