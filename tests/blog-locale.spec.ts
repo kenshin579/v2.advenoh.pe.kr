@@ -1,24 +1,27 @@
 import { test, expect } from '@playwright/test'
 
 const EN_BLOG = 'https://blog.advenoh.pe.kr/en/'
+const EN_BLOG_RE = /^https:\/\/blog\.advenoh\.pe\.kr\/en\//
 
 test('영어 페이지의 IT 블로그 글 링크는 모두 /en/ 을 가리킨다', async ({ page }) => {
   await page.goto('/')
   const links = page.locator('#writing a[href*="blog.advenoh.pe.kr"]')
+  await expect(links.first()).toBeVisible()
   const count = await links.count()
   expect(count).toBeGreaterThan(0)
   for (let i = 0; i < count; i++) {
-    expect(await links.nth(i).getAttribute('href')).toContain(EN_BLOG)
+    await expect(links.nth(i)).toHaveAttribute('href', EN_BLOG_RE)
   }
 })
 
 test('한국어 페이지의 IT 블로그 글 링크는 /en/ 을 가리키지 않는다', async ({ page }) => {
   await page.goto('/ko/')
   const links = page.locator('#writing a[href*="blog.advenoh.pe.kr"]')
+  await expect(links.first()).toBeVisible()
   const count = await links.count()
   expect(count).toBeGreaterThan(0)
   for (let i = 0; i < count; i++) {
-    expect(await links.nth(i).getAttribute('href')).not.toContain(EN_BLOG)
+    await expect(links.nth(i)).not.toHaveAttribute('href', EN_BLOG_RE)
   }
 })
 
