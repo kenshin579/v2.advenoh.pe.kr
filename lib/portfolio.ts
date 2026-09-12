@@ -7,6 +7,8 @@ import type { Locale } from './i18n/types'
 
 export const portfolioItemSchema = z.object({
   site: z.string().url(),
+  site_en: z.string().url().optional(),
+  site_ko: z.string().url().optional(),
   title: z.string().optional(),
   cover: z.string().optional(),
   stack: z.array(z.string()).optional(),
@@ -105,7 +107,7 @@ export function getPortfolioItems(locale: Locale): PortfolioItem[] {
       const overviewHtml = renderOverviewHtml(overview, folder.name)
 
       const item: PortfolioItem = {
-        site: validated.site,
+        site: pick(data, 'site', locale) ?? validated.site,
         title,
         description,
         cover: validated.cover,
