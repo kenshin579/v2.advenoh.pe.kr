@@ -1,0 +1,145 @@
+{
+  "fetchedAt": "2026-09-12T01:40:42.868Z",
+  "items": [
+    {
+      "source": "IT",
+      "title": "Grafana Complete Guide Part 1 - Prometheus and Grafana Basics",
+      "link": "https://blog.advenoh.pe.kr/en/grafana-완벽-가이드-1-prometheus와-grafana-기초",
+      "pubDate": "Sat, 25 Jul 2026 00:00:00 GMT",
+      "description": "Metric types, PromQL syntax, and building a system monitoring dashboard with Prometheus and Grafana on docker-compose."
+    },
+    {
+      "source": "IT",
+      "title": "Getting Started with k9s — Beyond kubectl, a Terminal UI to 'Explore' Your Cluster",
+      "link": "https://blog.advenoh.pe.kr/en/k9s-쿠버네티스-터미널-ui-입문",
+      "pubDate": "Thu, 25 Jun 2026 00:00:00 GMT",
+      "description": "An introductory guide for developers who know kubectl but are new to k9s. It covers everyday tasks, from install to log viewing, shell access, port forwarding, and rollouts, with a focus on keyboard shortcuts."
+    },
+    {
+      "source": "IT",
+      "title": "Switching Kubernetes context and namespace quickly with kx and ns (with fzf)",
+      "link": "https://blog.advenoh.pe.kr/en/kx-ns로-kubernetes-context-namespace-빠르게-전환하기",
+      "pubDate": "Fri, 19 Jun 2026 00:00:00 GMT",
+      "description": "Tired of typing kubectl config use-context and -n namespace over and over? Here are two tiny fzf-based scripts, kx and ns, that let you pick a context and namespace interactively — plus an alias trick using a ~/.ns file to drop the -n flag entirely."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency Part 11 - The Complete Guide to Visualization with go tool trace",
+      "link": "https://blog.advenoh.pe.kr/en/golang-concurrency-11-시각화-go-tool-trace-완벽-가이드",
+      "pubDate": "Fri, 19 Jun 2026 00:00:00 GMT",
+      "description": "A hands-on guide to the tools for visualizing and analyzing Go concurrency code, including go tool trace, Flight Recorder, and GODEBUG schedtrace."
+    },
+    {
+      "source": "IT",
+      "title": "Implementing Google OAuth 2.0 Login with Go + React (JWT vs Session)",
+      "link": "https://blog.advenoh.pe.kr/en/go-google-oauth-로그인-구현-가이드",
+      "pubDate": "Fri, 05 Jun 2026 00:00:00 GMT",
+      "description": "A practical guide to building Google OAuth 2.0 social login with a Go Echo backend and a React frontend. We cover the common OAuth flow once, then split the post-authentication state-keeping strategy into two implementations — JWT (stateless) and session (server state) — and compare them."
+    },
+    {
+      "source": "IT",
+      "title": "Getting Started with React Native Using Expo: Building a Todo App",
+      "link": "https://blog.advenoh.pe.kr/en/expo로-시작하는-react-native-앱-개발",
+      "pubDate": "Thu, 28 May 2026 00:00:00 GMT",
+      "description": "Set up a React Native development environment with Expo and build a simple Todo app from scratch."
+    },
+    {
+      "source": "IT",
+      "title": "Getting Started with tmux: From Terminal Session Management to Using It with Claude Code",
+      "link": "https://blog.advenoh.pe.kr/en/tmux-입문-터미널-세션-관리부터-claude-code-활용까지",
+      "pubDate": "Tue, 26 May 2026 00:00:00 GMT",
+      "description": "A beginner-friendly guide to the terminal multiplexer tmux, covering its core concepts, how to use Sessions, Windows, and Panes, a minimal config, and how to use it alongside Claude Code sessions."
+    },
+    {
+      "source": "IT",
+      "title": "Getting Started with Go Dependency Injection using uber/fx",
+      "link": "https://blog.advenoh.pe.kr/en/go-fx-의존성-주입",
+      "pubDate": "Sun, 24 May 2026 00:00:00 GMT",
+      "description": "How to use uber/fx to automatically wire dependencies in a Go application and manage their lifecycle. Covers advanced patterns like fx.Module, fx.Decorate, and fx.Annotate, along with testing strategies, all through hands-on examples."
+    },
+    {
+      "source": "IT",
+      "title": "Complete Guide to Claude Code Superpowers: From Brainstorm to PR",
+      "link": "https://blog.advenoh.pe.kr/en/claude-code-superpowers-완벽-가이드",
+      "pubDate": "Fri, 01 May 2026 00:00:00 GMT",
+      "description": "A comprehensive guide to building a Todo web app through the full cycle—from brainstorm to PR—using the Claude Code superpowers plugin."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency Part 5 - The Complete Context Guide",
+      "link": "https://blog.advenoh.pe.kr/en/golang-concurrency-5-context-완벽-가이드",
+      "pubDate": "Sat, 18 Apr 2026 00:00:00 GMT",
+      "description": "Covers how to use the Go context package's WithCancel, WithTimeout, WithDeadline, and WithValue, and context propagation patterns"
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency Part 4 - The Complete sync Package Guide",
+      "link": "https://blog.advenoh.pe.kr/en/golang-concurrency-4-sync-패키지",
+      "pubDate": "Wed, 15 Apr 2026 00:00:00 GMT",
+      "description": "Covers how to use WaitGroup, Mutex, RWMutex, Once, and sync.Map from Go's sync package, and how to resolve race conditions"
+    },
+    {
+      "source": "IT",
+      "title": "The Complete Terraform Guide: From Basic Concepts to GitOps in Practice",
+      "link": "https://blog.advenoh.pe.kr/en/terraform-완벽-가이드-기본-개념부터-gitops-실전까지",
+      "pubDate": "Tue, 14 Apr 2026 00:00:00 GMT",
+      "description": "Learn Terraform's basic concepts, architecture, and usage, then walk through a hands-on exercise deploying a Kind cluster and ArgoCD. Also introduces how to manage infrastructure efficiently with Terraform + ArgoCD + Helm."
+    },
+    {
+      "source": "IT",
+      "title": "Profiling Go Programs with pprof",
+      "link": "https://blog.advenoh.pe.kr/en/go-pprof-프로파일링으로-성능-문제-진단하기",
+      "pubDate": "Thu, 09 Apr 2026 00:00:00 GMT",
+      "description": "How to use Go's built-in profiling tool pprof to diagnose and optimize performance bottlenecks in CPU, memory, goroutines, and more"
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency Part 3 - Advanced select and Channel Patterns",
+      "link": "https://blog.advenoh.pe.kr/en/golang-concurrency-3-select와-channel-심화",
+      "pubDate": "Wed, 08 Apr 2026 00:00:00 GMT",
+      "description": "Covers advanced channel patterns using Go's select statement — timeout, fan-in/fan-out, and dynamic deactivation with nil channels"
+    },
+    {
+      "source": "IT",
+      "title": "The Complete Guide to Claude Code Extensions: Command, Skill, Subagent",
+      "link": "https://blog.advenoh.pe.kr/en/claude-code-확장-기능-완벽-가이드-command-skill-subagent",
+      "pubDate": "Tue, 24 Mar 2026 00:00:00 GMT",
+      "description": "Organizes the concepts and differences between Claude Code's core extension mechanisms—Command, Skill, and Subagent—and explores how to use them in practice."
+    },
+    {
+      "source": "IT",
+      "title": "Complete Guide to Claude Code Plugins & Hooks: From Packaging Extensions to Event Automation",
+      "link": "https://blog.advenoh.pe.kr/en/claude-code-plugin-hooks-완벽-가이드",
+      "pubDate": "Thu, 19 Mar 2026 00:00:00 GMT",
+      "description": "An in-depth look at Claude Code's Plugin system and Hooks, covering Plugin structure, Marketplace, event-driven automation, and practical examples."
+    },
+    {
+      "source": "IT",
+      "title": "Golang Concurrency Part 2 - Mastering Channels",
+      "link": "https://blog.advenoh.pe.kr/en/golang-concurrency-2-channel-완전-정복",
+      "pubDate": "Thu, 19 Mar 2026 00:00:00 GMT",
+      "description": "Covers Go channels from basic behavior to the buffered/unbuffered difference, direction restrictions, close rules, and the producer-consumer pattern"
+    },
+    {
+      "source": "IT",
+      "title": "Getting Started with Continuous Profiling for Go Applications Using Grafana Pyroscope",
+      "link": "https://blog.advenoh.pe.kr/en/grafana-pyroscope로-go-애플리케이션-continuous-profiling-시작하기",
+      "pubDate": "Mon, 16 Mar 2026 00:00:00 GMT",
+      "description": "A hands-on guide to integrating Grafana Pyroscope with a Go application, covering Push mode (SDK) and Pull mode (Alloy), and analyzing bottlenecks with flame graphs."
+    },
+    {
+      "source": "IT",
+      "title": "What's New in Go 1.26",
+      "link": "https://blog.advenoh.pe.kr/en/go-1-26-변경사항-whats-new-in-go-1-26",
+      "pubDate": "Fri, 13 Mar 2026 00:00:00 GMT",
+      "description": "A roundup of the major changes in Go 1.26. We walk through language, performance, and security improvements — new(expr) initialization, recursive generic constraints, errors.AsType, Green Tea GC enabled by default, 30% faster cgo, reflect iterators, crypto/hpke, SIMD, goroutine leak profile — with sample code."
+    },
+    {
+      "source": "IT",
+      "title": "Managing Multiple Applications with GitOps in ArgoCD: App of Apps vs ApplicationSet",
+      "link": "https://blog.advenoh.pe.kr/en/argocd-여러-application-gitops-관리",
+      "pubDate": "Tue, 10 Mar 2026 00:00:00 GMT",
+      "description": "Compare ArgoCD's App of Apps and ApplicationSet patterns and learn how to deploy multiple applications efficiently the GitOps way"
+    }
+  ]
+}
