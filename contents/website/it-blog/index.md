@@ -1,5 +1,6 @@
 ---
 site: https://blog.advenoh.pe.kr/
+site_en: https://blog.advenoh.pe.kr/en/
 title: IT Blog
 cover: cover.png
 stack:

@@ -22,7 +22,11 @@ export const siteConfig = {
     githubProfileReadme: "https://raw.githubusercontent.com/kenshin579/kenshin579/master/README.md",
     status: "https://status.advenoh.pe.kr/",
     rss: {
-      blog: "https://blog.advenoh.pe.kr/rss.xml",
+      // IT 블로그는 locale 별 피드가 있다. 투자 블로그는 영어판이 없어 단일 URL.
+      blog: {
+        ko: "https://blog.advenoh.pe.kr/rss.xml",
+        en: "https://blog.advenoh.pe.kr/en/rss.xml",
+      },
       investment: "https://investment.advenoh.pe.kr/rss.xml",
     },
   },

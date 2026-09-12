@@ -5,14 +5,14 @@
  */
 import { getStatusSnapshot } from '../lib/status'
 import { getGithubContrib } from '../lib/github'
-import { getWritingBlog, getWritingInvestment } from '../lib/writing'
+import { getWritingBundles } from '../lib/writing'
 
 async function main() {
   const tasks: Array<[string, () => Promise<unknown>]> = [
     ['status', getStatusSnapshot],
     ['github', getGithubContrib],
-    ['writing:blog', getWritingBlog],
-    ['writing:investment', getWritingInvestment],
+    ['writing:ko', () => getWritingBundles('ko')],
+    ['writing:en', () => getWritingBundles('en')],
   ]
 
   for (const [label, loader] of tasks) {
